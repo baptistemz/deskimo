@@ -11,9 +11,67 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20151109195505) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "bookings", force: :cascade do |t|
+    t.datetime "start_date_time"
+    t.datetime "end_date_time"
+    t.integer  "desk_id"
+    t.integer  "user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "bookings", ["desk_id"], name: "index_bookings_on_desk_id", using: :btree
+  add_index "bookings", ["user_id"], name: "index_bookings_on_user_id", using: :btree
+
+  create_table "companies", force: :cascade do |t|
+    t.string   "name"
+    t.string   "siret"
+    t.string   "address"
+    t.string   "city"
+    t.string   "postcode"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "desks", force: :cascade do |t|
+    t.boolean  "seperate"
+    t.text     "description"
+    t.integer  "workplace_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "desks", ["workplace_id"], name: "index_desks_on_workplace_id", using: :btree
+
+  create_table "users", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "workplaces", force: :cascade do |t|
+    t.string   "address"
+    t.string   "city"
+    t.string   "postcode"
+    t.string   "name"
+    t.text     "description"
+    t.boolean  "coffee"
+    t.boolean  "wifi"
+    t.boolean  "printer"
+    t.boolean  "scanner"
+    t.integer  "company_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "workplaces", ["company_id"], name: "index_workplaces_on_company_id", using: :btree
+
+  add_foreign_key "bookings", "desks"
+  add_foreign_key "bookings", "users"
+  add_foreign_key "desks", "workplaces"
+  add_foreign_key "workplaces", "companies"
 end

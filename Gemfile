@@ -14,6 +14,21 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 
+gem "enumerize"
+gem "high_voltage"
+gem "devise"
+gem "paperclip"
+gem "aws-sdk", "< 2.0"
+gem "geocoder"
+gem "searchkick"
+gem "aasm", '~> 4.2.0'
+gem 'money-rails'
+gem 'slim'
+gem "rails-i18n"
+gem "devise-i18n"
+gem "devise-i18n-views"
+gem 'omniauth-facebook'
+
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'

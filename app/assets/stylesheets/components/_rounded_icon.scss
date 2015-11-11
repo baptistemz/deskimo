@@ -1,0 +1,23 @@
+.rounded-icon {
+  height: 150px;
+  width: 150px;
+  // background-color: #E0E2DB;
+  border-radius: 50%;
+  color: #1B4D89;
+  font-size: 50px;
+  line-height: 150px;
+  text-align:center;
+  margin: auto;
+  border: 1px solid #1B4D89;
+}
+
+.container-fluid {
+  margin: 40px 0;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+}
+
+.vp {
+  margin: 40px;
+  text-align: center
+}

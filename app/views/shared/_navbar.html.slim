@@ -9,8 +9,8 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
       a.navbar-brand.visible-xs
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       ul.nav.navbar-nav.nav-left.hidden-xs
-        li = link_to 'root', class: 'navbar-nav--brand-logo'
-          = image_tag 'logo.png'
+        li = link_to root_path, class: 'navbar-nav--brand-logo'
+          = image_tag 'logo.svg', class: 'navbar-logo'
       ul.nav.navbar-nav.nav-right
           / - if florist_signed_in?
           /   li = link_to florist_account_dashboard_path

@@ -5,70 +5,75 @@
   Louez tout de suite un bureau autour de vous.
 
 .banner
-  .home-gradient
-    h3 Ou entrez une ville / adresse
-    / = render "workplaces/search_form"
 
   .banner-content.text-center
-    h1 Trouvez un bureau de libre
+    h1 Trouvez un bureau dans une entreprise autour de vous
     br
-    h3 Dans une entreprises autour de vous
-    br
-    = link_to workplaces_path
-      .btn.btn-info Me géolocaliser
-  .banner-gradient
 
-.container-fluid.avatar.list-inline.text-center
+    = link_to workplaces_path
+      .btn.btn-primary Se géolocaliser
+  .banner-gradient
+  .home-gradient
+    h3 Ou entrez une ville / adresse
+    = render "workplaces/search_form"
+
+.container-fluid
   .row
-    .col-xs-12
-      .card
-        span.card-bg1
-          span.card-text
-            h3 Entreprise ou espace de coworking
-            p Je veux mettre en localition des bureaux quand ils sont disponibles
+    h2.text-center Location de bureau en instantané
+    br
+    hr
+    br
+    .col-xs-12.col-sm-4
+      .rounded-icon
+        i.fa.fa-briefcase
+      h4.vp Reservez des bureaux autour de vous quand vous en avez besoin
+    .col-xs-12.col-sm-4
+      .rounded-icon
+        i.fa.fa-coffee
+      h4.vp Accédez à tous les services d'une réelle entreprise
+    .col-xs-12.col-sm-4
+      .rounded-icon
+        i.fa.fa-building-o
+      h4.vp Une solution de networking et d'optimisation d'espace pour les entreprises
+      .text-right.margin-about
+        =link_to 'En savoir plus', 'root'
+
+.container.text-center
+  .row
+    .huge-card.col-xs-12
+      .pro-content
+        h3 Entreprise ou espace de coworking
+        h4 Vous voulez mettre en location des bureaux
+        br
+        = link_to workplaces_path
+          .btn.btn-primary Inscrivez votre entreprise
 
 
 .container
   .home
     .row.text-center
-      h2 Découvrez les créations de nos fleuristes
+      h2 Quels bureaux reserver ?
       hr
       span.center-line
 .background
   .container
     .row
-      .col-xs-12.col-sm-8
+      .col-xs-12.col-sm-6
         .card
           span.card-bg1
           = link_to workplaces_path
             span.card-gradient
               span.card-text
-                h2 Lyon
-                p Le plein de bouquets dès maintenant à Lyon
-      .col-xs-12.col-sm-4
+                h2 Entreprises
+                p De réelles entreprises vous ouvrent leurs portes
+      .col-xs-12.col-sm-6
         .card
           span.card-bg2
           = link_to workplaces_path
             span.card-gradient
               span.card-text
-                h2 Montpelier
-                p Une passion : Le rugby!
-    .row
-      .col-xs-12.col-sm-6
-        .card
-          span.card-bg3
-          = link_to workplaces_path
-            span.card-gradient
-              span.card-text
-                h2 Soissons
-                p Mettez donc vos fleurs dans un vase.
-      .col-xs-12.col-sm-6
-        .card
-          span.card-bg4
-          = link_to workplaces_path
-            span.card-gradient
-              span.card-text
-                h2 Saint-Quentin
-                p La ville à la patronne
+                h2 Espaces de coworking
+                p Entourez-vous de travailleurs nomades
+
 
 

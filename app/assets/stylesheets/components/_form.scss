@@ -1,0 +1,28 @@
+.flexform {
+  position: relative;
+}
+.pretty-field {
+  position: absolute;
+
+  margin-top:10px;
+  margin-bottom:10px;
+  width: 100%;
+  line-height: 14px;
+  font-weight: lighter;
+  color: #666666;
+  border: 1px solid #E6E6E6;
+  border-radius: 5px;
+  padding: 15px 10px 8px 10px;
+  outline: none;
+}
+.search-btn {
+  position: absolute;
+  right: 0;
+  top: 13px;
+  font-size: 24px;
+  width: 43px;
+  outline: none;
+  color: #1B4D89;
+  background-color: transparent;
+  border: none;
+}

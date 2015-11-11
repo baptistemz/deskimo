@@ -1,0 +1,5 @@
+= form_tag workplaces_path, method: :get, class: "flexform" do
+  = text_field_tag :city, @city, placeholder: "Ville ou adresse", id: "js-autocomplete-city", class: "pretty-field"
+  button.search-btn type="submit"
+    i.fa.fa-search
+

@@ -20,7 +20,7 @@ gem "devise"
 gem "paperclip"
 gem "aws-sdk", "< 2.0"
 gem "geocoder"
-gem "searchkick"
+gem 'gmaps4rails'
 gem "aasm", '~> 4.2.0'
 gem 'money-rails'
 gem 'slim'
@@ -28,6 +28,8 @@ gem "rails-i18n"
 gem "devise-i18n"
 gem "devise-i18n-views"
 gem 'omniauth-facebook'
+gem 'underscore-rails'
+gem 'coffee-rails'
 
 group :development, :test do
   gem 'binding_of_caller'

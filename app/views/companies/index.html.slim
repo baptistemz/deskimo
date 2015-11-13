@@ -10,37 +10,57 @@
       .research-bar
 
         = render "search_form"
-        / .col-xs-12.col-sm-4
-        /   h4 filter
-        / .col-xs-12.col-sm-4
-        /   h4 filter
-        / .col-xs-12.col-sm-4
-        /   h4 filter
+
       .row.products-list
         - @companies.each do |company|
           .col-xs-12.col-sm-6
-            .product-thumbnail
-              = image_tag company.picture.url(:list), class: "img-responsive"
-              .distance
-                p #{number_with_precision(company.distance_from(@position), precision: 1)} km
-              ul.list-unstyle.list-inline#services
-                - if company.wifi?
-                  li
-                    .service-badge
-                      i.fa.fa-wifi
-                - if company.coffee?
-                  li
-                    .service-badge
-                      i.fa.fa-coffee
-                - if company.printer?
-                  li
-                    .service-badge
-                      i.fa.fa-print
-
-              .product-thumbnail-content
-                .product-name
-                  p = company.name
-                .product-price
-                  p #{company.desks.first.hour_price}€ / h
+            =link_to company_path(company)
+              .product-thumbnail
+                .product-thumbnail-gradient
+                  .btn.btn-primary.product-thumbnail-btn Détails
+                = image_tag company.picture.url(:list), class: "img-responsive"
+                .distance
+                  p #{number_with_precision(company.distance_from(@location), precision: 1)} km
+                ul.list-unstyle.list-inline#services
+                  - if company.wifi?
+                    li
+                      .service-badge
+                        i.fa.fa-wifi
+                  - if company.coffee?
+                    li
+                      .service-badge
+                        i.fa.fa-coffee
+                  - if company.printer?
+                    li
+                      .service-badge
+                        i.fa.fa-print
+                .product-thumbnail-content
+                  .product-name
+                    p = company.name
+                  .product-price
+                    p #{company.desks.first.hour_price}€ / h
 
     .col-sm-4.hidden-xs.hidden-sm
+    .col-sm-4.hidden-xs.hidden-sm
+  /     #map
+
+
+  / - content_for (:after_js)
+  /   = javascript_include_tag "https://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"
+
+  /   javascript:
+  /     $(function(){
+  /       handler = Gmaps.build('Google');
+  /       handler.buildMap({
+  /         internal: { id: 'map' },
+  /         provider: {
+  /           scrollwheel: false
+  /         }
+  /       }, function(){
+  /         markers = handler.addMarkers(#{raw @markers.to_json});
+  /         handler.bounds.extendWith(markers);
+  /         handler.fitMapToBounds();
+  /       });
+
+  /     })
+

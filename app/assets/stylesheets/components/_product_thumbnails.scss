@@ -7,6 +7,32 @@
   position: relative
 }
 
+.product-thumbnail-gradient{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.product-thumbnail-gradient:hover{
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.product-thumbnail-btn {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.product-thumbnail-gradient:hover > .product-thumbnail-btn {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.4s linear;
+}
+
 .product-thumbnail-content {
   font-size: 20px;
   color: white;

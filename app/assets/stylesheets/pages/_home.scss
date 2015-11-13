@@ -1,7 +1,7 @@
 
 .home-gradient {
   position: absolute;
-  background-color : rgba(27, 77, 137, 0.4);
+  background-color : rgba(0, 0, 0, 0.6);
   top: 80% ;
   bottom: 0%;
   left: 0;
@@ -30,13 +30,14 @@
 .huge-card {
   background-image: image-url('homepro.jpg');
   background-size: cover;
-  margin-top: 30px;
   height: 500px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   color: white;
   display:flex;
+  border-radius: 3px;
   justify-content:center;
   align-items:center;
+  margin-top: 30px ;
 
 }
 

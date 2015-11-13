@@ -1,1 +1,3 @@
-bookings_controller.rb
+class BookingsController < ActionController::Base
+
+end

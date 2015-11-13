@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
-  resources :workplaces, only: [:index, :show] do
+  resources :companies, only: [:index, :show] do
     resources :desks, only: [:index, :show] do
       resources :bookings, only: [:new, :create]
     end
@@ -15,10 +15,8 @@ Rails.application.routes.draw do
   end
 
   namespace :company_account do
-    resources :workplaces, only: [:index, :show, :new, :create, :edit, :update] do
-      resources :desks, only: [:index, :show, :new, :create, :edit, :update]
-      resources :bookings, only: [:index, :show, :edit, :update]
-    end
+    resources :desks, only: [:index, :show, :new, :create, :edit, :update]
+    resources :bookings, only: [:index, :show, :edit, :update]
   end
 
 

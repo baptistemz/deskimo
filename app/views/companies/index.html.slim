@@ -1,0 +1,46 @@
+= content_for(:title) do
+  Bureaux à louer maintenant autour de vous.
+
+= content_for(:description) do
+  Reservez parmi tous les bureaux d'espaces de coworking et d'entreprises autour de vous.
+
+.container
+  .row
+    .col-xs-12.col-md-8
+      .research-bar
+
+        = render "search_form"
+        / .col-xs-12.col-sm-4
+        /   h4 filter
+        / .col-xs-12.col-sm-4
+        /   h4 filter
+        / .col-xs-12.col-sm-4
+        /   h4 filter
+      .row.products-list
+        - @companies.each do |company|
+          .col-xs-12.col-sm-6
+            .product-thumbnail
+              = image_tag company.picture.url(:list), class: "img-responsive"
+              .distance
+                p #{number_with_precision(company.distance_from(@position), precision: 1)} km
+              ul.list-unstyle.list-inline#services
+                - if company.wifi?
+                  li
+                    .service-badge
+                      i.fa.fa-wifi
+                - if company.coffee?
+                  li
+                    .service-badge
+                      i.fa.fa-coffee
+                - if company.printer?
+                  li
+                    .service-badge
+                      i.fa.fa-print
+
+              .product-thumbnail-content
+                .product-name
+                  p = company.name
+                .product-price
+                  p #{company.desks.first.hour_price}€ / h
+
+    .col-sm-4.hidden-xs.hidden-sm

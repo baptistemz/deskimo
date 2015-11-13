@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151110090411) do
+ActiveRecord::Schema.define(version: 20151113011512) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,20 +46,35 @@ ActiveRecord::Schema.define(version: 20151110090411) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
+    t.text     "description"
+    t.boolean  "coffee"
+    t.boolean  "wifi"
+    t.boolean  "printer"
+    t.boolean  "scanner"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "companies", ["email"], name: "index_companies_on_email", unique: true, using: :btree
   add_index "companies", ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true, using: :btree
 
   create_table "desks", force: :cascade do |t|
-    t.boolean  "seperate"
     t.text     "description"
-    t.integer  "workplace_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "company_id"
+    t.integer  "quantity"
+    t.string   "kind"
+    t.integer  "hour_price"
+    t.integer  "daily_price"
+    t.integer  "weekly_price"
   end
 
-  add_index "desks", ["workplace_id"], name: "index_desks_on_workplace_id", using: :btree
+  add_index "desks", ["company_id"], name: "index_desks_on_company_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",                          null: false
@@ -79,25 +94,7 @@ ActiveRecord::Schema.define(version: 20151110090411) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "workplaces", force: :cascade do |t|
-    t.string   "address"
-    t.string   "city"
-    t.string   "postcode"
-    t.string   "name"
-    t.text     "description"
-    t.boolean  "coffee"
-    t.boolean  "wifi"
-    t.boolean  "printer"
-    t.boolean  "scanner"
-    t.integer  "company_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "workplaces", ["company_id"], name: "index_workplaces_on_company_id", using: :btree
-
   add_foreign_key "bookings", "desks"
   add_foreign_key "bookings", "users"
-  add_foreign_key "desks", "workplaces"
-  add_foreign_key "workplaces", "companies"
+  add_foreign_key "desks", "companies"
 end

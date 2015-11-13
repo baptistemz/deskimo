@@ -1,26 +1,27 @@
 = content_for(:title) do
-  Accueil
+  Nomad Office
 
 = content_for(:description) do
-  Louez tout de suite un bureau autour de vous.
+  Louez tout de suite un bureau autour de vous pour une courte durée.
 
 .banner
 
   .banner-content.text-center
+    br
+    = image_tag 'logo6.png', class: 'banner-logo'
+    br
     h1 Trouvez un bureau dans une entreprise autour de vous
     br
-
-    = link_to workplaces_path
-      .btn.btn-primary Se géolocaliser
+    = link_to companies_path
+      .btn.btn-primary Géolocalisez-vous
   .banner-gradient
   .home-gradient
     h3 Ou entrez une ville / adresse
-    = render "workplaces/search_form"
+    = render "companies/search_form"
 
 .container-fluid
   .row
     h2.text-center Location de bureau en instantané
-    br
     hr
     br
     .col-xs-12.col-sm-4
@@ -40,13 +41,15 @@
 
 .container.text-center
   .row
-    .huge-card.col-xs-12
-      .pro-content
-        h3 Entreprise ou espace de coworking
-        h4 Vous voulez mettre en location des bureaux
-        br
-        = link_to workplaces_path
-          .btn.btn-primary Inscrivez votre entreprise
+    .col-xs-12
+      .huge-card
+        .pro-content
+          h2 Entreprise ou espace de coworking
+          br
+          h4 Vous voulez mettre en location des bureaux
+          br
+          = link_to companies_path
+            .btn.btn-primary Inscrivez votre entreprise
 
 
 .container
@@ -58,18 +61,18 @@
 .background
   .container
     .row
-      .col-xs-12.col-sm-6
+      .col-xs-12.col-md-6
         .card
           span.card-bg1
-          = link_to workplaces_path
+          = link_to companies_path
             span.card-gradient
               span.card-text
                 h2 Entreprises
                 p De réelles entreprises vous ouvrent leurs portes
-      .col-xs-12.col-sm-6
+      .col-xs-12.col-md-6
         .card
           span.card-bg2
-          = link_to workplaces_path
+          = link_to companies_path
             span.card-gradient
               span.card-text
                 h2 Espaces de coworking

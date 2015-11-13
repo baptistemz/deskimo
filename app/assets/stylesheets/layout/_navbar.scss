@@ -15,14 +15,19 @@
 }
 
 .navbar-logo {
-  height: 40px;
-  margin-top: 10px
+  height: 25px;
+  margin-top: 15px
+}
+
+.navbar-small-logo {
+  height: 20px;
+
+
 }
 
 .navbar{
   border-bottom: 1px solid #1B4D89;
-  margin-bottom: 0px;
-  min-height: 65px;
+  min-height: 55px;
 }
 
 .navbar.navbar-default{
@@ -38,7 +43,7 @@
 }
 
 .navbar-default .navbar-brand{
-  padding: 22px 15px;
+  padding: 14px 0;
   -o-transition: color 0.3s ease-in-out;
   -moz-transition: color 0.3s ease-in-out;
   -webkit-transition: color 0.3s ease-in-out;
@@ -114,8 +119,8 @@
 .navbar-default .navbar-nav > li > a {
   float: none;
   padding: 10px 17px;
-  margin-top: 10px;
-  color: darker-gray;
+  margin-top: 12px;
+  color: #626360;
   text-decoration: none;
   text-shadow: none;
   transition: color 0.1s ease-in-out;

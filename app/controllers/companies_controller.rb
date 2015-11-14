@@ -3,10 +3,11 @@ class CompaniesController < ApplicationController
   def index
 
     @location = Geocoder.coordinates(params[:full_address])
-    @companies = Company.near(@location, 10)
+    @companies = Company.near(@location, 5)
     @companies.each{|company| company.sort_company_desks_by_hour_price}
+    geo_companies = @companies.where.not(latitude: nil, longitude: nil)
 
-    @hash = Gmaps4rails.build_markers(@companies) do |company, marker|
+    @hash = Gmaps4rails.build_markers(geo_companies) do |company, marker|
       marker.lat company.latitude
       marker.lng company.longitude
       marker.infowindow render_to_string(partial: "/companies/map_box", locals: { company: company })

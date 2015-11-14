@@ -1,0 +1,6 @@
+.map_box
+  = image_tag company.picture.url(:list), class: "img-small"
+  h3 = company.name
+  p = company.address
+  p = company.city
+  = link_to "détails", company_path(company), class: "btn btn-primary"

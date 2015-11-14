@@ -4,16 +4,20 @@
 = content_for(:description) do
   Reservez parmi tous les bureaux d'espaces de coworking et d'entreprises autour de vous.
 
-.container
+.container-fluid
   .row
-    .col-xs-12.col-md-8
-      .research-bar
-
-        = render "search_form"
+    .col-xs-12.col-sm-7
+      .row.research-bar
+        .col-xs-10.col-sm-12
+          = render "search_form"
+        .col-xs-2.visible-xs.no-padding-left
+          .map-btn
+            .i.fa.fa-map#map-icon
+            .i.fa.fa-list#list-icon.hidden
 
       .row.products-list
         - @companies.each do |company|
-          .col-xs-12.col-sm-6
+          .col-xs-12.col-md-6
             =link_to company_path(company)
               .product-thumbnail
                 .product-thumbnail-gradient
@@ -40,27 +44,34 @@
                   .product-price
                     p #{company.desks.first.hour_price}€ / h
 
-    .col-sm-4.hidden-xs.hidden-sm
-    .col-sm-4.hidden-xs.hidden-sm
-  /     #map
+    .col-sm-5.hidden-xs
+      .map-outer.hidden-xs
+        #map
+    / #list-btn.hidden
+    /   .i.fa.fa-list
 
 
-  / - content_for (:after_js)
-  /   = javascript_include_tag "https://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"
 
-  /   javascript:
-  /     $(function(){
-  /       handler = Gmaps.build('Google');
-  /       handler.buildMap({
-  /         internal: { id: 'map' },
-  /         provider: {
-  /           scrollwheel: false
-  /         }
-  /       }, function(){
-  /         markers = handler.addMarkers(#{raw @markers.to_json});
-  /         handler.bounds.extendWith(markers);
-  /         handler.fitMapToBounds();
-  /       });
 
-  /     })
+  - content_for (:after_js)
+    = javascript_include_tag "https://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"
+
+    javascript:
+      $(function(){
+        var mapStyle = [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#781611"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"landscape.man_made","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#dfdfdf"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"gamma":"0.86"},{"visibility":"on"},{"color":"#e2b119"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"transit.station.rail","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"hue":"#ff7100"}]},{"featureType":"water","elementType":"geometry","stylers":[{"visibility":"on"},{"color":"#4980c1"}]}];
+        handler = Gmaps.build('Google');
+        handler.buildMap({
+          internal: { id: 'map' },
+          provider: {
+            styles: mapStyle,
+            scrollwheel: false
+          }
+        }, function(){
+          markers = handler.addMarkers(#{raw @hash.to_json});
+          handler.bounds.extendWith(markers);
+          handler.fitMapToBounds();
+        });
+
+
+      })
 

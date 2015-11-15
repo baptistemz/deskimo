@@ -1,11 +1,11 @@
 class CompaniesController < ApplicationController
 
   def index
-
     if params[:full_address]
       @location = Geocoder.coordinates(params[:full_address])
     else
-      @geoloc = request.location
+      @ip = request.remote_ip
+      @geoloc = Geocoder.search(@ip).first
       @location = [@geoloc.latitude, @geoloc.longitude]
     end
     @companies = Company.near(@location, 5)

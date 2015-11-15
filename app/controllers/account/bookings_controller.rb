@@ -1,3 +1,4 @@
-class BookingsController < ActionController::Base
-
+module Account
+  class BookingsController
+  end
 end

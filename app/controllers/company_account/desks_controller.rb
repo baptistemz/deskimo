@@ -1,1 +1,4 @@
-desks_controller.rb
+module CompanyAccount
+  class DesksController
+  end
+end

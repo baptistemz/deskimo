@@ -34,7 +34,6 @@ $(document).ready(function() {
     }
 
    $("#geoloc").click(function() {
-      // var cookie_val = myPosition[0] + ", " + myPosition[1];
       document.cookie = "lat_lng=" + escape(myPosition);
       window.location = 'companies';
 

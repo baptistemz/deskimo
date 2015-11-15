@@ -64,7 +64,7 @@
           internal: { id: 'map' },
           provider: {
             styles: mapStyle,
-            scrollwheel: false
+            scrollwheel: true
           }
         }, function(){
           markers = handler.addMarkers(#{raw @hash.to_json});

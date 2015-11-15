@@ -1,1 +1,2 @@
-
+class DesksController < ApplicationController
+end

@@ -4,7 +4,7 @@ ruby '2.2.3'
 gem 'rails', '4.2.4'
 gem 'pg'
 gem 'figaro'
-gem 'jbuilder', '~> 2.0'
+# gem 'jbuilder', '~> 2.0'
 
 gem 'sass-rails', '~> 5.0'
 gem 'jquery-rails'
@@ -30,6 +30,7 @@ gem "devise-i18n-views"
 gem 'omniauth-facebook'
 gem 'underscore-rails'
 gem 'coffee-rails'
+
 
 group :development, :test do
   gem 'binding_of_caller'

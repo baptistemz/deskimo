@@ -4,9 +4,7 @@ class CompaniesController < ApplicationController
     if params[:full_address]
       @location = Geocoder.coordinates(params[:full_address])
     else
-      @ip = request.remote_ip
-      @geoloc = Geocoder.search(@ip).first
-      @location = [@geoloc.latitude, @geoloc.longitude]
+      @location = cookies[:lat_lng].split(',')
     end
     @companies = Company.near(@location, 5)
     @companies.each{|company| company.sort_company_desks_by_hour_price}

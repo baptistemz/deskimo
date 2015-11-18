@@ -3,4 +3,4 @@
   h3 = company.name
   p = company.address
   p = company.city
-  = link_to "détails", company_path(company), class: "btn btn-primary"
+  = link_to "détails", company_desk_path(company, company.desks.first), class: "btn btn-primary"

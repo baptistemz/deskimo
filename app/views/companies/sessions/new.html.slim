@@ -1,0 +1,17 @@
+.text-center.login-banner
+  .form-margin-top
+    h2 Log in
+    br
+    br
+    = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = f.error_notification
+      .form-group
+        = f.input :email, label: false, required: true, autofocus: true, placeholder:"email"
+      br
+      .form-group
+        = f.input :password, label: false, required: true , placeholder:"password"
+      br
+      .form-actions
+        = f.button :submit, "Log in", class: "btn-primary wide-button login-button-width"
+    = render "devise/shared/links"
+

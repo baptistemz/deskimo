@@ -8,11 +8,13 @@ gem 'figaro'
 
 gem 'sass-rails', '~> 5.0'
 gem 'jquery-rails'
+gem 'jquery-turbolinks'
 gem 'uglifier'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
+gem 'turbolinks'
 
 gem "enumerize"
 gem "high_voltage"
@@ -38,7 +40,7 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'pry-byebug'
   gem 'pry-rails'
-  gem 'spring'
+  gem 'spring', '~> 1.4.1'
 end
 
 group :production do

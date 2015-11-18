@@ -1,0 +1,31 @@
+.process-step {
+  width: 310px;
+  height: 20%;
+  padding: 12px;
+  margin: 50px auto;
+  background-color: #8F918C;
+  color: white;
+  content-align: center;
+}
+.process-step.completed {
+  background-color: #1B4D89;
+}
+
+.process-step > p {
+  margin: 10px 0 0 0;
+  display:flex;
+  justify-content:center;
+}
+
+.step-number {
+  border: 1px solid white;
+  border-radius: 25px;
+  width: 30px;
+  margin: auto
+}
+.step-number > p {
+  display:flex;
+  justify-content:center;
+  margin:0;
+  padding: 3px;
+}

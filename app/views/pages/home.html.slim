@@ -11,12 +11,12 @@
     = image_tag 'logo6.png', class: 'banner-logo'
     br
     h1 Trouvez un bureau dans une entreprise autour de vous
-    br
+
     / = link_to companies_path
     .btn.btn-primary#geoloc Géolocalisez-vous
   .banner-gradient
   .home-gradient
-    h3 Ou entrez une ville / adresse
+    h3 Ou indiquez où vous êtes
     = render "companies/search_form"
 
 .container-fluid

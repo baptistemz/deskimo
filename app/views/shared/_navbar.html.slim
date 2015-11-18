@@ -15,28 +15,30 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
           = image_tag 'logo.png', class: 'navbar-logo'
 
       ul.nav.navbar-nav.nav-right
-          / - if florist_signed_in?
-          /   li = link_to florist_account_dashboard_path
-          /     i.fa.fa-dashboard
-          /     'Dashboard
+          - if company_signed_in?
+            li
+            / li  =link_to florist_account_dashboard_path
+              i.fa.fa-dashboard
+              'Dashboard
 
 
-          /   li = link_to florist_account_dashboard_path
-          /     i.fa.fa-home
-          /     'Mon compte
+            / li = link_to florist_account_dashboard_path
+            li
+              i.fa.fa-home
+              'Mon compte
 
-          /   li = link_to destroy_florist_session_path, method: :delete
-          /     i.fa.fa-sign-out
-          /     'Se déconnecter
+            li = link_to destroy_company_session_path, method: :delete
+              i.fa.fa-sign-out
+              'Se déconnecter
 
-          / - elsif user_signed_in?
-          /   li = link_to account_dashboard_path
-          /     i.fa.fa-home
-          /     'Mon compte
+          - elsif user_signed_in?
+            li = link_to account_dashboard_path
+              i.fa.fa-home
+              'Mon compte
 
-          /   li = link_to destroy_user_session_path, method: :delete
-          /     i.fa.fa-sign-out
-          /     'Se déconnecter
+            li = link_to destroy_user_session_path, method: :delete
+              i.fa.fa-sign-out
+              'Se déconnecter
 
 
           / - else

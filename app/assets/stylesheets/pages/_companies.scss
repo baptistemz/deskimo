@@ -1,6 +1,9 @@
+html,body{
+    height:100%;
+}
+
 .research-bar {
   display: block;
-  margin-top: 20px;
   height: 60px;
   background-color: #FFFBFE;
   border-bottom: 1px solid #8F918C;
@@ -11,9 +14,42 @@
   display: block;
 }
 
-.map-outer {
-  display: block;
-  position: absolute;
-  right: 0;
-  width: 100%;
+#map {
+  width:41.7%;
+  position:absolute;
+  right:0;
+  top: 55px;
+  bottom:0;
+  display:block
+
 }
+
+
+
+#mobile-map {
+  width:100%;
+  position:absolute;
+  right:0;
+  top:115px;
+  bottom:0;
+  z-index: 100;
+  overflow:hidden;
+}
+
+#main, #main>.row {
+  height:100%;
+}
+
+#main>.row {
+    overflow-y:scroll;
+}
+
+#left {
+  height:100%;
+}
+
+.out-window{
+  left: -1000px;
+  right: 1000px;
+}
+

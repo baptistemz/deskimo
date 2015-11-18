@@ -1,0 +1,35 @@
+.form-group {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  // box-shadow
+}
+
+.form-group > .input > input {
+  background-color: rgba(50, 50, 50, 0);
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-radius: 4%;
+  border-bottom: 1px solid #E0E2DB;
+  width: 100%;
+}
+
+.form-group > .input > input:hover{
+    border-bottom: 2px solid #1B4D89;
+}
+
+.form-group > .input > input:focus{
+    border-bottom: 2px solid #1B4D89;
+    outline: 0
+}
+
+
+.login-button-width{
+  width: 60%;
+}
+
+.form-margin-top {
+  margin-top: 10%
+}
+

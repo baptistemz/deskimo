@@ -4,9 +4,11 @@
 = content_for(:description) do
   Reservez parmi tous les bureaux d'espaces de coworking et d'entreprises autour de vous.
 
-.container-fluid
+#map.hidden-xs
+#mobile-map.visible-xs.out-window
+.container-fluid#main
   .row
-    .col-xs-12.col-sm-7
+    .col-xs-12.col-sm-7#left
       .row.research-bar
         .col-xs-10.col-sm-12
           = render "search_form"
@@ -18,7 +20,7 @@
       .row.products-list
         - @companies.each do |company|
           .col-xs-12.col-md-6
-            =link_to company_path(company)
+            =link_to company_desk_path(company, company.desks.first)
               .product-thumbnail
                 .product-thumbnail-gradient
                   .btn.btn-primary.product-thumbnail-btn Détails
@@ -44,9 +46,8 @@
                   .product-price
                     p #{company.desks.first.hour_price}€ / h
 
-    .col-sm-5.hidden-xs
-      .map-outer.hidden-xs
-        #map
+    .col-sm-5.hidden-xs.fixed
+      / .map-outer.hidden-xs
     / #list-btn.hidden
     /   .i.fa.fa-list
 
@@ -54,7 +55,7 @@
 
 
   - content_for (:after_js)
-    = javascript_include_tag "https://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"
+
 
     javascript:
       $(function(){
@@ -64,12 +65,25 @@
           internal: { id: 'map' },
           provider: {
             styles: mapStyle,
-            scrollwheel: true
+            scrollwheel: false
           }
         }, function(){
           markers = handler.addMarkers(#{raw @hash.to_json});
           handler.bounds.extendWith(markers);
           handler.fitMapToBounds();
+        });
+
+        mobile_handler = Gmaps.build('Google');
+        mobile_handler.buildMap({
+          internal: { id: 'mobile-map' },
+          provider: {
+            styles: mapStyle,
+            scrollwheel: true
+          }
+        }, function(){
+          markers = mobile_handler.addMarkers(#{raw @hash.to_json});
+          mobile_handler.bounds.extendWith(markers);
+          mobile_handler.fitMapToBounds();
         });
 
 

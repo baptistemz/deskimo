@@ -68,9 +68,9 @@
             scrollwheel: false
           }
         }, function(){
-          markers = handler.addMarkers(#{raw @hash.to_json});
-          handler.bounds.extendWith(markers);
-          handler.fitMapToBounds();
+          markers = desktop_handler.addMarkers(#{raw @hash.to_json});
+          desktop_handler.bounds.extendWith(markers);
+          desktop_handler.fitMapToBounds();
         });
 
         mobile_handler = Gmaps.build('Google');

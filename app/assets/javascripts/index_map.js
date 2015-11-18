@@ -1,9 +1,9 @@
 $(document).ready(function(){
   var win_height = $(window).height() - 55;
-  $('#map').css("height", win_height);
+  $('#desktop-map').css("height", win_height);
   $(window).resize(function() {
     var win_height = $(window).height() - 55;
-    $('#map').css("height", win_height);
+    $('#desktop-map').css("height", win_height);
   });
 //   // $(window).scroll(function(){
 //   //   var scroll = $(document).scrollTop()

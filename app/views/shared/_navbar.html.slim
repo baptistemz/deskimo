@@ -15,7 +15,7 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
           = image_tag 'logo.png', class: 'navbar-logo'
 
       ul.nav.navbar-nav.nav-right
-          - if company_signed_in?
+          - if user_signed_in? && current_user.company.any?
             li
             / li  =link_to florist_account_dashboard_path
               i.fa.fa-dashboard
@@ -41,12 +41,16 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
               'Se déconnecter
 
 
-          / - else
-          li = link_to new_user_session_path
-            i.fa.fa-user.icon-margin
-            'Accès client
+          - else
+            li = link_to new_user_session_path
+              i.fa.fa-user.icon-margin
+              'Connexion
 
-          li = link_to new_company_session_path
-            i.fa.fa-lock.icon-margin
-            'Accès entreprise
+            li = link_to new_user_registration_path(:user_type => "user")
+              i.fa.fa-lock.icon-margin
+              'Particultier
+
+            li = link_to new_user_registration_path(:user_type => "company")
+              i.fa.fa-lock.icon-margin
+              'Entreprise
 

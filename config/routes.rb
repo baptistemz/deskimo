@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :companies
-  devise_for :users
+  # devise_for :companies
+  devise_for :users, controllers: { registrations: "registrations" }
   root to: 'pages#home'
 
   resources :companies, only: [:index] do

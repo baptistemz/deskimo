@@ -2,8 +2,8 @@ class Company < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  # devise :database_authenticatable, :registerable,
+  #        :recoverable, :rememberable, :trackable, :validatable
   has_many :desks, dependent: :destroy
 
   has_attached_file :picture,
@@ -13,7 +13,7 @@ class Company < ActiveRecord::Base
   validates_attachment_content_type :picture,
     content_type: /\Aimage\/.*\z/
 
-  validates_presence_of :siret, :address, :city, :description
+  validates_presence_of :name, :siret, :address, :city, :description
 
   geocoded_by :full_address
   after_validation :geocode, if: :full_address_changed?

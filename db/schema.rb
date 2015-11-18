@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151113011512) do
+ActiveRecord::Schema.define(version: 20151118154016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,10 +57,12 @@ ActiveRecord::Schema.define(version: 20151113011512) do
     t.datetime "picture_updated_at"
     t.float    "latitude"
     t.float    "longitude"
+    t.integer  "user_id"
   end
 
   add_index "companies", ["email"], name: "index_companies_on_email", unique: true, using: :btree
   add_index "companies", ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true, using: :btree
+  add_index "companies", ["user_id"], name: "index_companies_on_user_id", using: :btree
 
   create_table "desks", force: :cascade do |t|
     t.text     "description"
@@ -96,5 +98,6 @@ ActiveRecord::Schema.define(version: 20151113011512) do
 
   add_foreign_key "bookings", "desks"
   add_foreign_key "bookings", "users"
+  add_foreign_key "companies", "users"
   add_foreign_key "desks", "companies"
 end

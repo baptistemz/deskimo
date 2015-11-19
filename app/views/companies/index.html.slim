@@ -60,17 +60,17 @@
     javascript:
       $(function(){
         var mapStyle = [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#781611"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"landscape.man_made","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#dfdfdf"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"gamma":"0.86"},{"visibility":"on"},{"color":"#e2b119"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"transit.station.rail","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"hue":"#ff7100"}]},{"featureType":"water","elementType":"geometry","stylers":[{"visibility":"on"},{"color":"#4980c1"}]}];
-        desktop_handler = Gmaps.build('Google');
-        desktop_handler.buildMap({
+        handler = Gmaps.build('Google');
+        handler.buildMap({
           internal: { id: 'desktop-map' },
           provider: {
             styles: mapStyle,
             scrollwheel: false
           }
         }, function(){
-          markers = desktop_handler.addMarkers(#{raw @hash.to_json});
-          desktop_handler.bounds.extendWith(markers);
-          desktop_handler.fitMapToBounds();
+          markers = handler.addMarkers(#{raw @hash.to_json});
+          handler.bounds.extendWith(markers);
+          handler.fitMapToBounds();
         });
 
         mobile_handler = Gmaps.build('Google');

@@ -18,7 +18,11 @@
               = f.input :password_confirmation, label: false, required: true, placeholder:"confirmation"
             br
             .form-actions
-              = f.button :submit, "Sign up", class: "btn-primary wide-button login-button-width"
+            - if params[:user_type] == "company"
+              = f.button :submit, "Sign up", class: "btn-primary wide-button login-button-width", name: "company"
+            - else
+              = f.button :submit, "Sign up", class: "btn-primary wide-button login-button-width", name: "user"
+
           = render "devise/shared/links"
 
   - if params[:user_type] == "company"

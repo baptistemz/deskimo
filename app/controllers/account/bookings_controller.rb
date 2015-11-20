@@ -1,4 +1,4 @@
 module Account
-  class BookingsController
+  class BookingsController < Account::Base
   end
 end

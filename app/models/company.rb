@@ -5,6 +5,7 @@ class Company < ActiveRecord::Base
   # devise :database_authenticatable, :registerable,
   #        :recoverable, :rememberable, :trackable, :validatable
   has_many :desks, dependent: :destroy
+  belongs_to :user
 
   has_attached_file :picture,
     styles: { large: "500x500", medium: "300x300>", thumb: "100x100>" , list: "800x400#"}

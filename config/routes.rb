@@ -9,9 +9,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :companies, only: [:new, :create, :edit, :update]
 
   namespace :account do
+    resources :companies, only: [:new, :create, :edit, :update]
     resources :bookings, only: [:index, :show]
   end
 

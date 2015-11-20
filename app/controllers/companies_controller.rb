@@ -21,10 +21,4 @@ class CompaniesController < ApplicationController
     @companies = Company.all
     @company = Company.find(params[:id])
   end
-
-  def new
-    @company = Company.new
-  end
-
-
 end

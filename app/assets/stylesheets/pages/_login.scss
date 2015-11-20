@@ -15,6 +15,38 @@
   width: 100%;
 }
 
+.form-group > .input > textarea:hover{
+    border: 1px solid #1B4D89;
+}
+
+.form-group > .input > textarea:focus{
+    border: 1px solid #1B4D89;
+    outline: 0
+}
+
+.form-group > .input > textarea {
+  background-color: rgba(50, 50, 50, 0);
+  border: 1px solid #E0E2DB;
+  width: 100%;
+}
+
+.form-group > .input > label {
+  text-align:left
+}
+
+.form-group > .input > .file {
+  border: none
+}
+
+.form-group > .input > .file:hover {
+  border: none
+}
+
+.form-group > .input > .file:focus {
+  border: none
+}
+
+
 .form-group > .input > input:hover{
     border-bottom: 2px solid #1B4D89;
 }
@@ -31,5 +63,21 @@
 
 .form-margin-top {
   margin-top: 10%
+}
+
+#preview-thumbnail {
+  width: 300px;
+  height: 150px;
+}
+
+#preview-image {
+  width: 300px;
+  height: 150px;
+  background-size: 100% auto;
+  background-position: center;
+}
+
+.form-top-preview {
+  margin: 30px auto -20px auto;
 }
 

@@ -54,7 +54,7 @@
           - if @meeting_room.first == @desk
             li.active
               =link_to company_desk_path(@company, @meeting_room.first.id, anchor: 'desk-choice')
-                'Salle de réunion
+                'Réunions
           -else
             li
               =link_to company_desk_path(@company, @meeting_room.first.id, anchor: 'desk-choice')

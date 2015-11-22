@@ -18,10 +18,34 @@ $(document).ready(function(){
   //   $('#company-name-preview').html(name)
   // });
 
-  $("#company_name").keyup(function(){
-    var name = this.value;
-    $('#company-name-preview').text(name)
-  });
+
+    $('#company_wifi').click(function() {
+        if ($(this).is(':checked')) {
+            $('#wifi-badge').removeClass('hidden');
+
+        } else {
+            $('#wifi-badge').addClass('hidden');
+        }
+    });
+
+        $('#company_coffee').click(function() {
+        if ($(this).is(':checked')) {
+            $('#coffee-badge').removeClass('hidden');
+
+        } else {
+            $('#coffee-badge').addClass('hidden');
+        }
+    });
+
+        $('#company_printer').click(function() {
+        if ($(this).is(':checked')) {
+            $('#printer-badge').removeClass('hidden');
+
+        } else {
+            $('#printer-badge').addClass('hidden');
+        }
+    });
+
 
 });
 

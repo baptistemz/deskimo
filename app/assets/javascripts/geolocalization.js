@@ -12,7 +12,6 @@ var myPosition = new Array();
     function onSuccess(position) {
       myPosition[0] = position.coords.latitude;
       myPosition[1] = position.coords.longitude;
-      console.log(myPosition)
       document.cookie = "lat_lng=" + escape(myPosition);
       window.location = 'companies';
       }

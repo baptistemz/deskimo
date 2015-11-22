@@ -4,6 +4,10 @@ module Account
       @company = Company.new
     end
 
+    def create
+      raise
+    end
+
 
   end
 end

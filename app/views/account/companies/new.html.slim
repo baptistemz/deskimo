@@ -28,7 +28,7 @@
       /     .product-price
       /       p ...€ / h
       br
-      = simple_form_for @company do |f|
+      = simple_form_for [:account, @company] do |f|
         .form-group
           = f.input :name, label:false, required: true, autofocus: true, placeholder:"Nom de l'entreprise"
         .form-group
@@ -43,8 +43,14 @@
         br
         .form-group
           = f.input :description, label:false, required: true, autofocus: true, placeholder:"description", as: :text
+        h5 Services:
+        .form-services
+          = f.input :wifi
+          = f.input :coffee
+          = f.input :printer
+        h5 Photo:
         .form-group
-          = f.input :picture, label: "image"
+          = f.input :picture, label: false
         .form-actions
           = f.button :submit, class: "btn-primary wide-button login-button-width", value: "Enregistrer l'entreprise"
 
@@ -72,18 +78,16 @@
       .distance
         p ...km
       ul.list-unstyle.list-inline#services
-        / - if company.wifi?
-        /   li
-        /     .service-badge
-        /       i.fa.fa-wifi
-        / - if company.coffee?
-        /   li
-        /     .service-badge
-        /       i.fa.fa-coffee
-        / - if company.printer?
-        /   li
-        /     .service-badge
-        /       i.fa.fa-print
+        li#wifi-badge.hidden
+          .service-badge
+            i.fa.fa-wifi
+        li#coffee-badge.hidden
+          .service-badge
+            i.fa.fa-coffee
+        li#printer-badge.hidden
+          .service-badge
+            i.fa.fa-print
+
       .product-thumbnail-content
         .product-name
           p#company-name-preview

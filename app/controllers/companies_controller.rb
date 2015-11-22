@@ -3,8 +3,10 @@ class CompaniesController < ApplicationController
   def index
     if params[:full_address]
       @location = Geocoder.coordinates(params[:full_address])
-    else
+    elsif cookies[:lat_lng]
       @location = cookies[:lat_lng].split(',')
+    else
+      @location = Geocoder.coordinates("Lille")
     end
     @companies = Company.near(@location, 5)
     @companies.each{|company| company.sort_company_desks_by_hour_price}

@@ -48,11 +48,11 @@
 
 
 .form-group > .input > input:hover{
-    border-bottom: 2px solid #1B4D89;
+    border-bottom: 1px solid #1B4D89;
 }
 
 .form-group > .input > input:focus{
-    border-bottom: 2px solid #1B4D89;
+    border-bottom: 1px solid #1B4D89;
     outline: 0
 }
 
@@ -83,9 +83,46 @@
 
 .form-services {
   font-size: 14px;
-  margin: -15px auto auto auto;
-  padding-left: 22px;
   display: flex;
   justify-content: space-between;
-  width: 60%
 }
+
+.form-group > h5 {
+  text-align:left
+}
+
+.facebook-btn{
+  margin: 5px auto;
+  height: 38px;
+  width: 95%;
+  background-color: #425F9C;
+}
+.google-btn{
+  margin: 5px auto;
+  height: 38px;
+  width: 95%;
+  background-color: #E6432F;
+}
+.twitter-btn{
+  margin: 5px auto;
+  height: 38px;
+  width: 95%;
+  background-color: #4F9FDD;
+}
+
+.facebook-btn > i{
+  line-height: 38px;
+  font-size: 24px;
+  margin: auto;
+}
+.google-btn > i{
+  line-height: 38px;
+  font-size: 24px;
+  margin: auto;
+}
+.twitter-btn > i{
+  line-height: 38px;
+  font-size: 24px;
+  margin: auto;
+}
+

@@ -3,30 +3,6 @@
     .text-center
 
       h2 Votre entreprise
-      / - if params[:process] == "signup"
-      / .product-thumbnail#preview-image.form-top-preview
-      /   .product-thumbnail-gradient
-      /     .btn.btn-primary.product-thumbnail-btn Détails
-      /   .distance
-      /     p ...km
-      /   ul.list-unstyle.list-inline#services
-      /     / - if company.wifi?
-      /     /   li
-      /     /     .service-badge
-      /     /       i.fa.fa-wifi
-      /     / - if company.coffee?
-      /     /   li
-      /     /     .service-badge
-      /     /       i.fa.fa-coffee
-      /     / - if company.printer?
-      /     /   li
-      /     /     .service-badge
-      /     /       i.fa.fa-print
-      /   .product-thumbnail-content
-      /     .product-name
-      /       p#company-name-preview
-      /     .product-price
-      /       p ...€ / h
       br
       = simple_form_for [:account, @company] do |f|
         .form-group
@@ -43,33 +19,18 @@
         br
         .form-group
           = f.input :description, label:false, required: true, autofocus: true, placeholder:"description", as: :text
-        h5 Services:
-        .form-services
-          = f.input :wifi
-          = f.input :coffee
-          = f.input :printer
-        h5 Photo:
         .form-group
+          h5 Services:
+          .form-services
+            = f.input :wifi
+            = f.input :coffee
+            = f.input :printer
+        .form-group
+          h5 Photo:
           = f.input :picture, label: false
         .form-actions
-          = f.button :submit, class: "btn-primary wide-button login-button-width", value: "Enregistrer l'entreprise"
+          = f.button :submit, class: "btn-primary full-width", value: "Enregistrer l'entreprise"
 
-        / = f.error_notification
-        / .account-group
-        /   .form-group
-        /     = f.input :email, label: false, required: true, autofocus: true, placeholder:"email"
-        /   br
-        /   .form-group
-        /     = f.input :password, label: false, required: true , placeholder:"password"
-        /     p #{@minimum_password_length} characters minimum
-        /   .form-group
-        /     = f.input :password_confirmation, label: false, required: true, placeholder:"confirmation"
-        /   br
-        /   .form-actions
-        /   - if params[:user_type] == "company"
-        /     = f.button :submit, "Sign up", class: "btn-primary wide-button login-button-width", name:"user_type", value: "company"
-        /   - else
-        /     = f.button :submit, "Sign up", class: "btn-primary wide-button login-button-width", name:"user_type", value: "user"
 
   .col-sm-5.hidden-xs
     .product-thumbnail#preview-image.form-top-preview
@@ -94,18 +55,18 @@
         .product-price
           p ...€ / h
 
-  - if params[:process] == "signup"
-    .col-sm-5.hidden-xs
-      .process-step.completed
-        .step-number
-          p 1
-        p Création de compte
-      .process-step.completed
-        .step-number
-          p 2
-        p Enregistrement de l'entreprise
-      .process-step
-        .step-number
-          p 3
-        p Mise en location de bureaux
+  / - if params[:process] == "signup"
+  .col-sm-5.hidden-xs
+    .process-step.completed
+      .step-number
+        p 1
+      p Création de compte
+    .process-step.completed
+      .step-number
+        p 2
+      p Enregistrement de l'entreprise
+    .process-step
+      .step-number
+        p 3
+      p Mise en location de bureaux
 

@@ -2,7 +2,10 @@
   .col-sm-7
     .text-center
       .form-margin-top
-        h2 Sign up
+        - if params[:user_type] == "company"
+          h2 Créer un compte entreprise
+        -else
+          h2 Créer un compte utilisateur
         br
         br
         = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
@@ -18,11 +21,25 @@
           br
           .form-actions
           - if params[:user_type] == "company"
-            = f.button :submit, "Sign up", class: "btn-primary wide-button login-button-width", name:"user_type", value: "Créer son compte entreprise"
+            = f.button :submit, "Sign up", class: "btn-primary login-button-width", name:"user_type", value: "Créer son compte entreprise"
           - else
-            = f.button :submit, "Sign up", class: "btn-primary wide-button login-button-width", name:"user_type", value: "Créer son compte utilisateur"
+            = f.button :submit, "Sign up", class: "btn-primary login-button-width", name:"user_type", value: "Créer son compte utilisateur"
           br
-          = render "devise/shared/links"
+          - if params[:user_type] != "company"
+            br
+            .form-group
+              p.text-left Ou s'identifier avec:
+            .row.form-group
+              .col-xs-12.col-sm-4.no-padding
+                .btn-primary.login-button-width.facebook-btn
+                  i.fa.fa-facebook
+              .col-xs-12.col-sm-4.no-padding
+                .btn-primary.login-button-width.google-btn
+                  i.fa.fa-google
+              .col-xs-12.col-sm-4.no-padding
+                .btn-primary.login-button-width.twitter-btn
+                  i.fa.fa-twitter
+          = render "users/shared/links"
 
   - if params[:user_type] == "company"
     .col-sm-5.hidden-xs

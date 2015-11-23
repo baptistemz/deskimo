@@ -1,0 +1,83 @@
+.container
+  .col-sm-7
+    .text-center
+
+      h2 Votre offre en bureaux
+      br
+      = simple_form_for [:account, @company, @desk] do |f|
+        .form-group
+          h5 Que souhaitez-vous mettre en location?
+          = f.input :kind, label: false
+        .form-group
+          h5 Quantité:
+          = f.input :quantity, label:false, type: 'number', autofocus: true, placeholder:"Nombre de bureaux"
+        .form-group
+          = f.input :description, label:false, required: true, autofocus: true, placeholder:"description", as: :text
+
+        h4 Prix (TTC)
+        .form-group
+          h5 Par heure (€)
+          = f.input :hour_price, label:false, required: true, autofocus: true, placeholder: false
+          br
+          table
+            tr
+              td Vous (85%)
+              td nomad office (15%)
+              td.danger TVA
+              td.primary Prix total
+            tr
+              td#hour_company_amount
+              td#hour_no_amount
+              td#hour_tva
+              td#hour_totalprice
+
+        .form-group
+          h5 Par jour (€)
+          = f.input :daily_price, label:false, required: true, autofocus: true, placeholder: false
+          br
+          table
+            tr.active
+              td Vous (85%)
+              td nomad office (15%)
+              td TVA
+              td.primary Prix total
+            tr.active
+              td#daily_company_amount
+              td#daily_no_amount
+              td#daily_tva
+              td#daily_totalprice
+        .form-group
+          h5 Par semaine (€)
+          = f.input :weekly_price, label:false, required: true, autofocus: true, placeholder: false
+          br
+          table
+            tr
+              td Vous (85%)
+              td nomad office (15%)
+              td TVA
+              td.primary Prix total
+            tr
+              td#weekly_company_amount
+              td#weekly_no_amount
+              td#weekly_tva.danger
+              td#weekly_totalprice
+          br
+          = f.button :submit, class: "btn-primary full-width", value: "Publier l'offre"
+
+
+  .col-sm-5.hidden-xs
+    .process-step.completed
+      .step-number
+        p 1
+      p Création de compte
+    .process-step.completed
+      .step-number
+        p 2
+      p Enregistrement de l'entreprise
+    .process-step.completed
+      .step-number
+        p 3
+      p Mise en location de bureaux
+
+
+

@@ -35,8 +35,9 @@
                   .btn-primary.login-button-width.facebook-btn
                     i.fa.fa-facebook
               .col-xs-12.col-sm-4.no-padding
-                .btn-primary.login-button-width.google-btn
-                  i.fa.fa-google
+                = link_to user_omniauth_authorize_path(:google_oauth2)
+                  .btn-primary.login-button-width.google-btn
+                    i.fa.fa-google
               .col-xs-12.col-sm-4.no-padding
                 .btn-primary.login-button-width.twitter-btn
                   i.fa.fa-twitter

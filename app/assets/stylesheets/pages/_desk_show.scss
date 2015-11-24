@@ -72,12 +72,6 @@ p.company{
   font-size: 30px;
 }
 
-// .desk-price.checkout{
-//   font-size: 20px;
-//   color: #000;
-//   width: 100%;
-//   padding: 7px;
-// }
 
 .p-destinataire{
   line-height: 20.8px;
@@ -139,4 +133,8 @@ hr.delivery{
 #desk-choice {
   padding-top: 85px;
   margin-top: -85px;
+}
+
+.btn-primary.disabled {
+  opacity: 0.6
 }

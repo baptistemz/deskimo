@@ -30,6 +30,8 @@ gem "rails-i18n"
 gem "devise-i18n"
 gem "devise-i18n-views"
 gem 'omniauth-facebook'
+gem "omniauth-google-oauth2"
+# , '~> 1.3.1'
 gem 'underscore-rails'
 gem 'coffee-rails'
 

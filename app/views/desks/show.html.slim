@@ -31,63 +31,60 @@
       p.company-description = @company.description
 
     .col-sm-6
-      ul.nav.nav-tabs#desk-choice
-        - if @open_space.any?
-          - if @open_space.first == @desk
-            li.active
-              =link_to company_desk_path(@company, @open_space.first.id, anchor: 'desk-choice')
-                'Open Space
-          -else
-            li
-              =link_to company_desk_path(@company, @open_space.first.id, anchor: 'desk-choice')
-                'Open Space
-        - if @closed_office.any?
-          - if @closed_office.first == @desk
-            li.active
-              =link_to company_desk_path(@company, @closed_office.first.id, anchor: 'desk-choice')
-                'Bureau fermé
-          -else
-            li
-              =link_to company_desk_path(@company, @closed_office.first.id, anchor: 'desk-choice')
-                'Bureau fermé
-        - if @meeting_room.any?
-          - if @meeting_room.first == @desk
-            li.active
-              =link_to company_desk_path(@company, @meeting_room.first.id, anchor: 'desk-choice')
-                'Réunions
-          -else
-            li
-              =link_to company_desk_path(@company, @meeting_room.first.id, anchor: 'desk-choice')
-                'Réunions
+      - if @desks.any? == false
+        h4.text-center Aucun bureau n'est disponible dans cette entreprise
+      - else
+        ul.nav.nav-tabs#desk-choice
+          - if @open_space.any? && @open_space.first.activated
+            - if @open_space.first == @desk
+              li.active
+                =link_to company_desk_path(@company, @open_space.first.id, anchor: 'desk-choice')
+                  'Open Space
+            -else
+              li
+                =link_to company_desk_path(@company, @open_space.first.id, anchor: 'desk-choice')
+                  'Open Space
+          - if @closed_office.any? && @open_space.first.activated
+            - if @closed_office.first == @desk
+              li.active
+                =link_to company_desk_path(@company, @closed_office.first.id, anchor: 'desk-choice')
+                  'Bureau fermé
+            -else
+              li
+                =link_to company_desk_path(@company, @closed_office.first.id, anchor: 'desk-choice')
+                  'Bureau fermé
+          - if @meeting_room.any? && @open_space.first.activated
+            - if @meeting_room.first == @desk
+              li.active
+                =link_to company_desk_path(@company, @meeting_room.first.id, anchor: 'desk-choice')
+                  'Réunions
+            -else
+              li
+                =link_to company_desk_path(@company, @meeting_room.first.id, anchor: 'desk-choice')
+                  'Réunions
 
-      br
-      p.company = @desk.description
+        br
+        p.company = @desk.description
 
-      hr.style-company
+        hr.style-company
 
-      h4.company-section-title Horaires
+        h4.company-section-title Horaires
 
-      p.company coucou
-      hr.style-company
-      h4.company-section-title Prix
-      .prices-list
-        .desk-price
-          p.price-category heure:
-          p.price-category #{@desk.hour_price}€
-        .desk-price
-          p.price-category journée:
-          p.price-category #{@desk.daily_price}€
-        .desk-price
-          p.price-category semaine:
-          p.price-category #{@desk.weekly_price}€
-      br
-      hr.style-company
-      / br
-      / h4.company-section-title Durée :
+        p.company coucou
+        hr.style-company
+        h4.company-section-title Prix
+        .prices-list
+          .desk-price
+            p.price-category heure:
+            p.price-category #{@desk.hour_price}€
+          .desk-price
+            p.price-category journée:
+            p.price-category #{@desk.daily_price}€
+          .desk-price
+            p.price-category semaine:
+            p.price-category #{@desk.weekly_price}€
+        br
+        hr.style-company
+        br
+          .btn-primary.btn-lg.text-center Reserver
 
-      / br
-      / hr.style-company
-      / br
-      br
-
-      .btn-primary.btn-lg.text-center Reserver

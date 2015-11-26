@@ -22,35 +22,35 @@ ecotaco = mec.create_company!(name: "EcoTaco", siret:"40483304800022", address: 
 cofactory = julien.create_company!(name: "Co-Factory", siret:"40483304800022", address: "677 Avenue de la République", city: "Lille", postcode: "59000", description: "Encore un coworking-space. Ma particularité ? C'est que je n'ai rien de particulier.", coffee: true, wifi: true, printer: true, scanner: true, picture: File.open(Rails.root.join("db/seeds/images/cofactory.jpg")))
 
 # MECATECHNIC DESKS
-mecatechnic_open_space = mecatechnic.desks.create!(kind: "open_space", quantity: 2, description: "Un open space entre les coccinnelles et combis. Un peu de bruit généré par le comptoir de vente et les téléphones.", hour_price: 4, daily_price: 15, weekly_price: 50)
-mecatechnic_closed_office = mecatechnic.desks.create!(kind: "closed_office", quantity: 1, description: "Deux chaises et un bureau. Légérement décoré. Prise 220v", hour_price: 6, daily_price: 25, weekly_price: 100)
-mecatechnic_meeting_room = mecatechnic.desks.create!(kind: "meeting_room", quantity: 1, description: "Salle 6 places avec un champignon téléphonique pour les conf calls.", hour_price: 15, daily_price: 60, weekly_price: 200)
+mecatechnic_open_space = mecatechnic.desks.create!(kind: "open_space", quantity: 2, description: "Un open space entre les coccinnelles et combis. Un peu de bruit généré par le comptoir de vente et les téléphones.", hour_price: 4, daily_price: 15, weekly_price: 50, activated: true)
+mecatechnic_closed_office = mecatechnic.desks.create!(kind: "closed_office", quantity: 1, description: "Deux chaises et un bureau. Légérement décoré. Prise 220v", hour_price: 6, daily_price: 25, weekly_price: 100, activated: true)
+mecatechnic_meeting_room = mecatechnic.desks.create!(kind: "meeting_room", quantity: 1, description: "Salle 6 places avec un champignon téléphonique pour les conf calls.", hour_price: 15, daily_price: 60, weekly_price: 200, activated: true)
 
 # DEEZER DESKS
-deezer_open_space = deezer.desks.create!(kind: "open_space", quantity: 5, description: "Open space avec canapés, transats, bureaux, chaises, standing-desks.", hour_price: 6, daily_price: 20, weekly_price: 80)
+deezer_open_space = deezer.desks.create!(kind: "open_space", quantity: 5, description: "Open space avec canapés, transats, bureaux, chaises, standing-desks.", hour_price: 6, daily_price: 20, weekly_price: 80, activated: true)
 
 # IKOMOBI DESKS
-ikomobi_open_space = ikomobi.desks.create!(kind: "open_space", quantity: 4, description: "Open space avec bureaux, chaises, écrans, standing-desks.", hour_price: 5, daily_price: 18, weekly_price: 80)
-ikomobi_closed_office = ikomobi.desks.create!(kind: "closed_office", quantity: 1, description: "Deux chaises et un bureau. Légérement décoré. Prise 220v", hour_price: 7, daily_price: 30, weekly_price: 120)
-ikomobi_meeting_room = ikomobi.desks.create!(kind: "meeting_room", quantity: 1, description: "Salle 12 places avec un champignon téléphonique pour les conf calls et écran/enceintes/micros pour visio-conférences.", hour_price: 20, daily_price: 80, weekly_price: 300)
+ikomobi_open_space = ikomobi.desks.create!(kind: "open_space", quantity: 4, description: "Open space avec bureaux, chaises, écrans, standing-desks.", hour_price: 5, daily_price: 18, weekly_price: 80, activated: true)
+ikomobi_closed_office = ikomobi.desks.create!(kind: "closed_office", quantity: 1, description: "Deux chaises et un bureau. Légérement décoré. Prise 220v", hour_price: 7, daily_price: 30, weekly_price: 120, activated: true)
+ikomobi_meeting_room = ikomobi.desks.create!(kind: "meeting_room", quantity: 1, description: "Salle 12 places avec un champignon téléphonique pour les conf calls et écran/enceintes/micros pour visio-conférences.", hour_price: 20, daily_price: 80, weekly_price: 300, activated: true)
 
 # MUTUALAB DESKS
-mutualab_open_space = mutualab.desks.create!(kind: "open_space", quantity: 15, description: "Open space avec bureaux, chaises, écrans, standing-desks.", hour_price: 7, daily_price: 30, weekly_price: 100)
-mutualab_closed_office = mutualab.desks.create!(kind: "closed_office", quantity: 2, description: "Deux chaises et un bureau. Légérement décoré. Prise 220v", hour_price: 10, daily_price: 50, weekly_price: 150)
-mutualab_meeting_room = mutualab.desks.create!(kind: "meeting_room", quantity: 1, description: "Salle 12 places avec un champignon téléphonique pour les conf calls et écran/enceintes/micros pour visio-conférences.", hour_price: 20, daily_price: 80, weekly_price: 300)
+mutualab_open_space = mutualab.desks.create!(kind: "open_space", quantity: 15, description: "Open space avec bureaux, chaises, écrans, standing-desks.", hour_price: 7, daily_price: 30, weekly_price: 100, activated: true)
+mutualab_closed_office = mutualab.desks.create!(kind: "closed_office", quantity: 2, description: "Deux chaises et un bureau. Légérement décoré. Prise 220v", hour_price: 10, daily_price: 50, weekly_price: 150, activated: true)
+mutualab_meeting_room = mutualab.desks.create!(kind: "meeting_room", quantity: 1, description: "Salle 12 places avec un champignon téléphonique pour les conf calls et écran/enceintes/micros pour visio-conférences.", hour_price: 20, daily_price: 80, weekly_price: 300, activated: true)
 
 # COROUTINE DESKS
-coroutine_open_space = coroutine.desks.create!(kind: "open_space", quantity: 15, description: "Open space avec bureaux, chaises, écrans, standing-desks.", hour_price: 3, daily_price: 10, weekly_price: 50)
-coroutine_closed_office = coroutine.desks.create!(kind: "closed_office", quantity: 1, description: "Deux chaises et un bureau. Légérement décoré. Prise 220v", hour_price: 6, daily_price: 25, weekly_price: 100)
-coroutine_meeting_room = coroutine.desks.create!(kind: "meeting_room", quantity: 1, description: "Salle 6 places avec un champignon téléphonique pour les conf calls.", hour_price: 15, daily_price: 60, weekly_price: 200)
+coroutine_open_space = coroutine.desks.create!(kind: "open_space", quantity: 15, description: "Open space avec bureaux, chaises, écrans, standing-desks.", hour_price: 3, daily_price: 10, weekly_price: 50, activated: true)
+coroutine_closed_office = coroutine.desks.create!(kind: "closed_office", quantity: 1, description: "Deux chaises et un bureau. Légérement décoré. Prise 220v", hour_price: 6, daily_price: 25, weekly_price: 100, activated: true)
+coroutine_meeting_room = coroutine.desks.create!(kind: "meeting_room", quantity: 1, description: "Salle 6 places avec un champignon téléphonique pour les conf calls.", hour_price: 15, daily_price: 60, weekly_price: 200, activated: true)
 
 # DOUMIT DESKS
-doumit_open_space = doumit.desks.create!(kind: "open_space", quantity: 1, description: "Open space avec bureaux, chaises, écrans.", hour_price: 3, daily_price: 10, weekly_price: 50)
+doumit_open_space = doumit.desks.create!(kind: "open_space", quantity: 1, description: "Open space avec bureaux, chaises, écrans.", hour_price: 3, daily_price: 10, weekly_price: 50, activated: true)
 
 # ECOTACO DESKS
-ecotaco_open_space = ecotaco.desks.create!(kind: "open_space", quantity: 1, description: "Open space 'collé-serré' avec bureaux, chaises, écrans.", hour_price: 4, daily_price: 12, weekly_price: 50)
+ecotaco_open_space = ecotaco.desks.create!(kind: "open_space", quantity: 1, description: "Open space 'collé-serré' avec bureaux, chaises, écrans.", hour_price: 4, daily_price: 12, weekly_price: 50, activated: true)
 
 # COFACTORY DESKS
-cofactory_open_space = cofactory.desks.create!(kind: "open_space", quantity: 15, description: "Open space avec bureaux, chaises, écrans, standing-desks.", hour_price: 7, daily_price: 30, weekly_price: 100)
-cofactory_closed_office = cofactory.desks.create!(kind: "closed_office", quantity: 2, description: "Deux chaises et un bureau. Légérement décoré. Prise 220v", hour_price: 10, daily_price: 50, weekly_price: 150)
-cofactory_meeting_room = cofactory.desks.create!(kind: "meeting_room", quantity: 1, description: "Salle 12 places avec un champignon téléphonique pour les conf calls et écran/enceintes/micros pour visio-conférences.", hour_price: 20, daily_price: 80, weekly_price: 300)
+cofactory_open_space = cofactory.desks.create!(kind: "open_space", quantity: 15, description: "Open space avec bureaux, chaises, écrans, standing-desks.", hour_price: 7, daily_price: 30, weekly_price: 100, activated: true)
+cofactory_closed_office = cofactory.desks.create!(kind: "closed_office", quantity: 2, description: "Deux chaises et un bureau. Légérement décoré. Prise 220v", hour_price: 10, daily_price: 50, weekly_price: 150, activated: true)
+cofactory_meeting_room = cofactory.desks.create!(kind: "meeting_room", quantity: 1, description: "Salle 12 places avec un champignon téléphonique pour les conf calls et écran/enceintes/micros pour visio-conférences.", hour_price: 20, daily_price: 80, weekly_price: 300, activated: true)

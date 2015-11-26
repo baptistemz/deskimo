@@ -24,8 +24,12 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
 
           / li = link_to florist_account_dashboard_path
           li = link_to companies_path
-            i.fa.fa-home
+            i.fa.fa-user
             'Mon compte
+
+          li = link_to account_company_desks_path(current_user.company)
+            i.fa.fa-home
+            'Espace entreprise
 
           li = link_to destroy_user_session_path, method: :delete
             i.fa.fa-sign-out

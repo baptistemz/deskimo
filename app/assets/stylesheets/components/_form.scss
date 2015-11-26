@@ -22,13 +22,13 @@
   font-size: 24px;
   width: 43px;
   outline: none;
-  color: #1B4D89;
+  color: $dark-blue;
   background-color: transparent;
   border: none;
 }
 .map-btn {
   padding: 10px;
-  background-color: #1B4D89;
+  background-color: $dark-blue;
   color: white;
   border-radius: 5px;
   min-width: 35px;
@@ -45,7 +45,7 @@
   text-align: center;
   line-height: 14px;
   cursor: pointer;
-  background-color: #1B4D89;
+  background-color: $dark-blue;
   color: white;
   z-index: 100;
   position: relative;
@@ -56,24 +56,29 @@
 select{
   font: 400 12px/1.3 "open sans", sans-serif;
   width: 100%;
-  font-color: #1B4D89;
+  height: 32px;
+  font-color: $dark-blue;
   -webkit-appearance: none;
   appearance: none;
-  border: 1px solid #1B4D89;
+  border: 1px solid $dark-blue;
   line-height: 1;
   outline: 0;
-  color: #1B4D89;
-  border-color: #1B4D89;
+  color: $dark-blue;
+  border-color: $dark-blue;
   padding: 0.65em 2.5em 0.55em 0.75em;
   border-radius: 3px;
   background-color: transparent;
-  background: linear-gradient(#1B4D89, #1B4D89) no-repeat,
+  background: linear-gradient($dark-blue, $dark-blue) no-repeat,
               linear-gradient(-135deg, rgba(27, 77, 137, 0) 50%, white 50%) no-repeat,
               linear-gradient(-225deg, rgba(27, 77, 137, 0) 50%, white 50%) no-repeat,
-              linear-gradient(#1B4D89, #1B4D89) no-repeat;
-  background-size: 1px 100%, 20px 20px, 20px 20px, 20px 60%;
+              linear-gradient($dark-blue, $dark-blue) no-repeat;
+  background-size: 1px 28px, 20px 20px, 20px 20px, 20px 16px;
   background-position: right 20px center, right bottom, right bottom, right bottom;
 }
+
+// .filter-select {
+//   margin: 12px auto;
+// }
 
 .form-services {
   padding-left: 20px

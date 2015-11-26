@@ -16,11 +16,11 @@
 }
 
 .form-group > .input > textarea:hover{
-    border: 1px solid #1B4D89;
+    border: 1px solid $dark-blue;
 }
 
 .form-group > .input > textarea:focus{
-    border: 1px solid #1B4D89;
+    border: 1px solid $dark-blue;
     outline: 0
 }
 
@@ -48,11 +48,11 @@
 
 
 .form-group > .input > input:hover{
-    border-bottom: 1px solid #1B4D89;
+    border-bottom: 1px solid $dark-blue;
 }
 
 .form-group > .input > input:focus{
-    border-bottom: 1px solid #1B4D89;
+    border-bottom: 1px solid $dark-blue;
     outline: 0
 }
 
@@ -62,7 +62,7 @@
 }
 
 .form-margin-top {
-  margin-top: 10%
+  margin-top: 30px
 }
 
 #preview-thumbnail {
@@ -103,12 +103,6 @@
   width: 95%;
   background-color: #E6432F;
 }
-.twitter-btn{
-  margin: 5px auto;
-  height: 38px;
-  width: 95%;
-  background-color: #4F9FDD;
-}
 
 .facebook-btn > i{
   line-height: 38px;
@@ -120,9 +114,5 @@
   font-size: 24px;
   margin: auto;
 }
-.twitter-btn > i{
-  line-height: 38px;
-  font-size: 24px;
-  margin: auto;
-}
+
 

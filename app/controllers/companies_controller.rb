@@ -8,6 +8,7 @@ class CompaniesController < ApplicationController
     else
       @location = Geocoder.coordinates("Lille")
     end
+    @desk = Desk.new
     @companies = Company.near(@location, 5)
     @companies.each{|company| company.sort_company_desks_by_hour_price}
     geo_companies = @companies.where.not(latitude: nil, longitude: nil)

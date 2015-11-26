@@ -5,7 +5,7 @@
 
 h3.company-section-title{
   font-size: 24px;
-  color: #84A6D6;
+  color: $light-blue;
   margin: 20.8px 0 Opx 0;
   line-height: 1;
   text-transform: uppercase;
@@ -13,7 +13,7 @@ h3.company-section-title{
 
 h4.company-section-title{
   font-size: 18px;
-  color: #84A6D6;
+  color: $light-blue;
   margin: 20.8px 0 Opx 0;
   line-height: 1;
 }
@@ -127,7 +127,7 @@ hr.delivery{
 }
 
 .nav-tabs > li.active > a {
-  color: #84A6D6;
+  color: $light-blue;
 }
 
 #desk-choice {

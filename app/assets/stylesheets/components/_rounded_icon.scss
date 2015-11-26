@@ -3,16 +3,16 @@
   width: 150px;
   // background-color: #E0E2DB;
   border-radius: 50%;
-  color: #1B4D89;
+  color: $dark-blue;
   font-size: 50px;
   line-height: 150px;
   text-align:center;
   margin: auto;
-  border: 1px solid #1B4D89;
+  border: 1px solid $dark-blue;
 }
 
 .rounded-icon:hover {
-  background-color: #1B4D89;
+  background-color: $dark-blue;
   color: #FFFBFE;
 }
 

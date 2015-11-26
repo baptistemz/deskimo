@@ -12,11 +12,11 @@ $(document).ready(function(){
     }
     reader.readAsDataURL(image);
   });
-  // $('#input-company-name').keyup(function(){
-  //   var name = $('#input-company-name').val();
-  //   console.log(name)
-  //   $('#company-name-preview').html(name)
-  // });
+    $('#company_name').keyup(function(){
+      var name = $('#company_name').val();
+      console.log(name)
+      $('#company-name-preview').html(name)
+    });
 
 
     $('#company_wifi').click(function() {

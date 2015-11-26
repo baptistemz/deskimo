@@ -22,12 +22,13 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.product-thumbnail-btn {
+.product-thumbnail-gradient > h4 {
   visibility: hidden;
   opacity: 0;
+  color: $light-blue;
 }
 
-.product-thumbnail-gradient:hover > .product-thumbnail-btn {
+.product-thumbnail-gradient:hover > h4 {
   visibility: visible;
   opacity: 1;
   transition: opacity 0.4s linear;
@@ -64,12 +65,12 @@
   height: 22px;
   width: 22px;
   border-radius: 50%;
-  color: #1B4D89;
+  color: $dark-blue;
   font-size: 12px;
   line-height: 22px;
   text-align: center;
   padding: 0 2px 2px 2px;
-  border: 1px solid #1B4D89;
+  border: 1px solid $dark-blue;
 }
 
 .distance {
@@ -77,11 +78,11 @@
   top: 3%;
   left: 3%;
   background-color: #FFFBFE;
-  border: 1px solid #1B4D89;
+  border: 1px solid $dark-blue;
   padding: 3px;
 }
 .distance p {
   margin-bottom: 0;
-  color: #1B4D89;
+  color: $dark-blue;
   font-size: 10px;
 }

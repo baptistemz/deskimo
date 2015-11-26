@@ -1,0 +1,28 @@
+.dashboard-desk-thumbnail {
+  padding: 50px
+}
+
+.dashboard-desk-thumbnail > h3 {
+  color: $dark-blue;
+  margin-top: 0
+}
+
+.dashboard-desk-thumbnail.active-desk {
+  border: 1px solid $green;
+  border-radius: 3px;
+}
+
+.dashboard-desk-thumbnail.inactive-desk {
+  border: 1px solid $red;
+  border-radius: 3px;
+}
+
+.green-btn{
+  background-color: $green;
+  width: 100%
+}
+
+.red-btn{
+  background-color: $red;
+  width: 100%
+}

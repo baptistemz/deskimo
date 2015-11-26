@@ -10,8 +10,11 @@
   .row
     .col-xs-12.col-sm-7#left
       .row.research-bar
-        .col-xs-10.col-sm-12
+        .col-xs-7.col-sm-8
           = render "search_form"
+        .col-xs-3.col-sm-4
+          = form_tag companies_path, method: :get
+            = select_tag :desk, :kind, class: "filter-select", placeholder: "type de bureaux"
         .col-xs-2.visible-xs.no-padding-left
           .map-btn
             .i.fa.fa-map#map-icon
@@ -23,7 +26,7 @@
             =link_to company_desk_path(company, company.desks.first)
               .product-thumbnail
                 .product-thumbnail-gradient
-                  .btn.btn-primary.product-thumbnail-btn Détails
+                  h4 Détails
                 = image_tag company.picture.url(:list), class: "img-responsive"
                 .distance
                   p #{number_with_precision(company.distance_from(@location), precision: 1)} km

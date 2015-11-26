@@ -11,11 +11,19 @@ module Account
       @desk = @company.desks.build(desk_params)
       if @desk.save
         flash[:notice] = "Le bureau a bien été enregistré."
-        redirect_to new_account_company_desk_path(@company)
+        redirect_to account_company_desks_path(@company)
       else
         flash[:alert] = "Le bureau n'a pas pu être enregistré"
         render :new
       end
+    end
+
+    def index
+      @company = Company.find(params[:company_id])
+      @desks = @company.desks
+      @open_space = @desks.where(kind: :open_space).first
+      @seperate_office = @desks.where(kind: :closed_office).first
+      @meeting_room = @desks.where(kind: :meeting_room).first
     end
 
     private

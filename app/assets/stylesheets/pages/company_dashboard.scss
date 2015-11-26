@@ -1,10 +1,17 @@
 .dashboard-desk-thumbnail {
+  height: 520px;
+  overflow: hidden;
   padding: 50px
 }
 
 .dashboard-desk-thumbnail > h3 {
   color: $dark-blue;
-  margin-top: 0
+  margin-top: 0;
+  max-height: 60px
+}
+.dashboard-desk-thumbnail > p {
+  height: 44px;
+  overflow: hidden;
 }
 
 .dashboard-desk-thumbnail.active-desk {
@@ -17,6 +24,17 @@
   border-radius: 3px;
 }
 
+.dashboard-desk-thumbnail.add-desk {
+  border: 1px solid $dark-blue;
+  border-radius: 3px;
+  background-color: $gray-light;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:520px;
+  position: relative
+}
+
 .green-btn{
   background-color: $green;
   width: 100%
@@ -25,4 +43,21 @@
 .red-btn{
   background-color: $red;
   width: 100%
+}
+
+.big-plus {
+  font-size: 120px;
+}
+
+.cta-newdesk {
+  text-align: center;
+}
+
+.thumbnail-bottom {
+  position: absolute;
+  bottom: 20px;
+  left: -20px;
+  width: 100%;
+  text-align: center;
+  list-style: none;
 }

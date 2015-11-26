@@ -22,7 +22,7 @@ module Account
       @company = Company.find(params[:company_id])
       @desks = @company.desks
       @open_space = @desks.where(kind: :open_space).first
-      @seperate_office = @desks.where(kind: :closed_office).first
+      @closed_office = @desks.where(kind: :closed_office).first
       @meeting_room = @desks.where(kind: :meeting_room).first
     end
 

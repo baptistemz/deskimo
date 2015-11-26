@@ -9,11 +9,14 @@
   text-align:center;
   margin: auto;
   border: 1px solid $dark-blue;
+  background-color: $gray-lighter;
+  text-decoration: none
 }
 
 .rounded-icon:hover {
   background-color: $dark-blue;
-  color: #FFFBFE;
+  color: $gray-lighter;
+  text-decoration: none
 }
 
 .container-fluid {

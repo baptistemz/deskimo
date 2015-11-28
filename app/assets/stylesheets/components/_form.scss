@@ -76,10 +76,80 @@ select{
   background-position: right 20px center, right bottom, right bottom, right bottom;
 }
 
-// .filter-select {
-//   margin: 12px auto;
-// }
+#filter-select {
+  margin: 13px auto;
+}
 
 .form-services {
   padding-left: 20px
+}
+
+.quantity-modifier {
+  display: flex;
+  justify-content: space-around;
+}
+
+.quantity-modifier input.numeric {
+  width: 40px;
+  text-align: center;
+  border-top: 1px solid $dark-blue;
+  border-bottom: 1px solid $dark-blue;
+  border-left: none;
+  border-right: none;
+  height: 28px;
+  -moz-appearance:textfield;
+}
+
+
+.quantity-modifier input.numeric::-webkit-outer-spin-button,
+.quantity-modifier input.numeric::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+// #minus-button {
+//   display:flex;
+//   justify-content:center;
+//   align-items:center;
+//   border: 1px solid $dark-blue;
+
+//   width: 28px;
+//   height: 28px;
+//   color: $dark-blue;
+// }
+#plus-button, #minus-button {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  border: 1px solid $dark-blue;
+  width: 28px;
+  height: 28px;
+  color: $dark-blue;
+}
+
+#plus-button, #minus-button:hover {
+  cursor: pointer;
+}
+
+#plus-button {
+  border-radius: 0 5px 5px 0;
+}
+
+#minus-button {
+  border-radius: 5px 0 0 5px;
+}
+
+.quantity-input-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.qty-update-btn {
+  border: 1px solid $dark-blue;
+  border-radius: 5px;
+  height: 28px;
+  background: none;
+  color: $dark-blue;
+  font-size: 14px;
+  line-height: 14px
 }

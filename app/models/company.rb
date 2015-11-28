@@ -15,10 +15,6 @@ class Company < ActiveRecord::Base
   geocoded_by :full_address
   after_validation :geocode, if: :full_address_changed?
 
-  def self.displayable?
-    self.desks.where(activated: true) > 0 ? true : false
-  end
-
   def sort_company_desks_by_hour_price
     self.desks.order(hour_price: :asc)
   end

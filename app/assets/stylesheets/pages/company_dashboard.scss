@@ -1,5 +1,5 @@
 .dashboard-desk-thumbnail {
-  height: 520px;
+  height:580px;
   overflow: hidden;
   padding: 50px
 }
@@ -31,7 +31,7 @@
   display:flex;
   justify-content:center;
   align-items:center;
-  height:520px;
+  height:580px;
   position: relative
 }
 
@@ -60,4 +60,11 @@
   width: 100%;
   text-align: center;
   list-style: none;
+  font-size: 16px;
+}
+
+.company-resume {
+  border: 1px solid $gray;
+  border-radius: 5px;
+  padding: 20px
 }

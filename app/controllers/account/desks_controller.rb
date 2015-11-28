@@ -19,11 +19,24 @@ module Account
     end
 
     def index
+      @desk = Desk.new
       @company = Company.find(params[:company_id])
       @desks = @company.desks
       @open_space = @desks.where(kind: :open_space).first
       @closed_office = @desks.where(kind: :closed_office).first
       @meeting_room = @desks.where(kind: :meeting_room).first
+    end
+
+    def edit
+      @desk = Desk.find(params[:id])
+      render 'new'
+    end
+
+    def update
+      @company = Company.find(params[:company_id])
+      @desk = Desk.find(params[:id])
+      @desk.update(desk_params)
+      redirect_to account_company_desks_path(@company)
     end
 
     private

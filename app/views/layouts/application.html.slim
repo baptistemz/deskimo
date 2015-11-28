@@ -13,9 +13,12 @@ html
   body
     = render 'shared/navbar'
     / = render 'shared/flashes'
-    #body-wrap
-        = yield
-        - unless @no_footer
+    - if @no_footer
+        #index-body-wrap
+            = yield
+    - else
+        #body-wrap
+            = yield
             = render 'shared/footer'
 
 

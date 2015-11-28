@@ -44,7 +44,7 @@
               li
                 =link_to company_desk_path(@company, @open_space.first.id, anchor: 'desk-choice')
                   'Open Space
-          - if @closed_office.any? && @open_space.first.activated
+          - if @closed_office.any? && @closed_office.first.activated
             - if @closed_office.first == @desk
               li.active
                 =link_to company_desk_path(@company, @closed_office.first.id, anchor: 'desk-choice')
@@ -53,7 +53,7 @@
               li
                 =link_to company_desk_path(@company, @closed_office.first.id, anchor: 'desk-choice')
                   'Bureau fermé
-          - if @meeting_room.any? && @open_space.first.activated
+          - if @meeting_room.any? && @meeting_room.first.activated
             - if @meeting_room.first == @desk
               li.active
                 =link_to company_desk_path(@company, @meeting_room.first.id, anchor: 'desk-choice')

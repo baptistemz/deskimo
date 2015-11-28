@@ -15,7 +15,8 @@ html
     / = render 'shared/flashes'
     #body-wrap
         = yield
-    / = render 'shared/footer'
+        - unless @no_footer
+            = render 'shared/footer'
 
 
     / = javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_BROWSER_API_KEY']}"
@@ -24,4 +25,5 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
 
     = yield (:after_js)
+
 

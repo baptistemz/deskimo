@@ -31,6 +31,9 @@ class CompaniesController < ApplicationController
                   :height => "44"
                  })
       marker.title   "votre position"
+    @no_footer = true
     end
   end
+
+
 end

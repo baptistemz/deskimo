@@ -1,0 +1,20 @@
+#footer
+  .container
+    .col-xs-5
+      .col-xs-12.col-sm-6
+        .share-links
+          a.share-links-item.bg-facebook href="http://www.facebook.com/"
+            i.fa.fa-facebook
+          a.share-links-item.bg-twitter href="https://twitter.com/"
+            i.fa.fa-twitter
+          a.share-links-item.bg-email href="#"
+            i.fa.fa-envelope-o
+      .col-xs-6.hidden-xs
+          p = link_to "Jobs"
+    .col-xs-2
+      = image_tag 'logo6.png', class: 'footer-small-logo'
+    .col-xs-5
+      .col-sm-6.hidden-xs
+          p = link_to "A propos"
+      .col-sm-6.col-xs-12
+          p = link_to "CGU"

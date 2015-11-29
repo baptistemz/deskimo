@@ -55,12 +55,12 @@
             = simple_form_for @desk, url: account_company_desk_path(@company,@open_space), method: :patch do |f|
               .quantity-modifier
                 .quantity-input-buttons
-                  #minus-button
+                  .minus-button
                     i.fa.fa-minus
                   = f.input :quantity, label: false, input_html: {value: @open_space.quantity|| 1}
-                  #plus-button
+                  .plus-button
                     i.fa.fa-plus
-                = f.submit "Modifier", class: 'btn btn-primary qty-update-btn'
+                = f.submit "Modifier", class: 'btn qty-update-btn'
             hr
             p = @open_space.description
             hr
@@ -90,12 +90,12 @@
             = simple_form_for @desk, url: account_company_desk_path(@company,@open_space), method: :patch do |f|
               .quantity-modifier
                 .quantity-input-buttons
-                  #minus-button
+                  .minus-button
                     i.fa.fa-minus
                   = f.input :quantity, label: false, input_html: {value: @open_space.quantity|| 1}
-                  #plus-button
+                  .plus-button
                     i.fa.fa-plus
-                = f.submit "Modifier", class: 'btn btn-primary qty-update-btn'
+                = f.submit "Modifier", class: 'btn qty-update-btn'
             hr
             p = @open_space.description
             hr
@@ -125,15 +125,15 @@
             h3
               = @closed_office.quantity
               '   bureau(x) fermé(s)
-            = simple_form_for @desk, url: account_company_desk_path(@company,@open_space), method: :patch do |f|
+            = simple_form_for @desk, url: account_company_desk_path(@company,@closed_office), method: :patch do |f|
               .quantity-modifier
                 .quantity-input-buttons
-                  #minus-button
+                  .minus-button
                     i.fa.fa-minus
-                  = f.input :quantity, label: false, input_html: {value: @open_space.quantity|| 1}
-                  #plus-button
+                  = f.input :quantity, label: false, input_html: {value: @closed_office.quantity|| 1}
+                  .plus-button
                     i.fa.fa-plus
-                = f.submit "Modifier", class: 'btn btn-primary qty-update-btn'
+                = f.submit "Modifier", class: 'btn qty-update-btn'
             hr
             p = @closed_office.description
             hr
@@ -160,15 +160,15 @@
             h3
               = @closed_office.quantity
               '   bureau(x) fermé(s)
-            = simple_form_for @desk, url: account_company_desk_path(@company,@open_space), method: :patch do |f|
+            = simple_form_for @desk, url: account_company_desk_path(@company,@closed_office), method: :patch do |f|
               .quantity-modifier
                 .quantity-input-buttons
-                  #minus-button
+                  .minus-button
                     i.fa.fa-minus
-                  = f.input :quantity, label: false, input_html: {value: @open_space.quantity|| 1}
-                  #plus-button
+                  = f.input :quantity, label: false, input_html: {value: @closed_office.quantity|| 1}
+                  .plus-button
                     i.fa.fa-plus
-                = f.submit "Modifier", class: 'btn btn-primary qty-update-btn'
+                = f.submit "Modifier", class: 'btn qty-update-btn'
             hr
             p = @closed_office.description
             hr
@@ -201,15 +201,15 @@
             h3
               = @meeting_room.quantity
               '   salle(s) de réunion
-            = simple_form_for @desk, url: account_company_desk_path(@company,@open_space), method: :patch do |f|
+            = simple_form_for @desk, url: account_company_desk_path(@company,@meeting_room), method: :patch do |f|
               .quantity-modifier
                 .quantity-input-buttons
-                  #minus-button
+                  .minus-button
                     i.fa.fa-minus
-                  = f.input :quantity, label: false, input_html: {value: @open_space.quantity|| 1}
-                  #plus-button
+                  = f.input :quantity, label: false, input_html: {value: @meeting_room.quantity|| 1}
+                  .plus-button
                     i.fa.fa-plus
-                = f.submit "Modifier", class: 'btn btn-primary qty-update-btn'
+                = f.submit "Modifier", class: 'btn qty-update-btn'
             hr
             p = @meeting_room.description
             hr
@@ -236,15 +236,15 @@
             h3
               = @meeting_room.quantity
               '   salle(s) de réunion
-            = simple_form_for @desk, url: account_company_desk_path(@company,@open_space), method: :patch do |f|
+            = simple_form_for @desk, url: account_company_desk_path(@company,@meeting_room), method: :patch do |f|
               .quantity-modifier
                 .quantity-input-buttons
-                  #minus-button
+                  .minus-button
                     i.fa.fa-minus
-                  = f.input :quantity, label: false, input_html: {value: @open_space.quantity|| 1}
-                  #plus-button
+                  = f.input :quantity, label: false, input_html: {value: @meeting_room.quantity|| 1}
+                  .plus-button
                     i.fa.fa-plus
-                = f.submit "Modifier", class: 'btn btn-primary qty-update-btn'
+                = f.submit "Modifier", class: 'btn qty-update-btn'
             hr
             p = @meeting_room.description
             hr

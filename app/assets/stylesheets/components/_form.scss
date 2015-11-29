@@ -107,17 +107,8 @@ select{
     margin: 0;
 }
 
-// #minus-button {
-//   display:flex;
-//   justify-content:center;
-//   align-items:center;
-//   border: 1px solid $dark-blue;
 
-//   width: 28px;
-//   height: 28px;
-//   color: $dark-blue;
-// }
-#plus-button, #minus-button {
+.plus-button, .minus-button {
   display:flex;
   justify-content:center;
   align-items:center;
@@ -127,15 +118,17 @@ select{
   color: $dark-blue;
 }
 
-#plus-button, #minus-button:hover {
+.plus-button:hover, .minus-button:hover {
   cursor: pointer;
+  background-color: $dark-blue;
+  color: white;
 }
 
-#plus-button {
+.plus-button {
   border-radius: 0 5px 5px 0;
 }
 
-#minus-button {
+.minus-button {
   border-radius: 5px 0 0 5px;
 }
 
@@ -152,4 +145,9 @@ select{
   color: $dark-blue;
   font-size: 14px;
   line-height: 14px
+}
+
+.qty-update-btn:hover {
+  background-color: $dark-blue;
+  color: white;
 }

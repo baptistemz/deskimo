@@ -1,6 +1,7 @@
 class CompaniesController < ApplicationController
 
   def index
+    raise
     if params[:full_address]
       @location = Geocoder.coordinates(params[:full_address])
     elsif cookies[:lat_lng]
@@ -8,13 +9,13 @@ class CompaniesController < ApplicationController
     else
       @location = Geocoder.coordinates("Lille")
     end
+
     @companies = get_displayable_companies(Company.near(@location, 5).where.not(latitude: nil, longitude: nil))
     @companies.each{|company| company.sort_company_desks_by_hour_price}
-
     @desk = Desk.new
-    @kinds = []
-    @companies.each{|company| company.desks.each{|desk| @kinds << desk.kind}}
-    @kinds.uniq!
+    @kinds = {open_space: "open space", closed_office: 'bureau fermé', meeting_room: 'salle de réunion'}
+    # @companies.each{|company| company.desks.each{|desk| @kinds << desk.kind}}
+    # @kinds.uniq!
 
     @hash = Gmaps4rails.build_markers(@companies) do |company, marker|
       marker.lat company.latitude
@@ -31,8 +32,8 @@ class CompaniesController < ApplicationController
                   :height => "44"
                  })
       marker.title   "votre position"
-    @no_footer = true
     end
+    @no_footer = true
   end
 
 

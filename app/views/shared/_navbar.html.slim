@@ -17,13 +17,9 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
       ul.nav.navbar-nav.nav-right
         - if user_signed_in? && current_user.company
           li
-          / li  =link_to florist_account_dashboard_path
-            i.fa.fa-dashboard
-            'Dashboard
-
 
           / li = link_to florist_account_dashboard_path
-          li = link_to companies_path
+          li = link_to account_user_path
             i.fa.fa-user
             'Mon compte
 
@@ -36,7 +32,7 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
             'Se déconnecter
 
         - elsif user_signed_in?
-          li = link_to companies_path
+          li = link_to account_user_path
             i.fa.fa-home
             'Mon compte
 
@@ -49,12 +45,18 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
           li = link_to new_user_session_path
             i.fa.fa-user.icon-margin
             'Connexion
+          li.dropdown
+            = link_to "#", {class: "dropdown-toggle", "data-toggle" => "dropdown", "role" => "button", "aria-expanded" => "false"}
+              i.fa.fa-lock.icon-margin
+              'Créer un compte
 
-          li = link_to new_user_registration_path(:user_type => "user")
-            i.fa.fa-lock.icon-margin
-            'Particultier
 
-          li = link_to new_user_registration_path(:user_type => "company")
-            i.fa.fa-lock.icon-margin
-            'Entreprise
+            ul.dropdown-menu
+              li = link_to new_user_registration_path(:user_type => "user")
+                'Particulier
+              li = link_to new_user_registration_path(:user_type => "company")
+                'Entreprise
+
+
+
 

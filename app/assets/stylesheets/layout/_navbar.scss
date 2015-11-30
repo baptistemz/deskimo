@@ -183,8 +183,8 @@
 
 .dropdown-menu {
   background-color: #FFFBFE;
-  border: 1px solid #666666;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  // border: 1px solid #666666;
+  border: 1px solid $dark-blue;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -209,6 +209,10 @@
   color: darker-gray;
   font-size: 12px;
   position: relative;
+  padding: 10px 0px;
+  text-align: center;
+  line-height: 22px;
+  font-size: 14px
 }
 
 .dropdown-menu  > li.nav-header{
@@ -222,10 +226,10 @@
 .dropdown-submenu:focus > a {
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
-  border-radius: 0px;
   color: $dark-blue;
   text-decoration: none;
-  background: #34495E;
+  background-color: transparent;
+
 
 }
 

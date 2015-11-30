@@ -11,10 +11,13 @@
       .row.research-bar
         .col-xs-7.col-sm-8
           = render "search_form"
+
+
+
+
         .col-xs-3.col-sm-4
-          = simple_form_for @desk, url: companies_path, method: :get do |f|
             #filter-select
-              = f.input :kind, collection: @kinds, label: false, prompt: 'Type de bureau', include_blank: true, input_html: {:onchange => "this.form.submit()"}
+              = select_tag :kind, options_for_select(@kinds.values), label: false, prompt: 'Type de bureau', include_blank: false, input_html: {:onchange => "this.form.submit()"}
         .col-xs-2.visible-xs.no-padding-left
           .map-btn
             .i.fa.fa-map#map-icon
@@ -23,7 +26,7 @@
       .row.products-list
         - @companies.each do |company|
           .col-xs-12.col-md-6
-            =link_to company_desk_path(company, company.desks.first)
+            =link_to company_desks_path(company)
               .product-thumbnail
                 .product-thumbnail-gradient
                   h4 Détails
@@ -90,8 +93,5 @@
           mobile_handler.bounds.extendWith(markers1);
           mobile_handler.fitMapToBounds();
         });
-
-
-
       })
 

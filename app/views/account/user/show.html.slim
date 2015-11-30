@@ -1,0 +1,10 @@
+.container
+  h1 Mon compte
+  = @user.email
+  = @user.first_name
+  = @user.last_name
+  = @user.company.name
+  = @bookings.each do |booking|
+    = booking.desk
+    = booking.desk.company
+    = booking.amount

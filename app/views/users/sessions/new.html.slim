@@ -22,7 +22,7 @@
             .btn-primary.login-button-width.facebook-btn
               i.fa.fa-facebook
         .col-xs-6.no-padding
-          = link_to user_omniauth_authorize_path(:google_oauth2)
+          = link_to user_omniauth_authorize_path(:google_oauth2, resource)
             .btn-primary.login-button-width.google-btn
               i.fa.fa-google
     = render "users/shared/links"

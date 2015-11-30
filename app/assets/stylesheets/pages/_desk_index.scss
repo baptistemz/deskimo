@@ -123,10 +123,11 @@ hr.delivery{
 
 .nav-tabs > li > a {
   font-size: 15px;
-  padding: 10px 6px
+  padding: 10px 6px;
 }
 
-.nav-tabs > li.active > a {
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus {
   color: $light-blue;
 }
 
@@ -138,3 +139,9 @@ hr.delivery{
 .btn-primary.disabled {
   opacity: 0.6
 }
+
+
+.tab-pane.active {
+  color: $light-blue;
+}
+

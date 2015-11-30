@@ -49,8 +49,12 @@
           br
           h4 Vous voulez mettre en location des bureaux
           br
-          = link_to new_user_registration_path(:user_type => "company")
-            .btn.btn-primary Inscrivez votre entreprise
+          - if user_signed_in?
+            = link_to new_account_company_path
+              .btn.btn-primary Inscrivez votre entreprise
+          - else
+            = link_to new_user_registration_path(:user_type => "company")
+              .btn.btn-primary Inscrivez votre entreprise
 
 
 .container

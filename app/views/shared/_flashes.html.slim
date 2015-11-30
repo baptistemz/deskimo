@@ -1,1 +1,11 @@
+- if notice
+  #flash-alert.alert.alert-info.alert-dismissible role="alert"
+    button type="button" class="close" data-dismiss="alert" aria-label="Close"
+      span aria-hidden="true"
+    = notice
+- if alert
+  #flash-notice.alert.alert-warning.alert-dismissible role="alert"
+    button type="button" class="close" data-dismiss="alert" aria-label="Close"
+      span aria-hidden="true"
+    = alert
 

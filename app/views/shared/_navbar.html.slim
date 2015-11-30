@@ -15,7 +15,7 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
           = image_tag 'logo.png', class: 'navbar-logo'
 
       ul.nav.navbar-nav.nav-right
-        - if user_signed_in? && current_user.company
+        - if user_signed_in? && current_user.company && current_user.company.id
           li
 
           / li = link_to florist_account_dashboard_path
@@ -53,8 +53,10 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
 
             ul.dropdown-menu
               li = link_to new_user_registration_path(:user_type => "user")
+                i.fa.fa-lock.icon-margin
                 'Particulier
               li = link_to new_user_registration_path(:user_type => "company")
+                i.fa.fa-lock.icon-margin
                 'Entreprise
 
 

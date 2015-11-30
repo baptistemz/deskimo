@@ -12,7 +12,7 @@ html
 
   body
     = render 'shared/navbar'
-    / = render 'shared/flashes'
+    = render 'shared/flashes'
     - if @no_footer
         #index-body-wrap
             = yield

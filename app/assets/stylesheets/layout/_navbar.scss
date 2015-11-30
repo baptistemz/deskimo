@@ -21,8 +21,6 @@
 
 .navbar-small-logo {
   height: 20px;
-
-
 }
 
 .navbar{
@@ -243,6 +241,9 @@
 
 .dropdown-menu li{
   position: relative;
+  & > a {
+    color: #626360;
+  }
 }
 
 .dropdown-menu .sub-menu {

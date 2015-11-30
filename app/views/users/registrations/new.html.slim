@@ -21,9 +21,11 @@
           br
           .form-actions
           - if params[:user_type] == "company"
-            = f.button :submit, "Sign up", class: "btn-primary login-button-width", name:"user_type", value: "Créer son compte entreprise"
+            = hidden_field_tag(:user_type, 'company')
+            = f.button :submit, "Sign up", class: "btn-primary login-button-width", value: "Enregistrer"
           - else
-            = f.button :submit, "Sign up", class: "btn-primary login-button-width", name:"user_type", value: "Créer son compte utilisateur"
+            = hidden_field_tag(:user_type, 'user')
+            = f.button :submit, "Sign up", class: "btn-primary login-button-width", value: "Enregistrer"
           br
           - if params[:user_type] != "company"
             br

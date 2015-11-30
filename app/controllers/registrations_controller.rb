@@ -3,7 +3,7 @@ class RegistrationsController < Devise::RegistrationsController
   protected
 
   def after_sign_up_path_for(resource)
-    if params[:user_type] == "Créer son compte entreprise"
+    if params[:user_type] == "company"
       new_account_company_path(:process => "signup")
     elsif session[:previous_url]
       session[:previous_url]

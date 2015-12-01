@@ -1,4 +1,6 @@
 .container.content
+  h1 Mon entreprise
+  br
   .row.company-resume
     .col-sm-6
       .product-thumbnail
@@ -9,8 +11,6 @@
       h4.company-section-title Adresse:
       p
         '#{@company.address}, #{@company.postcode}, #{@company.city}
-
-
 
     .col-sm-6
       h4.company-section-title Services
@@ -35,6 +35,7 @@
       .company-description = @company.description
       hr.style-company
       h4.company-section-title Horaires
+      p.company #{@opening_days} - #{@opening_hours}
 
 
     br
@@ -42,246 +43,43 @@
       = link_to "Modifier les informations de l'entreprise", edit_account_company_path(@company)
   br
   .row
-    hr
     br
-    - if @open_space
-      .col-sm-6.col-md-4
-        - if @open_space.activated == true
-          .dashboard-desk-thumbnail.active-desk
-            p.green offre activée
-            h3
-              = @open_space.quantity
-              '   place(s) en open space
-            = simple_form_for @desk, url: account_company_desk_path(@company,@open_space), method: :patch do |f|
-              .quantity-modifier
-                .quantity-input-buttons
-                  .minus-button
-                    i.fa.fa-minus
-                  = f.input :quantity, label: false, input_html: {value: @open_space.quantity|| 1}
-                  .plus-button
-                    i.fa.fa-plus
-                = f.submit "Modifier", class: 'btn qty-update-btn'
-            hr
-            p = @open_space.description
-            hr
-            h4.company-section-title Prix
-            .prices-list
-              .desk-price
-                p.price-category heure:
-                p.price-category #{@open_space.hour_price}€
-              .desk-price
-                p.price-category journée:
-                p.price-category #{@open_space.daily_price}€
-              .desk-price
-                p.price-category semaine:
-                p.price-category #{@open_space.weekly_price}€
-            br
-            .text-center
-              = link_to "Modifier cette offre", edit_account_company_desk_path(@company, @open_space)
-            br
-            =link_to account_company_desk_activation_path(@company, @open_space), method: :delete
-              .btn.btn-primary.red-btn Désactiver l'offre
-        - else
-          .dashboard-desk-thumbnail.inactive-desk
-            p.red offre désactivée
-            h3
-              = @open_space.quantity
-              '   place(s) en open space
-            = simple_form_for @desk, url: account_company_desk_path(@company,@open_space), method: :patch do |f|
-              .quantity-modifier
-                .quantity-input-buttons
-                  .minus-button
-                    i.fa.fa-minus
-                  = f.input :quantity, label: false, input_html: {value: @open_space.quantity|| 1}
-                  .plus-button
-                    i.fa.fa-plus
-                = f.submit "Modifier", class: 'btn qty-update-btn'
-            hr
-            p = @open_space.description
-            hr
-            h4.company-section-title Prix
-            .prices-list
-              .desk-price
-                p.price-category heure:
-                p.price-category #{@open_space.hour_price}€
-              .desk-price
-                p.price-category journée:
-                p.price-category #{@open_space.daily_price}€
-              .desk-price
-                p.price-category semaine:
-                p.price-category #{@open_space.weekly_price}€
-            br
-            .text-center
-              = link_to "Modifier cette offre", edit_account_company_desk_path(@company, @open_space)
-            br
-            =link_to account_company_desk_activation_path(@company, @open_space), method: :post
-              .btn.btn-primary.green-btn Activer l'offre
-
-    - if @closed_office
-      .col-sm-6.col-md-4
-        - if @closed_office.activated == true
-          .dashboard-desk-thumbnail.active-desk
-            p.green offre activée
-            h3
-              = @closed_office.quantity
-              '   bureau(x) fermé(s)
-            = simple_form_for @desk, url: account_company_desk_path(@company,@closed_office), method: :patch do |f|
-              .quantity-modifier
-                .quantity-input-buttons
-                  .minus-button
-                    i.fa.fa-minus
-                  = f.input :quantity, label: false, input_html: {value: @closed_office.quantity|| 1}
-                  .plus-button
-                    i.fa.fa-plus
-                = f.submit "Modifier", class: 'btn qty-update-btn'
-            hr
-            p = @closed_office.description
-            hr
-            h4.company-section-title Prix
-            .prices-list
-              .desk-price
-                p.price-category heure:
-                p.price-category #{@closed_office.hour_price}€
-              .desk-price
-                p.price-category journée:
-                p.price-category #{@closed_office.daily_price}€
-              .desk-price
-                p.price-category semaine:
-                p.price-category #{@closed_office.weekly_price}€
-            br
-            .text-center
-              = link_to "Modifier cette offre", edit_account_company_desk_path(@company, @closed_office)
-            br
-            =link_to account_company_desk_activation_path(@company, @closed_office), method: :delete
-              .btn.btn-primary.red-btn Désactiver l'offre
-        - else
-          .dashboard-desk-thumbnail.inactive-desk
-            p.red offre désactivée
-            h3
-              = @closed_office.quantity
-              '   bureau(x) fermé(s)
-            = simple_form_for @desk, url: account_company_desk_path(@company,@closed_office), method: :patch do |f|
-              .quantity-modifier
-                .quantity-input-buttons
-                  .minus-button
-                    i.fa.fa-minus
-                  = f.input :quantity, label: false, input_html: {value: @closed_office.quantity|| 1}
-                  .plus-button
-                    i.fa.fa-plus
-                = f.submit "Modifier", class: 'btn qty-update-btn'
-            hr
-            p = @closed_office.description
-            hr
-            h4.company-section-title Prix
-            .prices-list
-              .desk-price
-                p.price-category heure:
-                p.price-category #{@closed_office.hour_price}€
-              .desk-price
-                p.price-category journée:
-                p.price-category #{@closed_office.daily_price}€
-              .desk-price
-                p.price-category semaine:
-                p.price-category #{@closed_office.weekly_price}€
-            br
-            .text-center
-              = link_to "Modifier cette offre", edit_account_company_desk_path(@company, @closed_office)
-            br
-            =link_to account_company_desk_activation_path(@company, @closed_office), method: :post
-              .btn.btn-primary.green-btn Activer l'offre
+    - @desks.each do |desk|
+      - if desk == @open_space
+        .col-sm-6.col-md-4
+          - if desk.activated == true
+            = render partial: 'active_desk', locals: {desk: @desk, specific_desk: desk, company: @company}
+          - else
+            = render partial: 'inactive_desk', locals: {desk: @desk, specific_desk: desk, company: @company}
+      - if desk == @closed_office
+        .col-sm-6.col-md-4
+          - if desk.activated == true
+            = render partial: 'active_desk', locals: {desk: @desk, specific_desk: desk, company: @company}
+          - else
+            = render partial: 'inactive_desk', locals: {desk: @desk, specific_desk: desk, company: @company}
+      - if desk == @meeting_room
+        .col-sm-6.col-md-4
+          - if desk.activated == true
+            = render partial: 'active_desk', locals: {desk: @desk, specific_desk: desk, company: @company}
+          - else
+            = render partial: 'inactive_desk', locals: {desk: @desk, specific_desk: desk, company: @company}
 
 
 
 
-    - if @meeting_room
-      .col-sm-6.col-md-4
-        - if @meeting_room.activated == true
-          .dashboard-desk-thumbnail.active-desk
-            p.green offre activée
-            h3
-              = @meeting_room.quantity
-              '   salle(s) de réunion
-            = simple_form_for @desk, url: account_company_desk_path(@company,@meeting_room), method: :patch do |f|
-              .quantity-modifier
-                .quantity-input-buttons
-                  .minus-button
-                    i.fa.fa-minus
-                  = f.input :quantity, label: false, input_html: {value: @meeting_room.quantity|| 1}
-                  .plus-button
-                    i.fa.fa-plus
-                = f.submit "Modifier", class: 'btn qty-update-btn'
-            hr
-            p = @meeting_room.description
-            hr
-            h4.company-section-title Prix
-            .prices-list
-              .desk-price
-                p.price-category heure:
-                p.price-category #{@meeting_room.hour_price}€
-              .desk-price
-                p.price-category journée:
-                p.price-category #{@meeting_room.daily_price}€
-              .desk-price
-                p.price-category semaine:
-                p.price-category #{@meeting_room.weekly_price}€
-            br
-            .text-center
-              = link_to "Modifier cette offre", edit_account_company_desk_path(@company, @meeting_room)
-            br
-            =link_to account_company_desk_activation_path(@company, @meeting_room), method: :delete
-              .btn.btn-primary.red-btn Désactiver l'offre
-        - else
-          .dashboard-desk-thumbnail.inactive-desk
-            p.red offre désactivée
-            h3
-              = @meeting_room.quantity
-              '   salle(s) de réunion
-            = simple_form_for @desk, url: account_company_desk_path(@company,@meeting_room), method: :patch do |f|
-              .quantity-modifier
-                .quantity-input-buttons
-                  .minus-button
-                    i.fa.fa-minus
-                  = f.input :quantity, label: false, input_html: {value: @meeting_room.quantity|| 1}
-                  .plus-button
-                    i.fa.fa-plus
-                = f.submit "Modifier", class: 'btn qty-update-btn'
-            hr
-            p = @meeting_room.description
-            hr
-            h4.company-section-title Prix
-            .prices-list
-              .desk-price
-                p.price-category heure:
-                p.price-category #{@meeting_room.hour_price}€
-              .desk-price
-                p.price-category journée:
-                p.price-category #{@meeting_room.daily_price}€
-              .desk-price
-                p.price-category semaine:
-                p.price-category #{@meeting_room.weekly_price}€
-            br
-            .text-center
-              = link_to "Modifier cette offre", edit_account_company_desk_path(@company, @meeting_room)
-            br
-            =link_to account_company_desk_activation_path(@company, @meeting_room), method: :post
-              .btn.btn-primary.green-btn Activer l'offre
-
-
-
-
-    -if @desks.length < 3
-      .col-sm-6.col-md-4
-        .dashboard-desk-thumbnail.add-desk
-          =link_to new_account_company_desk_path(@company)
-            .cta-newdesk
-              .rounded-icon
-                i.fa.fa-plus
+      -if @desks.length < 3
+        .col-sm-6.col-md-4
+          .dashboard-desk-thumbnail.add-desk
+            =link_to new_account_company_desk_path(@company)
+              .cta-newdesk
+                .rounded-icon
+                  i.fa.fa-plus
+                br
+                p Ajouter un nouveau bureau
+            ul.thumbnail-bottom
+              li Places d'open space
               br
-              p Ajouter un nouveau bureau
-          ul.thumbnail-bottom
-            li Places d'open space
-            br
-            li Bureaux fermés
-            br
-            li Salles de réunion
+              li Bureaux fermés
+              br
+              li Salles de réunion
 

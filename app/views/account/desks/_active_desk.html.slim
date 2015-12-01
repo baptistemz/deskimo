@@ -1,0 +1,39 @@
+.dashboard-desk-thumbnail.active-desk
+  p.green offre activée
+  h3
+    = specific_desk.quantity
+    - if desk.kind == "closed_office"
+      '   bureau(x) fermé(s)
+    - elsif desk.kind == "open_space"
+      '   place(s) d'open space
+    - else
+      '   salle(s) de réunion
+  = simple_form_for desk, url: account_company_desk_path(company,specific_desk), method: :patch do |f|
+    .quantity-modifier
+      .quantity-input-buttons
+        .minus-button
+          i.fa.fa-minus
+        = f.input :quantity, label: false, input_html: {value: specific_desk.quantity|| 1}
+        .plus-button
+          i.fa.fa-plus
+      = f.submit "Modifier", class: 'btn qty-update-btn'
+  hr
+  p = specific_desk.description
+  hr
+  h4.company-section-title Prix
+  .prices-list
+    .desk-price
+      p.price-category heure:
+      p.price-category #{specific_desk.hour_price}€
+    .desk-price
+      p.price-category journée:
+      p.price-category #{specific_desk.daily_price}€
+    .desk-price
+      p.price-category semaine:
+      p.price-category #{specific_desk.weekly_price}€
+  br
+  .text-center
+    = link_to "Modifier cette offre", edit_account_company_desk_path(company, specific_desk)
+  br
+  =link_to account_company_desk_activation_path(company, specific_desk), method: :delete
+    .btn.btn-primary.red-btn Désactiver l'offre

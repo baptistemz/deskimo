@@ -8,9 +8,6 @@ function initializeAutocomplete(id) {
 
 function onPlaceChanged() {
   var place = this.getPlace();
-
-  // console.log(place);  // Uncomment this line to view the full object returned by Google API.
-
   for (var i in place.address_components) {
     var component = place.address_components[i];
     for (var j in component.types) {  // Some types are ["country", "political"]
@@ -21,8 +18,7 @@ function onPlaceChanged() {
     }
   }
 }
-if ($('#js-autocomplete-city').length) {
-  google.maps.event.addDomListener(window, 'load', function() {
-    initializeAutocomplete('input_autocomplete');
-  });
-}
+
+google.maps.event.addDomListener(window, 'load', function() {
+  initializeAutocomplete('js-autocomplete-city');
+});

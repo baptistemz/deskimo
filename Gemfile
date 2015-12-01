@@ -34,6 +34,11 @@ gem "omniauth-google-oauth2"
 # , '~> 1.3.1'
 gem 'underscore-rails'
 gem 'coffee-rails'
+gem "pundit"
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-scrollReveal.js'
+end
 
 
 group :development, :test do

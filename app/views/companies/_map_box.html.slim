@@ -3,7 +3,5 @@
   .map-box-content
     h3 #{company.name}
     p #{number_with_precision(company.distance_from(@location), precision: 1)} km
-  / p = company.address
-  / p = company.city
   = link_to company_desks_path(company)
     .btn.btn-primary.full-width détails

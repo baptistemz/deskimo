@@ -3,8 +3,6 @@
     .col-sm-6
       .product-thumbnail
         = image_tag @company.picture.url(:list), class: "img-responsive"
-
-
       h1 = @company.name
       hr.style-company
       h4.company-section-title Services
@@ -26,7 +24,6 @@
               i.fa.fa-print
             p imprimante
       hr.style-company
-
       h4.company-section-title Description
       p.company-description = @company.description
 
@@ -46,84 +43,15 @@
           - if @meeting_room && @meeting_room.activated
             li
               =link_to 'Réunions', '#meeting_room', data: { toggle: 'tab' }
-
         .tab-content
-          - if @open_space && @open_space.activated
-            .tab-pane.active#open_space
-              br
-              p.company = @open_space.description
+          - @desks.each do |desk|
+            - if desk == @open_space && @open_space.activated
+              .tab-pane.active#open_space
+                = render partial: 'desk_show', locals: {desk: desk, booking: @booking}
+            - if desk == @closed_office && @closed_office.activated
+              .tab-pane#closed_office
+                = render partial: 'desk_show', locals: {desk: desk, booking: @booking}
 
-              hr.style-company
-
-              h4.company-section-title Horaires
-
-              p.company coucou
-              hr.style-company
-              h4.company-section-title Prix
-              .prices-list
-                .desk-price
-                  p.price-category heure:
-                  p.price-category #{@open_space.hour_price}€
-                .desk-price
-                  p.price-category journée:
-                  p.price-category #{@open_space.daily_price}€
-                .desk-price
-                  p.price-category semaine:
-                  p.price-category #{@open_space.weekly_price}€
-              br
-              hr.style-company
-              br
-                .btn-primary.text-center Reserver
-          - if @closed_office && @closed_office.activated
-            .tab-pane#closed_office
-              br
-              p.company#description = @closed_office.description
-
-              hr.style-company
-
-              h4.company-section-title Horaires
-
-              p.company coucou
-              hr.style-company
-              h4.company-section-title Prix
-              .prices-list
-                .desk-price
-                  p.price-category heure:
-                  p.price-category #{@closed_office.hour_price}€
-                .desk-price
-                  p.price-category journée:
-                  p.price-category #{@closed_office.daily_price}€
-                .desk-price
-                  p.price-category semaine:
-                  p.price-category #{@closed_office.weekly_price}€
-              br
-              hr.style-company
-              br
-                .btn-primary.text-center Reserver
-          - if @meeting_room && @meeting_room.activated
-            .tab-pane#meeting_room
-              br
-              p.company = @meeting_room.description
-
-              hr.style-company
-
-              h4.company-section-title Horaires
-
-              p.company coucou
-              hr.style-company
-              h4.company-section-title Prix
-              .prices-list
-                .desk-price
-                  p.price-category heure:
-                  p.price-category #{@meeting_room.hour_price}€
-                .desk-price
-                  p.price-category journée:
-                  p.price-category #{@meeting_room.daily_price}€
-                .desk-price
-                  p.price-category semaine:
-                  p.price-category #{@meeting_room.weekly_price}€
-              br
-              hr.style-company
-              br
-                .btn-primary.text-center Reserver
-
+            - if desk == @meeting_room && @meeting_room.activated
+              .tab-pane#meeting_room
+                = render partial: 'desk_show', locals: {desk: desk, booking: @booking}

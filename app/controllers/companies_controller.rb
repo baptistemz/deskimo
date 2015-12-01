@@ -1,5 +1,7 @@
 class CompaniesController < ApplicationController
 
+  skip_before_action :authenticate_user!
+
   def index
     if params[:full_address]
       @location = Geocoder.coordinates(params[:full_address])
@@ -11,6 +13,7 @@ class CompaniesController < ApplicationController
 
     @companies = get_displayable_companies(Company.near(@location, 5).where.not(latitude: nil, longitude: nil))
     @companies.each{|company| company.sort_company_desks_by_hour_price}
+
     @desk = Desk.new
     @kinds = {open_space: "open space", closed_office: 'bureau fermé', meeting_room: 'salle de réunion'}
 

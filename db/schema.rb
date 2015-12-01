@@ -1,4 +1,17 @@
-ActiveRecord::Schema.define(version: 20151126125005) do
+# encoding: UTF-8
+# This file is auto-generated from the current state of the database. Instead
+# of editing this file, please use the migrations feature of Active Record to
+# incrementally modify your database, and then regenerate this schema definition.
+#
+# Note that this schema.rb definition is the authoritative source for your
+# database schema. If you need to create the application database on another
+# system, you should be using db:schema:load, not running all the migrations
+# from scratch. The latter is a flawed and unsustainable approach (the more migrations
+# you'll amass, the slower it'll run and the greater likelihood for issues).
+#
+# It's strongly recommended that you check this file into your version control system.
+
+ActiveRecord::Schema.define(version: 20151201145350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,8 +34,8 @@ ActiveRecord::Schema.define(version: 20151126125005) do
     t.string   "address"
     t.string   "city"
     t.string   "postcode"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.text     "description"
     t.boolean  "coffee"
     t.boolean  "wifi"
@@ -35,6 +48,18 @@ ActiveRecord::Schema.define(version: 20151126125005) do
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "user_id"
+    t.boolean  "open_monday",          default: false
+    t.boolean  "open_tuesday",         default: false
+    t.boolean  "open_wednesday",       default: false
+    t.boolean  "open_thursday",        default: false
+    t.boolean  "open_friday",          default: false
+    t.boolean  "open_saturday",        default: false
+    t.boolean  "open_sunday",          default: false
+    t.boolean  "open_holiday",         default: false
+    t.datetime "start_time_am"
+    t.datetime "end_time_am"
+    t.datetime "start_time_pm"
+    t.datetime "end_time_pm"
   end
 
   add_index "companies", ["user_id"], name: "index_companies_on_user_id", using: :btree

@@ -1,0 +1,25 @@
+br
+p.company = desk.description
+
+hr.style-company
+
+h4.company-section-title Horaires
+p.company #{@opening_days} - #{@opening_hours}
+hr.style-company
+h4.company-section-title Prix
+.prices-list
+  .desk-price
+    p.price-category heure:
+    p.price-category #{desk.hour_price}€
+  .desk-price
+    p.price-category journée:
+    p.price-category #{desk.daily_price}€
+  .desk-price
+    p.price-category semaine:
+    p.price-category #{desk.weekly_price}€
+br
+hr.style-company
+h4.company-section-title Reservation
+ = simple_form_for @booking
+br
+  .btn-primary.text-center Reserver

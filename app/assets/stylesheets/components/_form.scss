@@ -87,8 +87,13 @@ select{
   display: flex;
   justify-content: space-around;
 }
+.booking-quantity-modifier{
+  display: flex;
+  justify-content: space-between;
+}
 
-.quantity-modifier input.numeric {
+.quantity-modifier input.numeric,
+.booking_time_slot_quantity input.numeric, {
   width: 40px;
   text-align: center;
   border-top: 1px solid $dark-blue;
@@ -99,7 +104,8 @@ select{
   -moz-appearance:textfield;
 }
 
-
+.booking_time_slot_quantity input.numeric::-webkit-outer-spin-button,
+.booking_time_slot_quantity input.numeric::-webkit-inner-spin-button,
 .quantity-modifier input.numeric::-webkit-outer-spin-button,
 .quantity-modifier input.numeric::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -150,3 +156,12 @@ select{
   background-color: $dark-blue;
   color: white;
 }
+
+#booking_time_slot_type,
+#booking_start_date_time,
+#booking_start_date_time_4i,
+#booking_start_date_time_5i {
+  height: 28px
+}
+
+

@@ -11,7 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20151202141850) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,12 +52,14 @@ ActiveRecord::Schema.define(version: 20151202141850) do
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "bookings", force: :cascade do |t|
-    t.datetime "start_date_time"
-    t.datetime "end_date_time"
     t.integer  "desk_id"
     t.integer  "user_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.datetime "start_date_time"
+    t.datetime "end_date_time"
+    t.integer  "time_slot_quantity"
+    t.string   "time_slot_type"
   end
 
   add_index "bookings", ["desk_id"], name: "index_bookings_on_desk_id", using: :btree

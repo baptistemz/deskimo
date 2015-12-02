@@ -20,6 +20,31 @@ h4.company-section-title Prix
 br
 hr.style-company
 h4.company-section-title Reservation
- = simple_form_for @booking
 br
-  .btn-primary.text-center Reserver
+.booking-creation
+= simple_form_for [desk.company, desk, booking] do |f|
+  .booking-quantity-modifier
+    p.company durée:
+    .quantity-input-buttons
+      .minus-button
+        i.fa.fa-minus
+      = f.input :time_slot_quantity, label: false, input_html: {value: 1}
+      .plus-button
+        i.fa.fa-plus
+
+    = f.input :time_slot_type, label: false, include_blank: false, default: "Heure(s)"
+  br
+  .booking-quantity-modifier
+    p.company à partir du:
+    = f.select :start_date_time, options_for_booking_date(desk.company.get_next_opening_days_array)
+  br
+  .booking-quantity-modifier.time-select
+    p.company à:
+    = f.time_select :start_date_time, label: false, default: Time.now + 45*60, minute_step: 15
+  br
+  .booking-quantity-modifier.time-select
+    p.company Jusqu'à:
+    p.company#time-recap
+  br
+  = f.button :submit, class: "btn-primary full-width", value: "Réserver"
+

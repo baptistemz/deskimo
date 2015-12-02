@@ -29,6 +29,7 @@ gem 'slim'
 gem "rails-i18n"
 gem "devise-i18n"
 gem "devise-i18n-views"
+gem 'omniauth-oauth2', '~> 1.3.1' # see https://github.com/intridea/omniauth-oauth2/issues/81
 gem 'omniauth-facebook'
 gem "omniauth-google-oauth2"
 # , '~> 1.3.1'

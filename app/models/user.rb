@@ -9,8 +9,8 @@ class User < ActiveRecord::Base
 
   def self.find_for_facebook_oauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      # user.provider = auth.provider
-      # user.uid = auth.uid
+      user.provider = auth.provider
+      user.uid = auth.uid
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]  # Fake password for validation
       user.first_name = auth.info.first_name
@@ -20,4 +20,21 @@ class User < ActiveRecord::Base
       user.token_expiry = Time.at(auth.credentials.expires_at)
     end
   end
+
+  def self.from_omniauth(access_token)
+    data = access_token.info
+    user = User.where(:email => data["email"]).first
+
+    # Uncomment the section below if you want users to be created if they don't exist
+    unless user
+        user = User.create(
+          first_name: data["first_name"],
+          last_name: data["last_name"],
+          email: data["email"],
+          password: Devise.friendly_token[0,20]
+        )
+    end
+    user
+  end
+
 end

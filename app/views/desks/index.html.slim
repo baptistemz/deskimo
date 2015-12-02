@@ -38,11 +38,11 @@
 
           - if @closed_office && @closed_office.activated
             li
-              =link_to 'Bureau fermé', '#closed_office', data: { toggle: 'tab' }
+              =link_to 'Bureau', '#closed_office', data: { toggle: 'tab' }
 
           - if @meeting_room && @meeting_room.activated
             li
-              =link_to 'Réunions', '#meeting_room', data: { toggle: 'tab' }
+              =link_to 'Salle de réunion', '#meeting_room', data: { toggle: 'tab' }
         .tab-content
           - @desks.each do |desk|
             - if desk == @open_space && @open_space.activated

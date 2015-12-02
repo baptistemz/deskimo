@@ -1,5 +1,5 @@
-def authenticate_admin!
-  redirect_to new_user_session_path unless current_user.admin
+def authenticate_admin_user!
+  redirect_to new_admin_user_session_path unless current_user.admin
 end
 
 ActiveAdmin.setup do |config|
@@ -8,7 +8,7 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title_image = "logo2.png"
+  config.site_title_image = "logo7.png"
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.

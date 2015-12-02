@@ -8,71 +8,105 @@
 
 
 .padded {
-  padding-top: 5em;
-  padding-bottom: 5em;
+  padding-top    : 5em;
+  padding-bottom : 5em;
 }
 
 // Backgrounds
 .bg-black {
-  background: #4a4a4a;
+  background : #4a4a4a;
 }
 .bg-grey {
-  background: #aeaeae;
+  background : #aeaeae;
 }
 .bg-blue {
-  background: #00a3e1;
+  background : #00a3e1;
 }
 .bg-dark-blue {
-  background: #3b5998;
+  background : #3b5998;
 }
 
 .icon-margin {
   margin-right : 4px;
-  margin-left : 4px;
+  margin-left  : 4px;
 }
 
 .no-padding-right {
-  padding-right: 0;
+  padding-right : 0;
 }
 .no-padding-left {
-  padding-left: 0;
+  padding-left : 0;
 }
 
 .img-small {
-  width: 320px;
+  width : 320px;
 }
 
 .position-relative {
-  position: relative
+  position : relative
 }
 
 .full-width {
-  width: 100%
+  width : 100%
 }
 
 .no-margin {
-  margin: 0
+  margin : 0
 }
 
 .no-padding {
-  padding: 0
+  padding : 0
 }
 .green{
-  color: $green
+  color : $green
 }
 .red{
-  color: $red
+  color : $red
 }
 
 .btn-primary {
-  height: 46px;
-  font-size: 20px;
-  border-radius: 4px;
-  padding-top: 8px;
+  height        : 46px;
+  font-size     : 20px;
+  border-radius : 4px;
+  padding-top   : 8px;
 }
 
 #flash-alert,
 #flash-notice {
-  margin-top: 55px;
-  margin-bottom: -55px;
+  margin-top    : 55px;
+  margin-bottom : -55px;
+}
+
+//---- MEDIA QUERIES ----//
+
+@media (max-width: 768px) {
+
+  h1 {
+    font-size : 1.5em;
+  }
+
+  h2 {
+    font-size : 1.25em;
+  }
+
+  h3 {
+    font-size : 1em;
+  }
+
+  h4 {
+    font-size : 0.87em;
+  }
+
+  p {
+    font-size : 0.85em;
+  }
+
+  .btn {
+    font-size : 1em;
+  }
+
+  .btn-primary {
+  padding-top : 10px;
+  }
+
 }

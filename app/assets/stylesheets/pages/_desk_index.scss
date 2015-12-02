@@ -42,6 +42,7 @@ p.company{
   margin: 0 0 10px;
   color: #888888;
   margin-bottom: 20px;
+  min-width: 90px
 
 }
 
@@ -143,5 +144,15 @@ hr.delivery{
 
 .tab-pane.active {
   color: $light-blue;
+}
+
+#booking_start_date_time {
+  max-width: 400px
+}
+
+#booking_start_date_time_4i,
+#booking_start_date_time_5i {
+  margin-left: 5px;
+  margin-right: 5px
 }
 

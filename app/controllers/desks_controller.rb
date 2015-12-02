@@ -10,6 +10,7 @@ class DesksController < ApplicationController
     @meeting_room = @desks.where(kind: :meeting_room).first
     @opening_days = @company.get_opening_days_string
     @opening_hours = @company.get_opening_hours_string
+    @booking = Booking.new
   end
 end
 

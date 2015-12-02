@@ -37,6 +37,8 @@ gem 'underscore-rails'
 gem 'coffee-rails'
 gem "pundit"
 
+gem 'activeadmin', github: 'activeadmin'
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-scrollReveal.js'
 end

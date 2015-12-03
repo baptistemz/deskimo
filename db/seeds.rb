@@ -1,5 +1,6 @@
 Company.destroy_all
 User.destroy_all
+AdminUser.destroy_all
 
 #USERS
 gag = User.create!(email: "contact@mecatechnic.com", password: "12345678", password_confirmation: "12345678")
@@ -54,4 +55,6 @@ ecotaco_open_space = ecotaco.desks.create!(kind: "open_space", quantity: 1, desc
 cofactory_open_space = cofactory.desks.create!(kind: "open_space", quantity: 15, description: "Open space avec bureaux, chaises, écrans, standing-desks.", hour_price: 7, daily_price: 30, weekly_price: 100, activated: true)
 cofactory_closed_office = cofactory.desks.create!(kind: "closed_office", quantity: 2, description: "Deux chaises et un bureau. Légérement décoré. Prise 220v", hour_price: 10, daily_price: 50, weekly_price: 150, activated: true)
 cofactory_meeting_room = cofactory.desks.create!(kind: "meeting_room", quantity: 1, description: "Salle 12 places avec un champignon téléphonique pour les conf calls et écran/enceintes/micros pour visio-conférences.", hour_price: 20, daily_price: 80, weekly_price: 300, activated: true)
+
+# ADMIN USER
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')

@@ -90,11 +90,18 @@ class Company < ActiveRecord::Base
     return hour_string
   end
 
-  def sort_company_desks_by_hour_price
-    self.desks.where(activated: :true).order(hour_price: :asc)
+  def update_availability
+    disabled_desks = desks.where(activated: false).exists?
+
+    # we have disabled desks but company is still activated
+    if disabled_desks == activated
+      toggle!(:activated)
+    end
   end
 
-
+  def cheapest_desk
+    desks.where(activated: :true).order(hour_price: :asc).first
+  end
 
   private
 

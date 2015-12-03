@@ -12,12 +12,11 @@
         .col-xs-7.col-sm-8
           = render "search_form"
 
-
-
-
         .col-xs-3.col-sm-4
             #filter-select
-              = select_tag :kind, options_for_select(@kinds.values), label: false, prompt: 'Type de bureau', include_blank: false, input_html: {:onchange => "this.form.submit()"}
+              = form_tag companies_path, method: :get, class: "flexform"
+                = select_tag :kind, options_for_select(Desk.kind.options(only: @kinds), params[:kind]), label: false, prompt: 'Type de bureau', include_blank: false, :onchange => "this.form.submit()"
+
         .col-xs-2.visible-xs.no-padding-left
           .map-btn
             .i.fa.fa-map#map-icon

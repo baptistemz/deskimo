@@ -12,7 +12,7 @@ class CompaniesController < ApplicationController
     end
 
     @companies = get_displayable_companies(Company.near(@location, 5).where.not(latitude: nil, longitude: nil))
-    @companies.each{|company| company.sort_company_desks_by_hour_price}
+    @companies.each{|company| company.sort_company_desks_by_daily_price}
 
     @desk = Desk.new
     @kinds = {open_space: "open space", closed_office: 'bureau fermé', meeting_room: 'salle de réunion'}

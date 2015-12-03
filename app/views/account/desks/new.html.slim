@@ -16,8 +16,8 @@
 
         h4 Prix (TTC)
         .form-group
-          h5 Par heure (€)
-          = f.input :hour_price, label:false, required: true, autofocus: true, placeholder: false
+          h5 Par demi-journée (€)
+          = f.input :half_day_price, label:false, required: true, autofocus: true, placeholder: false
           br
           table
             tr
@@ -26,10 +26,10 @@
               td.danger TVA
               td.primary Prix total
             tr
-              td#hour_company_amount
-              td#hour_no_amount
-              td#hour_tva
-              td#hour_totalprice
+              td#half_day_company_amount
+              td#half_day_no_amount
+              td#half_day_tva
+              td#half_day_totalprice
 
         .form-group
           h5 Par jour (€)

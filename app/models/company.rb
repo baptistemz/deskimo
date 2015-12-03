@@ -34,6 +34,7 @@ class Company < ActiveRecord::Base
 
   def get_next_opening_days_array
     opening_days = []
+    opening_days << Date.today
     if self.open_monday
       opening_days << date_of_next('monday')
       opening_days << date_of_next('monday') + 7
@@ -79,6 +80,7 @@ class Company < ActiveRecord::Base
     return opening_days.sort
   end
 
+
   def get_opening_hours_string
     hour_string = 'de ' + self.start_time_am.strftime("%I:%M%p").to_s +
                      ' à ' + self.end_time_am.strftime("%I:%M%p").to_s
@@ -90,8 +92,8 @@ class Company < ActiveRecord::Base
     return hour_string
   end
 
-  def sort_company_desks_by_hour_price
-    self.desks.where(activated: :true).order(hour_price: :asc)
+  def sort_company_desks_by_daily_price
+    self.desks.where(activated: :true).order(daily_price: :asc)
   end
 
 

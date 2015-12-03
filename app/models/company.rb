@@ -94,6 +94,8 @@ class Company < ActiveRecord::Base
     self.desks.where(activated: :true).order(hour_price: :asc)
   end
 
+
+
   private
 
   def date_of_next(day)
@@ -103,6 +105,7 @@ class Company < ActiveRecord::Base
   end
 
   def get_starting_day
+    starting_day = []
     if self.open_monday
       start = 'du Lundi'
     elsif self.open_tuesday

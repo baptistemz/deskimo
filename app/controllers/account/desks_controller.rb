@@ -31,6 +31,7 @@ module Account
 
     def edit
       @desk = Desk.find(params[:id])
+      @company = @desk.company
       render 'new'
     end
 

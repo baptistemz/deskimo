@@ -4,24 +4,23 @@ class BookingsController < ApplicationController
     @booking.desk = Desk.find(params[:desk_id])
     @next_opening_days = @booking.desk.company.get_next_opening_days_array
 
-    @opening_hours = []
-    @opening_hours_string_splited = @booking.desk.company.get_opening_hours_string.split(' ')
-    @opening_hours = [@opening_hours_string_splited[1], @opening_hours_string_splited[3], @opening_hours_string_splited[6], @opening_hours_string_splited[8]]
-    @morning_hours = (@opening_hours[1].to_time - @opening_hours[0].to_time)/60/60
+    if @booking.time_slot_type == "1/2 journée"
+      @booking.end_date = @booking.start_date
+    elsif @booking.time_slot_type == "jour(s)"
+      booking_day_number = @next_opening_days.find_index(@booking.start_date)
+      @booking.end_date = @next_opening_days[booking_day_number + @booking.time_slot_quantity - 1]
+    else
+      @booking.end_date = @booking.start_date + (7 * @booking.time_slot_quantity).days
+    end
 
-    if @booking.time_slot_type == "heure(s)"
-
-      if @morning_hours > @booking.time_slot_quantity
-        @booking.end_date_time = @booking.start_date_time + @booking.time_slot_quantity.hours
-      else
-        monring_hours = (@opening_hours[1].to_time - @opening_hours[0].to_time)/60/60
-        @booking.end_date_time = @opening_hours[2].to_time + @booking.time_slot_quantity.hours - @morning_hours
-      end
-
-    elsif time_slot_type == "jour(s)"
-      @booking.end_date_time = @booking.start_date_time + @booking.time_slot_quantity.days
-    else time_slot_type
-      @booking.end_date_time = @booking.start_date_time + @booking.time_slot_quantity.week.to_i
+    if @booking.save
+      raise
+      redirect_to
+      # I DON'T KNOW
+    else
+      flash[:alert] = "La reservation n'a pas pu être effectuée"
+      redirect_to(:back)
+      # ???
     end
   end
 
@@ -30,6 +29,7 @@ class BookingsController < ApplicationController
   def booking_params
     params.require(:booking).permit(:time_slot_quantity,
                                     :time_slot_type,
-                                    :start_date_time)
+                                    :start_date,
+                                    :half_day_choice)
   end
 end

@@ -1,46 +1,49 @@
 $('#booking_time_slot_type').on('change', function(event) {
-  if ($(this).val() === 'heure(s)') {
-    $('.time-select').removeClass('hidden')
+  if ($(this).val() === '1/2 journée') {
+    $('.half-day-select').removeClass('hidden')
+    $('#booking_time_slot_quantity').val(1)
+    $('#time-slot-quantity').addClass('hidden')
   } else {
-    $('.time-select').addClass('hidden')
+    $('.half-day-select').addClass('hidden')
+    $('#time-slot-quantity').removeClass('hidden')
   }
 });
 
-function timeRecap($param) {
-  $param.on('change', function(event) {
-    var endingHour = parseInt($('#booking_start_date_time_4i').val()) + parseInt($('#booking_time_slot_quantity').val())
-    var endingMinutes = parseInt($('#booking_start_date_time_5i').val())
-    if (endingMinutes === 0) {
-      $('#time-recap').text(endingHour+'h')
-    } else {
-      $('#time-recap').text(endingHour+'h'+endingMinutes)
-    }
-  });
-};
+// function timeRecap($param) {
+//   $param.on('change', function(event) {
+//     var endingHour = parseInt($('#booking_start_date_time_4i').val()) + parseInt($('#booking_time_slot_quantity').val())
+//     var endingMinutes = parseInt($('#booking_start_date_time_5i').val())
+//     if (endingMinutes === 0) {
+//       $('#time-recap').text(endingHour+'h')
+//     } else {
+//       $('#time-recap').text(endingHour+'h'+endingMinutes)
+//     }
+//   });
+// };
 
 
-timeRecap($('#booking_start_date_time_4i'));
-timeRecap($('#booking_start_date_time_5i'));
-timeRecap($('#booking_time_slot_quantity'));
+// timeRecap($('#booking_start_date_time_4i'));
+// timeRecap($('#booking_start_date_time_5i'));
+// timeRecap($('#booking_time_slot_quantity'));
 
-$('.plus-button').on('click', function(event) {
-  var endingHour = parseInt($('#booking_start_date_time_4i').val()) + parseInt($('#booking_time_slot_quantity').val()) + 1
-  var endingMinutes = parseInt($('#booking_start_date_time_5i').val())
-  if (endingMinutes === 0) {
-    $('#time-recap').text(endingHour+'h')
-  } else {
-    $('#time-recap').text(endingHour+'h'+endingMinutes)
-  }
-});
+// $('.plus-button').on('click', function(event) {
+//   var endingHour = parseInt($('#booking_start_date_time_4i').val()) + parseInt($('#booking_time_slot_quantity').val()) + 1
+//   var endingMinutes = parseInt($('#booking_start_date_time_5i').val())
+//   if (endingMinutes === 0) {
+//     $('#time-recap').text(endingHour+'h')
+//   } else {
+//     $('#time-recap').text(endingHour+'h'+endingMinutes)
+//   }
+// });
 
-$('.minus-button').on('click', function(event) {
-  var endingHour = parseInt($('#booking_start_date_time_4i').val()) + parseInt($('#booking_time_slot_quantity').val()) - 1
-  var endingMinutes = parseInt($('#booking_start_date_time_5i').val())
-  if (endingMinutes === 0) {
-    $('#time-recap').text(endingHour+'h')
-  } else {
-    $('#time-recap').text(endingHour+'h'+endingMinutes)
-  }
-});
+// $('.minus-button').on('click', function(event) {
+//   var endingHour = parseInt($('#booking_start_date_time_4i').val()) + parseInt($('#booking_time_slot_quantity').val()) - 1
+//   var endingMinutes = parseInt($('#booking_start_date_time_5i').val())
+//   if (endingMinutes === 0) {
+//     $('#time-recap').text(endingHour+'h')
+//   } else {
+//     $('#time-recap').text(endingHour+'h'+endingMinutes)
+//   }
+// });
 
 

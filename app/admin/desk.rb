@@ -25,6 +25,7 @@ ActiveAdmin.register Desk do
 
     f.inputs "Prices" do
       f.input :hour_price
+      f.input :half_day_price
       f.input :daily_price
       f.input :weekly_price
     end

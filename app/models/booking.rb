@@ -4,10 +4,12 @@ class Booking < ActiveRecord::Base
   belongs_to :desk
   belongs_to :user
 
-  validate  :user_cannot_be_from_the_company,
-            :desk_cannot_be_fully_booked
+  validate  :user_cannot_be_from_the_company
+            # :desk_cannot_be_fully_booked
 
-  enumerize :time_slot_type, in: ["heure(s)", "jour(s)", "semaine(s)"], default: "heure(s)"
+  enumerize :time_slot_type, in: ["1/2 journée", "jour(s)", "semaine(s)"], default: "jour(s)"
+  enumerize :half_day_choice, in: [:am, :pm]
+  enumerize :status, in: ["pending", "paid"], default: "pending"
 
   private
 
@@ -16,8 +18,8 @@ class Booking < ActiveRecord::Base
       user == desk.company.user
   end
 
-  def desk_cannot_be_fully_booked
-    errors.add(:desk, "Il n'y a plus de bureau disponible") if
-      desk.bookings.where(start_datetime)
-  end
+  # def desk_cannot_be_fully_booked
+  #   errors.add(:desk, "Il n'y a plus de bureau disponible") if
+  #     desk.bookings.where(start_date)
+  # end
 end

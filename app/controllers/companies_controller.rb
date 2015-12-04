@@ -4,7 +4,7 @@ class CompaniesController < ApplicationController
 
   def index
 
-    if params[:full_address]
+    if params[:full_address].presence
       @location = Geocoder.coordinates(params[:full_address])
     elsif cookies[:lat_lng]
       @location = cookies[:lat_lng].split(',')
@@ -17,6 +17,11 @@ class CompaniesController < ApplicationController
 
     if params[:kind].present?
       @companies = @companies.joins(:desks).where(desks: { kind: params[:kind] })
+
+      if @companies.empty?
+        flash[:notice] = "Aucun bureau n'est disponible avec le type sélectionné !"
+        redirect_to companies_path
+      end
     end
 
     @kinds = Desk.where(company: @available_companies.pluck(:id)).pluck(:kind)

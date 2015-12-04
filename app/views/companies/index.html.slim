@@ -10,11 +10,18 @@
     .col-xs-12.col-sm-7#left
       .row.research-bar
         .col-xs-7.col-sm-8
-          = render "search_form"
+          = form_tag companies_path, method: :get, class: "flexform"
+            = text_field_tag :full_address, @full_address, placeholder: "Ville ou adresse", id: "js-autocomplete-city", class: "pretty-field"
+            button.search-btn type="submit"
+              i.fa.fa-search
+              = hidden_field_tag :street_number, id: "street_number", disabled: true
+              = hidden_field_tag :route, id: "route", disabled: true
+              = hidden_field_tag :locality, id: "locality", disabled: true
+              = hidden_field_tag :country, id: "country", disabled: true
 
-        .col-xs-3.col-sm-4
-            #filter-select
-              = form_tag companies_path, method: :get, class: "flexform"
+            .col-xs-3.col-sm-5.col-sm-offset-12
+              #filter-select
+                / = form_tag companies_path, method: :get, class: "flexform"
                 = select_tag :kind, options_for_select(Desk.kind.options(only: @kinds), params[:kind]), label: false, prompt: 'Type de bureau', include_blank: false, :onchange => "this.form.submit()"
 
         .col-xs-2.visible-xs.no-padding-left

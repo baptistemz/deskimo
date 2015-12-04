@@ -50,14 +50,16 @@ ActiveRecord::Schema.define(version: 20151203171315) do
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "bookings", force: :cascade do |t|
-    t.datetime "start_date_time"
-    t.datetime "end_date_time"
     t.integer  "desk_id"
     t.integer  "user_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.integer  "time_slot_quantity"
     t.string   "time_slot_type"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.string   "half_day_choice"
+    t.string   "status"
   end
 
   add_index "bookings", ["desk_id"], name: "index_bookings_on_desk_id", using: :btree
@@ -102,8 +104,8 @@ ActiveRecord::Schema.define(version: 20151203171315) do
 
   create_table "desks", force: :cascade do |t|
     t.text     "description"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.integer  "company_id"
     t.integer  "quantity"
     t.string   "kind"
@@ -111,6 +113,8 @@ ActiveRecord::Schema.define(version: 20151203171315) do
     t.integer  "daily_price"
     t.integer  "weekly_price"
     t.boolean  "activated",    default: true
+    t.integer  "half_day_price"
+
   end
 
   add_index "desks", ["company_id"], name: "index_desks_on_company_id", using: :btree

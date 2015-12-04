@@ -19,6 +19,36 @@
     h3 Ou indiquez où vous êtes
     = render "companies/search_form"
 
+.container
+  .home
+    .row.text-center
+      h2 Quels bureaux reserver ?
+      hr
+      span.center-line
+.background
+  .container
+    .row
+      .col-xs-12
+        .card
+          span.card-bg1
+            span.card-gradient
+              .btn.btn-primary.btn-geo Trouvez les plus proches
+            span.card-text
+              h2 Open Space
+      .col-xs-12.col-md-6
+        .card
+          span.card-bg2
+            span.card-gradient
+              .btn.btn-primary.btn-geo Trouvez les plus proches
+            span.card-text
+              h2 Bureau fermé
+      .col-xs-12.col-md-6
+        .card
+          span.card-bg3
+            span.card-gradient
+              .btn.btn-primary.btn-geo Trouvez les plus proches
+            span.card-text
+              h2 Salle de réunion
 .container-fluid
   .row
     br
@@ -39,7 +69,7 @@
       h4.vp Solution de networking et d'optimisation d'espace pour les entreprises
       .text-right.margin-about
         =link_to 'En savoir plus', 'root'
-
+br
 .container.text-center
   .row
     .col-xs-12
@@ -57,31 +87,8 @@
               .btn.btn-primary Inscrivez votre entreprise
 
 
-.container
-  .home
-    .row.text-center
-      h2 Quels bureaux reserver ?
-      hr
-      span.center-line
-.background
-  .container
-    .row
-      .col-xs-12.col-md-6
-        .card
-          span.card-bg1
-          = link_to companies_path
-            span.card-gradient
-              span.card-text
-                h2 Entreprises
-                p De réelles entreprises vous ouvrent leurs portes
-      .col-xs-12.col-md-6
-        .card
-          span.card-bg2
-          = link_to companies_path
-            span.card-gradient
-              span.card-text
-                h2 Espaces de coworking
-                p Entourez-vous d'autres travailleurs nomades
+
+
 
 
 

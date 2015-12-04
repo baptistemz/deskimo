@@ -77,31 +77,37 @@
   bottom: 0;
   width: 100%;
 }
-.card-bg1{
+.card-bg1,
+.card-bg2,
+.card-bg3{
   background-size: cover;
   border-radius: 3px;
   position: absolute;
   top: 0;
   bottom: 0;
   width: 100%;
+  background-position: center
+}
+
+.card-bg1 {
   background-image: image-url('homecompany.jpg');
 }
+
 .card-bg2{
-  background-size: cover;
-  border-radius: 3px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  background-image: image-url('homecoworking.jpg');
+  background-image: image-url('homeclosedoffice.jpg');
+}
+
+.card-bg3{
+  background-image: image-url('homemeetingroom.jpg');
 }
 
 .card-gradient {
   background-color : rgba(52, 73, 94, 0.1);
   border-radius: 3px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
+  position: flex;
+  display:flex;
+  justify-content:center;
+  align-items:center;
   width: 100%;
 }
 .card-gradient:hover {
@@ -116,7 +122,7 @@
 }
 .card-text {
   position: absolute;
-  bottom: 10px;
+  top: 10px;
   left: 20px;
   color: white;
   z-index: 10px;
@@ -155,4 +161,17 @@ hr{
 .margin-about {
   margin-right: 50px;
   font-size: 18px;
+}
+
+.btn-geo {
+  border: solid 1px white;
+  color: white;
+  background-color: transparent;
+  text-shadow: none
+}
+.btn-geo:hover  {
+  border: solid 1px $dark-blue;
+  color: $dark-blue;
+  background-color: white;
+  text-shadow: none
 }

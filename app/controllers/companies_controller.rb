@@ -3,6 +3,7 @@ class CompaniesController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
+
     if params[:full_address]
       @location = Geocoder.coordinates(params[:full_address])
     elsif cookies[:lat_lng]
@@ -11,11 +12,14 @@ class CompaniesController < ApplicationController
       @location = Geocoder.coordinates("Lille")
     end
 
-    @companies = get_displayable_companies(Company.near(@location, 5).where.not(latitude: nil, longitude: nil))
-    @companies.each{|company| company.sort_company_desks_by_daily_price}
+    @available_companies = Company.where(activated: true)
+    @companies = @available_companies
 
-    @desk = Desk.new
-    @kinds = {open_space: "open space", closed_office: 'bureau fermé', meeting_room: 'salle de réunion'}
+    if params[:kind].present?
+      @companies = @companies.joins(:desks).where(desks: { kind: params[:kind] })
+    end
+
+    @kinds = Desk.where(company: @available_companies.pluck(:id)).pluck(:kind)
 
     @hash = Gmaps4rails.build_markers(@companies) do |company, marker|
       marker.lat company.latitude

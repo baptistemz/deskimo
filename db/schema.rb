@@ -104,17 +104,16 @@ ActiveRecord::Schema.define(version: 20151203171315) do
 
   create_table "desks", force: :cascade do |t|
     t.text     "description"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.integer  "company_id"
     t.integer  "quantity"
     t.string   "kind"
     t.integer  "hour_price"
     t.integer  "daily_price"
     t.integer  "weekly_price"
-    t.boolean  "activated",    default: true
+    t.boolean  "activated",      default: true
     t.integer  "half_day_price"
-
   end
 
   add_index "desks", ["company_id"], name: "index_desks_on_company_id", using: :btree

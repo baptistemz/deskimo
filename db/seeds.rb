@@ -1,3 +1,4 @@
+Booking.destroy_all
 Company.destroy_all
 User.destroy_all
 AdminUser.destroy_all

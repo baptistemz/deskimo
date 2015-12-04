@@ -13,7 +13,7 @@ class CompaniesController < ApplicationController
     end
 
     @available_companies = Company.where(activated: true)
-    @companies = @available_companies
+    @companies = @available_companies.near(@location, 5).where.not(latitude: nil, longitude: nil)
 
     if params[:kind].present?
       @companies = @companies.joins(:desks).where(desks: { kind: params[:kind] })

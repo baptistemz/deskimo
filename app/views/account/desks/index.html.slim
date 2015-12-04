@@ -40,7 +40,7 @@
 
     br
     .text-center
-      = link_to "Modifier les informations de l'entreprise", edit_account_company_path(@company)
+      = link_to " Modifier les informations de l'entreprise", edit_account_company_path(@company), class: "fa fa-pencil"
   br
   .row
     br
@@ -48,21 +48,21 @@
       - if desk == @open_space
         .col-sm-6.col-md-4
           - if desk.activated == true
-            = render partial: 'active_desk', locals: {desk: @desk, specific_desk: desk, company: @company}
+            = render partial: 'active_desk', locals: {desk: @desk, desk: desk, company: @company}
           - else
-            = render partial: 'inactive_desk', locals: {desk: @desk, specific_desk: desk, company: @company}
+            = render partial: 'inactive_desk', locals: {desk: @desk, desk: desk, company: @company}
       - if desk == @closed_office
         .col-sm-6.col-md-4
           - if desk.activated == true
-            = render partial: 'active_desk', locals: {desk: @desk, specific_desk: desk, company: @company}
+            = render partial: 'active_desk', locals: {desk: @desk, desk: desk, company: @company}
           - else
-            = render partial: 'inactive_desk', locals: {desk: @desk, specific_desk: desk, company: @company}
+            = render partial: 'inactive_desk', locals: {desk: @desk, desk: desk, company: @company}
       - if desk == @meeting_room
         .col-sm-6.col-md-4
           - if desk.activated == true
-            = render partial: 'active_desk', locals: {desk: @desk, specific_desk: desk, company: @company}
+            = render partial: 'active_desk', locals: {desk: @desk, desk: desk, company: @company}
           - else
-            = render partial: 'inactive_desk', locals: {desk: @desk, specific_desk: desk, company: @company}
+            = render partial: 'inactive_desk', locals: {desk: @desk, desk: desk, company: @company}
 
 
 

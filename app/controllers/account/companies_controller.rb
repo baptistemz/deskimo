@@ -15,6 +15,11 @@ module Account
       end
     end
 
+    def edit
+      @company = Company.find(params[:id])
+      render 'new'
+    end
+
     private
 
     def company_params

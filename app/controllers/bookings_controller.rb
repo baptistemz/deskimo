@@ -1,4 +1,7 @@
 class BookingsController < ApplicationController
+
+  before_action :authenticate_user!
+
   def create
     @booking = current_user.bookings.build(booking_params)
     @booking.desk = Desk.find(params[:desk_id])
@@ -13,14 +16,23 @@ class BookingsController < ApplicationController
       @booking.end_date = @booking.start_date + (7 * @booking.time_slot_quantity).days
     end
 
-    if @booking.save
-      raise
-      redirect_to
-      # I DON'T KNOW
+    @unavailability = @booking.desk.unavailability_ranges.build(
+                                                kind: :booked,
+                                                start_date: @booking.start_date,
+                                                end_date: @booking.end_date
+                                                )
+    if @unavailability.save
+      if @booking.save
+        raise
+        redirect_to
+        # ???
+      else
+        flash[:alert] = "La reservation n'a pas pu être effectuée"
+        redirect_to(:back)
+      end
     else
-      flash[:alert] = "La reservation n'a pas pu être effectuée"
+      flash[:alert] = "Le bureau n'est pas disponible sur ces dates"
       redirect_to(:back)
-      # ???
     end
   end
 

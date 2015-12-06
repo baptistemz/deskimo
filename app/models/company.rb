@@ -34,7 +34,10 @@ class Company < ActiveRecord::Base
 
   def get_next_opening_days_array
     opening_days = []
-    opening_days << Date.today
+    @today = Date.today.strftime('%A').downcase
+    if self.send(:"open_#{@today}")
+      opening_days << Date.today
+    end
     if self.open_monday
       opening_days << date_of_next('monday')
       opening_days << date_of_next('monday') + 7

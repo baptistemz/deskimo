@@ -1,7 +1,5 @@
 class CompaniesController < ApplicationController
 
-  skip_before_action :authenticate_user!
-
   def index
 
     if params[:full_address].presence

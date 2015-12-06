@@ -26,6 +26,9 @@
       hr.style-company
       h4.company-section-title Description
       p.company-description = @company.description
+      h4.company-section-title Horaires
+      p.company #{@opening_days} - #{@opening_hours}
+      hr.style-company
 
     .col-sm-6
       - if @desks.any? == false

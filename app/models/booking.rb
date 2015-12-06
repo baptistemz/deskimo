@@ -4,8 +4,11 @@ class Booking < ActiveRecord::Base
   belongs_to :desk
   belongs_to :user
 
+  validates_presence_of :time_slot_type, :time_slot_quantity, :desk_id, :user_id, :start_date
+
+
   validate  :user_cannot_be_from_the_company
-            # :desk_cannot_be_fully_booked
+  #           # :desk_cannot_be_fully_booked
 
   enumerize :time_slot_type, in: ["1/2 journée", "jour(s)", "semaine(s)"], default: "jour(s)"
   enumerize :half_day_choice, in: [:am, :pm]

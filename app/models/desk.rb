@@ -22,9 +22,4 @@ class Desk < ActiveRecord::Base
 
   private
 
-  # def update_desk_availability
-  #   self.bookings.each do |booking|
-  #
-  #   end
-  # end
 end

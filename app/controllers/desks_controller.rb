@@ -10,6 +10,8 @@ class DesksController < ApplicationController
     @opening_days = @company.get_opening_days_string
     @opening_hours = @company.get_opening_hours_string
     @booking = Booking.new
+
   end
+
 end
 

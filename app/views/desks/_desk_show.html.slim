@@ -3,9 +3,7 @@ p.company = desk.description
 
 hr.style-company
 
-h4.company-section-title Horaires
-p.company #{@opening_days} - #{@opening_hours}
-hr.style-company
+
 h4.company-section-title Prix
 .prices-list
   .desk-price
@@ -36,7 +34,7 @@ br
   br
   .booking-quantity-modifier
     p.company à partir du:
-    = f.select :start_date, options_for_booking_date(desk.company.get_next_opening_days_array)
+    = f.select :start_date, options_for_booking_date(desk.get_next_available_days_array)
   br
   .booking-quantity-modifier.half-day-select.hidden
     p.company 1/2 journée:

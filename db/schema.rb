@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151203171315) do
+ActiveRecord::Schema.define(version: 20151206103632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -118,6 +118,17 @@ ActiveRecord::Schema.define(version: 20151203171315) do
 
   add_index "desks", ["company_id"], name: "index_desks_on_company_id", using: :btree
 
+  create_table "unavailability_ranges", force: :cascade do |t|
+    t.date     "start_date"
+    t.date     "end_date"
+    t.integer  "desk_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "kind"
+  end
+
+  add_index "unavailability_ranges", ["desk_id"], name: "index_unavailability_ranges_on_desk_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
@@ -147,4 +158,5 @@ ActiveRecord::Schema.define(version: 20151203171315) do
   add_foreign_key "bookings", "users"
   add_foreign_key "companies", "users"
   add_foreign_key "desks", "companies"
+  add_foreign_key "unavailability_ranges", "desks"
 end

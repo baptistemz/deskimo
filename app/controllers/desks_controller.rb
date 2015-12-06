@@ -1,6 +1,5 @@
 class DesksController < ApplicationController
 
-  skip_before_action :authenticate_user!
 
   def index
     @company = Company.find(params[:company_id])

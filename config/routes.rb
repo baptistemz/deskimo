@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :companies, only: [:index] do
     resources :desks, only: [:index] do
       resources :bookings, only: [:new, :create]
+      resources :unavailability_ranges, only: [:create]
     end
   end
 
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
     resources :companies, only: [:new, :create, :edit, :update] do
       resources :desks, only: [:new, :create, :edit, :index, :update, :destroy] do
         resource :activation, only: [:create, :destroy], controller: 'desks/activation'
+        resources :unavailability_ranges, only: [:new, :create, :destroy]
       end
     end
     resources :bookings, only: [:index, :show, :edit, :update]

@@ -9,11 +9,14 @@ class BookingsController < ApplicationController
 
     if @booking.time_slot_type == "1/2 journée"
       @booking.end_date = @booking.start_date
+      @booking.amount = @booking.desk.half_day_price
     elsif @booking.time_slot_type == "jour(s)"
       booking_day_number = @next_opening_days.find_index(@booking.start_date)
       @booking.end_date = @next_opening_days[booking_day_number + @booking.time_slot_quantity - 1]
+      @booking.amount = @booking.desk.daily_price * @booking.time_slot_quantity
     else
       @booking.end_date = @booking.start_date + (7 * @booking.time_slot_quantity).days
+      @booking.amount = @booking.desk.weekly_price * @booking.time_slot_quantity
     end
 
     @unavailability = @booking.desk.unavailability_ranges.build(
@@ -23,18 +26,20 @@ class BookingsController < ApplicationController
                                                 )
     if @unavailability.save
       if @booking.save
-        raise
-        redirect_to
-        # ???
+        redirect_to company_desk_booking_confirmation_path(@booking.desk.company, @booking.desk, @booking )
       else
         flash[:error]
-        raise
         redirect_to(:back)
       end
     else
       flash[:alert] = "Le bureau n'est pas disponible sur ces dates"
       redirect_to(:back)
     end
+  end
+
+  def confirmation
+    @booking = Booking.find(params[:booking_id])
+    @user = current_user
   end
 
   private

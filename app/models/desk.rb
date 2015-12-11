@@ -9,7 +9,7 @@ class Desk < ActiveRecord::Base
 
   has_many :unavailability_ranges
 
-  after_commit :reindex_product
+  after_commit :reindex_company
 
   def get_next_available_days_array
     available_days = []
@@ -22,10 +22,10 @@ class Desk < ActiveRecord::Base
     return available_days
   end
 
-  def reindex_company
-    company.reindex
-  end
 
   private
 
+  def reindex_company
+    company.reindex
+  end
 end

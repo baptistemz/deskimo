@@ -22,6 +22,6 @@ Rails.application.routes.draw do
         resources :unavailability_ranges, only: [:new, :create, :destroy]
       end
     end
-    resources :bookings, only: [:index, :show, :edit, :update], get 'confirmation'
+    resources :bookings, only: [:index, :show, :edit, :update]
   end
 end

@@ -1,7 +1,8 @@
 class Company < ActiveRecord::Base
+  searchkick locations: ["location"]
 
-  has_many :desks, dependent: :destroy
   belongs_to :user
+  has_many :desks, dependent: :destroy
 
   has_attached_file :picture,
     styles: { large: "500x500", medium: "300x300>", thumb: "100x100>" , list: "800x400#"}
@@ -14,6 +15,19 @@ class Company < ActiveRecord::Base
 
   geocoded_by :full_address
   after_validation :geocode, if: :full_address_changed?
+
+  def search_data
+    {
+      activated:        activated,
+      name:             name,
+      location:         [latitude, longitude],
+      kinds:            desks.pluck(:kind),
+      desk_ids:         desk_ids,
+      half_day_prices:  desks.pluck(:half_day_price),
+      daily_prices:     desks.pluck(:daily_price),
+      weekly_prices:    desks.pluck(:weekly_price)
+    }
+  end
 
   def get_opening_days_string
     if self.open_monday &&

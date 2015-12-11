@@ -23,6 +23,7 @@
               #filter-select
                 / = form_tag companies_path, method: :get, class: "flexform"
                 = select_tag :kind, options_for_select(Desk.kind.options(only: @kinds), params[:kind]), label: false, prompt: 'Type de bureau', include_blank: false, :onchange => "this.form.submit()"
+                / = select_tag :kind, collection: @kinds, selected: @kinds, label: false, prompt: 'kind', include_blank: true, input_html: {:onchange => "this.form.submit()"}
 
         .col-xs-2.visible-xs.no-padding-left
           .map-btn

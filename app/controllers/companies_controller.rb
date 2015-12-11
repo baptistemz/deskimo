@@ -1,7 +1,6 @@
 class CompaniesController < ApplicationController
 
   def index
-
     if params[:full_address].presence
       @location = Geocoder.coordinates(params[:full_address])
     elsif cookies[:lat_lng]
@@ -10,19 +9,30 @@ class CompaniesController < ApplicationController
       @location = Geocoder.coordinates("Lille")
     end
 
-    @available_companies = Company.where(activated: true)
-    @companies = @available_companies.near(@location, 5).where.not(latitude: nil, longitude: nil)
+    aggregations = { kinds: { stats: true }}
+
+    # - - - Filters
+    search_conditions = {
+      activated: true,
+      location: {
+        near:   @location,
+        within: "5km"
+      }
+    }
 
     if params[:kind].present?
-      @companies = @companies.joins(:desks).where(desks: { kind: params[:kind] })
-
-      if @companies.empty?
-        flash[:notice] = "Aucun bureau n'est disponible avec le type sélectionné !"
-        redirect_to companies_path
-      end
+      @kind                     = params[:kind]
+      search_conditions[:kinds] = @kind
     end
 
-    @kinds = Desk.where(company: @available_companies.pluck(:id)).pluck(:kind)
+    @companies = Company.search('*', where: search_conditions, aggs: aggregations)
+
+    if @companies.empty?
+      flash[:notice] = "Aucun bureau ne correspond à votre recherche !"
+      redirect_to companies_path
+    end
+
+    @kinds = @companies.aggs["kinds"]["buckets"].map { |facet| facet["key"] }
 
     @hash = Gmaps4rails.build_markers(@companies) do |company, marker|
       marker.lat company.latitude
@@ -33,15 +43,16 @@ class CompaniesController < ApplicationController
     @mypos = Gmaps4rails.build_markers(@location) do |location, marker|
       marker.lat @location[0].to_f
       marker.lng @location[1].to_f
-      marker.picture({
-                  :url    => "assets/user_marker.png",
-                  :width  => "44",
-                  :height => "44"
-                 })
+
+      marker.picture(
+        url:    "assets/user_marker.png",
+        width:  "44",
+        height: "44"
+      )
+
       marker.title   "votre position"
     end
+
     @no_footer = true
   end
-
-
 end

@@ -36,6 +36,7 @@ gem "omniauth-google-oauth2"
 gem 'underscore-rails'
 gem 'coffee-rails'
 gem "pundit"
+gem 'searchkick'
 
 gem 'activeadmin', github: 'activeadmin'
 

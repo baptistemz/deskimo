@@ -1,5 +1,7 @@
 class Company < ActiveRecord::Base
 
+  searchkick
+
   has_many :desks, dependent: :destroy
   belongs_to :user
 

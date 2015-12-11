@@ -1,6 +1,6 @@
 class Desk < ActiveRecord::Base
-  extend Enumerize
 
+  extend Enumerize
 
   enumerize :kind, in: [:open_space, :closed_office, :meeting_room], default: :open_space
 
@@ -8,6 +8,8 @@ class Desk < ActiveRecord::Base
   has_many :bookings
 
   has_many :unavailability_ranges
+
+  after_commit :reindex_product
 
   def get_next_available_days_array
     available_days = []
@@ -18,6 +20,10 @@ class Desk < ActiveRecord::Base
       end
     end
     return available_days
+  end
+
+  def reindex_company
+    company.reindex
   end
 
   private

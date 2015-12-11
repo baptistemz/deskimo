@@ -1,0 +1,19 @@
+.booking-recap {
+  // display: flex;
+  // justify-content: space-between;
+  // border: 1px solid $light-blue;
+  // border-radius: 4px;
+  padding: 20px;
+  margin-top: 20px
+}
+
+.recap-details {
+  display:flex;
+  align-items:center;
+  height: 200px;
+  background-color: $light-blue;
+  border-radius: 3px;
+  color: white;
+  padding: 0 2%;
+  margin: 20px;
+}

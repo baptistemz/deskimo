@@ -1,0 +1,55 @@
+.container
+  .booking-recap
+    .col-xs-12.col-sm-4
+      .recap-details
+        .recap-content
+          h2 Reservation
+          - if @booking.desk.kind == 'open_space'
+            p Une  place en open space
+          - elsif @booking.desk.kind == 'closed_office'
+            p Un bureau
+          - else
+            p Une salle de réunion
+    .col-xs-12.col-sm-4
+      .recap-details
+        .recap-content
+          h2 Chez
+          p #{@booking.desk.company.name}
+          p #{@booking.desk.company.address}
+          p #{@booking.desk.company.postcode}, #{@booking.desk.company.city}
+    .col-xs-12.col-sm-4
+      .recap-details
+        .recap-content
+          h2 Quand?
+          - if @booking.time_slot_type == "1/2 journée" ||(@booking.time_slot_type == "jour(s)" && @booking.time_slot_quantity == 1)
+            p Le #{@booking.start_date}
+          -else
+            p du #{@booking.start_date} au #{@booking.end_date}
+  .price-recap
+    h2.text-center Prix
+    br
+    - if @booking.time_slot_type == "1/2 journée"
+      p.text-center #{@booking.time_slot_quantity} #{@booking.time_slot_type}
+    - elsif @booking.time_slot_type == "jour(s)"
+      p.text-center #{@booking.time_slot_quantity} #{@booking.time_slot_type}
+    -else
+      p.text-center #{@booking.time_slot_quantity} #{@booking.time_slot_type}
+    hr
+    p.text-center #{@booking.amount} € TTC
+    BR
+  - if @user.first_name && @user.last_name
+    =link_to '#'
+      .btn-primary.login-button-width Paiement
+  -else
+
+    .text-center
+      p.red * Nous avons besoin de vous connaître un peu plus pour effectuer la reservation
+      = simple_form_for (@user), url: account_user_path(@user), method: :patch do |f|
+        .form-group
+          = f.input :first_name
+        .form-group
+          = f.input :last_name
+        .form-actions
+          = f.button :submit, 'passer au paiement', class: "btn-primary login-button-width"
+
+

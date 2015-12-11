@@ -19,7 +19,6 @@ class Booking < ActiveRecord::Base
   def user_cannot_be_from_the_company
     errors.add(:user, "Vous ne pouvez pas reserver dans votre entreprise") if
       user == desk.company.user
-      raise
   end
 
   # def desk_cannot_be_fully_booked

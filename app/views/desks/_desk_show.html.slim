@@ -61,7 +61,7 @@ br
     = f.input :time_slot_type, label: false, include_blank: false, default: "Heure(s)"
   br
   .booking-quantity-modifier
-    p.company à partir du:
+    p.company Le:
     = f.select :start_date, options_for_booking_date(desk.get_next_available_days_array)
   br
   .booking-quantity-modifier.half-day-select.hidden

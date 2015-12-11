@@ -27,7 +27,8 @@ class BookingsController < ApplicationController
         redirect_to
         # ???
       else
-        flash[:alert] = "La reservation n'a pas pu être effectuée"
+        flash[:error]
+        raise
         redirect_to(:back)
       end
     else

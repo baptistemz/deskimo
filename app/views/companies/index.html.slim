@@ -9,7 +9,7 @@
   .row
     .col-xs-12.col-sm-7#left
       .row.research-bar
-        .col-xs-7.col-sm-8
+        .col-xs-6.col-sm-8
           = form_tag companies_path, method: :get, class: "flexform"
             = text_field_tag :full_address, @full_address, placeholder: "Ville ou adresse", id: "js-autocomplete-city", class: "pretty-field"
             button.search-btn type="submit"
@@ -19,13 +19,13 @@
               = hidden_field_tag :locality, id: "locality", disabled: true
               = hidden_field_tag :country, id: "country", disabled: true
 
-            .col-xs-3.col-sm-5.col-sm-offset-12
+            .col-xs-9.col-sm-6.col-xs-offset-12.col-sm-offset-12
               #filter-select
                 / = form_tag companies_path, method: :get, class: "flexform"
                 = select_tag :kind, options_for_select(Desk.kind.options(only: @kinds), params[:kind]), label: false, prompt: 'Type de bureau', include_blank: false, :onchange => "this.form.submit()"
                 / = select_tag :kind, collection: @kinds, selected: @kinds, label: false, prompt: 'kind', include_blank: true, input_html: {:onchange => "this.form.submit()"}
 
-        .col-xs-2.visible-xs.no-padding-left
+        .col-xs-2.col-xs-offset-4.visible-xs.no-padding-left
           .map-btn
             .i.fa.fa-map#map-icon
             .i.fa.fa-list#list-icon.hidden

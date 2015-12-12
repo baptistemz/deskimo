@@ -20,4 +20,13 @@ class ApplicationController < ActionController::Base
   def lat_lng
     @lat_lng ||= session[:lat_lng] ||= get_geolocation_data_the_hard_way
   end
+
+  def default_url_options
+    if Rails.env.production?
+      { host: 'nomadoffice.herokuapp.com' }
+    else
+      { host: ENV['HOST'] || 'localhost:3000' }
+    end
+  end
+
 end

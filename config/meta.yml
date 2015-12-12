@@ -1,0 +1,5 @@
+# config/meta.yml
+default_title: "nomad office"
+meta_description: "Louez tout de suite un bureau autour de vous pour une courte durée."
+meta_image: "logo-avatar.png" # Une image dans votre dossier app/assets/images/
+twitter_account: "@nomdevotrecompte" #indispensable pour les Twitter Cards

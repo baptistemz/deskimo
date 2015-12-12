@@ -3,9 +3,10 @@
 * ------------------------------------- */
 
 .alert {
-  margin: 0;
-  text-align: center;
-  color: white;
+  margin-top    : 15px;
+  margin-bottom : 0;
+  text-align    : center;
+  color         : white;
 }
 .alert-info {
   background: $green;

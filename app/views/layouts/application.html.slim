@@ -2,6 +2,7 @@ doctype html
 html
   head
     title nomad office
+    meta name="description" content=meta_description
 
     = favicon_link_tag 'favicon.ico'
 
@@ -9,6 +10,26 @@ html
     = csrf_meta_tags
     meta name="viewport" content="width=device-width, initial-scale=1"
     meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"
+
+    <!-- Facebook Open Graph data -->
+    meta property="og:title" content="#{title}" /
+    meta property="og:type" content="event" /
+    meta property="og:url" content="#{request.original_url}" /
+    meta property="og:image" content="#{image_url meta_image}" /
+    meta property="og:description" content="#{meta_description}" /
+    meta property="og:site_name" content="#{title}" /
+    <!-- Twitter Card data -->
+    meta name="twitter:card" content="summary_large_image"
+    meta name="twitter:site" content="#{DEFAULT_META[:twitter_account]}"
+    meta name="twitter:title" content="#{title}"
+    meta name="twitter:description" content="#{meta_description}"
+    meta name="twitter:creator" content="#{DEFAULT_META[:twitter_account]}"
+    meta name="twitter:image:src" content="#{image_url meta_image}"
+    <!-- Google+ Schema.org markup -->
+    meta itemprop="name" content="#{title}"
+    meta itemprop="description" content="#{meta_description}"
+    meta itemprop="image" content="#{image_url meta_image}"
+
 
   body
     = render 'shared/navbar'

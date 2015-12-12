@@ -32,3 +32,5 @@ $(document).ready(function(){
     $("#weekly_no_amount").html(no);
   });
 });
+
+

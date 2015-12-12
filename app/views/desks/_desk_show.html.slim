@@ -33,15 +33,15 @@ h4.company-section-title Disponibilités
     li Sam
     li Dim
 
-- @days = Hash[(0...@open_space.get_next_available_days_array.size).zip @open_space.get_next_available_days_array].to_json
-- content_for (:after_js)
+/ - @days = Hash[(0...@open_space.get_next_available_days_array.size).zip @open_space.get_next_available_days_array].to_json
+/ - content_for (:after_js)
 
-  javascript:
-    $(document).ready(function({
-        var days = (#{raw @days})
-        console.log(days{'0'})
-      });
-    );
+/   javascript:
+/     $(document).ready(function({
+/         var days = (#{raw @days})
+/         console.log(days{'0'})
+/       });
+/     );
 
 br
 hr.style-company

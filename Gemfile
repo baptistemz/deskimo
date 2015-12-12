@@ -37,6 +37,9 @@ gem 'underscore-rails'
 gem 'coffee-rails'
 gem "pundit"
 gem 'searchkick'
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
+gem 'bonsai-elasticsearch-rails'
 
 gem 'activeadmin', github: 'activeadmin'
 

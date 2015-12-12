@@ -75,6 +75,7 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bonsai-elasticsearch-rails (0.0.4)
     bootstrap-sass (3.3.5.1)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.3.0)
@@ -110,6 +111,11 @@ GEM
       elasticsearch-transport (= 1.0.15)
     elasticsearch-api (1.0.15)
       multi_json
+    elasticsearch-model (0.1.8)
+      activesupport (> 3)
+      elasticsearch (> 0.4)
+      hashie
+    elasticsearch-rails (0.1.8)
     elasticsearch-transport (1.0.15)
       faraday
       multi_json
@@ -317,11 +323,14 @@ DEPENDENCIES
   aws-sdk (< 2.0)
   better_errors
   binding_of_caller
+  bonsai-elasticsearch-rails
   bootstrap-sass
   coffee-rails
   devise
   devise-i18n
   devise-i18n-views
+  elasticsearch-model
+  elasticsearch-rails
   enumerize
   figaro
   font-awesome-sass

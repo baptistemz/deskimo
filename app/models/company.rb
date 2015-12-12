@@ -1,4 +1,5 @@
 class Company < ActiveRecord::Base
+  require 'elasticsearch/model'
   searchkick locations: ["location"]
 
   belongs_to :user

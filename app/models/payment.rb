@@ -1,4 +1,5 @@
 class Payment < ActiveRecord::Base
+  extend Enumerize
   has_one :credit_card
   has_one :payer, class_name: "User"
   has_one :receiver, class_name: "User"

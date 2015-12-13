@@ -44,10 +44,10 @@ $("#booking_start_date option").each(function()
     availableDaysArray.push(parseInt($(this).val().substring(8, 10)))
   }
 );
-firstDayMonth = parseInt($("#booking_start_date option:nth(0)").val().substring(5, 7))
-if ($('.calendar p.monthname').text() == months[firstDayMonth - 1]){
-  $("li:contains("+availableDaysArray[0].toString()+")").addClass('enabled')
-}
+// firstDayMonth = parseInt($("#booking_start_date option:nth(0)").val().substring(5, 7))
+// if ($('.calendar p.monthname').text() == months[firstDayMonth - 1]){
+//   $("li:contains("+availableDaysArray[0].toString()+")").addClass('enabled')
+// }
 
 
 

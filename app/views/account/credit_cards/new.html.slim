@@ -1,0 +1,63 @@
+.row
+  .col-xs-12
+    h1 New Credit Card
+
+.row
+  .col-xs-8
+    = form_tag '#', id: 'payment', class: 'form'
+      div.form-group
+        = label_tag       :card_name, 'Card Holder Name'
+        = text_field_tag  :card_name, nil, 'name' => nil, class: 'form-control'
+      div.form-group
+        = label_tag       :card_number, 'Card Number'
+        = text_field_tag  :card_number, nil, 'name' => nil, class: 'form-control'
+      div.form-group
+        = label_tag       :card_exp_date, 'Expiration Date'
+        = text_field_tag  :card_exp_date, nil, 'name' => nil, class: 'form-control'
+      div.form-group
+        = label_tag       :card_cvx, 'Code'
+        .row
+          .col-md-3
+            = text_field_tag  :card_cvx, nil, 'name' => nil, class: 'form-control', class: 'form-control'
+          .col-md-12
+            p.help-block = 'CVC Help Text'
+      div
+        = submit_tag 'Enregistrer la carte', class: 'btn btn-primary'
+
+.hidden
+  = form_tag account_credit_cards_path, id: 'credit_card' do
+    = text_field_tag :mangopay_card_id
+
+= content_for :javascripts
+  javascript:
+    mangoPay.cardRegistration.baseURL   = "https://api.sandbox.mangopay.com";
+    mangoPay.cardRegistration.clientId  = "#{ENV['MANGOPAY_CLIENT_ID']}";
+
+    mangoPay.cardRegistration.init({
+      cardRegistrationURL: "#{@card_registration["CardRegistrationURL"]}",
+      preregistrationData: "#{@card_registration["PreregistrationData"]}",
+      accessKey: "#{@card_registration["AccessKey"]}",
+      Id: "#{@card_registration["Id"]}"
+    });
+
+    // Register card
+    $("#payment").submit(function(event) {
+      event.preventDefault();
+      var cardData = {
+        cardNumber: $("#card_number").val(),
+        cardExpirationDate: $("#card_exp_date").val().replace('/',''),
+        cardCvx: $("#card_cvx").val(),
+        cardType: 'CB_VISA_MASTERCARD'
+      };
+
+      mangoPay.cardRegistration.registerCard(
+        cardData,
+        function(res) {
+          $('#mangopay_card_id').val(res.CardId);
+          $('#credit_card').submit();
+        },
+        function(res) {
+          console.log(res.ResultMessage);
+        }
+      )
+    });

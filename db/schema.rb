@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151211101234) do
+ActiveRecord::Schema.define(version: 20151212235519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,6 +103,15 @@ ActiveRecord::Schema.define(version: 20151211101234) do
 
   add_index "companies", ["user_id"], name: "index_companies_on_user_id", using: :btree
 
+  create_table "credit_cards", force: :cascade do |t|
+    t.string   "name"
+    t.date     "expires_at"
+    t.string   "token"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "desks", force: :cascade do |t|
     t.text     "description"
     t.datetime "created_at",                    null: false
@@ -118,6 +127,20 @@ ActiveRecord::Schema.define(version: 20151211101234) do
   end
 
   add_index "desks", ["company_id"], name: "index_desks_on_company_id", using: :btree
+
+  create_table "payments", force: :cascade do |t|
+    t.integer  "payer_id"
+    t.integer  "receiver_id"
+    t.integer  "credit_card_id"
+    t.integer  "amount_cents",      default: 0
+    t.string   "amount_currency",   default: "EUR"
+    t.json     "response"
+    t.string   "status"
+    t.string   "mangopay_payin_id"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.integer  "booking_id"
+  end
 
   create_table "unavailability_ranges", force: :cascade do |t|
     t.date     "start_date"
@@ -150,6 +173,8 @@ ActiveRecord::Schema.define(version: 20151211101234) do
     t.string   "last_name"
     t.string   "token"
     t.datetime "token_expiry"
+    t.integer  "mangopay_wallet_id"
+    t.integer  "mangopay_user_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

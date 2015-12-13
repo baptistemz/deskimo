@@ -10,11 +10,14 @@ Rails.application.routes.draw do
       resources :bookings, only: [:new, :create] do
         get 'confirmation'
       end
+      resources :user, only: [:update]
       resources :unavailability_ranges, only: [:create]
     end
   end
 
-
+  resources :bookings, only: [] do
+    resources :payments, only: [:new, :create]
+  end
 
   namespace :account do
     resource :user, only: [:show, :edit, :update], controller: 'user'

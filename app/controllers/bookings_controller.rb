@@ -38,7 +38,7 @@ class BookingsController < ApplicationController
   end
 
   def confirmation
-    @booking = Booking.find(params[:booking_id])
+    @booking = current_user.bookings.find(params[:booking_id])
     @user = current_user
   end
 

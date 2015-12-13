@@ -31,7 +31,7 @@ class CompaniesController < ApplicationController
 
     if @companies.empty?
       flash[:notice] = "Aucun bureau ne correspond à votre recherche !"
-      redirect_to companies_path
+      # redirect_to companies_path
     end
 
     @kinds = @companies.aggs["kinds"]["buckets"].map { |facet| facet["key"] }

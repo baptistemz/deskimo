@@ -8,8 +8,8 @@ module Account
     def edit
       @user = current_user
     end
+
     def update
-      raise
       @user = current_user
       if current_user.update(user_params)
         if params[:next_step] == 'payment'
@@ -18,7 +18,7 @@ module Account
           redirect_to account_user_path
         end
       else
-        render :back
+        redirect_to :back
       end
     end
 

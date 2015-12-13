@@ -4,7 +4,7 @@ ruby '2.2.3'
 gem 'rails', '4.2.4'
 gem 'pg'
 gem 'figaro'
-# gem 'jbuilder', '~> 2.0'
+gem 'jbuilder', '~> 2.0'
 
 gem 'sass-rails', '~> 5.0'
 gem 'jquery-rails'
@@ -40,6 +40,8 @@ gem 'searchkick'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 gem 'bonsai-elasticsearch-rails'
+
+gem 'mangopay', '~> 3.0.0'
 
 gem 'activeadmin', github: 'activeadmin'
 

@@ -44,7 +44,7 @@
 
     .text-center
       p.red * Nous avons besoin de vous connaître un peu plus pour effectuer la reservation
-      = simple_form_for (@user), url: account_user_path(@user), method: :patch do |f|
+      = simple_form_for @user, url: account_user_path(@desk, :booking => @booking ), method: :patch do |f|
         .form-group
           = f.input :first_name
         .form-group

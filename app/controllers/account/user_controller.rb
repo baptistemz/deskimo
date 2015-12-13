@@ -6,12 +6,17 @@ module Account
     end
 
     def edit
+      @user = current_user
     end
     def update
+      raise
       @user = current_user
       if current_user.update(user_params)
-        redirect_to
-        #???
+        if params[:next_step] == 'payment'
+          render :back
+        else
+          redirect_to account_user_path
+        end
       else
         render :back
       end

@@ -1,0 +1,5 @@
+=simple_form_for [:account, @user] do |f|
+  = f.input :email , default:'#{@user.email}'
+  = f.input :first_name , default:'#{@user.first_name}'
+  = f.input :last_name , default:'#{@user.last_name}'
+  = f.button :submit

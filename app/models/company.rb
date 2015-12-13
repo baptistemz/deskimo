@@ -1,6 +1,7 @@
 class Company < ActiveRecord::Base
   require 'elasticsearch/model'
   searchkick locations: ["location"]
+  searchkick settings: {number_of_shards: 1}
 
   belongs_to :user
   has_many :desks, dependent: :destroy

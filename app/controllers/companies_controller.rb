@@ -1,12 +1,14 @@
 class CompaniesController < ApplicationController
 
   def index
-    if params[:full_address].presence
+    if params[:latitude] && params[:longitude]
+      @location = [params[:latitude], params[:longitude]]
+    elsif params[:full_address].presence
       @location = Geocoder.coordinates(params[:full_address])
     elsif cookies[:lat_lng]
       @location = cookies[:lat_lng].split(',')
     else
-      @location = Geocoder.coordinates("Lille")
+      @location = [Settings.locations.default.latitude, Settings.locations.default.longitude]
     end
 
     aggregations = { kinds: { stats: true }}

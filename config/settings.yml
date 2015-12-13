@@ -1,0 +1,9 @@
+locations:
+  default:
+    city: Lille
+    latitude: 50.62925
+    longitude: 3.057256
+
+mails:
+  defaults:
+    from: baptiste@nomadoffice.co

@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
+
   protect_from_forgery with: :exception
   # before_action :authenticate_user!
 
@@ -15,13 +14,17 @@ class ApplicationController < ActionController::Base
   #   flash[:alert] = "You are not authorized to perform this action."
   #   redirect_to(root_path)
   # end
-
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
 
   def lat_lng
     @lat_lng ||= session[:lat_lng] ||= get_geolocation_data_the_hard_way
   end
 
   def default_url_options
+    { locale: I18n.locale == I18n.default_locale ? nil : I18n.locale }
+    
     if Rails.env.production?
       { host: 'nomadoffice.herokuapp.com' }
     else

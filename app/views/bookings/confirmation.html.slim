@@ -38,8 +38,8 @@
     p.text-center #{@booking.amount} € TTC
     BR
   - if @user.first_name && @user.last_name
-    =link_to new_booking_payment_path(@booking)
-      .btn-primary.login-button-width Paiement
+    =link_to new_booking_payment_path(@booking), class: 'btn-center'
+      .btn.btn-primary.login-button-width Paiement
   -else
 
     .text-center
@@ -49,7 +49,7 @@
           = f.input :first_name
         .form-group
           = f.input :last_name
-        .form-actions
-          = f.button :submit, 'passer au paiement', class: "btn-primary login-button-width"
+        .form-actions.btn-center
+          = f.button :submit, 'passer au paiement', class: "btn btn-primary login-button-width center"
 
 

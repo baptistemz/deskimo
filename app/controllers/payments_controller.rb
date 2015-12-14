@@ -1,13 +1,23 @@
 class PaymentsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @payments = current_user.payments
   end
 
   def new
-    @booking = Booking.find(params[:booking_id])
+    current_user.create_or_update_wallet
+    @booking = current_user.bookings.find(params[:booking_id])
     @credit_cards = current_user.credit_cards
-    @payment = current_user.payments.build
+    @credit_card = current_user.credit_cards.build
+    @payment = current_user.outbound_payments.build
+
+    params = {
+        UserId: current_user.mangopay_user_id,
+        Currency: "EUR",
+        CardType: "CB_VISA_MASTERCARD"
+      }
+    @card_registration = MangoPay::CardRegistration.create(params)
   end
 
   def create

@@ -17,9 +17,10 @@ en:
   home:
     title : "Find an office in company close to you"
   navbar:
-    profil: "My profile"
-    sign_in: "Sign in"
-    sign_up: "Sign up"
-    sign_out: "Sign out"
-    company_dashboard: "Company dashboard"
-    company: "Company"
+    profil            : "My profile"
+    sign_in           : "Sign in"
+    sign_up           : "Sign up"
+    sign_out          : "Sign out"
+    company_dashboard : "Company dashboard"
+    company           : "Company"
+    individual        : "Individual"

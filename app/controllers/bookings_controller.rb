@@ -1,5 +1,4 @@
 class BookingsController < ApplicationController
-
   before_action :authenticate_user!
 
   def create
@@ -28,7 +27,7 @@ class BookingsController < ApplicationController
       if @booking.save
         redirect_to company_desk_booking_confirmation_path(@booking.desk.company, @booking.desk, @booking )
       else
-        flash[:error]
+        flash[:alert]
         redirect_to(:back)
       end
     else

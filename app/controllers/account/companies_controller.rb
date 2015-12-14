@@ -7,6 +7,7 @@ module Account
     def create
       @company = current_user.build_company(company_params)
       if @company.save
+        current_user.create_or_update_wallet
         flash[:notice] = "Votre entreprise a bien été enregistrée."
         redirect_to new_account_company_desk_path(@company)
       else

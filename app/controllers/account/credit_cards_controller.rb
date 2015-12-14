@@ -20,8 +20,8 @@ module Account
 
     def create
       @credit_card = current_user.credit_cards.build(token: params[:mangopay_card_id])
-      @credit_card.name = "Credit Card ##{params[:mangopay_card_id]}"
-      @last_order = current_user.orders.last
+      @credit_cards_num = current_user.credit_cards.length + 1
+      @credit_card.name = "Credit Card n°#{@credit_cards_num} - #{params[:mangopay_card_id]}"
       if @credit_card.save
         if @last_order.cart_status == 'payment'
           redirect_to new_product_checkout_payment_path(@last_order.product)

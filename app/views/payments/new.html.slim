@@ -1,0 +1,86 @@
+.container
+  h1 Paiement
+  .row
+    .col-xs-12.col-md-6
+      .credit-card-choice
+        .card-selection
+          .oversize.text-center
+            i.fa.fa-credit-card
+          h2 Selectionnez la carte de crédit
+          - if @credit_cards.empty?
+            p Aucune carte de crédit enregistrée pour le moment
+            .btn.btn-primary#create-card.qty-update-btn Enregistrer une carte
+          -else
+            = select_tag @credit_cards
+            p ou :
+            .btn.btn-primary#create-card.qty-update-btn Enregistrez une nouvelle carte
+
+          .card-creation.hidden
+            = form_tag (account_credit_cards_path), id: 'credit_card', class: 'form'
+              div.form-group
+                = label_tag       :card_name, 'Nom'
+                = text_field_tag  :card_name, nil, 'name' => nil, class: 'form-control'
+              div.form-group
+                = label_tag       :card_number, 'Numéro de carte'
+                = text_field_tag  :card_number, nil, 'name' => nil, class: 'form-control'
+              div.form-group
+                .row
+                  .col-sm-9
+                    = label_tag       :card_exp_date, "Date d'expiration"
+                    .row
+                      .col-xs-6
+                        = select_tag  :card_exp_month, options_for_select((1..12).to_a), class: 'form-control'
+                      .col-xs-6
+                        = select_tag :card_exp_year, options_for_select((Date.today.year..(Date.today.year + 20))), class: 'form-control'
+                  .col-sm-3
+                    = label_tag       :card_cvx, 'Code'
+                    = text_field_tag  :card_cvx, nil, 'name' => nil, class: 'form-control'
+                    p.help-block = 'CVC*'
+                div
+                  button.btn.btn-primary.btn-center.full-width#save-card Enregistrer
+
+
+
+
+
+    .col-xs-12.col-md-6
+      .payment-confirmation
+        .oversize.text-center
+          i.fa.fa-long-arrow-right
+        h2 Effectuez le paiement
+        hr
+        hr.dark-hr
+
+= content_for :javascripts
+  javascript:
+    mangoPay.cardRegistration.baseURL   = "https://api.sandbox.mangopay.com";
+    mangoPay.cardRegistration.clientId  = "#{ENV['MANGOPAY_CLIENT_ID']}";
+
+    mangoPay.cardRegistration.init({
+      cardRegistrationURL: "#{@card_registration["CardRegistrationURL"]}",
+      preregistrationData: "#{@card_registration["PreregistrationData"]}",
+      accessKey: "#{@card_registration["AccessKey"]}",
+      Id: "#{@card_registration["Id"]}"
+    });
+
+    // Register card
+    $("#save-card").submit(function(event) {
+      event.preventDefault();
+      var cardData = {
+        cardNumber: $("#card_number").val(),
+        cardExpirationDate: $("#card_exp_month").val()+$("#card_exp_year").val()
+        cardCvx: $("#card_cvx").val(),
+        cardType: 'CB_VISA_MASTERCARD'
+      };
+
+      mangoPay.cardRegistration.registerCard(
+        cardData,
+        function(res) {
+          $('#mangopay_card_id').val(res.CardId);
+          $('#credit_card').submit();
+        },
+        function(res) {
+          console.log(res.ResultMessage);
+        }
+      )
+    });

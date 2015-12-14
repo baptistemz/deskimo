@@ -71,6 +71,11 @@
   padding-top   : 8px;
 }
 
+.btn-center {
+  display:flex;
+  justify-content:center;
+}
+
 #flash-alert,
 #flash-notice {
   margin-top    : 55px;
@@ -80,6 +85,14 @@
 .unclickable {
   pointer-events: none;
   opacity: 0.5
+}
+
+.dark-hr {
+  border: 1px solid $gray-dark
+}
+
+.oversize{
+  font-size: 30px
 }
 
 //---- MEDIA QUERIES ----//

@@ -5,8 +5,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
   has_many :bookings
-  has_many :credit_cards
+  has_many :credit_cards, dependent: :destroy
   has_one :company, :dependent => :destroy
+  has_many :inbound_payments, class_name: 'Payment', foreign_key: :receiver_id
+  has_many :outbound_payments, class_name: 'Payment', foreign_key: :payer_id
 
   def self.find_for_facebook_oauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: "registrations" }
-  # scope '(:locale)', locale: /fr|en/ do
+  
+  scope '(:locale)', locale: /fr|en/ do
+  get '/change_locale/:locale', to: 'settings#change_locale', as: :change_locale
 
     devise_for :admin_users, ActiveAdmin::Devise.config
     ActiveAdmin.routes(self)
 
     root to: 'pages#home'
+
 
     resources :companies, only: [:index] do
       resources :desks, only: [:index] do

@@ -10,7 +10,8 @@
 
     = image_tag 'logo6.png', class: 'banner-logo'
 
-    h1 Trouvez instantanément un bureau autour de vous
+    br
+    h1 = t('home.title')
 
     / = link_to companies_path
     .btn.btn-primary#geoloc Géolocalisez-vous
@@ -85,10 +86,3 @@ br
           - else
             = link_to new_user_registration_path(:user_type => "company")
               .btn.btn-primary Inscrivez votre entreprise
-
-
-
-
-
-
-

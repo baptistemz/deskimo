@@ -21,43 +21,43 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
           / li = link_to florist_account_dashboard_path
           li = link_to account_user_path
             i.fa.fa-user
-            'Mon compte
+            = t('navbar.profil')
 
           li = link_to account_company_desks_path(current_user.company)
             i.fa.fa-home
-            'Espace entreprise
+            = t('navbar.company_dashboard')
 
           li = link_to destroy_user_session_path, method: :delete
             i.fa.fa-sign-out
-            'Se déconnecter
+            = t('navbar.sign_out')
 
         - elsif user_signed_in?
           li = link_to account_user_path
             i.fa.fa-home
-            'Mon compte
+            = t('navbar.profil')
 
           li = link_to destroy_user_session_path, method: :delete
             i.fa.fa-sign-out
-            'Se déconnecter
+            = t('navbar.sign_out')
 
 
         - else
           li = link_to new_user_session_path
             i.fa.fa-user.icon-margin
-            'Connexion
+            = t('navbar.sign_in')
           li.dropdown
             = link_to "#", {class: "dropdown-toggle", "data-toggle" => "dropdown", "role" => "button", "aria-expanded" => "false"}
               i.fa.fa-lock.icon-margin
-              'Créer un compte
+              = t('navbar.sign_up')
 
 
             ul.dropdown-menu
               li = link_to new_user_registration_path(:user_type => "user")
                 i.fa.fa-lock.icon-margin
-                'Particulier
+                = t('navbar.individual')
               li = link_to new_user_registration_path(:user_type => "company")
                 i.fa.fa-lock.icon-margin
-                'Entreprise
+                = t('navbar.company')
 
         ul.nav.navbar-nav.navbar-right
          li.dropdown

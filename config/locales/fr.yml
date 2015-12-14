@@ -16,3 +16,10 @@ fr:
       updated_at : "Mis à jour le"
   home:
     title : "Trouvez un bureau dans une entreprise autour de vous"
+  navbar:
+    profil: "Mon compte"
+    sign_in: "Connexion"
+    sign_up: "Créer un compte"
+    sign_out: "Se déconnecter"
+    company_dashboard: "Espace entreprise"
+    company: "Entreprise"

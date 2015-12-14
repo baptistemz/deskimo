@@ -16,6 +16,7 @@ var myPosition = new Array();
       window.location = 'companies';
       }
 
+
     function onError(err) {
       var message;
       switch (err.code) {
@@ -23,10 +24,10 @@ var myPosition = new Array();
           message = 'Unknown error: ' + err.message;
           break;
         case 1:
-          message = 'You denied permission to retrieve a position.';
+          message = 'You denied permission to retrieve a position.' + err.message;
           break;
         case 2:
-          message = 'The browser was unable to determine a position: ' + error.message;
+          message = 'The browser was unable to determine a position: ' + err.message;
           break;
         case 3:
           message = 'The browser timed out before retrieving the position.';

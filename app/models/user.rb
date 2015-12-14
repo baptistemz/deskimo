@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
   has_many :bookings
+  has_many :credit_cards
   has_one :company, :dependent => :destroy
 
   def self.find_for_facebook_oauth(auth)

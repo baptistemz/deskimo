@@ -38,7 +38,7 @@
     p.text-center #{@booking.amount} € TTC
     BR
   - if @user.first_name && @user.last_name
-    =link_to '#'
+    =link_to new_booking_payment_path(@booking)
       .btn-primary.login-button-width Paiement
   -else
 

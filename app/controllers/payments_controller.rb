@@ -5,7 +5,6 @@ class PaymentsController < ApplicationController
   end
 
   def new
-    raise
     @booking = Booking.find(params[:booking_id])
     @credit_cards = current_user.credit_cards
     @payment = current_user.payments.build

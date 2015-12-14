@@ -10,10 +10,9 @@ module Account
     end
 
     def update
-      @user = current_user
       if current_user.update(user_params)
-        if params[:next_step] == 'payment'
-          render :back
+        if params[:booking]
+          redirect_to new_booking_payment_path(params[:booking])
         else
           redirect_to account_user_path
         end

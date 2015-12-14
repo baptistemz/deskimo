@@ -2,8 +2,8 @@
   = text_field_tag :full_address, @full_address, placeholder: "Ville ou adresse", id: "js-autocomplete-city", class: "pretty-field"
   button.search-btn type="submit"
     i.fa.fa-search
-    = hidden_field_tag :lat, id: "lat", disabled: true
-    = hidden_field_tag :lng, id: "lng", disabled: true
+    / = hidden_field_tag :lat, id: "lat", disabled: true
+    / = hidden_field_tag :lng, id: "lng", disabled: true
     / = hidden_field_tag :locality, id: "locality", disabled: true
     / = hidden_field_tag :country, id: "country", disabled: true
 

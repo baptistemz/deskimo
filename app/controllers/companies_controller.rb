@@ -1,9 +1,9 @@
 class CompaniesController < ApplicationController
 
   def index
-    if params[:lat] && params[:lng]
-      @location = [params[:lat], params[:lng]]
-    elsif params[:full_address].presence
+    # elsif params[:lat] && params[:lng]
+    #   @location = [params[:lat], params[:lng]]
+    if params[:full_address].presence
       @location = Geocoder.coordinates(params[:full_address])
     elsif cookies[:lat_lng]
       @location = cookies[:lat_lng].split(',')

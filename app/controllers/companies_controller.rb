@@ -1,8 +1,8 @@
 class CompaniesController < ApplicationController
 
   def index
-    if params[:latitude] && params[:longitude]
-      @location = [params[:latitude], params[:longitude]]
+    if params[:lat] && params[:lng]
+      @location = [params[:lat], params[:lng]]
     elsif params[:full_address].presence
       @location = Geocoder.coordinates(params[:full_address])
     elsif cookies[:lat_lng]
@@ -31,7 +31,6 @@ class CompaniesController < ApplicationController
 
     if @companies.empty?
       flash[:notice] = "Aucun bureau ne correspond à votre recherche !"
-      # redirect_to companies_path
     end
 
     @kinds = @companies.aggs["kinds"]["buckets"].map { |facet| facet["key"] }

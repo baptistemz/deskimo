@@ -1,6 +1,6 @@
 class UnavailabilityRange < ActiveRecord::Base
   extend Enumerize
-  belongs_to :desk
+  belongs_to :desk, dependent: :destroy
 
   validates_presence_of :start_date, :end_date, :kind
   validate :start_date_cannot_be_in_the_past

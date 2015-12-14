@@ -11,13 +11,17 @@
       .row.research-bar
         .col-xs-6.col-sm-8
           = form_tag companies_path, method: :get, class: "flexform"
-            = text_field_tag :full_address, @full_address, placeholder: "Ville ou adresse", id: "js-autocomplete-city", class: "pretty-field"
+            = text_field_tag :full_address, params[:full_address], placeholder: "Ville ou adresse", id: "js-autocomplete-city", class: "pretty-field"
             button.search-btn type="submit"
               i.fa.fa-search
-              = hidden_field_tag :street_number, id: "street_number", disabled: true
-              = hidden_field_tag :route, id: "route", disabled: true
-              = hidden_field_tag :locality, id: "locality", disabled: true
-              = hidden_field_tag :country, id: "country", disabled: true
+            / = hidden_field_tag :geoloc, cookies[:lat_lng], disabled: true
+            = hidden_field_tag :lat, params[:lat], id: "lat"
+            = hidden_field_tag :lng, params[:lng], id: "lng"
+            / = hidden_field_tag :lng, id: 'lng', disabled: true
+              / = hidden_field_tag :street_number, id: "street_number", disabled: true
+              / = hidden_field_tag :route, id: "route", disabled: true
+              / = hidden_field_tag :locality, id: "locality", disabled: true
+              / = hidden_field_tag :country, id: "country", disabled: true
 
             .col-xs-9.col-sm-6.col-xs-offset-12.col-sm-offset-12
               #filter-select
@@ -31,33 +35,36 @@
             .i.fa.fa-list#list-icon.hidden
 
       .row.products-list
-        - @companies.each do |company|
-          .col-xs-12.col-md-6
-            =link_to company_desks_path(company)
-              .product-thumbnail
-                .product-thumbnail-gradient
-                  h4 Détails
-                = image_tag company.picture.url(:list), class: "img-responsive"
-                .distance
-                  p #{number_with_precision(company.distance_from(@location), precision: 1)} km
-                ul.list-unstyle.list-inline#services
-                  - if company.wifi?
-                    li
-                      .service-badge
-                        i.fa.fa-wifi
-                  - if company.coffee?
-                    li
-                      .service-badge
-                        i.fa.fa-coffee
-                  - if company.printer?
-                    li
-                      .service-badge
-                        i.fa.fa-print
-                .product-thumbnail-content
-                  .product-name
-                    p = company.name
-                  .product-price
-                    p #{company.cheapest_desk.daily_price}€ / j
+        - if @empty_message
+          p = @empty_message
+        -else
+          - @companies.each do |company|
+            .col-xs-12.col-md-6
+              =link_to company_desks_path(company)
+                .product-thumbnail
+                  .product-thumbnail-gradient
+                    h4 Détails
+                  = image_tag company.picture.url(:list), class: "img-responsive"
+                  .distance
+                    p #{number_with_precision(company.distance_from(@location), precision: 1)} km
+                  ul.list-unstyle.list-inline#services
+                    - if company.wifi?
+                      li
+                        .service-badge
+                          i.fa.fa-wifi
+                    - if company.coffee?
+                      li
+                        .service-badge
+                          i.fa.fa-coffee
+                    - if company.printer?
+                      li
+                        .service-badge
+                          i.fa.fa-print
+                  .product-thumbnail-content
+                    .product-name
+                      p = company.name
+                    .product-price
+                      p #{company.cheapest_desk.daily_price}€ / j
 
     .col-sm-5.hidden-xs.fixed
       / .map-outer.hidden-xs

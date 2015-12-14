@@ -1,11 +1,13 @@
 class CompaniesController < ApplicationController
 
   def index
-    # elsif params[:lat] && params[:lng]
-    #   @location = [params[:lat], params[:lng]]
-    if params[:full_address].presence
+    if params[:lat].presence && params[:lng].presence
+      @location = [params[:lat], params[:lng]]
+    elsif params[:full_address].presence
       @location = Geocoder.coordinates(params[:full_address])
     elsif cookies[:lat_lng]
+      params[:lat] = cookies[:lat_lng].split(',')[0]
+      params[:lng] = cookies[:lat_lng].split(',')[1]
       @location = cookies[:lat_lng].split(',')
     else
       @location = [Settings.locations.default.latitude, Settings.locations.default.longitude]
@@ -26,11 +28,10 @@ class CompaniesController < ApplicationController
       @kind                     = params[:kind]
       search_conditions[:kinds] = @kind
     end
-
     @companies = Company.search('*', where: search_conditions, aggs: aggregations)
 
     if @companies.empty?
-      flash[:notice] = "Aucun bureau ne correspond à votre recherche !"
+      @empty_message = 'Aucun bureau disponible ne correspond à votre recherche'
     end
 
     @kinds = @companies.aggs["kinds"]["buckets"].map { |facet| facet["key"] }

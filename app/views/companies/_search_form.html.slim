@@ -1,9 +1,11 @@
-= form_tag companies_path, method: :get, class: "flexform" do
+= form_tag companies_path, method: :get, class: "flexform"
   = text_field_tag :full_address, @full_address, placeholder: "Ville ou adresse", id: "js-autocomplete-city", class: "pretty-field"
   button.search-btn type="submit"
     i.fa.fa-search
-    / = hidden_field_tag :lat, id: "lat", disabled: true
-    / = hidden_field_tag :lng, id: "lng", disabled: true
-    / = hidden_field_tag :locality, id: "locality", disabled: true
-    / = hidden_field_tag :country, id: "country", disabled: true
+  = hidden_field_tag :lat, params[:lat], id: 'lat'
+  = hidden_field_tag :lng, params[:lng], id: 'lng'
+  / = hidden_field_tag :street_number, id: "street_number", disabled: true
+  / = hidden_field_tag :route, id: "route", disabled: true
+  / = hidden_field_tag :locality, id: "locality", disabled: true
+  / = hidden_field_tag :country, id: "country", disabled: true
 

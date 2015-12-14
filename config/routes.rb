@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: "registrations" }
-
+  
   scope '(:locale)', locale: /fr|en/ do
   get '/change_locale/:locale', to: 'settings#change_locale', as: :change_locale
 
@@ -35,5 +35,5 @@ Rails.application.routes.draw do
       end
       resources :bookings, only: [:index, :show, :edit, :update]
     end
-  end
+  # end
 end

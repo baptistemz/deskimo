@@ -1,4 +1,8 @@
 fr:
+  languages:
+    lang : "Langue"
+    fr   : "Français"
+    en   : "Anglais"
   activerecord:
     models:
       booking              : "Réservation"
@@ -10,3 +14,5 @@ fr:
     attributes:
       created_at : "Créé le"
       updated_at : "Mis à jour le"
+  home:
+    title : "Trouvez un bureau dans une entreprise autour de vous"

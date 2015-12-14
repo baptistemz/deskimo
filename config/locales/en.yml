@@ -1,4 +1,8 @@
 en:
+  languages:
+    lang : "language"
+    fr   : "French"
+    en   : "English"
   activerecord:
     models:
       booking              : "Booking"
@@ -10,3 +14,5 @@ en:
     attributes:
       created_at : "created at"
       updated_at : "updated at"
+  home:
+    title : "Find an office in company close to you"

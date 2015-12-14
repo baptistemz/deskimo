@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
-  # before_action :authenticate_user!
+  before_action :set_locale
 
   # include Pundit
 
@@ -15,7 +15,13 @@ class ApplicationController < ActionController::Base
   #   redirect_to(root_path)
   # end
   def set_locale
-    I18n.locale = params[:locale] || I18n.default_locale
+    if cookies[:educator_locale] && I18n.available_locales.include?(cookies[:educator_locale].to_sym)
+      l = cookies[:educator_locale].to_sym
+    else
+      l = I18n.default_locale
+      cookies.permanent[:educator_locale] = l
+    end
+    I18n.locale = l
   end
 
   def lat_lng
@@ -23,13 +29,13 @@ class ApplicationController < ActionController::Base
   end
 
   def default_url_options
-    { locale: I18n.locale == I18n.default_locale ? nil : I18n.locale }
-    
+
     if Rails.env.production?
       { host: 'nomadoffice.herokuapp.com' }
     else
       { host: ENV['HOST'] || 'localhost:3000' }
     end
+    { locale: I18n.locale == I18n.default_locale ? nil : I18n.locale }
   end
 
 end

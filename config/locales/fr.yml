@@ -1,0 +1,12 @@
+fr:
+  activerecord:
+    models:
+      booking              : "Réservation"
+      company              : "Entreprise"
+      credit_card          : "Carte de crédit"
+      desk                 : "Bureau"
+      payment              : "Payement"
+      unavailability_range : "Indisponibilité"
+    attributes:
+      created_at : "Créé le"
+      updated_at : "Mis à jour le"

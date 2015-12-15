@@ -2,7 +2,8 @@ class PaymentsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @payments = current_user.payments
+    @outbound_payments = current_user.outbound_payments
+    @inbound_payments = current_user.inbound_payments
   end
 
   def new

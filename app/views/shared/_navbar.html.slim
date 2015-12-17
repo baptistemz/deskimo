@@ -49,6 +49,7 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
             = link_to "#", {class: "dropdown-toggle", "data-toggle" => "dropdown", "role" => "button", "aria-expanded" => "false"}
               i.fa.fa-lock.icon-margin
               = t('navbar.sign_up')
+              span.caret
 
 
             ul.dropdown-menu
@@ -62,8 +63,7 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
         ul.nav.navbar-nav.navbar-right
          li.dropdown
           a.dropdown-toggle data-toggle="dropdown" href="#"
-            i.fa.fa-globe.icon-margin
-            = t('languages.lang')
+            i.fa.fa-globe.icon-margin  L
             span.caret
             ul.dropdown-menu role="menu"
               li

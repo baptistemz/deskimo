@@ -23,10 +23,7 @@ class PaymentsController < ApplicationController
 
   def create
     @booking = Booking.find(params[:booking_id])
-    @payment = current_user.payments.build(payment_params)
-    @payment.order = current_order
-    @payment.amount = current_order.product.price
-    @payment.florist = current_order.florist
+    @payment = current_user.outbound_payments.build(payment_params)
     @payment.charge
 
     case @payment.state

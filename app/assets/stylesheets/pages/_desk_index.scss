@@ -1,65 +1,65 @@
 .content{
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top    : 30px;
+  margin-bottom : 30px;
 }
 
 h3.company-section-title{
-  font-size: 24px;
-  color: $light-blue;
-  margin: 20.8px 0 Opx 0;
-  line-height: 1;
-  text-transform: uppercase;
+  font-size      : 24px;
+  color          : $light-blue;
+  margin         : 20.8px 0 Opx 0;
+  line-height    : 1;
+  text-transform : uppercase;
 }
 
 h4.company-section-title{
-  font-size: 18px;
-  color: $light-blue;
-  margin: 20.8px 0 Opx 0;
-  line-height: 1;
+  font-size   : 18px;
+  color       : $light-blue;
+  margin      : 20.8px 0 Opx 0;
+  line-height : 1;
 }
 
 hr.style-company {
-  border: 0;
-  height: 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  margin-top: 5px;
-  width: 100%;
+  border        : 0;
+  height        : 0;
+  border-top    : 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom : 1px solid rgba(255, 255, 255, 0.3);
+  margin-top    : 5px;
+  width         : 100%;
 }
 
 p.company-description{
-  // font-size: 16px;
-  margin-bottom: 20.8px;
-  line-height: 20.8px;
-  margin: 0 0 10px;
-  color: #888888;
-  margin-bottom: 20px;
+  // font-size  : 16px;
+  margin-bottom : 20.8px;
+  line-height   : 20.8px;
+  margin        : 0 0 10px;
+  color         : #888888;
+  margin-bottom : 20px;
 }
 
 p.company{
-  margin-bottom: 20.8px;
-  line-height: 20.8px;
-  margin: 0 0 10px;
-  color: #888888;
-  margin-bottom: 20px;
-  min-width: 90px
+  margin-bottom : 20.8px;
+  line-height   : 20.8px;
+  margin        : 0 0 10px;
+  color         : #888888;
+  margin-bottom : 20px;
+  min-width     : 90px
 
 }
 
 .desk-price{
-  color: #000;
-  background: #eee;
-  padding: 7px 0.5%;
-  display: inline-block;
-  width: 25%;
-  margin-bottom: 10px;
+  color         : #000;
+  background    : #eee;
+  padding       : 7px 0.5%;
+  display       : inline-block;
+  width         : 25%;
+  margin-bottom : 10px;
 }
 .price-category {
-  width: 99%;
-  margin:0;
-  text-align: center;
-  white-space: nowrap;
-  font-size: 12px;
+  width       : 99%;
+  margin      : 0;
+  text-align  : center;
+  white-space : nowrap;
+  font-size   : 12px;
 }
 
 .prices-list {

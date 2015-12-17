@@ -62,8 +62,8 @@ class User < ActiveRecord::Base
     self.save
   end
 
-  def update_pro_mangopay_profile
-  end
+  # def update_pro_mangopay_profile
+  # end
 
   def create_or_update_wallet
     self.update_mangopay_profile

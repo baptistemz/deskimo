@@ -10,6 +10,13 @@
         br
         = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
           = f.error_notification
+          - if params[:user_type] == "company"
+            .form-group
+              = f.input :first_name, label: false, required: true, autofocus: true, placeholder:"first name"
+            .form-group
+              = f.input :last_name, label: false, required: true, autofocus: true, placeholder:"last name"
+            br
+          - else
           .form-group
             = f.input :email, label: false, required: true, autofocus: true, placeholder:"email"
           br

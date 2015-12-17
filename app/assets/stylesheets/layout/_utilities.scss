@@ -88,11 +88,15 @@
 }
 
 .dark-hr {
-  border: 1px solid $gray-dark
+  border: 1px solid $gray
 }
 
 .oversize{
   font-size: 30px
+}
+
+.disabled{
+  disabled: true;
 }
 
 //---- MEDIA QUERIES ----//

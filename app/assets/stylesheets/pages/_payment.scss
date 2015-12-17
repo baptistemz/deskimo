@@ -7,5 +7,12 @@
 }
 
 .form-control{
-color: $gray-darker
+  color: $gray-darker
+}
+
+.price-line{
+  height: 15px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between
 }

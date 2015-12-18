@@ -59,8 +59,7 @@ $("#booking_start_date option").each(function()
 lastDayOfMonth = Math.max.apply(Math,availableDaysArray)
 firstDayOfMonth = Math.min.apply(Math,availableDaysArray)
 
-firstDayMonth = parseInt($("#booking_start_date option:nth(0)").val().substring(5, 7))
-if ($('.calendar p.monthname').text() == months[firstDayMonth - 1]){
+if ($('.calendar p.monthname').text() == months[firstDayOfMonth - 1]){
   $("li:contains("+availableDaysArray[0].toString()+")").addClass('available')
   for (var i = availableDaysArray[0]; i <= lastDayOfMonth; i++){
     if (availableDaysArray.includes(i)){
@@ -68,7 +67,7 @@ if ($('.calendar p.monthname').text() == months[firstDayMonth - 1]){
     }
   }
 
-}else if ($('.calendar p.monthname').text() == months[firstDayMonth]){
+}else if ($('.calendar p.monthname').text() == months[firstDayOfMonth]){
   $("li:contains("+firstDayOfMonth.toString()+")").addClass('available')
   for (var i = firstDayOfMonth; i <= availableDaysArray[availableDaysArray.length - 1]; i++){
     if (availableDaysArray.includes(i)){

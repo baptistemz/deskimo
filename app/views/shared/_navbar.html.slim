@@ -16,53 +16,32 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
 
       ul.nav.navbar-nav.nav-right
         - if user_signed_in? && current_user.company && current_user.company.id
-          li
-
-
-            / = link_to "#", {class: "dropdown-toggle", "data-toggle" => "dropdown", "role" => "button", "aria-expanded" => "false"}
-            /   i.fa.fa-lock.icon-margin
-            /   = t('navbar.sign_up')
-            /     i.fa.fa-lock.icon-margin
-            /     = t('navbar.individual')
-            /   li = link_to new_user_registration_path(:user_type => "company")
-            /     i.fa.fa-lock.icon-margin
-            /     = t('navbar.company')
-
 
 
           li.dropdown
             = link_to "#", {class: "dropdown-toggle", "data-toggle" => "dropdown", "role" => "button", "aria-expanded" => "false"}
-              i.fa.fa-user
+              i.fa.fa-user.icon-margin
               = t('navbar.profil')
               span.caret
             ul.dropdown-menu
               li = link_to account_user_path
-                i.fa.fa-user
+                i.fa.fa-user.icon-margin
                 = t('navbar.profil')
               li = link_to account_company_desks_path(current_user.company)
-                i.fa.fa-home
+                i.fa.fa-home.icon-margin
                 = t('navbar.company_dashboard')
 
-
-
-
-
-
-
-
-
-
           li = link_to destroy_user_session_path, method: :delete
-            i.fa.fa-sign-out
+            i.fa.fa-sign-out.icon-margin
             = t('navbar.sign_out')
 
         - elsif user_signed_in?
           li = link_to account_user_path
-            i.fa.fa-home
+            i.fa.fa-home.icon-margin
             = t('navbar.profil')
 
           li = link_to destroy_user_session_path, method: :delete
-            i.fa.fa-sign-out
+            i.fa.fa-sign-out.icon-margin
             = t('navbar.sign_out')
 
 
@@ -84,13 +63,15 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
                 = t('navbar.company')
 
         ul.nav.navbar-nav.navbar-right
-         li.dropdown
-          a.dropdown-toggle data-toggle="dropdown" href="#"
-            i.fa.fa-globe.icon-margin
-            = t('languages.lang')
-            span.caret
-          ul.dropdown-menu role="menu"
-            li
-              = link_to t('languages.en'), change_locale_path(:en)
-            li
-              = link_to t('languages.fr'), change_locale_path(:fr)
+
+          li.dropdown#language-choice
+            = link_to "#", {class: "dropdown-toggle", "data-toggle" => "dropdown", "role" => "button", "aria-expanded" => "false"}
+              i.fa.fa-globe.icon-margin
+              = t('languages.lang')
+              span.caret
+            ul.dropdown-menu
+              li= link_to t('languages.en'), change_locale_path(:en)
+              li= link_to t('languages.fr'), change_locale_path(:fr)
+
+
+

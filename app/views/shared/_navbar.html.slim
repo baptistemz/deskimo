@@ -62,16 +62,16 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
                 i.fa.fa-lock.icon-margin
                 = t('navbar.company')
 
-        ul.nav.navbar-nav.navbar-right
+        / ul.nav.navbar-nav.navbar-right
 
-          li.dropdown#language-choice
-            = link_to "#", {class: "dropdown-toggle", "data-toggle" => "dropdown", "role" => "button", "aria-expanded" => "false"}
-              i.fa.fa-globe.icon-margin
-              = t('languages.lang')
-              span.caret
-            ul.dropdown-menu
-              li= link_to t('languages.en'), change_locale_path(:en)
-              li= link_to t('languages.fr'), change_locale_path(:fr)
+        li.dropdown
+          = link_to "#", {class: "dropdown-toggle", "data-toggle" => "dropdown", "role" => "button", "aria-expanded" => "false"}
+            i.fa.fa-globe.icon-margin
+            = t('languages.lang')
+            span.caret
+          ul.dropdown-menu
+            li= link_to t('languages.en'), change_locale_path(:en)
+            li= link_to t('languages.fr'), change_locale_path(:fr)
 
 
 

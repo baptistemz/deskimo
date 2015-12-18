@@ -3,5 +3,5 @@ fr:
     desk:
       kind:
         open_space: 'open space'
-        closed_office: 'bureau fermé'
+        closed_office: 'bureau séparé'
         meeting_room: 'salle de réunion'

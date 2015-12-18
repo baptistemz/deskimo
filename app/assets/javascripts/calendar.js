@@ -24,8 +24,10 @@ $('.calendar ul').append('<li>L</li><li>M</li><li>M</li><li>J</li><li>V</li><li>
   var d = new Date();
   var currentMonth = d.getMonth()+themonth; // get this month
   if(currentMonth > 12){
-    var currentMonth = currentMonth - 12
+    var currentMonth = currentMonth - 12;
+    d.setYear(d.getFullYear() + 1)
   }
+  console.log(d)
 
   var days = numDays(currentMonth,d.getYear()), // get number of days in the month
     fDay = firstDay(currentMonth,d.getYear())-1, // find what day of the week the 1st lands on
@@ -44,7 +46,7 @@ for (var i=0;i<fDay-1;i++) { // place the first day of the month in the correct 
 
 
 for (var i = 1;i<=days;i++) {
-  $('<li>'+i+'</li>').appendTo('.calendar ul');
+  $('<li>'+('0'+i).slice(-2)+'</li>').appendTo('.calendar ul');
 };
 
 
@@ -52,32 +54,32 @@ var availableDaysArray = new Array();
 $("#booking_start_date option").each(function()
   {
     availableDay = parseInt($(this).val().substring(8, 10))
-    availableDaysArray.push(availableDay)
+    availableDaysArray.push(('0'+availableDay).slice(-2))
   }
 );
 
 lastDayOfMonth = Math.max.apply(Math,availableDaysArray)
 firstDayOfMonth = Math.min.apply(Math,availableDaysArray)
+firstDayMonth = parseInt($("#booking_start_date option:nth(0)").val().substring(5, 7))
 
-if ($('.calendar p.monthname').text() == months[firstDayOfMonth - 1]){
+if ($('.calendar p.monthname').text() == months[firstDayMonth - 1]){
   $("li:contains("+availableDaysArray[0].toString()+")").addClass('available')
   for (var i = availableDaysArray[0]; i <= lastDayOfMonth; i++){
-    if (availableDaysArray.includes(i)){
-      $("li:contains("+i.toString()+")").addClass('available')
+    if (availableDaysArray.includes(('0'+i).slice(-2))){
+      $("li:contains("+('0'+i).slice(-2)+")").addClass('available')
     }
   }
-
-}else if ($('.calendar p.monthname').text() == months[firstDayOfMonth]){
+}else if ($('.calendar p.monthname').text() == months[firstDayMonth]){
   $("li:contains("+firstDayOfMonth.toString()+")").addClass('available')
   for (var i = firstDayOfMonth; i <= availableDaysArray[availableDaysArray.length - 1]; i++){
-    if (availableDaysArray.includes(i)){
-      $("li:contains("+i.toString()+")").addClass('available')
+    if (availableDaysArray.includes(('0'+i).slice(-2))){
+      $("li:contains("+('0'+i).slice(-2)+")").addClass('available')
     }
   }
 }else if ($('.calendar p.monthname').text() == months[0]){
   for (var i = firstDayOfMonth; i <= availableDaysArray[availableDaysArray.length - 1]; i++){
-    if (availableDaysArray.includes(i)){
-      $("li:contains("+i.toString()+")").addClass('available')
+    if (availableDaysArray.includes(('0'+i).slice(-2))){
+      $("li:contains("+('0'+i).slice(-2)+")").addClass('available')
     }
   }
 }

@@ -70,8 +70,12 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
             = t('languages.lang')
             span.caret
           ul.dropdown-menu
-            li= link_to t('languages.en'), change_locale_path(:en)
-            li= link_to t('languages.fr'), change_locale_path(:fr)
+            li= link_to change_locale_path(:en)
+              i.fa.fa-umbrella.icon-margin
+              = t('languages.en')
+            li= link_to change_locale_path(:fr)
+              i.fa.fa-cutlery.icon-margin
+              = t('languages.fr')
 
 
 

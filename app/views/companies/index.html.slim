@@ -23,7 +23,7 @@
               / = hidden_field_tag :locality, id: "locality", disabled: true
               / = hidden_field_tag :country, id: "country", disabled: true
 
-            .col-xs-9.col-sm-6.col-xs-offset-12.col-sm-offset-12
+            .col-xs-9.col-sm-7.col-xs-offset-12.col-sm-offset-12
               #filter-select
                 / = form_tag companies_path, method: :get, class: "flexform"
                 = select_tag :kind, options_for_select(Desk.kind.options(only: @kinds), params[:kind]), label: false, prompt: 'Type de bureau', include_blank: false, :onchange => "this.form.submit()"

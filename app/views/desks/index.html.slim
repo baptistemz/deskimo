@@ -38,13 +38,13 @@
         ul.nav.nav-tabs#desk-choice
           - if @open_space && @open_space.activated
             li.active
-              =link_to 'Open Space', '#open_space', data: { toggle: 'tab' }
+              =link_to t('enumerize.desk.kind.open_space'), '#open_space', data: { toggle: 'tab' }
           - if @closed_office && @closed_office.activated
             li
-              =link_to 'Bureau', '#closed_office', data: { toggle: 'tab' }
+              =link_to t('enumerize.desk.kind.closed_office'), '#closed_office', data: { toggle: 'tab' }
           - if @meeting_room && @meeting_room.activated
             li
-              =link_to 'Salle de réunion', '#meeting_room', data: { toggle: 'tab' }
+              =link_to t('enumerize.desk.kind.meeting_room'), '#meeting_room', data: { toggle: 'tab' }
         .tab-content
           - @desks.each do |desk|
             - if desk == @open_space && @open_space.activated

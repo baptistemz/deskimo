@@ -14,8 +14,26 @@ fr:
     attributes:
       created_at : "Créé le"
       updated_at : "Mis à jour le"
+# PAGES
   home:
     title : "Trouvez un bureau dans une entreprise autour de vous"
+    geoloc_btn : "Géolocalisez-cous"
+    city_label : "ou indiquez où vous êtes"
+    city_placeholder : "Ville ou adresse"
+    hp_kind_title : "Quels bureaux reserver ?"
+    hp_kind_cta : "Trouvez les plus proches"
+    hp_vp_title : "Location de bureau en instantané"
+    hp_vp_one : "Reservez des bureaux autour de vous quand vous en avez besoin"
+    hp_vp_two : "Accédez à tous les services d'une réelle entreprise"
+    hp_vp_three : "Solution de networking et d'optimisation d'espace pour les entreprises"
+    hp_vp_know_more : "En savoir plus"
+    hp_company_registration_title: "Entreprise ou espace de coworking"
+    hp_company_registration_subtitle : "Vous voulez mettre en location des bureaux"
+    hp_company_registration_cta : "Inscrivez votre entreprise"
+  index:
+    kind_of_desk: "type de bureaux"
+
+# LAYOUT
   navbar:
     profil            : "Mon compte"
     sign_in           : "Connexion"
@@ -24,3 +42,7 @@ fr:
     company_dashboard : "Espace entreprise"
     company           : "Entreprise"
     individual        : "Particulier"
+
+  footer:
+    cgu : "GGU"
+    about : "à propos"

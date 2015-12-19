@@ -1,5 +1,5 @@
 = form_tag companies_path, method: :get, class: "flexform"
-  = text_field_tag :full_address, @full_address, placeholder: "Ville ou adresse", id: "js-autocomplete-city", class: "pretty-field"
+  = text_field_tag :full_address, @full_address, placeholder: t('home.city_placeholder'), id: "js-autocomplete-city", class: "pretty-field"
   button.search-btn type="submit"
     i.fa.fa-search
   = hidden_field_tag :lat, params[:lat], id: 'lat'

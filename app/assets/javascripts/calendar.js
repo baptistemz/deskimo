@@ -61,22 +61,21 @@ if ( $("#booking_start_date" ).length ) {
   lastDayOfMonth = Math.max.apply(Math,availableDaysArray)
   firstDayOfMonth = Math.min.apply(Math,availableDaysArray)
   firstDayMonth = parseInt($("#booking_start_date option:nth(0)").val().substring(5, 7))
-
-  if ($('.calendar p.monthname').text() == months[firstDayMonth - 1]){
+  if ($('.calendar p.monthname').text().includes(months[firstDayMonth - 1])){
     $("li:contains("+availableDaysArray[0].toString()+")").addClass('available')
     for (var i = availableDaysArray[0]; i <= lastDayOfMonth; i++){
       if (availableDaysArray.includes(('0'+i).slice(-2))){
         $("li:contains("+('0'+i).slice(-2)+")").addClass('available')
       }
     }
-  }else if ($('.calendar p.monthname').text() == months[firstDayMonth]){
-    $("li:contains("+firstDayOfMonth.toString()+")").addClass('available')
+  }else if ($('.calendar p.monthname').text().includes(months[firstDayMonth])){
+    $("li:contains("+('0'+firstDayOfMonth).slice(-2)+")").addClass('available')
     for (var i = firstDayOfMonth; i <= availableDaysArray[availableDaysArray.length - 1]; i++){
       if (availableDaysArray.includes(('0'+i).slice(-2))){
         $("li:contains("+('0'+i).slice(-2)+")").addClass('available')
       }
     }
-  }else if ($('.calendar p.monthname').text() == months[0]){
+  }else if ($('.calendar p.monthname').text().includes(months[0])){
     for (var i = firstDayOfMonth; i <= availableDaysArray[availableDaysArray.length - 1]; i++){
       if (availableDaysArray.includes(('0'+i).slice(-2))){
         $("li:contains("+('0'+i).slice(-2)+")").addClass('available')

@@ -14,16 +14,16 @@
     h1 = t('home.title')
 
     / = link_to companies_path
-    .btn.btn-primary#geoloc Géolocalisez-vous
+    .btn.btn-primary#geoloc = t('home.geoloc_btn')
   .banner-gradient
   .home-gradient
-    h3 Ou indiquez où vous êtes
+    h3 = t('home.city_label')
     = render "companies/search_form"
 
 .container
   .home
     .row.text-center
-      h2 Quels bureaux reserver ?
+      h2 = t('home.hp_kind_title')
       hr
       span.center-line
 .background
@@ -33,56 +33,57 @@
         .card
           span.card-bg1
             span.card-gradient data-sr="ease-in-out 10px, over 0.8s"
-              .btn.btn-primary.btn-geo#geo-open-space Trouvez les plus proches
+              .btn.btn-primary.btn-geo#geo-open-space = t('home.hp_kind_cta')
             span.card-text
               h2 Open Space
       .col-xs-12.col-md-6
         .card
           span.card-bg2
             span.card-gradient data-sr="ease-in-out 10px, over 0.8s"
-              .btn.btn-primary.btn-geo#geo-closed-office Trouvez les plus proches
+              .btn.btn-primary.btn-geo#geo-closed-office = t('home.hp_kind_cta')
             span.card-text
               h2 Bureau séparé
       .col-xs-12.col-md-6
         .card
           span.card-bg3
             span.card-gradient data-sr="ease-in-out 10px, over 0.8s"
-              .btn.btn-primary.btn-geo#geo-meeting-room Trouvez les plus proches
+              .btn.btn-primary.btn-geo#geo-meeting-room = t('home.hp_kind_cta')
             span.card-text
               h2 Salle de réunion
 .container-fluid
   .row
     br
-    h2.text-center Location de bureau en instantané
+    h2.text-center = t('home.hp_vp_title')
     hr
     br
     .col-xs-12.col-sm-4
       .rounded-icon
         i.fa.fa-briefcase
-      h4.vp Reservez des bureaux autour de vous quand vous en avez besoin
+      h4.vp = t('home.hp_vp_one')
     .col-xs-12.col-sm-4
       .rounded-icon
         i.fa.fa-coffee
-      h4.vp Accédez à tous les services d'une réelle entreprise
+      h4.vp = t('home.hp_vp_two')
     .col-xs-12.col-sm-4
       .rounded-icon
         i.fa.fa-building-o
-      h4.vp Solution de networking et d'optimisation d'espace pour les entreprises
+      h4.vp = t('home.hp_vp_three')
       .text-right.margin-about
-        =link_to 'En savoir plus', 'root'
+        =link_to t('home.hp_vp_know_more'), 'root'
 br
 .container.text-center
   .row
     .col-xs-12
       .huge-card
         .pro-content data-sr="ease-in-out 10px, over 0.8s"
-          h2 Entreprise ou espace de coworking
+          h2 = t('home.hp_company_registration_title')
           br
-          h4 Vous voulez mettre en location des bureaux
+          h4 = t('home.hp_company_registration_subtitle')
           br
           - if user_signed_in?
             = link_to new_account_company_path
-              .btn.btn-primary Inscrivez votre entreprise
+              .btn.btn-primary = t('home.hp_company_registration_cta')
           - else
             = link_to new_user_registration_path(:user_type => "company")
-              .btn.btn-primary Inscrivez votre entreprise
+              .btn.btn-primary = t('home.hp_company_registration_cta')
+

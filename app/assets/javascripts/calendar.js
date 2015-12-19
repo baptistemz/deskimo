@@ -84,14 +84,6 @@ if ($('.calendar p.monthname').text() == months[firstDayMonth - 1]){
   }
 }
 
-// if ($('.calendar p.monthname').text() == months[0]){
-//   for (var i = firstDayOfMonth; i <= availableDaysArray[-1]; i++){
-//     if (availableDaysArray.contains(i)){
-//       $("li:contains("+i.toString()+")").addClass('available')
-//     }
-//   }
-// }
-
 }
 
 function firstDay(month,year) {

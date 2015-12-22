@@ -25,6 +25,7 @@ class BookingsController < ApplicationController
                                             start_date: @booking.start_date,
                                             end_date: @booking.end_date
                                             )
+      raise
       if @unavailability.save
         redirect_to company_desk_booking_confirmation_path(@booking.desk.company, @booking.desk, @booking )
       else

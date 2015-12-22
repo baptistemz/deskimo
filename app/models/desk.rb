@@ -7,7 +7,7 @@ class Desk < ActiveRecord::Base
   belongs_to :company
   has_many :bookings
 
-  has_many :unavailability_ranges
+  has_many :unavailability_ranges, dependent: :destroy
 
   after_commit :reindex_company
 

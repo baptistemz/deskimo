@@ -3,7 +3,7 @@ class Booking < ActiveRecord::Base
 
   belongs_to :desk
   belongs_to :user
-  has_one :unavailability_range
+  has_one :unavailability_range, dependent: :destroy
 
   validates_presence_of :time_slot_type, :time_slot_quantity, :desk_id, :user_id, :start_date
   validate  :user_cannot_be_from_the_company

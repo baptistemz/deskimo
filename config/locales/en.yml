@@ -42,6 +42,7 @@ en:
     company_dashboard : "Company dashboard"
     company           : "Company"
     individual        : "Individual"
+    personal_info     : 'Settings'
   footer:
     cgu : "terms"
     about : "about"

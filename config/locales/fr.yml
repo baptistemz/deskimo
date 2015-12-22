@@ -42,6 +42,7 @@ fr:
     company_dashboard : "Espace entreprise"
     company           : "Entreprise"
     individual        : "Particulier"
+    personal_info     : 'Infos perso'
 
   footer:
     cgu : "GGU"

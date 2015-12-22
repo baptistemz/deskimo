@@ -20,15 +20,15 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
 
           li.dropdown
             = link_to "#", {class: "dropdown-toggle", "data-toggle" => "dropdown", "role" => "button", "aria-expanded" => "false"}
-              i.fa.fa-user.icon-margin
+              i.fa.fa-home.icon-margin
               = t('navbar.profil')
               span.caret
             ul.dropdown-menu
               li = link_to account_user_path
                 i.fa.fa-user.icon-margin
-                = t('navbar.profil')
+                = t('navbar.personal_info')
               li = link_to account_company_desks_path(current_user.company)
-                i.fa.fa-home.icon-margin
+                i.fa.fa-dashboard.icon-margin
                 = t('navbar.company_dashboard')
 
           li = link_to destroy_user_session_path, method: :delete

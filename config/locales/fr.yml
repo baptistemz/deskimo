@@ -17,7 +17,7 @@ fr:
 # PAGES
   home:
     title : "Trouvez un bureau dans une entreprise autour de vous"
-    geoloc_btn : "Géolocalisez-cous"
+    geoloc_btn : "Géolocalisez-vous"
     city_label : "ou indiquez où vous êtes"
     city_placeholder : "Ville ou adresse"
     hp_kind_title : "Quels bureaux reserver ?"

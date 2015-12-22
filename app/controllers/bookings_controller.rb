@@ -18,20 +18,21 @@ class BookingsController < ApplicationController
       @booking.amount = @booking.desk.weekly_price * @booking.time_slot_quantity
     end
 
-    @unavailability = @booking.desk.unavailability_ranges.build(
+    @unavailability = @booking.build_unavailability_range(
+                                                desk: @booking.desk,
                                                 kind: :booked,
                                                 start_date: @booking.start_date,
                                                 end_date: @booking.end_date
                                                 )
-    if @unavailability.save
-      if @booking.save
+    if @booking.save
+      if @unavailability.save
         redirect_to company_desk_booking_confirmation_path(@booking.desk.company, @booking.desk, @booking )
       else
-        flash[:alert]
+        flash[:alert] = "Le bureau n'est pas disponible sur ces dates"
         redirect_to(:back)
       end
     else
-      flash[:alert] = "Le bureau n'est pas disponible sur ces dates"
+      flash[:alert] = 'Bureau indisponible à ces dates'
       redirect_to(:back)
     end
   end

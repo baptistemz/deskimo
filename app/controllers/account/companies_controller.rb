@@ -6,6 +6,7 @@ module Account
 
     def create
       @company = current_user.build_company(company_params)
+      @company.activated = false
       if @company.save
         current_user.create_or_update_wallet
         flash[:notice] = "Votre entreprise a bien été enregistrée."
@@ -33,7 +34,19 @@ module Account
                                       :coffee,
                                       :wifi,
                                       :printer,
-                                      :picture)
+                                      :picture,
+                                      :open_monday,
+                                      :open_tuesday,
+                                      :open_wednesday,
+                                      :open_thursday,
+                                      :open_friday,
+                                      :open_saturday,
+                                      :open_sunday,
+                                      :start_time_am,
+                                      :end_time_am,
+                                      :start_time_pm,
+                                      :end_time_pm)
+
     end
   end
 end

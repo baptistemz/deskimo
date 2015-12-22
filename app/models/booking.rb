@@ -3,10 +3,9 @@ class Booking < ActiveRecord::Base
 
   belongs_to :desk
   belongs_to :user
+  has_one :unavailability_range
 
   validates_presence_of :time_slot_type, :time_slot_quantity, :desk_id, :user_id, :start_date
-
-
   validate  :user_cannot_be_from_the_company
   validate  :desk_must_be_available
 
@@ -22,7 +21,7 @@ class Booking < ActiveRecord::Base
   end
 
   def desk_must_be_available
-    errors.add(:desk, "Ce bureau n'est plus disponible à ces dates") if
-      (start_date..end_date).to_a & desk.get_next_available_days_array == []
+    errors.add(:desk, "Ce bureau n'est plus disponible à ces dates") unless
+      (start_date..end_date).to_a & desk.get_next_available_days_array == (start_date..end_date).to_a
   end
 end

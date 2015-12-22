@@ -16,6 +16,31 @@
           = f.input :postcode, label:false, required: true, autofocus: true, placeholder:"Code postal"
         .form-group
           = f.input :city, label:false, required: true, autofocus: true, placeholder:"Ville"
+        table
+          tr
+            td L
+            td M
+            td M
+            td J
+            td V
+            td S
+            td D
+          tr
+            td = f.input :open_monday,label: false, class: 'opening-day-input'
+            td = f.input :open_tuesday,label: false, class: 'opening-day-input'
+            td = f.input :open_wednesday,label: false, class: 'opening-day-input'
+            td = f.input :open_thursday,label: false, class: 'opening-day-input'
+            td = f.input :open_friday,label: false, class: 'opening-day-input'
+            td = f.input :open_saturday,label: false, class: 'opening-day-input'
+            td = f.input :open_sunday,label: false, class: 'opening-day-input'
+        .form-group
+          = f.input :start_time_am,label: false
+        .form-group
+          = f.input :end_time_am,label: false
+        .form-group
+          = f.input :start_time_pm,label: false
+        .form-group
+          = f.input :end_time_pm,label: false
         br
         .form-group
           = f.input :description, label:false, required: true, autofocus: true, placeholder:"description", as: :text

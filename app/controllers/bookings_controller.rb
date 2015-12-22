@@ -18,13 +18,13 @@ class BookingsController < ApplicationController
       @booking.amount = @booking.desk.weekly_price * @booking.time_slot_quantity
     end
 
-    @unavailability = @booking.build_unavailability_range(
-                                                desk: @booking.desk,
-                                                kind: :booked,
-                                                start_date: @booking.start_date,
-                                                end_date: @booking.end_date
-                                                )
     if @booking.save
+      @unavailability = @booking.build_unavailability_range(
+                                            desk: @booking.desk,
+                                            kind: :booked,
+                                            start_date: @booking.start_date,
+                                            end_date: @booking.end_date
+                                            )
       if @unavailability.save
         redirect_to company_desk_booking_confirmation_path(@booking.desk.company, @booking.desk, @booking )
       else

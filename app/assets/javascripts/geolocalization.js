@@ -1,5 +1,10 @@
-$("#geoloc").click(function() {
-var myPosition = new Array();
+$("#geoloc").click(geoTag);
+$("#geo-open-space").click(geoTag);
+$("#geo-closed-office").click(geoTag);
+$("#geo-meeting-room").click(geoTag);
+
+function geoTag() {
+  var myPosition = new Array();
 
   $(document).ready(function() {
     navigator.geolocation.getCurrentPosition(
@@ -35,5 +40,5 @@ var myPosition = new Array();
       }
     }
   });
-});
+};
 

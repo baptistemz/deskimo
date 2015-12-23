@@ -10,9 +10,7 @@ module Account
       @company = Company.find(params[:company_id])
       @desk = @company.desks.build(desk_params)
       if @desk.save
-        if @desk == @company.desks.first
-          @company.update(activated: true)
-        end
+        @company.update_activation
         flash[:notice] = "Le bureau a bien été enregistré."
         redirect_to account_company_desks_path(@company)
       else
@@ -42,6 +40,7 @@ module Account
       @company = Company.find(params[:company_id])
       @desk = Desk.find(params[:id])
       @desk.update(desk_params)
+      @company.update_activation
       redirect_to account_company_desks_path(@company)
     end
 

@@ -30,6 +30,14 @@ class Company < ActiveRecord::Base
     }
   end
 
+  def update_activation
+    if self.desks.where(activated: true).any?
+      self.update(activated: true)
+    else
+      self.update(activated: false)
+    end
+  end
+
   def get_opening_days_string
     if self.open_monday &&
        self.open_tuesday &&

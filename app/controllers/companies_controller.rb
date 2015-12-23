@@ -12,7 +12,6 @@ class CompaniesController < ApplicationController
     else
       @location = [Settings.locations.default.latitude, Settings.locations.default.longitude]
     end
-
     aggregations = { kinds: { stats: true }}
 
     # - - - Filters

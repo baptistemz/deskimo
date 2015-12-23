@@ -27,7 +27,6 @@ module Account
     def company_params
       params.require(:company).permit(:name,
                                       :description,
-                                      :siret,
                                       :address,
                                       :city,
                                       :postcode,

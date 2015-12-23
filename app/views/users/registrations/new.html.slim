@@ -3,9 +3,9 @@
     .text-center
       .form-margin-top
         - if params[:user_type] == "company"
-          h2 Créer un compte entreprise
+          h2 = t('devise.custom.create_company_account')
         -else
-          h2 Créer un compte utilisateur
+          h2 = t('devise.custom.create_user_account')
         br
         br
         = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
@@ -37,7 +37,7 @@
           - if params[:user_type] != "company"
             br
             .form-group
-              p.text-left Ou s'identifier avec:
+              p.text-left = t('devise.custom.social_sign_up_solutions')
             .row.form-group
               .col-xs-12.col-sm-6.no-padding
                 = link_to user_omniauth_authorize_path(:facebook, resource)

@@ -1,23 +1,20 @@
 br
 p.company = desk.description
-
 hr.style-company
-
-
-h4.company-section-title Prix
+h4.company-section-title = t('show.price')
 .prices-list
   .desk-price
-    p.price-category 1/2 journée:
+    p.price-category #{t('show.half_day')} :
     p.price-category #{desk.half_day_price}€
   .desk-price
-    p.price-category journée:
+    p.price-category #{t('show.day')} :
     p.price-category #{desk.daily_price}€
   .desk-price
-    p.price-category semaine:
+    p.price-category #{t('show.week')} :
     p.price-category #{desk.weekly_price}€
 br
 hr.style-company
-h4.company-section-title Disponibilités
+h4.company-section-title = t('show.availabilities')
 .calendar
   .group
     .left.pointer.minusmonth &laquo;
@@ -36,7 +33,7 @@ h4.company-section-title Disponibilités
 
 br
 hr.style-company
-h4.company-section-title Reservation
+h4.company-section-title = t('show.booking')
 br
 .booking-creation
 = simple_form_for [desk.company, desk, booking] do |f|
@@ -59,5 +56,5 @@ br
     p.company 1/2 journée:
     = f.select :half_day_choice, {'matin' => 'am', 'après-midi' => "pm"}, label: false
   br
-  = f.button :submit, class: "btn-primary full-width", value: "Réserver"
+  = f.button :submit, class: "btn-primary full-width", value: t('show.book')
 

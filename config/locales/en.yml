@@ -33,6 +33,25 @@ en:
     hp_company_registration_cta : "Register your company"
   index:
     kind_of_desk: "kind of desk"
+  show:
+    services: "Services"
+    description: "Description"
+    opening_times: "Opening times"
+    price: "Price"
+    availabilities: "Availabilities"
+    booking: "Booking"
+    half_day: "1/2 day"
+    day: "day"
+    week: "week"
+    book: "Book"
+  company_creation:
+    opening_days: "Opening days"
+    morning: "morning"
+    afternoon: "afternoon"
+    from: "from"
+    to: "to"
+    company_picture: "Picture of the company"
+    company_details: "Details of the company"
 # LAYOUT
   navbar:
     profil            : "My profile"

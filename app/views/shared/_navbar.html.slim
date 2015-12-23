@@ -71,10 +71,12 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
             span.caret
           ul.dropdown-menu
             li= link_to change_locale_path(:en)
-              i.fa.fa-umbrella.icon-margin
+              / i.fa.fa-umbrella.icon-margin
+              = image_tag 'english.png', class: 'language-flag'
               = t('languages.en')
             li= link_to change_locale_path(:fr)
-              i.fa.fa-cutlery.icon-margin
+              / i.fa.fa-cutlery.icon-margin
+              = image_tag 'french.png', class: 'language-flag'
               = t('languages.fr')
 
 

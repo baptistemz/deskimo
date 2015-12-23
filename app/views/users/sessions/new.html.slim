@@ -15,7 +15,7 @@
         = f.button :submit, "Log in", class: "btn-primary login-button-width"
       br
       .form-group
-        p.text-left Ou s'identifier avec:
+        p.text-left= t('devise.custom.social_sign_in_solutions')
       .row.form-group
         .col-xs-6.no-padding
           = link_to user_omniauth_authorize_path(:facebook, resource)

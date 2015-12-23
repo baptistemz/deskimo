@@ -1,4 +1,12 @@
 fr:
+  devise:
+    custom:
+      social_sign_in_solutions: "Ou s'identifier avec :"
+      social_sign_up_solutions: "Ou s'identifier avec :"
+      already_an_account: "Déjà un compte ?"
+      forgotten_password: "Mot de passe oublié?"
+      create_user_account: "Créer un compte utilisateur"
+      create_company_account: "Créer un compte entreprise"
   languages:
     lang : "Langue"
     fr   : "Français"
@@ -32,7 +40,25 @@ fr:
     hp_company_registration_cta : "Inscrivez votre entreprise"
   index:
     kind_of_desk: "type de bureaux"
-
+  show:
+    services: "Services"
+    description: "Description"
+    opening_times: "Horaires"
+    price: "Prix"
+    availabilities: "Disponibilités"
+    booking: "Reservation"
+    half_day: "1/2 journée"
+    day: "journée"
+    week: "semaine"
+    book: "Reserver"
+  company_creation:
+    opening_days: "Jours d'ouverture"
+    morning: "matin"
+    afternoon: "après-midi"
+    from: "from"
+    to: "to"
+    company_picture: "Photo de l'espace de travail"
+    company_details: "Détails de l'entreprise"
 # LAYOUT
   navbar:
     profil            : "Mon compte"

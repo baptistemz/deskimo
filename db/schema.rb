@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151221102144) do
+ActiveRecord::Schema.define(version: 20151223123850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,11 +94,11 @@ ActiveRecord::Schema.define(version: 20151221102144) do
     t.boolean  "open_saturday",        default: false
     t.boolean  "open_sunday",          default: false
     t.boolean  "open_holiday",         default: false
-    t.datetime "start_time_am"
-    t.datetime "end_time_am"
-    t.datetime "start_time_pm"
-    t.datetime "end_time_pm"
     t.boolean  "activated",            default: true
+    t.time     "start_time_am"
+    t.time     "end_time_am"
+    t.time     "start_time_pm"
+    t.time     "end_time_pm"
   end
 
   add_index "companies", ["user_id"], name: "index_companies_on_user_id", using: :btree

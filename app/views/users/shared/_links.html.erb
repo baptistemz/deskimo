@@ -1,14 +1,19 @@
 <%- if controller_name != 'sessions' %>
-  <%= link_to "Déjà un compte ?", new_session_path(resource_name) %><br />
-<% end -%>
-
-<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "Créer un compte utilisateur", new_registration_path(resource_name) %><br />
+  <%= link_to t('devise.custom.already_an_account'), new_session_path(resource_name) %><br />
 <% end -%>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <%= link_to "Mot de passe oublié?", new_password_path(resource_name) %><br />
+  <%= link_to t('devise.custom.forgotten_password'), new_password_path(resource_name) %><br />
 <% end -%>
+
+<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+  <%= link_to t('devise.custom.create_user_account'), new_registration_path(resource_name) %><br />
+<% end -%>
+
+<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+  <%= link_to t('devise.custom.create_company_account'), new_account_company_path %><br />
+<% end -%>
+
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
   <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />

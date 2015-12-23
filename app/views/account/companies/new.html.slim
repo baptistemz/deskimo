@@ -6,9 +6,16 @@
       br
       = simple_form_for [:account, @company] do |f|
         .form-group
+          h4.blue #{t('company_creation.company_picture')} :
+          = f.input :picture, label: false
+        br
+        .form-group
+          h4.blue #{t('company_creation.company_details')} :
           = f.input :name, label:false, required: true, autofocus: true, placeholder:"Nom de l'entreprise"
         .form-group
-          = f.input :siret, label:false, required: true, autofocus: true, placeholder:"SIRET"
+          = f.input :description, label:false, required: true, autofocus: true, placeholder:"description de l'entreprise", as: :text
+        / .form-group
+        /   = f.input :siret, label:false, required: true, autofocus: true, placeholder:"SIRET"
         br
         .form-group
           = f.input :address, label:false, required: true, autofocus: true, placeholder:"Adresse"
@@ -16,6 +23,14 @@
           = f.input :postcode, label:false, required: true, autofocus: true, placeholder:"Code postal"
         .form-group
           = f.input :city, label:false, required: true, autofocus: true, placeholder:"Ville"
+        .form-group
+          h4.blue #{t('show.services')} :
+          .form-services
+            = f.input :wifi
+            = f.input :coffee
+            = f.input :printer
+        br
+        h4.blue #{t('company_creation.opening_days')} :
         table
           tr
             td L
@@ -26,36 +41,48 @@
             td S
             td D
           tr
-            td = f.input :open_monday,label: false, class: 'opening-day-input'
-            td = f.input :open_tuesday,label: false, class: 'opening-day-input'
-            td = f.input :open_wednesday,label: false, class: 'opening-day-input'
-            td = f.input :open_thursday,label: false, class: 'opening-day-input'
-            td = f.input :open_friday,label: false, class: 'opening-day-input'
+            td = f.input :open_monday,label: false, class: 'opening-day-input', :input_html => { :checked => true }
+            td = f.input :open_tuesday,label: false, class: 'opening-day-input', :input_html => { :checked => true }
+            td = f.input :open_wednesday,label: false, class: 'opening-day-input', :input_html => { :checked => true }
+            td = f.input :open_thursday,label: false, class: 'opening-day-input', :input_html => { :checked => true }
+            td = f.input :open_friday,label: false, class: 'opening-day-input', :input_html => { :checked => true }
             td = f.input :open_saturday,label: false, class: 'opening-day-input'
             td = f.input :open_sunday,label: false, class: 'opening-day-input'
-        .form-group
-          = f.input :start_time_am,label: false
-        .form-group
-          = f.input :end_time_am,label: false
-        .form-group
-          = f.input :start_time_pm,label: false
-        .form-group
-          = f.input :end_time_pm,label: false
         br
-        .form-group
-          = f.input :description, label:false, required: true, autofocus: true, placeholder:"description", as: :text
-        .form-group
-          h5 Services:
-          .form-services
-            = f.input :wifi
-            = f.input :coffee
-            = f.input :printer
-        .form-group
-          h5 Photo:
-          = f.input :picture, label: false
+        h4.blue #{t('show.opening_times')} :
+        h5 #{t('company_creation.morning')}
+        .form-group.opening-times
+          p #{t('company_creation.from')}
+          = f.input :start_time_am,label: false, :minute_step => 15, default: Time.parse('8:00')
+          p #{t('company_creation.to')}
+          = f.input :end_time_am,label: false, :minute_step => 15, default: Time.parse('12:00')
+        br
+        h5 #{t('company_creation.afternoon')}
+        .form-group.opening-times
+          p #{t('company_creation.from')}
+          = f.input :start_time_pm,label: false, :minute_step => 15, default: Time.parse('14:00')
+          p #{t('company_creation.to')}
+          = f.input :end_time_pm,label: false, :minute_step => 15, default: Time.parse('18:00')
+        br
         .form-actions
           = f.submit class: "btn-primary login-button-width"
 
+
+
+  / - if params[:process] == "signup"
+  .col-sm-5.hidden-xs
+    .process-step.completed
+      .step-number
+        p 1
+      p Création de compte
+    .process-step.completed
+      .step-number
+        p 2
+      p Enregistrement de l'entreprise
+    .process-step
+      .step-number
+        p 3
+      p Mise en location de bureaux
 
   .col-sm-5.hidden-xs
     .product-thumbnail#preview-image.form-top-preview
@@ -78,19 +105,3 @@
           p#company-name-preview
         .product-price
           p ...€ / h
-
-  / - if params[:process] == "signup"
-  .col-sm-5.hidden-xs
-    .process-step.completed
-      .step-number
-        p 1
-      p Création de compte
-    .process-step.completed
-      .step-number
-        p 2
-      p Enregistrement de l'entreprise
-    .process-step
-      .step-number
-        p 3
-      p Mise en location de bureaux
-

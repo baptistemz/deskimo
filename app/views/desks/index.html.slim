@@ -5,7 +5,7 @@
         = image_tag @company.picture.url(:list), class: "img-responsive"
       h1 = @company.name
       hr.style-company
-      h4.company-section-title Services
+      h4.company-section-title = t('show.services')
 
       #services-list-show
         - if @company.wifi?
@@ -24,13 +24,11 @@
               i.fa.fa-print
             p imprimante
       hr.style-company
-      h4.company-section-title Description
+      h4.company-section-title = t('show.description')
       p.company-description = @company.description
       hr.style-company
-      h4.company-section-title Horaires
+      h4.company-section-title = t('show.opening_times')
       p.company #{@opening_days} - #{@opening_hours}
-
-
     .col-sm-6
       - if @desks.any? == false
         h4.text-center Aucun bureau n'est disponible dans cette entreprise

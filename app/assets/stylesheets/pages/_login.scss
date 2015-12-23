@@ -125,3 +125,19 @@
   top: 0;
   right: 0;
 }
+
+.opening-times {
+  display:flex;
+  justify-content: space-around;
+  width: 100%
+}
+
+.opening-times > .time{
+  display:flex;
+  justify-content: space-between;
+}
+
+.one-px-margin {
+  margin-left: 2px;
+  margin-right: 2px
+}

@@ -7,3 +7,10 @@ locations:
 mails:
   defaults:
     from: baptiste@nomadoffice.co
+
+
+
+price_share:
+  vat: 0.2
+  company: 0.85
+  nomad_office: 0.15

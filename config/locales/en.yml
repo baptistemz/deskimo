@@ -14,10 +14,14 @@ en:
     attributes:
       created_at : "created at"
       updated_at : "updated at"
+      wifi: "wifi"
+      coffee: "coffee"
+      printer: "printer"
+      scanner: "scanner"
 
 # PAGES
   home:
-    title : "Find an office in company close to you"
+    title : "Find available desks in companies around you"
     geoloc_btn : "Geotag yourself"
     city_label : "or tell us where you are"
     city_placeholder : "City or address"
@@ -52,6 +56,20 @@ en:
     to: "to"
     company_picture: "Picture of the company"
     company_details: "Details of the company"
+    account_creation: "Create an account"
+    company_register : "Register your company"
+    publish_desks: "Rent out your desks"
+  desk_creation:
+    desks_to_rent: "Desks to rent"
+    which_kind: "Kind of desks"
+    quantity: "Quantity"
+    price_incl_tax: "Price (incl tax)"
+    price_half_day: "Half day price"
+    price_day: "Daily price"
+    price_week: "Weekly price"
+    you: "You"
+    vat: "VAT"
+    total_price: "Total price"
 # LAYOUT
   navbar:
     profil            : "My profile"

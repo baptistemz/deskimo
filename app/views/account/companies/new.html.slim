@@ -6,10 +6,6 @@
       br
       = simple_form_for [:account, @company] do |f|
         .form-group
-          h4.blue #{t('company_creation.company_picture')} :
-          = f.input :picture, label: false
-        br
-        .form-group
           h4.blue #{t('company_creation.company_details')} :
           = f.input :name, label:false, required: true, autofocus: true, placeholder:"Nom de l'entreprise"
         .form-group
@@ -23,6 +19,11 @@
           = f.input :postcode, label:false, required: true, autofocus: true, placeholder:"Code postal"
         .form-group
           = f.input :city, label:false, required: true, autofocus: true, placeholder:"Ville"
+        br
+        .form-group
+          h4.blue #{t('company_creation.company_picture')} :
+          = f.input :picture, label: false
+        br
         .form-group
           h4.blue #{t('show.services')} :
           .form-services
@@ -74,15 +75,15 @@
     .process-step.completed
       .step-number
         p 1
-      p Création de compte
+      p = t('company_creation.account_creation')
     .process-step.completed
       .step-number
         p 2
-      p Enregistrement de l'entreprise
+      p = t('company_creation.company_register')
     .process-step
       .step-number
         p 3
-      p Mise en location de bureaux
+      p = t('company_creation.publish_desks')
 
   .col-sm-5.hidden-xs
     .product-thumbnail#preview-image.form-top-preview

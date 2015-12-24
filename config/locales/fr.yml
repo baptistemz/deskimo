@@ -22,6 +22,10 @@ fr:
     attributes:
       created_at : "Créé le"
       updated_at : "Mis à jour le"
+      wifi: "wifi"
+      coffee: "café"
+      printer: "imprimante"
+      scanner: "scanner"
 # PAGES
   home:
     title : "Trouvez un bureau dans une entreprise autour de vous"
@@ -55,10 +59,24 @@ fr:
     opening_days: "Jours d'ouverture"
     morning: "matin"
     afternoon: "après-midi"
-    from: "from"
-    to: "to"
+    from: "de"
+    to: "à"
     company_picture: "Photo de l'espace de travail"
     company_details: "Détails de l'entreprise"
+    account_creation: "Création de compte"
+    company_register : "Enregistrement de l'entreprise"
+    publish_desks: "Mise en location de bureaux"
+  desk_creation:
+    desks_to_rent: "Votre offre en bureaux"
+    which_kind: "Que souhaitez-vous mettre en location?"
+    quantity: "Quantité"
+    price_incl_tax: "Prix TTC"
+    price_half_day: "Par demi-journée"
+    price_day: "Par jour"
+    price_week: "Par semaine"
+    you: "Vous"
+    vat: "TVA"
+    total_price: "Prix total"
 # LAYOUT
   navbar:
     profil            : "Mon compte"

@@ -54,17 +54,18 @@
       .process-step.completed
         .step-number
           p 1
-        p Création de compte
+        p = t('company_creation.account_creation')
 
       .process-step
         .step-number
           p 2
-        p Enregistrement de l'entreprise
+        p = t('company_creation.company_register')
 
       .process-step
         .step-number
           p 3
-        p Mise en location de bureaux
+        p = t('company_creation.publish_desks')
+
   - else
     .col-sm-5.hidden-xs
     = image_tag 'signup_image.png', class: 'side-image visible-md visible-lg'

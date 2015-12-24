@@ -6,7 +6,7 @@ class Company < ActiveRecord::Base
   has_many :desks, dependent: :destroy
 
   has_attached_file :picture,
-    styles: { large: "500x500", medium: "300x300>", thumb: "100x100>" , list: "800x400#"}
+    styles: { large: "500x500", medium: "300x300>", thumb: "100x100>" , list: "740x370#"}
     # rake paperclip:refresh CLASS=Company
 
   validates_attachment_content_type :picture,

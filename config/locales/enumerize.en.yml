@@ -1,0 +1,7 @@
+en:
+  enumerize:
+    desk:
+      kind:
+        open_space: 'open space'
+        closed_office: 'closed office'
+        meeting_room: 'meeting room'

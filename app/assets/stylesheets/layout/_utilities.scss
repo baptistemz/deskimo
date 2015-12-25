@@ -104,6 +104,13 @@
 }
 
 //---- MEDIA QUERIES ----//
+
+@media (min-width: 900px){
+  .nav-tabs > li > a {
+    font-size: 0.95em;
+  }
+}
+
 @media (min-width: 480px) and (max-width: 900px) {
   h1 {
     font-size : 2em;
@@ -123,6 +130,10 @@
 
   p {
     font-size : 0.90em;
+  }
+
+  .nav-tabs > li > a {
+    font-size: 0.86em;
   }
 
   .btn {
@@ -146,6 +157,7 @@
     font-size : 1.25em;
   }
 
+
   h3 {
     font-size : 1em;
   }
@@ -156,6 +168,10 @@
 
   p {
     font-size : 0.85em;
+  }
+
+  .nav-tabs > li > a {
+    font-size: 0.75em;
   }
 
   .btn {

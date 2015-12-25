@@ -1,9 +1,18 @@
 .container
-  h1 Mon compte
-  = @user.email
-  = @user.first_name
-  = @user.last_name
-  = @bookings.each do |booking|
-    = booking.desk
-    = booking.desk.company
-    / = booking.amount
+  .row
+    .col-xs-12.col-sm-9
+      h1 Mon compte
+      h4
+      = @user.email
+      h4 =t('account.name')
+      = @user.first_name
+      h4 =t('account.last_name')
+      = @user.last_name
+    .col-xs-12.col-sm-3
+
+  .row
+    .col-xs-12
+      = @bookings.each do |booking|
+        = booking.desk
+        = booking.desk.company
+        / = booking.amount

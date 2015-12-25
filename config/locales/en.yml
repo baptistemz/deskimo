@@ -70,6 +70,10 @@ en:
     you: "You"
     vat: "VAT"
     total_price: "Total price"
+  account:
+    first_name: "first name"
+    last_name: "last_name"
+
 # LAYOUT
   navbar:
     profil            : "My profile"

@@ -2,7 +2,7 @@ fr:
   enumerize:
     desk:
       kind:
-        open_space: 'open space'
-        closed_office: 'bureau séparé'
-        meeting_room: 'salle de réunion'
+        open_space: 'Open space'
+        closed_office: 'Bureau séparé'
+        meeting_room: 'Salle de réunion'
 

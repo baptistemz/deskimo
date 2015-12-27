@@ -3,6 +3,7 @@ module Account
     def show
       @user = current_user
       @bookings = @user.bookings
+      @company = @user.company
     end
 
     def edit

@@ -1,46 +1,51 @@
 .container.content
-  h1 Mon entreprise
+  h1= t('navbar.company_dashboard')
   br
-  .row.company-resume
-    .col-sm-6
-      .product-thumbnail
-        = image_tag @company.picture.url(:list), class: "img-responsive"
-        .product-thumbnail-content
-          .product-name
-            h1 = @company.name
-      h4.company-section-title Adresse:
-      p
-        '#{@company.address}, #{@company.postcode}, #{@company.city}
+  .company-resume
+    .row
+      .col-sm-6
+        .product-thumbnail
+          = image_tag @company.picture.url(:list), class: "img-responsive"
+          .product-thumbnail-content
+            .product-name
+              h1 = @company.name
+        h4.company-section-title= t('show.address')
+        p
+          '#{@company.address}, #{@company.postcode}, #{@company.city}
 
-    .col-sm-6
-      h4.company-section-title Services
-      #services-list-show
-        - if @company.wifi?
-          .service-box
-            .service-badge
-              i.fa.fa-wifi
-            p wifi
-        - if @company.coffee?
-          .service-box
-            .service-badge
-              i.fa.fa-coffee
-            p café
-        - if @company.printer?
-          .service-box
-            .service-badge
-              i.fa.fa-print
-            p imprimante
-      hr.style-company
-      h4.company-section-title Description
-      .company-description = @company.description
-      hr.style-company
-      h4.company-section-title Horaires
-      p.company #{@opening_days} - #{@opening_hours}
+      .col-sm-6
+        h4.company-section-title= t('show.services')
+        #services-list-show
+          - if @company.wifi?
+            .service-box
+              .service-badge
+                i.fa.fa-wifi
+              p wifi
+          - if @company.coffee?
+            .service-box
+              .service-badge
+                i.fa.fa-coffee
+              p café
+          - if @company.printer?
+            .service-box
+              .service-badge
+                i.fa.fa-print
+              p imprimante
+        hr.style-company
+        h4.company-section-title= t('show.description')
+        .company-description = @company.description
+        hr.style-company
+        h4.company-section-title = t('show.opening_times')
+        p.company #{@opening_days} - #{@opening_hours}
 
 
-    br
-    .text-center
-      = link_to " Modifier les informations de l'entreprise", edit_account_company_path(@company), class: "fa fa-pencil"
+
+      .center.padded
+        = link_to t('dashboard.edit_company'), edit_account_company_path(@company), class: "fa fa-pencil"
+        br
+        hr
+        = link_to account_bookings_path
+          i.fa.fa-edit = t('navbar.bookings')
   br
   .row
     br

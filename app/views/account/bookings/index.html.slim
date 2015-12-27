@@ -1,0 +1,100 @@
+.container
+  - if current_user.company
+    h2.center Réservations de bureaux dans votre entreprise
+
+    - if @open_space_bookings.any?
+      h4.company-section-title = t('enumerize.desk.kind.open_space')
+      table
+        tr
+          th Visiteur
+          th Durée
+          th Début
+          th Fin
+          th Montant
+          th Statut
+        - @open_space_bookings.each do |booking|
+          tr
+            td #{booking.user.first_name} #{booking.user.last_name}
+            td #{booking.time_slot_quantity} #{booking.time_slot_type}
+            - if booking.time_slot_type == "1/2 journée"
+              #{booking.half_day_choice}
+            td = booking.start_date
+            td = booking.end_date
+            td #{booking.amount} €
+            td = booking.status
+      br
+    - elsif @closed_office_bookings.any?
+      h4.company-section-title = t('enumerize.desk.kind.closed_office')
+      table
+        tr
+          th Visiteur
+          th Durée
+          th Début
+          th Fin
+          th Montant
+          th Statut
+        - @closed_office_bookings.each do |booking|
+          tr
+            td #{booking.user.first_name} #{booking.user.last_name}
+            td #{booking.time_slot_quantity} #{booking.time_slot_type}
+            - if booking.time_slot_type == "1/2 journée"
+              #{booking.half_day_choice}
+            td = booking.start_date
+            td = booking.end_date
+            td #{booking.amount} €
+            td = booking.status
+      br
+    - elsif @meeting_room_bookings.any?
+      h4.company-section-title = t('enumerize.desk.kind.meeting_room')
+      table
+        tr
+          th Visiteur
+          th Durée
+          th Début
+          th Fin
+          th Montant
+          th Statut
+        - @meeting_room_bookings.each do |booking|
+          tr
+            td #{booking.user.first_name} #{booking.user.last_name}
+            td #{booking.time_slot_quantity} #{booking.time_slot_type}
+            - if booking.time_slot_type == "1/2 journée"
+              #{booking.half_day_choice}
+            td = booking.start_date
+            td = booking.end_date
+            td #{booking.amount} €
+            td = booking.status
+    -else
+      p Aucune reservation actuellement dans votre entreprise
+    .center.padded
+        / p.red Reservations Archivées >>
+        = link_to t('navbar.company_dashboard'), account_company_desks_path(current_user.company), class: "fa fa-dashboard"
+    hr
+  h2.center Vos réservations de bureaux
+  - if @user_bookings.any?
+    br
+    table
+      tr
+        th Bureau
+        th Durée
+        th Début
+        th Fin
+        th Montant
+        th Statut
+      - @user_bookings.each do |booking|
+        tr
+          td
+            = link_to company_desks_path(booking.desk.company)
+              '#{booking.desk.kind} chez #{booking.desk.company.name}
+          td #{booking.time_slot_quantity} #{booking.time_slot_type}
+          - if booking.time_slot_type == "1/2 journée"
+            #{booking.half_day_choice}
+          td = booking.start_date
+          td = booking.end_date
+          td #{booking.amount} €
+          td = booking.status
+  -else
+    p Aucune reservation
+
+
+

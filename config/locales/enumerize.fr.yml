@@ -2,7 +2,12 @@ fr:
   enumerize:
     desk:
       kind:
-        open_space: 'Open space'
-        closed_office: 'Bureau séparé'
-        meeting_room: 'Salle de réunion'
+        open_space    : 'Open space'
+        closed_office : 'Bureau séparé'
+        meeting_room  : 'Salle de réunion'
+    booking:
+      time_slot_type:
+        half_day : "Demi-journée"
+        day      : "Journée"
+        week     : "Semaine"
 

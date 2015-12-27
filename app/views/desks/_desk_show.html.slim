@@ -38,7 +38,7 @@ br
 .booking-creation
 = simple_form_for [desk.company, desk, booking] do |f|
   .booking-quantity-modifier
-    p.company durée:
+    p.company = t('show.length')
     .quantity-input-buttons#time-slot-quantity
       .minus-button
         i.fa.fa-minus
@@ -49,11 +49,11 @@ br
     = f.input :time_slot_type, label: false, include_blank: false, default: "Heure(s)"
   br
   .booking-quantity-modifier
-    p.company Le:
+    p.company = t('show.from')
     = f.select :start_date, options_for_booking_date(desk.get_next_available_days_array)
   br
   .booking-quantity-modifier.half-day-select.hidden
-    p.company 1/2 journée:
+    p.company #{t('show.half_day')} :
     = f.select :half_day_choice, {'matin' => 'am', 'après-midi' => "pm"}, label: false
   br
   = f.button :submit, class: "btn-primary full-width", value: t('show.book')

@@ -1,4 +1,4 @@
-module ApplicationHelper
+module PaymentHelper
   def cc_years
     yrs = []
     year_today = Date.today.strftime("%y").to_i

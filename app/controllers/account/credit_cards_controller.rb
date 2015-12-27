@@ -18,9 +18,11 @@ module Account
 
     def create
       @credit_card = current_user.credit_cards.build(token: params[:mangopay_card_id])
-      @credit_card.name = params[:name]
+      @credit_card.name = params[:card_holder]
+      @credit_card.expires_at = Date.new(params[:card_exp_year].prepend('20').to_i, params[:card_exp_month].to_i, 29)
+      @credit_card.token = params[:authenticity_token]
       if @credit_card.save
-        redirect_to new_booking_payment_path(@booking)
+        redirect_to new_booking_payment_path(params[:booking_id])
       else
         redirect_to :back
       end

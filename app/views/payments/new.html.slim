@@ -2,55 +2,13 @@
   h1 Paiement
   .row
     .col-xs-12.col-md-6
-      .credit-card-choice
-        .card-selection
-          .oversize.text-center
-            i.fa.fa-credit-card
-          h2 Selectionnez la carte de crédit
-          - if @credit_cards.empty?
-            p Aucune carte de crédit enregistrée pour le moment
-            .btn.btn-primary#create-card.qty-update-btn Enregistrer une carte
-          -else
-            = select_tag :credit_card, options_for_select(@credit_cards.pluck(:name))
-            p ou :
-            .btn.btn-primary#create-card.qty-update-btn Enregistrez une nouvelle carte
-
-          .card-creation.hidden
-            = form_tag (account_credit_cards_path(booking_id: @booking.id)), id: 'credit_card', class: 'form'
-              div.form-group
-                = label_tag       :card_holder, 'Nom'
-                = text_field_tag  :card_holder, nil, 'holder' => nil, class: 'form-control'
-              div.form-group
-                = label_tag       :card_number, 'Numéro de carte'
-                = text_field_tag  :card_number, nil, 'name' => nil, class: 'form-control'
-              div.form-group
-                .row
-                  .col-sm-9
-                    = label_tag       :card_exp_date, "Date d'expiration"
-                    .row
-                      .col-xs-6
-                        = select_tag :card_exp_month,options_for_select((1..12).map {|n| "%02d" % n}), class: 'form-control'
-                      .col-xs-6
-                        = select_tag :card_exp_year, options_for_select(options_for_select(cc_years)), class: 'form-control'
-                  .col-sm-3
-                    = label_tag       :card_cvx, 'Code'
-                    = text_field_tag  :card_cvx, nil, 'name' => nil, class: 'form-control'
-                    p.help-block = 'CVC*'
-                div#save-card
-                  button.btn.btn-primary.btn-center.full-width Enregistrer
-
-
-
-
-
-    .col-xs-12.col-md-6
       .payment-confirmation
         .oversize.text-center
-          i.fa.fa-long-arrow-right
-        h2 Effectuez le paiement
+          i.fa.fa-credit-card
+        h2 Paiement par carte de crédit
         br
         .price-line
-          p 1 #{@booking.time_slot_type}
+          p Prix par #{@booking.time_slot_type}
           p #{@booking.amount.to_i / @booking.time_slot_quantity}€
         hr
         .price-line
@@ -61,7 +19,37 @@
           p TOTAL
           p #{@booking.amount}€ TTC
         br
-        button.btn.btn-primary.btn-center.full-width.disabled Payer
+        -if @credit_card
+          = simple_form_for [@booking, @payment], id: 'payment' do |f|
+            = f.input :credit_card, as: :hidden, input_html: { value: @credit_card.id }
+            = f.submit 'Payer', class: 'btn btn-primary btn-center full-width'
+        -else
+          .hidden
+            = simple_form_for [@booking, @payment], id: 'payment' do |f|
+              = f.input :credit_card, default_value: @credit_card.id
+              = f.submit 'Payer', class: 'btn btn-primary btn-center full-width'
+          = form_tag (account_credit_card_path(booking_id: @booking.id)), booking_id: @booking.id, id: 'credit_card', class: 'form'
+            div.form-group
+              = label_tag       :card_holder, 'Nom'
+              = text_field_tag  :card_holder, nil, 'holder' => nil, class: 'form-control'
+            div.form-group
+              = label_tag       :card_number, 'Numéro de carte'
+              = text_field_tag  :card_number, nil, 'name' => nil, class: 'form-control'
+            div.form-group
+              .row
+                .col-sm-9
+                  = label_tag       :card_exp_date, "Date d'expiration"
+                  .row
+                    .col-xs-6
+                      = select_tag :card_exp_month,options_for_select((1..12).map {|n| "%02d" % n}), class: 'form-control'
+                    .col-xs-6
+                      = select_tag :card_exp_year, options_for_select(options_for_select(cc_years)), class: 'form-control'
+                .col-sm-3
+                  = label_tag       :card_cvx, 'Code'
+                  = text_field_tag  :card_cvx, nil, 'name' => nil, class: 'form-control'
+                  p.help-block = 'CVC*'
+            = submit_tag 'Payer', class: 'btn btn-primary btn-center full-width'
+
 
 = content_for :javascripts
   javascript:
@@ -76,7 +64,8 @@
     });
 
     // Register card
-    $("#save-card").click(function(event) {
+    $("#credit_card").submit(function(event) {
+      console.log('cool')
       event.preventDefault();
       var cardData = {
         cardNumber: $("#card_number").val(),
@@ -84,7 +73,6 @@
         cardCvx: $("#card_cvx").val(),
         cardType: 'CB_VISA_MASTERCARD'
       };
-      console.log (cardData["cardExpirationDate"])
       mangoPay.cardRegistration.registerCard(
         cardData,
         function(res) {

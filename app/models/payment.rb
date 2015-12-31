@@ -1,11 +1,11 @@
 class Payment < ActiveRecord::Base
   extend Enumerize
-  has_one :credit_card
+  belongs_to :credit_card
 
   belongs_to :receiver, class_name: 'User', foreign_key: :receiver_id
   belongs_to :payer, class_name: 'User', foreign_key: :payer_id
 
-  enumerize :status, in: %w(pending paid canceled error), default: :pending
+  enumerize :status, in: %w(pending accepted refused error), default: :pending
 
   def charge
     mangopay_request = {
@@ -29,14 +29,14 @@ class Payment < ActiveRecord::Base
       self.mangopay_payin_id = response["Id"]
 
       if response["Status"] == 'SUCCEEDED'
-        self.state = :accepted
+        self.status = :accepted
         self.order.validate_payment!
       else
-        self.state = :refused
+        self.status = :refused
       end
     rescue MangoPay::ResponseError => e
       self.response = e.details
-      self.state = :error
+      self.status = :error
     end
 
     self.save

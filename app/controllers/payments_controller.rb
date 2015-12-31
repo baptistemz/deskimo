@@ -9,8 +9,11 @@ class PaymentsController < ApplicationController
   def new
     current_user.create_or_update_wallet
     @booking = current_user.bookings.find(params[:booking_id])
-    @credit_cards = current_user.credit_cards
-    @credit_card = current_user.credit_cards.build
+    if current_user.credit_card
+      @credit_card = current_user.credit_card
+    else
+      @credit_card = current_user.build_credit_card
+    end
     @payment = current_user.outbound_payments.build
 
     params = {
@@ -23,47 +26,28 @@ class PaymentsController < ApplicationController
 
   def create
     @booking = Booking.find(params[:booking_id])
-    @payment = current_user.outbound_payments.build(payment_params)
+    @payment = current_user.outbound_payments.build(
+      credit_card_id: params[:payment][:credit_card],
+      receiver_id: @booking.desk.company.user.id,
+      booking_id: @booking.id,
+      amount_cents: @booking.amount * 100
+       )
     @payment.charge
 
-    case @payment.state
+    case @payment.status
     when 'accepted'
       flash[:notice] = "Votre paiement a été accepté"
       redirect_to product_checkout_confirmation_path
     when 'refused'
       raise
       flash[:error] = "Votre paiement a été refusé"
-      render :new
+      redirect_to new_booking_payment_path
     when 'error'
-      raise
       flash[:error] = "C'est des teubés chez Mangopay, envoyez un papier-monaie par courrier postal avec recommandé et accusé de réception"
-      render :new
+      redirect_to new_booking_payment_path
     else
       flash[:error] = "42"
-      render :new
+      redirect_to new_booking_payment_path
     end
   end
-
-  private
-
-    def payment_params
-      params.require(:payment).permit(:credit_card_id)
-    end
-
-    def check_step
-      if current_order.may_to_payment?
-        current_order.to_payment!
-      elsif current_order.cart_status == 'payment'
-
-        return nil
-      else
-        flash[:error] = 'Une erreur est survenue. Merci de réessayer ou de contacter Blodyn.'
-
-        begin
-          redirect_to :back
-        rescue ActionController::RedirectBackError
-          redirect_to root_path
-        end
-      end
-    end
-  end
+end

@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
     namespace :account do
       resource :user, only: [:show, :edit, :update], controller: 'user'
-      resource :credit_cards, only: [:new, :create, :index, :show, :update]
+      resource :credit_card, only: [:new, :create, :edit, :update], controller: 'credit_card'
       resources :companies, only: [:new, :create, :edit, :update] do
         resources :desks, only: [:new, :create, :edit, :index, :update, :destroy] do
           resource :activation, only: [:create, :destroy], controller: 'desks/activation'

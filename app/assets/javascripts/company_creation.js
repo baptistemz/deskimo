@@ -14,7 +14,6 @@ $(document).ready(function(){
   });
     $('#company_name').keyup(function(){
       var name = $('#company_name').val();
-      console.log(name)
       $('#company-name-preview').html(name)
     });
 

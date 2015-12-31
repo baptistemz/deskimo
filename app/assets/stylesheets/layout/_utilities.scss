@@ -109,6 +109,9 @@
   .nav-tabs > li > a {
     font-size: 0.95em;
   }
+  .banner {
+    background-attachment: fixed;
+  }
 }
 
 @media (min-width: 480px) and (max-width: 900px) {
@@ -143,8 +146,6 @@
   .btn-primary {
   padding-top : 10px;
   }
-
-
 }
 
 @media (max-width: 480px) {

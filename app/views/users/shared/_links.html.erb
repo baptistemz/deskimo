@@ -11,7 +11,7 @@
 <% end -%>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to t('devise.custom.create_company_account'), new_account_company_path %><br />
+  <%= link_to t('devise.custom.create_company_account'), new_user_registration_path(:user_type => "company") %><br />
 <% end -%>
 
 

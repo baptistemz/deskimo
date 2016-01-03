@@ -10,11 +10,11 @@
           a.share-links-item.bg-email href="#"
             i.fa.fa-envelope-o
       .col-xs-6.hidden-xs
-          p = link_to "Jobs"
+          p = link_to "Jobs", page_path('jobs')
     .col-xs-2 data-sr="move 16px scale up 10%, over 3.5s"
       = image_tag 'logo6.png', class: 'footer-small-logo'
     .col-xs-5
       .col-sm-6.hidden-xs
-          p = link_to t('footer.about')
+          p = link_to t('footer.about'), page_path('about')
       .col-sm-6.col-xs-12
-          p = link_to t('footer.cgu')
+          p = link_to t('footer.cgu'), page_path('terms')

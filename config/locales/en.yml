@@ -35,6 +35,11 @@ en:
     hp_company_registration_title    : "Company or coworking space"
     hp_company_registration_subtitle : "willing to rent desks"
     hp_company_registration_cta      : "Register your company"
+  about:
+    about: "About"
+    team: "Our team"
+  terms:
+    terms: "Terms of use"
   index:
     kind_of_desk: "kind of desk"
   show:

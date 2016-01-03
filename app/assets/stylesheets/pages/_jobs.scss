@@ -1,0 +1,35 @@
+.techno-list {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 2%;
+  margin-right: 2%;
+  padding: auto;
+  margin-top: 30px
+}
+
+.jobs-img-cover {
+  background-image    : url("nomad_workers.jpg");
+  width: 100%;
+  background-size     : cover;
+  background-position : center;
+  height              : 40vh;
+  overflow            : hidden;
+}
+
+.techno {
+  text-align: center;
+  margin: auto;
+  width: 16%;
+  max-width: 100px
+}
+
+.techno > img {
+  width: 100%
+}
+
+.techno > p {
+  size: 12px
+}
+
+

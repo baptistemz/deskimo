@@ -4,7 +4,7 @@ fr:
       social_sign_in_solutions : "Ou s'identifier avec :"
       social_sign_up_solutions : "Ou s'identifier avec :"
       already_an_account       : "Déjà un compte ?"
-      forgotten_password       : "Mot de passe oublié?"
+      forgotten_password       : "Mot de passe oublié"
       create_user_account      : "Créer un compte utilisateur"
       create_company_account   : "Créer un compte entreprise"
   languages:
@@ -42,6 +42,11 @@ fr:
     hp_company_registration_title    : "Entreprise ou espace de coworking"
     hp_company_registration_subtitle : "Vous voulez mettre en location des bureaux"
     hp_company_registration_cta      : "Inscrivez votre entreprise"
+  about:
+    about: "A propos"
+    team: "Notre équipe"
+  terms:
+    terms: "Conditions générales d'utilisation"
   index:
     kind_of_desk: "type de bureaux"
   show:

@@ -3,10 +3,11 @@ ActiveAdmin.register Desk do
   index do
     selectable_column
     column :description
-    column :company_id
+    column :company
     column :quantity
     column :kind
     column :hour_price
+    column :half_day_price
     column :daily_price
     column :weekly_price
     column :activated

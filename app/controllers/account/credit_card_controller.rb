@@ -17,6 +17,7 @@ module Account
     end
 
     def create
+      raise
       @credit_card = current_user.build_credit_card(token: params[:mangopay_card_id])
       @credit_card.name = params[:card_holder]
       @credit_card.expires_at = Date.new(params[:card_exp_year].prepend('20').to_i, params[:card_exp_month].to_i, 29)

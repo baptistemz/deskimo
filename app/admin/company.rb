@@ -3,6 +3,7 @@ ActiveAdmin.register Company do
   index do
     selectable_column
     column :name
+    column :id
     column :siret
     column :address
     column :city

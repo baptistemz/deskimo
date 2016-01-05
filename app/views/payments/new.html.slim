@@ -19,7 +19,7 @@
           p TOTAL
           p #{@booking.amount}€ TTC
         br
-        -if @credit_card
+        -if @credit_card.id
           = simple_form_for [@booking, @payment], id: 'payment' do |f|
             = f.input :credit_card, as: :hidden, input_html: { value: @credit_card.id }
             = f.submit 'Payer', class: 'btn btn-primary btn-center full-width'
@@ -28,9 +28,9 @@
             = simple_form_for [@booking, @payment], id: 'payment' do |f|
               = f.input :credit_card, default_value: @credit_card.id
               = f.submit 'Payer', class: 'btn btn-primary btn-center full-width'
-          = form_tag (account_credit_card_path(booking_id: @booking.id)), booking_id: @booking.id, id: 'credit_card', class: 'form'
+        = form_tag '#', id: 'credit_card_info', class: 'form'
             div.form-group
-              = label_tag       :card_holder, 'Nom'
+              = label_tag       :card_holder, 'Nom du porteur'
               = text_field_tag  :card_holder, nil, 'holder' => nil, class: 'form-control'
             div.form-group
               = label_tag       :card_number, 'Numéro de carte'
@@ -48,7 +48,10 @@
                   = label_tag       :card_cvx, 'Code'
                   = text_field_tag  :card_cvx, nil, 'name' => nil, class: 'form-control'
                   p.help-block = 'CVC*'
-            = submit_tag 'Payer', class: 'btn btn-primary btn-center full-width'
+              = submit_tag 'Payer', class: 'btn btn-primary btn-center full-width'
+.hidden
+  = form_tag (account_credit_card_path), booking_id: @booking.id, id: 'mangopay_credit_card' do
+    = text_field_tag :mangopay_card_id
 
 
 = content_for :javascripts
@@ -64,7 +67,7 @@
     });
 
     // Register card
-    $("#credit_card").submit(function(event) {
+    $("#credit_card_info").submit(function(event) {
       console.log('cool')
       event.preventDefault();
       var cardData = {
@@ -77,7 +80,7 @@
         cardData,
         function(res) {
           $('#mangopay_card_id').val(res.CardId);
-          $('#credit_card').submit();
+          $('#mangopay_credit_card').submit();
         },
         function(res) {
           console.log(res.ResultMessage);

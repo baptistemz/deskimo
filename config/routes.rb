@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
+  require "sidekiq/web"
+
+  authenticate :admin_user do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: "registrations" }
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
 
   scope '(:locale)', locale: /fr|en/ do
     get '/change_locale/:locale', to: 'settings#change_locale', as: :change_locale
 
-    devise_for :admin_users, ActiveAdmin::Devise.config
-    ActiveAdmin.routes(self)
 
     root to: 'pages#home'
 

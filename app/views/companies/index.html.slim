@@ -10,9 +10,9 @@
     .col-xs-12.col-sm-7#left
       .row.research-bar
         .col-xs-9.col-sm-12
-          .row
-            .col-xs-8
-              = form_tag companies_path, method: :get, class: "flexform"
+          = form_tag companies_path, method: :get, class: "flexform"
+            .row
+              .col-xs-6
                 = text_field_tag :full_address, params[:full_address], placeholder: t('home.city_placeholder'), id: "js-autocomplete-city", class: "pretty-field"
                 button.search-btn type="submit"
                   i.fa.fa-search
@@ -25,11 +25,11 @@
                   / = hidden_field_tag :locality, id: "locality", disabled: true
                   / = hidden_field_tag :country, id: "country", disabled: true
 
-            .col-xs-4
-              #filter-select
-                / = form_tag companies_path, method: :get, class: "flexform"
-                = select_tag :kind, options_for_select(Desk.kind.options(only: @kinds), params[:kind]), label: false, prompt: t('index.kind_of_desk'), include_blank: false, :onchange => "this.form.submit()"
-                / = select_tag :kind, collection: @kinds, selected: @kinds, label: false, prompt: 'kind', include_blank: true, input_html: {:onchange => "this.form.submit()"}
+              .col-xs-6
+                #filter-select
+                  / = form_tag companies_path, method: :get, class: "flexform"
+                  = select_tag :kind, options_for_select(Desk.kind.options(only: @kinds), params[:kind]), label: false, prompt: t('index.kind_of_desk'), include_blank: false, :onchange => "this.form.submit()"
+                  / = select_tag :kind, collection: @kinds, selected: @kinds, label: false, prompt: 'kind', include_blank: true, input_html: {:onchange => "this.form.submit()"}
 
         .col-xs-3.visible-xs.no-padding-left
           .map-btn

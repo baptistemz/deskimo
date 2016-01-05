@@ -5,7 +5,7 @@ locations:
     longitude: 3.057256
 
 mails:
-  defaults:
+  default:
     from: baptiste@nomadoffice.co
 
 

@@ -26,7 +26,7 @@ class BookingsController < ApplicationController
                                             end_date: @booking.end_date
                                             )
       if @unavailability.save
-        CleanUnpaidBookingsJob.set(wait: 1.minute).perform_later(@booking.id)
+        CleanUnpaidBookingsJob.perform_later(@booking.id)
         # CleanUnpaidBookingsJob.set(wait: 1.minute).perform_later(@booking.id)
         redirect_to company_desk_booking_confirmation_path(@booking.desk.company, @booking.desk, @booking )
       else

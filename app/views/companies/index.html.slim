@@ -13,8 +13,8 @@
           = form_tag companies_path, method: :get, class: "flexform"
             .row
               .col-xs-7
-                = text_field_tag :full_address, params[:full_address], placeholder: t('home.city_placeholder'), id: "js-autocomplete-city", class: "pretty-field"
-                button.search-btn type="submit"
+                = text_field_tag :full_address, params[:full_address], placeholder: t('home.city_placeholder'), id: "js-autocomplete-city", class: "pretty-field", id: "index-search-field"
+                button.search-btn#index-search-btn type="submit"
                   i.fa.fa-search
                 / = hidden_field_tag :geoloc, cookies[:lat_lng], disabled: true
                 = hidden_field_tag :lat, params[:lat], id: "lat"

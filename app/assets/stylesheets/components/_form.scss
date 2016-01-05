@@ -4,7 +4,7 @@
 .pretty-field {
   position: absolute;
   margin:10px auto 10px auto;
-  width: 105%;
+  width: 100%;
   line-height: 22px;
   font-weight: lighter;
   color: #666666;
@@ -14,9 +14,19 @@
   outline: none;
   position: relative
 }
+
+#index-search-field {
+  width: 105%;
+}
+
+#index-search-btn {
+  right: 5px
+}
+
+
 .search-btn {
   position: absolute;
-  right: 5px;
+  right: -3px;
   top: 9px;
   font-size: 24px;
   width: 43px;

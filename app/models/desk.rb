@@ -2,12 +2,14 @@ class Desk < ActiveRecord::Base
 
   extend Enumerize
 
-  enumerize :kind, in: [:open_space, :closed_office, :meeting_room], default: :open_space
 
   belongs_to :company
   has_many :bookings
 
   has_many :unavailability_ranges, dependent: :destroy
+
+  monetize :hour_price_cents, :half_day_price_cents, :daily_price_cents, :weekly_price_cents
+  enumerize :kind, in: [:open_space, :closed_office, :meeting_room], default: :open_space
 
   after_commit :reindex_company
 

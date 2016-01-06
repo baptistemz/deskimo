@@ -8,7 +8,7 @@ module Account
       @company = current_user.build_company(company_params)
       @company.activated = false
       if @company.save
-        current_user.create_or_update_wallet
+        # current_user.create_or_update_wallet
         flash[:notice] = "Votre entreprise a bien été enregistrée."
         redirect_to new_account_company_desk_path(@company)
       else

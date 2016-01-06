@@ -40,50 +40,48 @@ class User < ActiveRecord::Base
     user
   end
 
-  def update_mangopay_profile
-    params = {
-      "Email" => self.email,
-      "FirstName" => self.first_name,
-      "LastName" => self.last_name,
-      "Birthday" => 467909843,
-      "Nationality" => "FR",
-      "CountryOfResidence" => "FR"
-    }
-    begin
-      if self.mangopay_user_id
-        response = MangoPay::NaturalUser.update(self.mangopay_user_id, params)
-      else
-        response = MangoPay::NaturalUser.create(params)
-      end
-    rescue MangoPay::ResponseError => e
-      puts e
-    end
-    self.mangopay_user_id = response["Id"]
-    self.save
-  end
-
-  # def update_pro_mangopay_profile
+  # def update_mangopay_profile
+  #   params = {
+  #     "Email" => self.email,
+  #     "FirstName" => self.first_name,
+  #     "LastName" => self.last_name,
+  #     "Birthday" => 467909843,
+  #     "Nationality" => "FR",
+  #     "CountryOfResidence" => "FR"
+  #   }
+  #   begin
+  #     if self.mangopay_user_id
+  #       response = MangoPay::NaturalUser.update(self.mangopay_user_id, params)
+  #     else
+  #       response = MangoPay::NaturalUser.create(params)
+  #     end
+  #   rescue MangoPay::ResponseError => e
+  #     puts e
+  #   end
+  #   self.mangopay_user_id = response["Id"]
+  #   self.save
   # end
 
-  def create_or_update_wallet
-    self.update_mangopay_profile
-    params = {
-      "Owners" => ["#{self.mangopay_user_id}"],
-      "Description" => "nomadoffice Wallet #{self.email}",
-      "Currency" => "EUR"
-    }
 
-    begin
-      if self.mangopay_wallet_id
-        response = MangoPay::Wallet.update(self.mangopay_wallet_id, params)
-      else
-        response = MangoPay::Wallet.create(params)
-      end
-    rescue MangoPay::ResponseError => e
-      puts e
-    end
-    self.mangopay_wallet_id = response["Id"]
-    self.save
-  end
+  # def create_or_update_wallet
+  #   self.update_mangopay_profile
+  #   params = {
+  #     "Owners" => ["#{self.mangopay_user_id}"],
+  #     "Description" => "nomadoffice Wallet #{self.email}",
+  #     "Currency" => "EUR"
+  #   }
+
+  #   begin
+  #     if self.mangopay_wallet_id
+  #       response = MangoPay::Wallet.update(self.mangopay_wallet_id, params)
+  #     else
+  #       response = MangoPay::Wallet.create(params)
+  #     end
+  #   rescue MangoPay::ResponseError => e
+  #     puts e
+  #   end
+  #   self.mangopay_wallet_id = response["Id"]
+  #   self.save
+  # end
 
 end

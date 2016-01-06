@@ -1,5 +1,6 @@
 class PaymentsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_booking
 
   def index
     @outbound_payments = current_user.outbound_payments
@@ -7,8 +8,9 @@ class PaymentsController < ApplicationController
   end
 
   def new
-    current_user.create_or_update_wallet
-    @booking = current_user.bookings.find(params[:booking_id])
+    @company = @booking.desk.company
+    @desk = @booking.desk
+    # current_user.create_or_update_wallet
     if current_user.credit_card
       @credit_card = current_user.credit_card
     else
@@ -16,16 +18,40 @@ class PaymentsController < ApplicationController
     end
     @payment = current_user.outbound_payments.build
 
-    params = {
-        UserId: current_user.mangopay_user_id,
-        Currency: "EUR",
-        CardType: "CB_VISA_MASTERCARD"
-      }
-    @card_registration = MangoPay::CardRegistration.create(params)
+    # params = {
+    #     UserId: current_user.mangopay_user_id,
+    #     Currency: "EUR",
+    #     CardType: "CB_VISA_MASTERCARD"
+    #   }
+    # @card_registration = MangoPay::CardRegistration.create(params)
   end
 
   def create
-    @booking = Booking.find(params[:booking_id])
+    @company = @booking.desk.company
+    @amount = @booking.amount_cents
+    customer = Stripe::Customer.create(
+      source: params[:stripeToken],
+      email: params[:stripeEmail]
+    )
+    current_user.update(stripe_customer_id: customer.id)
+
+    charge = Stripe::Charge.create(
+      customer: customer.id,
+      amount:       @amount,  # in cents
+      description:  "Location de bureaux chez #{@company.name} ",
+      currency:     'eur'
+    )
+
+    @booking.update(payment: charge.to_json, status: 'paid')
+
+    redirect_to account_bookings_path(@order)
+
+  rescue Stripe::CardError => e
+    flash[:error] = e.message
+    redirect_to new_booking_payment_path(@booking)
+
+
+
     @payment = current_user.outbound_payments.build(
       credit_card_id: params[:payment][:credit_card],
       receiver_id: @booking.desk.company.user.id,
@@ -49,5 +75,11 @@ class PaymentsController < ApplicationController
       flash[:error] = "42"
       redirect_to new_booking_payment_path
     end
+  end
+
+  private
+
+  def set_booking
+    @booking = current_user.bookings.where(status: 'pending').find(params[:booking_id])
   end
 end

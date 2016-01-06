@@ -1,11 +1,9 @@
 .container
-  h1 Paiement
+  h1.center Paiement
   .row
     .col-xs-12.col-md-6
       .payment-confirmation
-        .oversize.text-center
-          i.fa.fa-credit-card
-        h2 Paiement par carte de crédit
+        h2 Montant
         br
         .price-line
           p Prix par #{@booking.time_slot_type}
@@ -15,75 +13,88 @@
           p x#{@booking.time_slot_quantity}
           p #{@booking.amount}€
         hr.dark-hr
-        .price-line
+        .price-line.black
           p TOTAL
           p #{@booking.amount}€ TTC
-        br
-        -if @credit_card.id
-          = simple_form_for [@booking, @payment], id: 'payment' do |f|
-            = f.input :credit_card, as: :hidden, input_html: { value: @credit_card.id }
-            = f.submit 'Payer', class: 'btn btn-primary btn-center full-width'
-        -else
-          .hidden
-            = simple_form_for [@booking, @payment], id: 'payment' do |f|
-              = f.input :credit_card, default_value: @credit_card.id
-              = f.submit 'Payer', class: 'btn btn-primary btn-center full-width'
-        = form_tag '#', id: 'credit_card_info', class: 'form'
-            div.form-group
-              = label_tag       :card_holder, 'Nom du porteur'
-              = text_field_tag  :card_holder, nil, 'holder' => nil, class: 'form-control'
-            div.form-group
-              = label_tag       :card_number, 'Numéro de carte'
-              = text_field_tag  :card_number, nil, 'name' => nil, class: 'form-control'
-            div.form-group
-              .row
-                .col-sm-9
-                  = label_tag       :card_exp_date, "Date d'expiration"
-                  .row
-                    .col-xs-6
-                      = select_tag :card_exp_month,options_for_select((1..12).map {|n| "%02d" % n}), class: 'form-control'
-                    .col-xs-6
-                      = select_tag :card_exp_year, options_for_select(options_for_select(cc_years)), class: 'form-control'
-                .col-sm-3
-                  = label_tag       :card_cvx, 'Code'
-                  = text_field_tag  :card_cvx, nil, 'name' => nil, class: 'form-control'
-                  p.help-block = 'CVC*'
-              = submit_tag 'Payer', class: 'btn btn-primary btn-center full-width'
-.hidden
-  = form_tag (account_credit_card_path), booking_id: @booking.id, id: 'mangopay_credit_card' do
-    = text_field_tag :mangopay_card_id
+
+    .col-xs-12.col-md-6
+      .payment-confirmation.text-center
+        .oversize
+          i.fa.fa-credit-card
+        = form_tag booking_payments_path(@booking) do
+
+            label class="amount"
+              span
+              br
+                'Montant: #{humanized_money_with_symbol(@booking.amount)}
+              br
+
+              script src="https://checkout.stripe.com/checkout.js" class="stripe-button btn-center" data-name="#{@company.name}" data-email="#{current_user.email}" data-description= "#{@desk.kind} - #{@booking.time_slot_quantity} #{@booking.time_slot_type}" data-amount="#{@booking.amount_cents}" data-currency="EUR" data-key="#{Rails.configuration.stripe[:publishable_key]}"
 
 
-= content_for :javascripts
-  javascript:
-    mangoPay.cardRegistration.baseURL   = "https://api.sandbox.mangopay.com";
-    mangoPay.cardRegistration.clientId  = "#{ENV['MANGOPAY_CLIENT_ID']}";
+        = image_tag 'payment_cards.png', class: 'payment-cards'
 
-    mangoPay.cardRegistration.init({
-      cardRegistrationURL: "#{@card_registration["CardRegistrationURL"]}",
-      preregistrationData: "#{@card_registration["PreregistrationData"]}",
-      accessKey: "#{@card_registration["AccessKey"]}",
-      Id: "#{@card_registration["Id"]}"
-    });
+        / br
+        / .hidden
+        /   = simple_form_for [@booking, @payment], id: 'payment' do |f|
+        /     = f.input :credit_card, default_value: @credit_card.id
+        /     = f.submit 'Payer', class: 'btn btn-primary btn-center full-width'
+        / = form_tag '#', id: 'credit_card_info', class: 'form'
+        /     div.form-group
+        /       = label_tag       :card_holder, 'Nom du porteur'
+        /       = text_field_tag  :card_holder, nil, 'holder' => nil, class: 'form-control'
+        /     div.form-group
+        /       = label_tag       :card_number, 'Numéro de carte'
+        /       = text_field_tag  :card_number, nil, 'name' => nil, class: 'form-control'
+        /     div.form-group
+        /       .row
+        /         .col-sm-9
+        /           = label_tag       :card_exp_date, "Date d'expiration"
+        /           .row
+        /             .col-xs-6
+        /               = select_tag :card_exp_month,options_for_select((1..12).map {|n| "%02d" % n}), class: 'form-control'
+        /             .col-xs-6
+        /               = select_tag :card_exp_year, options_for_select(options_for_select(cc_years)), class: 'form-control'
+        /         .col-sm-3
+        /           = label_tag       :card_cvx, 'Code'
+        /           = text_field_tag  :card_cvx, nil, 'name' => nil, class: 'form-control'
+        /           p.help-block = 'CVC*'
+        /       = submit_tag 'Payer', class: 'btn btn-primary btn-center full-width'
+/ .hidden
+/   = form_tag (account_credit_card_path), booking_id: @booking.id, id: 'mangopay_credit_card' do
+/     = text_field_tag :mangopay_card_id
 
-    // Register card
-    $("#credit_card_info").submit(function(event) {
-      console.log('cool')
-      event.preventDefault();
-      var cardData = {
-        cardNumber: $("#card_number").val(),
-        cardExpirationDate: $("#card_exp_month").val().toString()+($("#card_exp_year").val()).toString(),
-        cardCvx: $("#card_cvx").val(),
-        cardType: 'CB_VISA_MASTERCARD'
-      };
-      mangoPay.cardRegistration.registerCard(
-        cardData,
-        function(res) {
-          $('#mangopay_card_id').val(res.CardId);
-          $('#mangopay_credit_card').submit();
-        },
-        function(res) {
-          console.log(res.ResultMessage);
-        }
-      )
-    });
+
+/ = content_for :javascripts
+/   javascript:
+/     mangoPay.cardRegistration.baseURL   = "https://api.sandbox.mangopay.com";
+/     mangoPay.cardRegistration.clientId  = "#{ENV['MANGOPAY_CLIENT_ID']}";
+
+/     mangoPay.cardRegistration.init({
+/       cardRegistrationURL: "#{@card_registration["CardRegistrationURL"]}",
+/       preregistrationData: "#{@card_registration["PreregistrationData"]}",
+/       accessKey: "#{@card_registration["AccessKey"]}",
+/       Id: "#{@card_registration["Id"]}"
+/     });
+
+/     // Register card
+/     $("#credit_card_info").submit(function(event) {
+/       console.log('cool')
+/       event.preventDefault();
+/       var cardData = {
+/         cardNumber: $("#card_number").val(),
+/         cardExpirationDate: $("#card_exp_month").val().toString()+($("#card_exp_year").val()).toString(),
+/         cardCvx: $("#card_cvx").val(),
+/         cardType: 'CB_VISA_MASTERCARD'
+/       };
+/       mangoPay.cardRegistration.registerCard(
+/         cardData,
+/         function(res) {
+/           $('#mangopay_card_id').val(res.CardId);
+/           $('#mangopay_credit_card').submit();
+/         },
+/         function(res) {
+/           console.log(res.ResultMessage);
+/         }
+/       )
+/     });

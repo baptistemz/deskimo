@@ -9,6 +9,8 @@ class Booking < ActiveRecord::Base
   validate  :user_cannot_be_from_the_company
   validate  :desk_must_be_available
 
+  monetize :amount_cents
+
   enumerize :time_slot_type, in: ["1/2 journée", "jour(s)", "semaine(s)"], default: "jour(s)"
   enumerize :half_day_choice, in: [:am, :pm]
   enumerize :status, in: ["pending", "paid"], default: "pending"

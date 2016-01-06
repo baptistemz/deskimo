@@ -16,20 +16,13 @@
                 = text_field_tag :full_address, params[:full_address], placeholder: t('home.city_placeholder'), id: "js-autocomplete-city", class: "pretty-field", id: "index-search-field"
                 button.search-btn#index-search-btn type="submit"
                   i.fa.fa-search
-                / = hidden_field_tag :geoloc, cookies[:lat_lng], disabled: true
                 = hidden_field_tag :lat, params[:lat], id: "lat"
                 = hidden_field_tag :lng, params[:lng], id: "lng"
-                / = hidden_field_tag :lng, id: 'lng', disabled: true
-                  / = hidden_field_tag :street_number, id: "street_number", disabled: true
-                  / = hidden_field_tag :route, id: "route", disabled: true
-                  / = hidden_field_tag :locality, id: "locality", disabled: true
-                  / = hidden_field_tag :country, id: "country", disabled: true
 
               .col-xs-5
                 #filter-select
-                  / = form_tag companies_path, method: :get, class: "flexform"
                   = select_tag :kind, options_for_select(Desk.kind.options(only: @kinds), params[:kind]), label: false, prompt: t('index.kind_of_desk'), include_blank: false, :onchange => "this.form.submit()"
-                  / = select_tag :kind, collection: @kinds, selected: @kinds, label: false, prompt: 'kind', include_blank: true, input_html: {:onchange => "this.form.submit()"}
+
 
         .col-xs-3.visible-xs.no-padding-left
           .map-btn
@@ -42,36 +35,19 @@
         -else
           - @companies.each do |company|
             .col-xs-12.col-md-6
-              =link_to company_desks_path(company)
-                .product-thumbnail
-                  .product-thumbnail-gradient
-                    h4 Détails
-                  = image_tag company.picture.url(:list), class: "img-responsive"
-                  .distance
-                    p #{number_with_precision(company.distance_from(@location), precision: 1)} km
-                  ul.list-unstyle.list-inline#services
-                    - if company.wifi?
-                      li
-                        .service-badge
-                          i.fa.fa-wifi
-                    - if company.coffee?
-                      li
-                        .service-badge
-                          i.fa.fa-coffee
-                    - if company.printer?
-                      li
-                        .service-badge
-                          i.fa.fa-print
-                  .product-thumbnail-content
-                    .product-name
-                      p = company.name
-                    .product-price
-                      p #{company.cheapest_desk.daily_price}€ / j
+              - if params[:kind] == "closed_office"
+                =link_to company_desks_path(company, :tab_selected => "closed_office")
+                  = render partial: 'company_thumbnail', locals: {company: company}
+              - elsif params[:kind] == "meeting_room"
+                =link_to company_desks_path(company, :tab_selected => "meeting_room")
+                  = render partial: 'company_thumbnail', locals: {company: company}
+              -else
+                =link_to company_desks_path(company)
+                  = render partial: 'company_thumbnail', locals: {company: company}
+
 
     .col-sm-5.hidden-xs.fixed
-      / .map-outer.hidden-xs
-    / #list-btn.hidden
-    /   .i.fa.fa-list
+
 
 
 

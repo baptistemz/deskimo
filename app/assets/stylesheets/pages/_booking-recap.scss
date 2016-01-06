@@ -8,12 +8,16 @@
 }
 
 .recap-details {
-  display:flex;
-  align-items:center;
+  color: $dark-blue;
   height: 200px;
-  background-color: $light-blue;
+  // border: 1px solid $dark-blue;
+  background-color: $gray;
   border-radius: 3px;
-  color: white;
-  padding: 0 2%;
   margin: 20px;
+  padding-top: 1%
+}
+
+.recap-content{
+  width: 100%;
+  text-align: center
 }

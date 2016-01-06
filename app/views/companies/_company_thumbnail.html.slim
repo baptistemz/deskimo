@@ -1,0 +1,24 @@
+.product-thumbnail
+  .product-thumbnail-gradient
+    h4 Détails
+  = image_tag company.picture.url(:list), class: "img-responsive"
+  .distance
+    p #{number_with_precision(company.distance_from(@location), precision: 1)} km
+  ul.list-unstyle.list-inline#services
+    - if company.wifi?
+      li
+        .service-badge
+          i.fa.fa-wifi
+    - if company.coffee?
+      li
+        .service-badge
+          i.fa.fa-coffee
+    - if company.printer?
+      li
+        .service-badge
+          i.fa.fa-print
+  .product-thumbnail-content
+    .product-name
+      p = company.name
+    .product-price
+      p #{company.cheapest_desk.daily_price}€ / j

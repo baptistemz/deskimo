@@ -6,6 +6,7 @@ gem 'pg'
 gem 'config'
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
+gem 'stripe'
 
 gem 'sass-rails', '~> 5.0'
 gem 'jquery-rails'
@@ -47,7 +48,7 @@ gem 'sidekiq'
 gem 'sinatra'  # Dependency of sidekiq
 gem 'sidekiq-failures'
 
-gem 'mangopay', '~> 3.0.0'
+# gem 'mangopay', '~> 3.0.0'
 
 gem 'activeadmin', github: 'activeadmin'
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151223123850) do
+ActiveRecord::Schema.define(version: 20160106155731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,8 +52,8 @@ ActiveRecord::Schema.define(version: 20151223123850) do
   create_table "bookings", force: :cascade do |t|
     t.integer  "desk_id"
     t.integer  "user_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.integer  "time_slot_quantity"
     t.string   "time_slot_type"
     t.date     "start_date"
@@ -61,6 +61,8 @@ ActiveRecord::Schema.define(version: 20151223123850) do
     t.string   "half_day_choice"
     t.string   "status"
     t.integer  "amount"
+    t.integer  "amount_cents",       default: 0, null: false
+    t.json     "payment"
   end
 
   add_index "bookings", ["desk_id"], name: "index_bookings_on_desk_id", using: :btree
@@ -114,16 +116,20 @@ ActiveRecord::Schema.define(version: 20151223123850) do
 
   create_table "desks", force: :cascade do |t|
     t.text     "description"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.integer  "company_id"
     t.integer  "quantity"
     t.string   "kind"
     t.integer  "hour_price"
     t.integer  "daily_price"
     t.integer  "weekly_price"
-    t.boolean  "activated",      default: true
+    t.boolean  "activated",            default: true
     t.integer  "half_day_price"
+    t.integer  "hour_price_cents",     default: 0,    null: false
+    t.integer  "half_day_price_cents", default: 0,    null: false
+    t.integer  "daily_price_cents",    default: 0,    null: false
+    t.integer  "weekly_price_cents",   default: 0,    null: false
   end
 
   add_index "desks", ["company_id"], name: "index_desks_on_company_id", using: :btree
@@ -132,14 +138,13 @@ ActiveRecord::Schema.define(version: 20151223123850) do
     t.integer  "payer_id"
     t.integer  "receiver_id"
     t.integer  "credit_card_id"
-    t.integer  "amount_cents",      default: 0
-    t.string   "amount_currency",   default: "EUR"
     t.json     "response"
     t.string   "status"
     t.string   "mangopay_payin_id"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.integer  "booking_id"
+    t.integer  "amount_cents",      default: 0, null: false
   end
 
   create_table "unavailability_ranges", force: :cascade do |t|
@@ -175,8 +180,7 @@ ActiveRecord::Schema.define(version: 20151223123850) do
     t.string   "last_name"
     t.string   "token"
     t.datetime "token_expiry"
-    t.integer  "mangopay_wallet_id"
-    t.integer  "mangopay_user_id"
+    t.string   "stripe_customer_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

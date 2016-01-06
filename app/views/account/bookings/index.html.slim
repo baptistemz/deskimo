@@ -84,15 +84,27 @@
       - @user_bookings.each do |booking|
         tr
           td
-            = link_to company_desks_path(booking.desk.company)
-              '#{booking.desk.kind} chez #{booking.desk.company.name}
-          td #{booking.time_slot_quantity} #{booking.time_slot_type}
+            - if booking.desk.kind == "closed_office"
+              = link_to company_desks_path(booking.desk.company, :tab_selected => "closed_office")
+                '#{booking.desk.kind} chez #{booking.desk.company.name}
+            - elsif booking.desk.kind == "meeting_room"
+              = link_to company_desks_path(booking.desk.company, :tab_selected => "meeting_room")
+                '#{booking.desk.kind} chez #{booking.desk.company.name}
+            - else
+              = link_to company_desks_path(booking.desk.company)
+                '#{booking.desk.kind} chez #{booking.desk.company.name}
           - if booking.time_slot_type == "1/2 journée"
-            #{booking.half_day_choice}
+            td #{booking.time_slot_type} - #{booking.half_day_choice}
+          - else
+            td #{booking.time_slot_quantity} #{booking.time_slot_type}
           td = booking.start_date
-          td = booking.end_date
+          - if booking.end_date == booking.start_date
+            td -
+          - else
+            td = booking.end_date
           td #{booking.amount} €
           td = booking.status
+            i.fa
   -else
     p Aucune reservation
 

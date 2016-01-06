@@ -65,7 +65,6 @@ class PaymentsController < ApplicationController
       flash[:notice] = "Votre paiement a été accepté"
       redirect_to product_checkout_confirmation_path
     when 'refused'
-      raise
       flash[:error] = "Votre paiement a été refusé"
       redirect_to new_booking_payment_path
     when 'error'

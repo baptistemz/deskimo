@@ -35,23 +35,23 @@
       - else
         ul.nav.nav-tabs#desk-choice
           - if @open_space && @open_space.activated
-            li.active
+            li class= "#{ 'active' if params[:tab_selected] == nil || params[:tab_selected] == 'open_space' }"
               =link_to t('enumerize.desk.kind.open_space'), '#open_space', data: { toggle: 'tab' }
           - if @closed_office && @closed_office.activated
-            li
+            li class= "#{ 'active' if params[:tab_selected] == 'closed_office' }"
               =link_to t('enumerize.desk.kind.closed_office'), '#closed_office', data: { toggle: 'tab' }
           - if @meeting_room && @meeting_room.activated
-            li
+            li class= "#{ 'active' if params[:tab_selected] == 'meeting_room' }"
               =link_to t('enumerize.desk.kind.meeting_room'), '#meeting_room', data: { toggle: 'tab' }
         .tab-content
           - @desks.each do |desk|
             - if desk == @open_space && @open_space.activated
-              .tab-pane.active#open_space
+              .tab-pane#open_space class= "#{ 'active' if params[:tab_selected] == nil || params[:tab_selected] == 'open_space' }"
                 = render partial: 'desk_show', locals: {desk: desk, booking: @booking}
             - if desk == @closed_office && @closed_office.activated
-              .tab-pane#closed_office
+              .tab-pane#closed_office class= "#{ 'active' if params[:tab_selected] == 'closed_office' }"
                 = render partial: 'desk_show', locals: {desk: desk, booking: @booking}
 
             - if desk == @meeting_room && @meeting_room.activated
-              .tab-pane#meeting_room
+              .tab-pane#meeting_room class= "#{ 'active' if params[:tab_selected] == 'meeting_room' }"
                 = render partial: 'desk_show', locals: {desk: desk, booking: @booking}

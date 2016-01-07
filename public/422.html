@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>422 Changement rejetté !</title>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
   body {
@@ -10,48 +11,52 @@
     text-align: center;
     font-family: arial, sans-serif;
     margin: 0;
+    height: 30%;
   }
 
   div.dialog {
-    width: 80%;
-    padding: 100px;
-    margin: 4em auto 0;
+    width: 100%;
   }
 
   div.dialog > div {
-    border: 1px solid #CCC;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
+    padding: 7px 0;
+    position : absolute;
+    background-color: rgba(246, 247, 248, 0.6);
+    bottom : 280px;
+    width: 100%;
+    z-index: 10;
+    border: 1px solid #1B4D89;
   }
 
   h1 {
     font-size: 100%;
-    color: #730E15;
+    color: #F47B64;
     line-height: 1.5em;
+  }
+
+  p {
+    color: #1B4D89;
   }
 
   div.dialog > p {
     margin: 0 0 1em;
     padding: 1em;
-    background-color: #F7F7F7;
+
     border: 1px solid #CCC;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
-    color: #666;
+    color: #1B4D89;
   }
-
   div.dialog > img {
     width: 100%;
     margin : auto;
+    position: relative;
   }
-
   </style>
 </head>
 
 <body>
-  <!-- This file lives in public/404.html -->
+  <!-- This file lives in public/422.html -->
   <div class="dialog">
     <div>
       <h1>Changement rejetté.</h1>

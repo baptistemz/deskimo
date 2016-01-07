@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   has_many :inbound_payments, class_name: 'Payment', foreign_key: :receiver_id
   has_many :outbound_payments, class_name: 'Payment', foreign_key: :payer_id
 
+  after_create :send_welcome_email
+
   def self.find_for_facebook_oauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
@@ -39,6 +41,14 @@ class User < ActiveRecord::Base
     end
     user
   end
+
+  private
+
+  def send_welcome_email
+    UserMailer.welcome(self).deliver_now
+  end
+
+
 
   # def update_mangopay_profile
   #   params = {

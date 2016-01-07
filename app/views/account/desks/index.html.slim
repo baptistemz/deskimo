@@ -1,6 +1,7 @@
 .container.content
   h1= t('navbar.company_dashboard')
-  br
+  p = link_to t('dashboard.link_to_public'), company_desks_path(@company)
+
   .company-resume
     .row
       .col-sm-6

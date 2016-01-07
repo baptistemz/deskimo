@@ -21,7 +21,7 @@
             = link_to edit_account_user_path
               .edit-profile-cta
                 .rounded-icon
-                  i.fa.fa-edit
+                  i.fa.fa-pencil
                 p =t('account.edit_profile')
           .col-xs-12.visible-xs
             = link_to edit_account_user_path
@@ -57,6 +57,11 @@
             .center
               i.fa.fa-dashboard.icon-margin
                 = t('navbar.company_dashboard')
+        -else
+          br
+          p Vous n'êtes pas administrateur d'un compte entreprise. Si vous voulez enregistrer votre workplace sur nomad office et louer vos bureaux :
+          = link_to new_account_company_path
+            p enregistrez votre entreprise
   .row
     .center.padded
       = link_to account_bookings_path

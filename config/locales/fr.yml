@@ -93,6 +93,7 @@ fr:
     edit_profile  : "Modifier votre profil"
   dashboard:
     edit_company: "Modifier les informations de l'entreprise"
+    link_to_public: "Fiche publique de l'entreprise >"
     activated: "offre activée"
     non_activated: "offre désactivée"
     activate: "activer l'offre"
@@ -119,3 +120,8 @@ fr:
   footer:
     cgu   : "GGU"
     about : "à propos"
+
+#MAILER
+  mailer:
+    hello: 'Bonjour'
+    welcome: 'Bienvenue sur nomad office !'

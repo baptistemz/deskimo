@@ -8,18 +8,20 @@
         tr
           th Visiteur
           th Durée
-          th Début
-          th Fin
+          th Dates
           th Montant
           th Statut
         - @open_space_bookings.each do |booking|
           tr
             td #{booking.user.first_name} #{booking.user.last_name}
-            td #{booking.time_slot_quantity} #{booking.time_slot_type}
             - if booking.time_slot_type == "1/2 journée"
-              #{booking.half_day_choice}
-            td = booking.start_date
-            td = booking.end_date
+              td #{booking.time_slot_type} - #{booking.half_day_choice}
+            - else
+              td #{booking.time_slot_quantity} #{booking.time_slot_type}
+            - if booking.start_date == booking.end_date
+              td #{booking.start_date}
+            - else
+              td #{booking.start_date} - #{booking.end_date}
             td #{booking.amount} €
             td = booking.status
       br
@@ -29,18 +31,20 @@
         tr
           th Visiteur
           th Durée
-          th Début
-          th Fin
+          th Dates
           th Montant
           th Statut
         - @closed_office_bookings.each do |booking|
           tr
             td #{booking.user.first_name} #{booking.user.last_name}
-            td #{booking.time_slot_quantity} #{booking.time_slot_type}
             - if booking.time_slot_type == "1/2 journée"
-              #{booking.half_day_choice}
-            td = booking.start_date
-            td = booking.end_date
+              td #{booking.time_slot_type} - #{booking.half_day_choice}
+            - else
+              td #{booking.time_slot_quantity} #{booking.time_slot_type}
+            - if booking.start_date == booking.end_date
+              td #{booking.start_date}
+            - else
+              td #{booking.start_date} - #{booking.end_date}
             td #{booking.amount} €
             td = booking.status
       br
@@ -50,18 +54,20 @@
         tr
           th Visiteur
           th Durée
-          th Début
-          th Fin
+          th Dates
           th Montant
           th Statut
         - @meeting_room_bookings.each do |booking|
           tr
             td #{booking.user.first_name} #{booking.user.last_name}
-            td #{booking.time_slot_quantity} #{booking.time_slot_type}
             - if booking.time_slot_type == "1/2 journée"
-              #{booking.half_day_choice}
-            td = booking.start_date
-            td = booking.end_date
+              td #{booking.time_slot_type} - #{booking.half_day_choice}
+            - else
+              td #{booking.time_slot_quantity} #{booking.time_slot_type}
+            - if booking.start_date == booking.end_date
+              td #{booking.start_date}
+            - else
+              td #{booking.start_date} - #{booking.end_date}
             td #{booking.amount} €
             td = booking.status
     -else
@@ -77,7 +83,7 @@
       tr
         th Bureau
         th Durée
-        th Montant
+        th Dates
         th Détails
       - @user_bookings.each do |booking|
         tr
@@ -95,7 +101,10 @@
             td #{booking.time_slot_type} - #{booking.half_day_choice}
           - else
             td #{booking.time_slot_quantity} #{booking.time_slot_type}
-          td #{booking.amount} €
+          - if booking.start_date == booking.end_date
+            td #{booking.start_date}
+          - else
+            td #{booking.start_date} - #{booking.end_date}
           td
             =link_to account_booking_path(booking)
               .booking-details

@@ -64,6 +64,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'spring', '~> 1.4.1'
+  gem "letter_opener"
 end
 
 group :production do

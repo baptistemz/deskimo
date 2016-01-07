@@ -22,7 +22,7 @@ class Company < ActiveRecord::Base
       activated:        activated,
       name:             name,
       location:         [latitude, longitude],
-      kinds:            desks.pluck(:kind),
+      kinds:            desks.where(activated: true).pluck(:kind),
       desk_ids:         desk_ids,
       half_day_prices:  desks.pluck(:half_day_price),
       daily_prices:     desks.pluck(:daily_price),

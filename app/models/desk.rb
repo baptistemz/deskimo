@@ -32,7 +32,7 @@ class Desk < ActiveRecord::Base
   def one_kind_of_desk_per_company
     unless id
       errors.add(:kind, "Vous avez déjà enregistré des bureaux de ce type") if
-        company.desks.where(kind: kind)
+        company.desks.where(kind: kind).any?
     end
   end
 

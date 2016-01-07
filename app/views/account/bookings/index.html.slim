@@ -77,10 +77,8 @@
       tr
         th Bureau
         th Durée
-        th Début
-        th Fin
         th Montant
-        th Statut
+        th Détails
       - @user_bookings.each do |booking|
         tr
           td
@@ -97,14 +95,11 @@
             td #{booking.time_slot_type} - #{booking.half_day_choice}
           - else
             td #{booking.time_slot_quantity} #{booking.time_slot_type}
-          td = booking.start_date
-          - if booking.end_date == booking.start_date
-            td -
-          - else
-            td = booking.end_date
           td #{booking.amount} €
-          td = booking.status
-            i.fa
+          td
+            =link_to account_booking_path(booking)
+              .booking-details
+                i.fa.fa-info-circle
   -else
     p Aucune reservation
 

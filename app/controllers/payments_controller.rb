@@ -52,28 +52,28 @@ class PaymentsController < ApplicationController
 
 
 
-    @payment = current_user.outbound_payments.build(
-      credit_card_id: params[:payment][:credit_card],
-      receiver_id: @booking.desk.company.user.id,
-      booking_id: @booking.id,
-      amount_cents: @booking.amount * 100
-       )
-    @payment.charge
+    # @payment = current_user.outbound_payments.build(
+    #   credit_card_id: params[:payment][:credit_card],
+    #   receiver_id: @booking.desk.company.user.id,
+    #   booking_id: @booking.id,
+    #   amount_cents: @booking.amount * 100
+    #    )
+    # @payment.charge
 
-    case @payment.status
-    when 'accepted'
-      flash[:notice] = "Votre paiement a été accepté"
-      redirect_to product_checkout_confirmation_path
-    when 'refused'
-      flash[:error] = "Votre paiement a été refusé"
-      redirect_to new_booking_payment_path
-    when 'error'
-      flash[:error] = "C'est des teubés chez Mangopay, envoyez un papier-monaie par courrier postal avec recommandé et accusé de réception"
-      redirect_to new_booking_payment_path
-    else
-      flash[:error] = "42"
-      redirect_to new_booking_payment_path
-    end
+    # case @payment.status
+    # when 'accepted'
+    #   flash[:notice] = "Votre paiement a été accepté"
+    #   redirect_to product_checkout_confirmation_path
+    # when 'refused'
+    #   flash[:error] = "Votre paiement a été refusé"
+    #   redirect_to new_booking_payment_path
+    # when 'error'
+    #   flash[:error] = "C'est des teubés chez Mangopay, envoyez un papier-monaie par courrier postal avec recommandé et accusé de réception"
+    #   redirect_to new_booking_payment_path
+    # else
+    #   flash[:error] = "42"
+    #   redirect_to new_booking_payment_path
+    # end
   end
 
   private

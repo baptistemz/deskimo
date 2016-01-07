@@ -4,15 +4,15 @@ module Account
       def create
         desk = Desk.find(params[:desk_id])
         desk.update(activated: true)
-        redirect_to account_company_desks_path(desk.company)
         desk.company.update_activation
+        redirect_to account_company_desks_path(desk.company)
       end
 
       def destroy
         desk = Desk.find(params[:desk_id])
         desk.update(activated: false)
-        redirect_to account_company_desks_path(desk.company)
         desk.company.update_activation
+        redirect_to account_company_desks_path(desk.company)
       end
       # private
 

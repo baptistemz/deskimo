@@ -16,7 +16,7 @@
         = f.input :quantity, label: false, input_html: {value: desk.quantity|| 1}
         .plus-button
           i.fa.fa-plus
-      = f.submit t('dashboard.edit'), class: 'btn qty-update-btn'
+      = f.submit t('dashboard.change_quantity'), class: 'btn qty-update-btn'
   hr
   p = desk.description
   hr
@@ -36,4 +36,4 @@
     = link_to t('dashboard.edit_desk_offer'), edit_account_company_desk_path(company,desk), class: "fa fa-pencil"
   br
   =link_to account_company_desk_activation_path(company, desk), method: :post
-    .btn.btn-primary.green-btn Activer l'offre
+    .btn.btn-primary.green-btn = t('dashboard.activate')

@@ -73,19 +73,19 @@
 
 
 
-      -if @desks.length < 3
-        .col-sm-6.col-md-4
-          .dashboard-desk-thumbnail.add-desk
-            =link_to new_account_company_desk_path(@company)
-              .cta-newdesk
-                .rounded-icon
-                  i.fa.fa-plus
-                br
-                p Ajouter un nouveau bureau
-            ul.thumbnail-bottom
-              li Places d'open space
+    -if @desks.length < 3
+      .col-sm-6.col-md-4
+        .dashboard-desk-thumbnail.add-desk
+          =link_to new_account_company_desk_path(@company)
+            .cta-newdesk
+              .rounded-icon
+                i.fa.fa-plus
               br
-              li Bureaux fermés
-              br
-              li Salles de réunion
+              p Ajouter un nouveau bureau
+          ul.thumbnail-bottom
+            li Places d'open space
+            br
+            li Bureaux fermés
+            br
+            li Salles de réunion
 

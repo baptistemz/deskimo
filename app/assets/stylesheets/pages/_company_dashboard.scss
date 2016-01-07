@@ -1,7 +1,8 @@
 .dashboard-desk-thumbnail {
   height:580px;
   overflow: hidden;
-  padding: 50px
+  padding: 50px;
+  margin-bottom: 20px
 }
 
 .dashboard-desk-thumbnail > h3 {
@@ -67,4 +68,9 @@
   border: 1px solid $gray;
   border-radius: 5px;
   padding: 20px
+}
+
+.dashboard-desk-thumbnail.active-desk > h3 {
+  height : 60px;
+  text-align:center
 }

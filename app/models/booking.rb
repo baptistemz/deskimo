@@ -18,12 +18,12 @@ class Booking < ActiveRecord::Base
   private
 
   def user_cannot_be_from_the_company
-    errors.add(:user, "Vous ne pouvez pas reserver dans votre entreprise") if
+    errors.add(:alert,"Vous ne pouvez pas reserver dans votre entreprise") if
       user == desk.company.user
   end
 
   def desk_must_be_available
-    errors.add(:desk, "Ce bureau n'est plus disponible à ces dates") unless
+    errors.add(:start_date, "Ce bureau n'est plus disponible à ces dates") unless
       (start_date..end_date).to_a & desk.get_next_available_days_array == (start_date..end_date).to_a
   end
 end

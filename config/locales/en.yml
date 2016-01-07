@@ -86,6 +86,7 @@ en:
     edit_profile  : "Edit profile"
   dashboard:
     edit_company: "Edit company details"
+    change_quantity: "Change quantity"
     link_to_public : "Public profile of your company >"
     activated: "activated"
     non_activated: "non activated"

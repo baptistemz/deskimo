@@ -29,11 +29,11 @@ class BookingsController < ApplicationController
         CleanUnpaidBookingsJob.set(wait: 30.minutes).perform_later(@booking.id)
         redirect_to company_desk_booking_confirmation_path(@booking.desk.company, @booking.desk, @booking )
       else
-        flash[:alert] = "Le bureau n'est pas disponible sur ces dates"
+        flash[:alert] = "Bureau indisponible à ces dates"
         redirect_to(:back)
       end
     else
-      flash[:alert] = 'Bureau indisponible à ces dates'
+      flash[:alert] = 'Reservation impossible'
       redirect_to(:back)
     end
   end

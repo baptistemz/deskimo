@@ -4,9 +4,9 @@ module Account
     def index
       @user_bookings = current_user.bookings.where(archived: false)
       if current_user.company
-        @open_space_bookings = current_user.company.desks.where(kind: :open_space).first.bookings.where(archived: false)
-        @closed_office_bookings = current_user.company.desks.where(kind: :closed_office).first.bookings.where(archived: false)
-        @meeting_room_bookings = current_user.company.desks.where(kind: :meeting_room).first.bookings.where(archived: false)
+        @open_space_bookings = current_user.company.desks.where(kind: :open_space).first.bookings
+        @closed_office_bookings = current_user.company.desks.where(kind: :closed_office).first.bookings
+        @meeting_room_bookings = current_user.company.desks.where(kind: :meeting_room).first.bookings
       end
     end
 

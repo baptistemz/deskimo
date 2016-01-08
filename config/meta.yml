@@ -1,5 +1,5 @@
 # config/meta.yml
-default_title: "nomad office - location de bureaux à courte durée"
-meta_description: "Pour une demi-journée, un jour, une semaine, trouvez un bureau à louer dans une entreprise autour de vous"
+meta_title: "nomad office - location de bureaux à courte durée"
+meta_description: "Pour une demi-journée, un jour, une semaine, trouvez un bureau à louer dans une entreprise autour de vous."
 meta_image: "logo-avatar.png" # Une image dans votre dossier app/assets/images/
 twitter_account: "@nomadoffice_co" #indispensable pour les Twitter Cards

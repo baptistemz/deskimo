@@ -2,10 +2,10 @@
   'nomad office - bureaux disponibles chez #{@company.name}'
 - if @meeting_room && @meeting_room.activated
   = content_for(:meta_description) do
-    "Des bureaux et salles de réunion sont disponibles chez #{company.name} à #{@company.city}. Tu peux les reserver dès maintenant !"
+    'Des bureaux et salles de réunion sont disponibles chez #{@company.name} à #{@company.city}. Tu peux les reserver dès maintenant !'
 - else
   = content_for(:meta_description) do
-    "Des bureaux sont disponibles chez #{company.name} à #{@company.city}. Tu peux les reserver dès maintenant !"
+    'Des bureaux sont disponibles chez #{@company.name} à #{@company.city}. Tu peux les reserver dès maintenant !'
 .container.content
   .row
     .col-sm-6

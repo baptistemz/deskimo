@@ -10,25 +10,25 @@ html
     = favicon_link_tag 'favicon-96x96.png'
 
     / Facebook Open Graph data
-    meta property="og:title" content=title /
-    meta property="og:type" content="event" /
-    meta property="og:url" content="#{request.original_url}" /
-    meta property="og:image" content=("#{image_url meta_image}") /
-    meta property="og:description" content=meta_description /
-    meta property="og:site_name" content=title /
+    meta property="og:title" content=title
+    meta property="og:type" content="sharing economy"
+    meta property="og:url" content="#{request.original_url}"
+    meta property="og:image" content=("#{image_url meta_image}")
+    meta property="og:description" content=description
+    meta property="og:site_name" content= "nomadoffice.co"
 
     / Twitter Card data
-    meta name="twitter:card" content="summary_large_image" /
-    meta name="twitter:site" content="#{DEFAULT_META[:twitter_account]}" /
-    meta name="twitter:title" content=title /
-    meta name="twitter:description" content=meta_description /
-    meta name="twitter:creator" content="#{DEFAULT_META[:twitter_account]}" /
-    meta name="twitter:image:src" content=("#{image_url meta_image}") /
+    meta name="twitter:card" content=("#{image_url meta_image}")
+    meta name="twitter:site" content="#{DEFAULT_META[:twitter_account]}"
+    meta name="twitter:title" content=title
+    meta name="twitter:description" content=description
+    meta name="twitter:creator" content="#{DEFAULT_META[:twitter_account]}"
+    meta name="twitter:image:src" content=("#{image_url meta_image}")
 
     / Google+ Schema.org markup
-    meta itemprop="name" content=title /
-    meta itemprop="description" content=meta_description /
-    meta itemprop="image" content="#{image_url meta_image}" /
+    meta itemprop="name" content=title
+    meta itemprop="description" content=description
+    meta itemprop="image" content="#{image_url meta_image}"
 
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = csrf_meta_tags

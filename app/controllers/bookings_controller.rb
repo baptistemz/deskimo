@@ -17,7 +17,6 @@ class BookingsController < ApplicationController
       @booking.end_date = @booking.start_date + (7 * @booking.time_slot_quantity).days
       @booking.amount = @booking.desk.weekly_price * @booking.time_slot_quantity
     end
-
     if @booking.save
       @unavailability = @booking.build_unavailability_range(
                                             desk: @booking.desk,
@@ -26,7 +25,7 @@ class BookingsController < ApplicationController
                                             end_date: @booking.end_date
                                             )
       if @unavailability.save
-        CleanUnpaidBookingsJob.set(wait: 30.minutes).perform_later(@booking.id)
+        CleanUnpaidBookingsJob.set(wait: 2.minutes).perform_later(@booking.id)
         redirect_to company_desk_booking_confirmation_path(@booking.desk.company, @booking.desk, @booking )
       else
         flash[:alert] = "Bureau indisponible à ces dates"

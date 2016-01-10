@@ -111,6 +111,11 @@ span.error{
   color: black
 }
 
+.limited-width-centered{
+  max-width: 740px;
+  margin: auto
+}
+
 //---- MEDIA QUERIES ----//
 
 @media (min-width: 900px){

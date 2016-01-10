@@ -107,21 +107,21 @@ function loadCalendar(){
     var min = 0;
     var max = 0;
 
-    $('.calendar li.available').click(function(){ // toggle selected dates
-      if(clicker==0){
-        clicker=1;
-        $(this).toggleClass('selected');
-        min = $(this).text();
-      } else {
-        clicker=0;
-        $(this).addClass('red');
-        $('.calendar li.red').each(function(){
-          max = $(this).text();
-        });
-        for(i=parseInt(min);i<parseInt(max);i++){
-          $('.calendar li:nth-of-type('+(i+7+fDay-1)+')').addClass('red');
-        };
-      };
-    });
+    // $('.calendar li.available').click(function(){ // toggle selected dates
+    //   if(clicker==0){
+    //     clicker=1;
+    //     $(this).toggleClass('selected');
+    //     min = $(this).text();
+    //   } else {
+    //     clicker=0;
+    //     $(this).addClass('red');
+    //     $('.calendar li.red').each(function(){
+    //       max = $(this).text();
+    //     });
+    //     for(i=parseInt(min);i<parseInt(max);i++){
+    //       $('.calendar li:nth-of-type('+(i+7+fDay-1)+')').addClass('red');
+    //     };
+    //   };
+    // });
   };
 };

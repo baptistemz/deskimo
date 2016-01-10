@@ -16,12 +16,13 @@ module Account
         if @meeting_room
           @meeting_room_bookings = @meeting_room.bookings.where(archived: false)
         end
-
       end
     end
 
     def show
       @booking = current_user.bookings.find(params[:id])
+      @desk = @booking.desk
+      @company = @booking.desk.company
     end
 
   end

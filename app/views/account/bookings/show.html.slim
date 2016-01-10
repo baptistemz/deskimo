@@ -1,2 +1,43 @@
 .container
   h1 Reservation passée le #{@booking.created_at.to_date}
+  br
+  .row
+    .col-sm-6
+      =link_to company_desks_path(@company, :tab_selected => "#{@desk.kind}")
+        .limited-width-centered
+          = render partial: 'companies/company_thumbnail', locals: {company: @company}
+    .col-sm-6
+      .booking-show-couple
+        h4.blue Location :
+        - if @booking.desk.kind == 'open_space'
+          p Une  place en open space
+        - elsif @booking.desk.kind == 'closed_office'
+          p Un bureau
+        - else
+          p Une salle de réunion
+      .booking-show-couple
+        h4.blue Chez :
+        p = @company.name
+      .booking-show-couple
+        h4.blue Date :
+        - if @booking.time_slot_type == "1/2 journée" ||(@booking.time_slot_type == "jour(s)" && @booking.time_slot_quantity == 1)
+          p Le #{@booking.start_date}
+        -else
+          p du #{@booking.start_date} au #{@booking.end_date}
+      .booking-show-couple
+        h4.blue Durée :
+        - if @booking.time_slot_type == "1/2 journée"
+          p #{@booking.time_slot_type}
+        - elsif @booking.time_slot_type == "jour(s)"
+          p #{@booking.time_slot_quantity} #{@booking.time_slot_type}
+        -else
+          p #{@booking.time_slot_quantity} #{@booking.time_slot_type}
+      .booking-show-couple
+        h4.blue Prix :
+        p #{@booking.amount} € TTC
+      .booking-show-couple
+        h4.blue Statut :
+        p #{@booking.status}
+  -if @booking.status != 'pending'
+    i.fa.fa-book Télécharger la facture
+

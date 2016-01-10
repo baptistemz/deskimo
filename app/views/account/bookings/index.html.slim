@@ -2,7 +2,7 @@
   - if current_user.company
     h2.center Réservations de bureaux dans votre entreprise
 
-    - if @open_space_bookings
+    - if @open_space && @open_space_bookings.any?
       h4.company-section-title = t('enumerize.desk.kind.open_space')
       table
         tr
@@ -25,7 +25,7 @@
             td #{booking.amount} €
             td = booking.status
       br
-    - elsif @closed_office_bookings
+    - if @closed_office && @closed_office_bookings.any?
       h4.company-section-title = t('enumerize.desk.kind.closed_office')
       table
         tr
@@ -48,7 +48,7 @@
             td #{booking.amount} €
             td = booking.status
       br
-    - elsif @meeting_room_bookings
+    - if @meeting_room && @meeting_room_bookings.any?
       h4.company-section-title = t('enumerize.desk.kind.meeting_room')
       table
         tr
@@ -70,7 +70,7 @@
               td #{booking.start_date} - #{booking.end_date}
             td #{booking.amount} €
             td = booking.status
-    -else
+    - if @open_space_bookings || @closed_office_bookings || @meeting_room_bookings
       p Aucune reservation enregistrée pour l'instant dans votre entreprise
     .center.padded
         / p.red Reservations Archivées >>

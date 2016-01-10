@@ -5,7 +5,7 @@ class CleanUnpaidBookingsJob < ActiveJob::Base
     @booking = Booking.find(booking_id)
     if @booking.status == 'pending'
       @booking.unavailability_range.destroy
-      @booking.destroy
+      @booking.update(status: 'canceled')
     end
   end
 end

@@ -43,8 +43,7 @@ class PaymentsController < ApplicationController
     )
 
     @booking.update(payment: charge.to_json, status: 'paid')
-
-    redirect_to account_bookings_path(@order)
+    redirect_to account_bookings_path
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
@@ -79,6 +78,6 @@ class PaymentsController < ApplicationController
   private
 
   def set_booking
-    @booking = current_user.bookings.where(status: 'pending').find(params[:booking_id])
+    @booking = current_user.bookings.find(params[:booking_id])
   end
 end

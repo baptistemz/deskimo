@@ -13,17 +13,17 @@ class Booking < ActiveRecord::Base
 
   enumerize :time_slot_type, in: ["1/2 journée", "jour(s)", "semaine(s)"], default: "jour(s)"
   enumerize :half_day_choice, in: [:am, :pm]
-  enumerize :status, in: ["pending", "paid"], default: "pending"
+  enumerize :status, in: ["pending", "paid", "canceled"], default: "pending"
 
   private
 
   def user_cannot_be_from_the_company
-    errors.add(:alert,"Vous ne pouvez pas reserver dans votre entreprise") if
+    errors.add(:start_date,"Vous ne pouvez pas reserver dans votre entreprise") if
       user == desk.company.user
   end
 
   def desk_must_be_available
     errors.add(:start_date, "Ce bureau n'est plus disponible à ces dates") unless
-      (start_date..end_date).to_a & desk.get_next_available_days_array == (start_date..end_date).to_a
+      [start_date, end_date] & desk.get_next_available_days_array == [start_date, end_date]
   end
 end

@@ -23,7 +23,14 @@ class Booking < ActiveRecord::Base
   end
 
   def desk_must_be_available
-    errors.add(:start_date, "Ce bureau n'est plus disponible à ces dates") unless
-      [start_date, end_date] & desk.get_next_available_days_array == [start_date, end_date]
+    if start_date == end_date
+      errors.add(:start_date, "Ce bureau n'est plus disponible à cette dates") unless
+        desk.get_next_available_days_array.include?(start_date)
+
+    else
+      errors.add(:start_date, "Ce bureau n'est plus disponible à ces dates") unless
+        [start_date, end_date] & desk.get_next_available_days_array == [start_date, end_date]
+
+    end
   end
 end

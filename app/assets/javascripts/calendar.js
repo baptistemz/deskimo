@@ -1,18 +1,27 @@
-$(document).ready(loadCalendar)
+$(document).ready(function(){
+  kind = $("#desk-choice li.active a").attr('id').slice(0,-4)
+  loadCalendar(kind)
 
-$('a[data-toggle="tab"]').on('shown.bs.tab', function () {
-  loadCalendar
 });
 
+$(document).on( 'shown.bs.tab', 'a[data-toggle="tab"]', function (e) {
+ kind = e.currentTarget.id.slice(0,-4)
+ loadCalendar(kind)
+});
 
-function loadCalendar(){
-  if ($("#booking_start_date" ).length ) {
+// $('#closed_office').on('shown.bs.tab', function (e) {
+//   loadCalendar
+//   console.log(e)
+// });
+
+
+function loadCalendar(kind){
+  console.log(kind)
+  if ($("." + kind + "_booking #booking_start_date").length ) {
     if (typeof themonth === 'undefined'){
       var themonth = 1;
       renderCal(themonth);
     };
-
-    $('#closed_office')
 
     $('.minusmonth').click(function(){
         themonth += -1;
@@ -61,7 +70,7 @@ function loadCalendar(){
 
 
     var availableDaysArray = new Array();
-    $("#booking_start_date option").each(function()
+    $("."+kind+"_booking #booking_start_date option").each(function()
       {
         availableDay = parseInt($(this).val().substring(8, 10))
         availableDaysArray.push(('0'+availableDay).slice(-2))
@@ -70,7 +79,7 @@ function loadCalendar(){
 
     lastDayOfMonth = Math.max.apply(Math,availableDaysArray)
     firstDayOfMonth = Math.min.apply(Math,availableDaysArray)
-    firstDayMonth = parseInt($("#booking_start_date option:nth(0)").val().substring(5, 7))
+    firstDayMonth = parseInt($("."+kind+"_booking #booking_start_date option:nth(0)").val().substring(5, 7))
     if ($('.calendar p.monthname').text().includes(months[firstDayMonth - 1])){
       $("li:contains("+availableDaysArray[0].toString()+")").addClass('available')
       for (var i = availableDaysArray[0]; i <= lastDayOfMonth; i++){

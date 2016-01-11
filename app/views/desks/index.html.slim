@@ -44,13 +44,13 @@
         ul.nav.nav-tabs#desk-choice
           - if @open_space && @open_space.activated
             li class= "#{ 'active' if params[:tab_selected] == nil || params[:tab_selected] == 'open_space' }"
-              =link_to t('enumerize.desk.kind.open_space'), '#open_space', data: { toggle: 'tab' }
+              =link_to t('enumerize.desk.kind.open_space'), '#open_space', data: { toggle: 'tab' }, id: 'open_space_tab'
           - if @closed_office && @closed_office.activated
             li class= "#{ 'active' if params[:tab_selected] == 'closed_office' }"
-              =link_to t('enumerize.desk.kind.closed_office'), '#closed_office', data: { toggle: 'tab' }
+              =link_to t('enumerize.desk.kind.closed_office'), '#closed_office', data: { toggle: 'tab' }, id: 'closed_office_tab'
           - if @meeting_room && @meeting_room.activated
             li class= "#{ 'active' if params[:tab_selected] == 'meeting_room' }"
-              =link_to t('enumerize.desk.kind.meeting_room'), '#meeting_room', data: { toggle: 'tab' }
+              =link_to t('enumerize.desk.kind.meeting_room'), '#meeting_room', data: { toggle: 'tab' }, id: 'meeting_room_tab'
         .tab-content
           - @desks.each do |desk|
             - if desk == @open_space && @open_space.activated

@@ -39,14 +39,14 @@ br
 = simple_form_for [desk.company, desk, booking], html: { class: "#{desk.kind}_booking" } do |f|
   .booking-quantity-modifier
     p.company = t('show.length')
-    .quantity-input-buttons#time-slot-quantity
+    .quantity-input-buttons.time-slot-quantity
       .minus-button
         i.fa.fa-minus
       = f.input :time_slot_quantity, label: false, input_html: {value: 1}
       .plus-button
         i.fa.fa-plus
 
-    = f.input :time_slot_type, label: false, include_blank: false
+    = f.input :time_slot_type, label: false, include_blank: false, input_html: {class: 'time-slot-type'}
   br
   .booking-quantity-modifier
     p.company = t('show.from')

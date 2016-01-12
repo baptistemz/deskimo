@@ -6,7 +6,7 @@
         h1 Next closing days
         - if @closing_days.any?
           - @closing_days.each do |day|
-            = l(day.date) + ' | '
+            p #{l(day.date)} #{link_to '', account_company_closing_day_path(@company, day.id), method: :delete, class: 'fa fa-trash'}
         -else
           p No closing day for the next months
     .col-md-4

@@ -21,9 +21,17 @@ module Account
       end
 
       def destroy
-        @date = params[:date]
+        @closing_day = @company.closing_days.find(params[:id])
+        @date = @closing_day.date
         @company.desks.each do |desk|
           desk.unavailability_ranges.where(start_date: @date, end_date: @date, kind: 'closed').destroy_all
+        end
+        if @closing_day.destroy
+          flash[:notice] = 'Closing day successfully deleted'
+          redirect_to account_company_closing_days_path(@company)
+        else
+          flash[:error] = 'A problem occured'
+          redirect_to account_company_closing_days_path(@company)
         end
       end
 

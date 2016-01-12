@@ -1,0 +1,22 @@
+.container
+  .row
+  BR
+    .col-md-8
+      .profile-resume
+        h1 Next closing days
+        - if @closing_days.any?
+          - @closing_days.each do |day|
+            = l(day.date) + ' | '
+        -else
+          p No closing day for the next months
+    .col-md-4
+      .profile-resume
+        h3 Add a closing day :
+        = simple_form_for :closing_day, url: account_company_closing_days_path(@company) do |f|
+          .closing-date
+            = f.input :date, as: 'date', name: 'date', label: false, class: 'date-choice'
+            = f.submit 'OK', class: 'submit-date btn btn-primary'
+
+
+  .center.padded
+    = link_to t('navbar.company_dashboard'), account_company_desks_path(current_user.company), class: "fa fa-dashboard"

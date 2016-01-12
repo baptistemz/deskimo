@@ -34,9 +34,9 @@ Rails.application.routes.draw do
       resource :user, only: [:show, :edit, :update], controller: 'user'
       resource :credit_card, only: [:new, :create, :edit, :update], controller: 'credit_card'
       resources :companies, only: [:new, :create, :edit, :update] do
+        resources :closing_days, only: [:index, :create, :destroy], controller: 'companies/closing_days'
         resources :desks, only: [:new, :create, :edit, :index, :update, :destroy] do
           resource :activation, only: [:create, :destroy], controller: 'desks/activation'
-          resources :unavailability_ranges, only: [:new, :create, :destroy]
         end
       end
       resources :bookings, only: [:index, :show, :edit, :update]

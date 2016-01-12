@@ -38,15 +38,14 @@
         hr.style-company
         h4.company-section-title = t('show.opening_times')
         p.company #{@opening_days} - #{@opening_hours}
+        = link_to ' Exceptionnal closing days', account_company_closing_days_path, class: 'fa fa-exclamation-circle'
 
 
 
-      .center.padded
-        = link_to t('dashboard.edit_company'), edit_account_company_path(@company), class: "fa fa-pencil"
-        br
-        hr
-        = link_to account_bookings_path
-          i.fa.fa-edit = t('navbar.bookings')
+    hr
+    .center.padded
+      = link_to t('dashboard.edit_company'), edit_account_company_path(@company), class: "fa fa-pencil"
+
   br
   .row
     br
@@ -89,3 +88,6 @@
             br
             li Salles de réunion
 
+  .center.padded
+    = link_to account_bookings_path
+      i.fa.fa-edit = t('navbar.bookings')

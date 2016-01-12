@@ -1,13 +1,17 @@
-$(document).ready(function(){
-  kind = $("#desk-choice li.active a").attr('id').slice(0,-4)
-  loadCalendar(kind)
+if($("#desk-choice").length > 0){
+  $(document).ready(function(){
+    kind = $("#desk-choice li.active a").attr('id').slice(0,-4)
+    loadCalendar(kind)
 
-});
+  });
 
-$(document).on( 'shown.bs.tab', 'a[data-toggle="tab"]', function (e) {
- kind = e.currentTarget.id.slice(0,-4)
- loadCalendar(kind)
-});
+  $(document).on( 'shown.bs.tab', 'a[data-toggle="tab"]', function (e) {
+   kind = e.currentTarget.id.slice(0,-4)
+   loadCalendar(kind)
+  });
+}
+
+
 
 // $('#closed_office').on('shown.bs.tab', function (e) {
 //   loadCalendar

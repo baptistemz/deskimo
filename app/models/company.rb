@@ -4,6 +4,7 @@ class Company < ActiveRecord::Base
 
   belongs_to :user
   has_many :desks, dependent: :destroy
+  has_many :closing_days, dependent: :destroy
 
   has_attached_file :picture,
     styles: { large: "500x500", medium: "300x300>", thumb: "100x100>" , list: "740x370#"}

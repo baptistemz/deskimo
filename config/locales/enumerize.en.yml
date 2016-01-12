@@ -10,3 +10,6 @@ en:
         half_day: 'half day'
         day(s): 'day(s)'
         week(s): 'week(s)'
+      half_day_choice:
+        am: 'morning - am'
+        pm: 'afternoon - pm'

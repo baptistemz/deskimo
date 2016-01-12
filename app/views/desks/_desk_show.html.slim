@@ -46,7 +46,7 @@ br
       .plus-button
         i.fa.fa-plus
 
-    = f.input :time_slot_type, label: false, include_blank: false, default: "Heure(s)"
+    = f.input :time_slot_type, label: false, include_blank: false
   br
   .booking-quantity-modifier
     p.company = t('show.from')
@@ -54,7 +54,7 @@ br
   br
   .booking-quantity-modifier.half-day-select.hidden
     p.company #{t('show.half_day')} :
-    = f.select :half_day_choice, {'matin' => 'am', 'après-midi' => "pm"}, label: false
+    = f.input :half_day_choice, label: false, include_blank: false
   br
   = f.button :submit, class: "btn-primary full-width", value: t('show.book')
 

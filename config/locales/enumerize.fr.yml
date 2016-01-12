@@ -10,5 +10,8 @@ fr:
         half_day: 'demi-journée'
         day(s): 'jour(s)'
         week(s): 'semaine(s)'
+      half_day_choice:
+        am: 'matin'
+        pm: 'après-midi'
 
 

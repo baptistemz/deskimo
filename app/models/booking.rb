@@ -11,7 +11,7 @@ class Booking < ActiveRecord::Base
 
   monetize :amount_cents
 
-  enumerize :time_slot_type, in: ["1/2 journée", "jour(s)", "semaine(s)"], default: "jour(s)"
+  enumerize :time_slot_type, in: [:half_day, :'day(s)', :'week(s)'], default: :'day(s)'
   enumerize :half_day_choice, in: [:am, :pm]
   enumerize :status, in: ["pending", "paid", "canceled"], default: "pending"
 

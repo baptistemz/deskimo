@@ -7,7 +7,8 @@ fr:
         meeting_room  : 'Salle de réunion'
     booking:
       time_slot_type:
-        half_day : "Demi-journée"
-        day      : "Journée"
-        week     : "Semaine"
+        half_day: 'demi-journée'
+        day(s): 'jour(s)'
+        week(s): 'semaine(s)'
+
 

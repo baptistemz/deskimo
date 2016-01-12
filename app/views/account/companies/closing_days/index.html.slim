@@ -3,15 +3,15 @@
   BR
     .col-md-8
       .profile-resume
-        h1 Next closing days
+        h1 = t('dashboard.next_closing_days')
         - if @closing_days.any?
           - @closing_days.each do |day|
             p #{l(day.date)} #{link_to '', account_company_closing_day_path(@company, day.id), method: :delete, class: 'fa fa-trash'}
         -else
-          p No closing day for the next months
+          p = t('dashboard.no_closing_day')
     .col-md-4
       .profile-resume
-        h3 Add a closing day :
+        h3 = t('dashboard.add_a_closing_day')
         = simple_form_for :closing_day, url: account_company_closing_days_path(@company) do |f|
           .closing-date
             = f.input :date, as: 'date', name: 'date', label: false, class: 'date-choice'
@@ -19,4 +19,4 @@
 
 
   .center.padded
-    = link_to t('navbar.company_dashboard'), account_company_desks_path(current_user.company), class: "fa fa-dashboard"
+    = link_to " #{t('navbar.company_dashboard')}", account_company_desks_path(current_user.company), class: "fa fa-dashboard"

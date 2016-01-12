@@ -37,8 +37,13 @@
         .company-description = @company.description
         hr.style-company
         h4.company-section-title = t('show.opening_times')
-        p.company #{@opening_days} - #{@opening_hours}
-        = link_to ' Exceptionnal closing days', account_company_closing_days_path, class: 'fa fa-exclamation-circle'
+        - if @opening_weekdays_range == []
+          p = t('openings.open_everyday')
+        -else
+          p #{t('openings.from_day')} #{t("openings.#{@opening_weekdays_range[0]}")} #{t('openings.to_day')} #{t("openings.#{@opening_weekdays_range[1]}")}
+        - if @opening_hours_range.length == 4
+          p #{t('openings.from_time')} #{@opening_hours_range[0]} #{t('openings.to_time')} #{@opening_hours_range[1]} #{t('and')} #{t('openings.from_time')} #{@opening_hours_range[2]} #{t('openings.to_time')} #{@opening_hours_range[3]}
+        = link_to t('dashboard.exceptionnal_closing_days'), account_company_closing_days_path, class: 'fa fa-exclamation-circle'
 
 
 
@@ -80,13 +85,14 @@
               .rounded-icon
                 i.fa.fa-plus
               br
-              p Ajouter un nouveau bureau
+              p = t('dashboard.rent_new_desks')
           ul.thumbnail-bottom
-            li Places d'open space
+            li= t('dashboard.open_space_desks')
             br
-            li Bureaux fermés
+            li= t('dashboard.closed_offices')
             br
-            li Salles de réunion
+            li= t('dashboard.meeting_rooms')
+
 
   .center.padded
     = link_to account_bookings_path

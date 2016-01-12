@@ -1,0 +1,12 @@
+en:
+  enumerize:
+    desk:
+      kind:
+        open_space    : 'Open space'
+        closed_office : 'Office'
+        meeting_room  : 'Meeting Room'
+    booking:
+      time_slot_type:
+        half_day: 'half day'
+        day(s): 'day(s)'
+        week(s): 'week(s)'

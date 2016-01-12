@@ -1,6 +1,6 @@
 $('#booking_time_slot_type').on('change', function(event) {
 
-  if ($(this).val() === '1/2 journée') {
+  if ($(this).val() === 'half_day') {
     $('.half-day-select').removeClass('hidden')
     $('#booking_time_slot_quantity').val(1)
     $('#time-slot-quantity').addClass('hidden')

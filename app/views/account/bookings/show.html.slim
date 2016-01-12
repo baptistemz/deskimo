@@ -20,15 +20,15 @@
         p = @company.name
       .booking-show-couple
         h4.blue Date :
-        - if @booking.time_slot_type == "1/2 journée" ||(@booking.time_slot_type == "jour(s)" && @booking.time_slot_quantity == 1)
+        - if @booking.time_slot_type == "half_day" ||(@booking.time_slot_type == "day(s)" && @booking.time_slot_quantity == 1)
           p Le #{@booking.start_date}
         -else
           p du #{@booking.start_date} au #{@booking.end_date}
       .booking-show-couple
         h4.blue Durée :
-        - if @booking.time_slot_type == "1/2 journée"
+        - if @booking.time_slot_type == "half_day"
           p #{@booking.time_slot_type}
-        - elsif @booking.time_slot_type == "jour(s)"
+        - elsif @booking.time_slot_type == "day(s)"
           p #{@booking.time_slot_quantity} #{@booking.time_slot_type}
         -else
           p #{@booking.time_slot_quantity} #{@booking.time_slot_type}

@@ -16,8 +16,13 @@ module Account
             desk.unavailability_ranges.create(start_date: @date, end_date: @date)
           end
         end
-        @closing_day.save
-        redirect_to account_company_closing_days_path(@company)
+        if @closing_day.save
+          flash[:notice] = 'Closing day successfully deleted'
+          redirect_to account_company_closing_days_path(@company)
+        else
+          flash[:error] = 'A problem occured'
+          redirect_to account_company_closing_days_path(@company)
+        end
       end
 
       def destroy

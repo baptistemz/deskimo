@@ -32,14 +32,13 @@ class Company < ActiveRecord::Base
   end
 
   def update_activation
-    if self.desks.where(activated: true).any?
-      self.update(activated: true)
-    else
-      self.update(activated: false)
+    enabled_desks = desks.where(activated: true).any?
+    if enabled_desks != activated
+      toggle!(:activated)
     end
   end
 
-  def get_opening_days_string
+  def get_opening_weekdays_range
     if self.open_monday &&
        self.open_tuesday &&
        self.open_wednesday &&
@@ -47,85 +46,41 @@ class Company < ActiveRecord::Base
        self.open_friday &&
        self.open_saturday &&
        self.open_sunday
-      day_string = 'Ouvert toute la semaine'
+      @opening_weekdays_range = []
     else
-      starting = get_starting_day
-      ending = get_ending_day
-      day_string = starting + ending
+      @opening_weekdays_range = [which_day(true), which_day(false)]
     end
-    return day_string
   end
 
   def get_next_opening_days_array
-    opening_days = []
+    weekdays = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
+    @opening_days = []
     @today = Date.today.strftime('%A').downcase
     if self.send(:"open_#{@today}")
-      opening_days << Date.today
+      @opening_days << Date.today
     end
-    if self.open_monday
-      opening_days << date_of_next('monday')
-      opening_days << date_of_next('monday') + 7
-      opening_days << date_of_next('monday') + 14
-      opening_days << date_of_next('monday') + 21
+    weekday_counter = 0
+    7.times do
+      add_if_open_weekday(weekdays[weekday_counter])
+      weekday_counter +=1
     end
-    if self.open_tuesday
-      opening_days << date_of_next('tuesday')
-      opening_days << date_of_next('tuesday') + 7
-      opening_days << date_of_next('tuesday') + 14
-      opening_days << date_of_next('tuesday') + 21
-    end
-    if self.open_wednesday
-      opening_days << date_of_next('wednesday')
-      opening_days << date_of_next('wednesday') + 7
-      opening_days << date_of_next('wednesday') + 14
-      opening_days << date_of_next('wednesday') + 21
-    end
-    if self.open_thursday
-      opening_days << date_of_next('thursday')
-      opening_days << date_of_next('thursday') + 7
-      opening_days << date_of_next('thursday') + 14
-      opening_days << date_of_next('thursday') + 21
-    end
-    if self.open_friday
-      opening_days << date_of_next('friday')
-      opening_days << date_of_next('friday') + 7
-      opening_days << date_of_next('friday') + 14
-      opening_days << date_of_next('friday') + 21
-    end
-    if self.open_saturday
-      opening_days << date_of_next('saturday')
-      opening_days << date_of_next('saturday') + 7
-      opening_days << date_of_next('saturday') + 14
-      opening_days << date_of_next('saturday') + 21
-    end
-    if self.open_sunday
-      opening_days << date_of_next('sunday')
-      opening_days << date_of_next('sunday') + 7
-      opening_days << date_of_next('sunday') + 14
-      opening_days << date_of_next('sunday') + 21
-    end
-    return opening_days.sort
+    @opening_days.sort
   end
 
-
-  def get_opening_hours_string
-    hour_string = 'de ' + self.start_time_am.strftime("%I:%M%p").to_s +
-                     ' à ' + self.end_time_am.strftime("%I:%M%p").to_s
-    if self.start_time_pm.strftime("%I:%M%p")
-      afternoon_string = 'de ' + self.start_time_pm.strftime("%I:%M%p").to_s +
-                         ' à ' + self.end_time_pm.strftime("%I:%M%p").to_s
-      hour_string = hour_string + ' et ' + afternoon_string
+  def add_if_open_weekday(weekday)
+    if self.send(:"open_#{weekday}")
+      week_counter = 0
+      4.times do
+        @opening_days << date_of_next(weekday) + week_counter
+        week_counter +=7
+      end
     end
-    return hour_string
   end
 
-  def update_availability
-    disabled_desks = desks.where(activated: false).exists?
-
-    # we have disabled desks but company is still activated
-    if disabled_desks == activated
-      toggle!(:activated)
-    end
+  def get_opening_hours_range
+    @hour_range = [self.start_time_am.strftime("%I:%M%p"), self.end_time_am.strftime("%I:%M%p")]
+    @hour_range << self.start_time_pm.strftime("%I:%M%p") if self.start_time_pm
+    @hour_range << self.end_time_pm.strftime("%I:%M%p") if self.end_time_pm
   end
 
   def cheapest_desk
@@ -134,46 +89,24 @@ class Company < ActiveRecord::Base
 
   private
 
-  def date_of_next(day)
-    date  = Date.parse(day)
+  def date_of_next(weekday)
+    date  = Date.parse(weekday)
     delta = date > Date.today ? 0 : 7
     date + delta
   end
 
-  def get_starting_day
-    starting_day = []
-    if self.open_monday
-      start = 'du Lundi'
-    elsif self.open_tuesday
-      start = 'du Mardi'
-    elsif self.open_wednesday
-      start = 'du Mercredi'
-    elsif self.open_thursday
-      start = 'du Jeudi'
-    elsif self.open_friday
-      start = 'du Vendredi'
-    elsif self.open_saturday
-      start = 'du Samedi'
-    elsif self.open_sunday
-      start = 'du Dimanche'
-    end
-  end
-
-  def get_ending_day
-    if self.open_monday == false
-      ending = ' au Dimanche'
-    elsif self.open_tuesday == false
-      ending =' au Lundi'
-    elsif self.open_wednesday == false
-      ending =' au Mardi'
-    elsif self.open_thursday == false
-      ending =' au Mercredi'
-    elsif self.open_friday == false
-      ending =' au Jeudi'
-    elsif self.open_saturday == false
-      ending =' au Vendredi'
-    elsif self.open_sunday == false
-      ending =' au Samedi'
+  def which_day(boolean)
+    weekdays = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
+    day_counter = 0
+    7.times do
+      if self.send(:"open_#{weekdays[day_counter]}") == boolean
+        if boolean == true
+          return ending = weekdays[day_counter]
+        else
+          return ending = weekdays[day_counter - 1]
+        end
+      end
+      day_counter += 1
     end
   end
 

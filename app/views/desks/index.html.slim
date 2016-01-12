@@ -36,7 +36,13 @@
       p.company-description = @company.description
       hr.style-company
       h4.company-section-title = t('show.opening_times')
-      p.company #{@opening_days} - #{@opening_hours}
+      - if @opening_weekdays_range == []
+        p = t('openings.open_everyday')
+      -else
+        p #{t('openings.from_day')} #{t("openings.#{@opening_weekdays_range[0]}")} #{t('openings.to_day')} #{t("openings.#{@opening_weekdays_range[1]}")}
+      - if @opening_hours_range.length == 4
+        p #{t('openings.from_time')} #{@opening_hours_range[0]} #{t('openings.to_time')} #{@opening_hours_range[1]} #{t('and')} #{t('openings.from_time')} #{@opening_hours_range[2]} #{t('openings.to_time')} #{@opening_hours_range[3]}
+
     .col-sm-6
       - if @desks.any? == false
         h4.text-center Aucun bureau n'est disponible dans cette entreprise

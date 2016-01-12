@@ -26,7 +26,7 @@ en:
     city_label                       : "or tell us where you are"
     city_placeholder                 : "City or address"
     hp_kind_title                    : "Kind of offices"
-    hp_kind_cta                      : "Find the closest"
+    hp_kind_cta                      : "Find the closests"
     hp_vp_title                      : "Instantly book a desk"
     hp_vp_one                        : "Book desks in companies around you at any moment"
     hp_vp_two                        : "Access all the services provided by companies"
@@ -85,18 +85,39 @@ en:
     no_last_name  : "We don't know your last name yet"
     edit_profile  : "Edit profile"
   dashboard:
-    edit_company: "Edit company details"
-    change_quantity: "Change quantity"
-    link_to_public : "Public profile of your company >"
-    activated: "activated"
-    non_activated: "non activated"
-    activate: "activate"
-    deactivate: "deactivate"
-    closed_offices: "  office(s)"
-    open_space_desks: "  open space desk(s)"
-    meeting_rooms: "  meeting room(s)"
-    edit_desk_offer: "Edit"
-    edit: "edit"
+    edit_company              : "Edit company details"
+    change_quantity           : "Change quantity"
+    link_to_public            : "Public profile of your company >"
+    activated                 : "activated"
+    non_activated             : "non activated"
+    activate                  : "activate"
+    deactivate                : "deactivate"
+    rent_new_desks            : "Rent out new desks"
+    closed_offices            : "  office(s)"
+    open_space_desks          : "  open space desk(s)"
+    meeting_rooms             : "  meeting room(s)"
+    edit_desk_offer           : "Edit"
+    edit                      : "edit"
+    next_closing_days         : "Next closing days"
+    no_closing_day            : "No closing day for the next months"
+    add_a_closing_day         : "Add a closing day"
+    exceptionnal_closing_days : ' Add exceptionnal closing days'
+
+# Utilities
+  and: 'and'
+  openings:
+    from_day: 'from'
+    to_day: 'to'
+    from_time: 'from'
+    to_time: 'to'
+    monday: 'monday'
+    tuesday: 'tuesday'
+    wednesday: 'wednesday'
+    thursday: 'thursday'
+    friday: 'friday'
+    saturday: 'saturday'
+    sunday: 'sunday'
+    open_everyday: 'Ouvert tous les jours'
 
 
 # LAYOUT
@@ -116,5 +137,5 @@ en:
 
 #MAILER
   mailer:
-    hello: 'Hi'
-    welcome: "Welcome to nomad office !"
+    hello   : 'Hi'
+    welcome : "Welcome to nomad office !"

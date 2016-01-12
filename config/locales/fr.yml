@@ -92,18 +92,39 @@ fr:
     no_last_name  : "Votre nom de famille n'est pas encore enregistré"
     edit_profile  : "Modifier votre profil"
   dashboard:
-    edit_company: "Modifier les informations de l'entreprise"
-    change_quantity: "modifier la quantité"
-    link_to_public: "Fiche publique de l'entreprise >"
-    activated: "offre activée"
-    non_activated: "offre désactivée"
-    activate: "activer l'offre"
-    deactivate: "désactiver l'offre"
-    closed_offices: "  bureau(x) fermé(s)"
-    open_space_desks: "  place(s) en open space"
-    meeting_rooms: "  salle(s) de réunion"
-    edit_desk_offer: "Modifier cette offre"
-    edit: "modifier"
+    edit_company              : "Modifier les informations de l'entreprise"
+    change_quantity           : "modifier la quantité"
+    link_to_public            : "Fiche publique de l'entreprise >"
+    activated                 : "offre activée"
+    non_activated             : "offre désactivée"
+    activate                  : "activer l'offre"
+    deactivate                : "désactiver l'offre"
+    rent_new_desks            : "Ajouter un nouveau bureau"
+    closed_offices            : "  bureau(x) fermé(s)"
+    open_space_desks          : "  place(s) en open space"
+    meeting_rooms             : "  salle(s) de réunion"
+    edit_desk_offer           : "Modifier cette offre"
+    edit                      : "modifier"
+    next_closing_days         : "Prochains jours fermés"
+    no_closing_day            : "Pas de jour fermé pour les prochains mois"
+    add_a_closing_day         : "Ajouter un jour fermé"
+    exceptionnal_closing_days : ' Plannifier des fermetures exceptionnelles'
+
+# Utilities
+  and: 'et'
+  openings:
+    from_day: 'du'
+    to_day: 'au'
+    from_time: 'de'
+    to_time: 'à'
+    monday: 'lundi'
+    tuesday: 'mardi'
+    wednesday: 'mercredi'
+    thursday: 'jeudi'
+    friday: 'vendredi'
+    saturday: 'samedi'
+    sunday: 'dimanche'
+    open_everyday: 'Ouvert tous les jours'
 
 # LAYOUT
   navbar:

@@ -6,10 +6,10 @@ class BookingsController < ApplicationController
     @booking.desk = Desk.find(params[:desk_id])
     @next_available_days = @booking.desk.get_next_available_days_array
 
-    if @booking.time_slot_type == "1/2 journée"
+    if @booking.time_slot_type == "half_day"
       @booking.end_date = @booking.start_date
       @booking.amount = @booking.desk.half_day_price
-    elsif @booking.time_slot_type == "jour(s)"
+    elsif @booking.time_slot_type == "day(s)"
       booking_day_number = @next_available_days.find_index(@booking.start_date)
       @booking.end_date = @next_available_days[booking_day_number + @booking.time_slot_quantity - 1]
       @booking.amount = @booking.desk.daily_price * @booking.time_slot_quantity

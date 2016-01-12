@@ -14,7 +14,7 @@
         - @open_space_bookings.each do |booking|
           tr
             td #{booking.user.first_name} #{booking.user.last_name}
-            - if booking.time_slot_type == "1/2 journée"
+            - if booking.time_slot_type == "half_day"
               td #{booking.time_slot_type} - #{booking.half_day_choice}
             - else
               td #{booking.time_slot_quantity} #{booking.time_slot_type}
@@ -37,7 +37,7 @@
         - @closed_office_bookings.each do |booking|
           tr
             td #{booking.user.first_name} #{booking.user.last_name}
-            - if booking.time_slot_type == "1/2 journée"
+            - if booking.time_slot_type == "half_day"
               td #{booking.time_slot_type} - #{booking.half_day_choice}
             - else
               td #{booking.time_slot_quantity} #{booking.time_slot_type}
@@ -60,7 +60,7 @@
         - @meeting_room_bookings.each do |booking|
           tr
             td #{booking.user.first_name} #{booking.user.last_name}
-            - if booking.time_slot_type == "1/2 journée"
+            - if booking.time_slot_type == "half_day"
               td #{booking.time_slot_type} - #{booking.half_day_choice}
             - else
               td #{booking.time_slot_quantity} #{booking.time_slot_type}
@@ -97,7 +97,7 @@
             - else
               = link_to company_desks_path(booking.desk.company)
                 '#{booking.desk.kind} chez #{booking.desk.company.name}
-          - if booking.time_slot_type == "1/2 journée"
+          - if booking.time_slot_type == "half_day"
             td #{booking.time_slot_type} - #{booking.half_day_choice}
           - else
             td #{booking.time_slot_quantity} #{booking.time_slot_type}

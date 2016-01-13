@@ -52,10 +52,10 @@
             li class= "#{ 'active' if params[:tab_selected] == nil || params[:tab_selected] == 'open_space' }"
               =link_to t('enumerize.desk.kind.open_space'), '#open_space', data: { toggle: 'tab' }, id: 'open_space_tab'
           - if @closed_office && @closed_office.activated
-            li class= "#{ 'active' if params[:tab_selected] == 'closed_office' }"
+            li class= "#{ 'active' if params[:tab_selected] == 'closed_office'|| @open_space == nil }"
               =link_to t('enumerize.desk.kind.closed_office'), '#closed_office', data: { toggle: 'tab' }, id: 'closed_office_tab'
           - if @meeting_room && @meeting_room.activated
-            li class= "#{ 'active' if params[:tab_selected] == 'meeting_room' }"
+            li class= "#{ 'active' if params[:tab_selected] == 'meeting_room' || (@open_space == nil && @closed_office == nil) }"
               =link_to t('enumerize.desk.kind.meeting_room'), '#meeting_room', data: { toggle: 'tab' }, id: 'meeting_room_tab'
         .tab-content
           - @desks.each do |desk|
@@ -63,9 +63,9 @@
               .tab-pane#open_space class= "#{ 'active' if params[:tab_selected] == nil || params[:tab_selected] == 'open_space' }"
                 = render partial: 'desk_show', locals: {desk: desk, booking: @booking}
             - if desk == @closed_office && @closed_office.activated
-              .tab-pane#closed_office class= "#{ 'active' if params[:tab_selected] == 'closed_office' }"
+              .tab-pane#closed_office class= "#{ 'active' if params[:tab_selected] == 'closed_office'|| @open_space == nil }"
                 = render partial: 'desk_show', locals: {desk: desk, booking: @booking}
 
             - if desk == @meeting_room && @meeting_room.activated
-              .tab-pane#meeting_room class= "#{ 'active' if params[:tab_selected] == 'meeting_room' }"
+              .tab-pane#meeting_room class= "#{ 'active' if params[:tab_selected] == 'meeting_room' || (@open_space == nil && @closed_office == nil) }"
                 = render partial: 'desk_show', locals: {desk: desk, booking: @booking}

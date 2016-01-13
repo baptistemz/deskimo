@@ -13,7 +13,7 @@
           = form_tag companies_path, method: :get, class: "flexform"
             .row
               .col-xs-7
-                = text_field_tag :full_address, params[:full_address], placeholder: t('home.city_placeholder'), id: "js-autocomplete-city", class: "pretty-field", id: "index-search-field"
+                = text_field_tag :full_address, params[:full_address], placeholder: t('home.city_placeholder'), id: "js-autocomplete-city", class: "pretty-field index-search-field"
                 button.search-btn#index-search-btn type="submit"
                   i.fa.fa-search
                 = hidden_field_tag :lat, params[:lat], id: "lat"
@@ -68,8 +68,14 @@
         }, function(){
           markers1 = handler.addMarkers(#{raw @hash.to_json});
           markers2 = handler.addMarkers(#{raw @mypos.to_json});
-          handler.bounds.extendWith(markers1);
-          handler.fitMapToBounds();
+          handler.map.centerOn(markers2[0])
+          if(markers1.length === 0){
+            handler.map.serviceObject.setZoom(14);
+          } else {
+            handler.bounds.extendWith(markers1);
+            handler.fitMapToBounds();
+          }
+
         });
 
         mobile_handler = Gmaps.build('Google');

@@ -13,7 +13,7 @@ class Booking < ActiveRecord::Base
 
   enumerize :time_slot_type, in: [:half_day, :'day(s)', :'week(s)'], default: :'day(s)'
   enumerize :half_day_choice, in: [:am, :pm]
-  enumerize :status, in: ["pending", "paid", "canceled"], default: "pending"
+  enumerize :status, in: [:pending, :paid, :confirmed, :canceled], default: "pending"
 
   private
 

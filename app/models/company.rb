@@ -97,16 +97,14 @@ class Company < ActiveRecord::Base
 
   def which_day(boolean)
     weekdays = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
-    day_counter = 0
-    7.times do
-      if self.send(:"open_#{weekdays[day_counter]}") == boolean
+    weekdays.each do |weekday|
+      if self.send(:"open_#{weekday}") == boolean
         if boolean == true
-          return ending = weekdays[day_counter]
+          return ending = weekday
         else
-          return ending = weekdays[day_counter - 1]
+          return ending = weekdays[weekdays.index(weekday) - 1]
         end
       end
-      day_counter += 1
     end
   end
 

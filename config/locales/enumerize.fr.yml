@@ -10,6 +10,11 @@ fr:
         half_day: 'demi-journée'
         day(s): 'jour(s)'
         week(s): 'semaine(s)'
+      status:
+        pending: 'En attente'
+        paid: 'Payé'
+        confirmed: 'Confirmé'
+        canceled: 'Annulé'
       half_day_choice:
         am: 'matin'
         pm: 'après-midi'

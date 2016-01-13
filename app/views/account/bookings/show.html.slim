@@ -37,7 +37,7 @@
         p #{@booking.amount} € TTC
       .booking-show-couple
         h4.blue Statut :
-        p #{@booking.status}
-  -if @booking.status != 'pending'
+        p = @booking.status
+  -if @booking.status == 'payed' || @booking.status == 'confirmed'
     i.fa.fa-book Télécharger la facture
 

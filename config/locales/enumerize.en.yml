@@ -6,10 +6,15 @@ en:
         closed_office : 'Office'
         meeting_room  : 'Meeting Room'
     booking:
+      status:
+        pending: 'Pending'
+        paid: 'Paid'
+        confirmed: 'Confirmed'
+        canceled: 'Canceled'
+      half_day_choice:
+        am: 'morning - am'
+        pm: 'afternoon - pm'
       time_slot_type:
         half_day: 'half day'
         day(s): 'day(s)'
         week(s): 'week(s)'
-      half_day_choice:
-        am: 'morning - am'
-        pm: 'afternoon - pm'

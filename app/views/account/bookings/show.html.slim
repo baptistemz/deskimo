@@ -38,6 +38,7 @@
       .booking-show-couple
         h4.blue Statut :
         p = @booking.status
-  -if @booking.status == 'payed' || @booking.status == 'confirmed'
-    i.fa.fa-book Télécharger la facture
+  -if @booking.invoice
+    = link_to account_booking_invoice_path(@booking)
+      i.fa.fa-book Télécharger la facture
 

@@ -42,7 +42,9 @@ class PaymentsController < ApplicationController
       currency:     'eur'
     )
 
-    @booking.update(payment: charge.to_json, status: 'paid')
+    @booking.update(payment: charge.to_json)
+    @booking.update(status: 'paid')
+    @booking.build_invoice(payment: charge.to_json).save
     redirect_to account_booking_path(@booking)
 
   rescue Stripe::CardError => e

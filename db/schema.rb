@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160111151837) do
+ActiveRecord::Schema.define(version: 20160113160353) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -144,6 +144,17 @@ ActiveRecord::Schema.define(version: 20160111151837) do
 
   add_index "desks", ["company_id"], name: "index_desks_on_company_id", using: :btree
 
+  create_table "invoices", force: :cascade do |t|
+    t.integer  "booking_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.json     "payment"
+    t.integer  "user_id"
+  end
+
+  add_index "invoices", ["booking_id"], name: "index_invoices_on_booking_id", using: :btree
+  add_index "invoices", ["user_id"], name: "index_invoices_on_user_id", using: :btree
+
   create_table "payments", force: :cascade do |t|
     t.integer  "payer_id"
     t.integer  "receiver_id"
@@ -201,6 +212,8 @@ ActiveRecord::Schema.define(version: 20160111151837) do
   add_foreign_key "closing_days", "companies"
   add_foreign_key "companies", "users"
   add_foreign_key "desks", "companies"
+  add_foreign_key "invoices", "bookings"
+  add_foreign_key "invoices", "users"
   add_foreign_key "unavailability_ranges", "bookings"
   add_foreign_key "unavailability_ranges", "desks"
 end

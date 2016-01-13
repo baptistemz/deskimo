@@ -18,6 +18,8 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'turbolinks'
 
+gem 'prawn'
+
 gem "enumerize"
 gem "high_voltage"
 gem "devise"
@@ -58,6 +60,8 @@ end
 
 
 group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
   gem 'binding_of_caller'
   gem 'better_errors'
   gem 'quiet_assets'
@@ -65,6 +69,13 @@ group :development, :test do
   gem 'pry-rails'
   gem 'spring', '~> 1.4.1'
   gem "letter_opener"
+end
+
+group :test do
+  gem 'faker'
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'launchy'
 end
 
 group :production do

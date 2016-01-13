@@ -39,7 +39,9 @@ Rails.application.routes.draw do
           resource :activation, only: [:create, :destroy], controller: 'desks/activation'
         end
       end
-      resources :bookings, only: [:index, :show, :edit, :update]
+      resources :bookings, only: [:index, :show, :edit, :update] do
+        resource :invoice, only: [:show], controller: 'invoice'
+      end
     end
   end
 end

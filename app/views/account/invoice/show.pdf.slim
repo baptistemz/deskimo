@@ -1,7 +1,4 @@
 .container
-  BR
-  = link_to "pdf version", account_booking_invoice_path(@booking, format: 'pdf'), class: 'fa fa-download text-center'
-  BR
   .row
     .pdf-header
       = wicked_pdf_image_tag('logo.png')

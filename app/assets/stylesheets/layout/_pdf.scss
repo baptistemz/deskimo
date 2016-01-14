@@ -1,0 +1,40 @@
+.pdf-header {
+  position : relative;
+  width: 100%;
+  height: 10%;
+  display: block
+}
+
+.pdf-header > img {
+  width: 35%;
+  position: absolute;
+  right: 0px;
+  top: 0px
+}
+
+.regular{
+  width: 33%;
+}
+
+.indentation {
+  width: 43%;
+  border: none
+}
+.indented {
+  width: 23%;
+  background-color: $gray;
+  color: $gray-darker
+}
+#total-calc{
+  width: calc(57% - 1px);
+  margin-left: calc(43% + 2px);
+  margin-top: -24px;
+  color: $dark-blue;
+  border: none;
+  font-weight: bold;
+  font-size: 18px
+}
+
+.pdf-price{
+
+}

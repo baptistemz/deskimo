@@ -11,6 +11,6 @@ mails:
 
 
 price_share:
-  vat: 0.2
+  vat: 19.6
   company: 0.85
   nomad_office: 0.15

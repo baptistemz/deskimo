@@ -18,7 +18,9 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'turbolinks'
 
-gem 'prawn'
+
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 gem "enumerize"
 gem "high_voltage"

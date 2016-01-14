@@ -1,3 +1,5 @@
+= content_for(:title) do
+  'invoice_#{@company.name.downcase.gsub(/\s+/, "")}_#{@invoice.created_at.strftime('%d_%m_%Y')}
 .container
   .row
     .pdf-header
@@ -23,7 +25,7 @@
   .row
     table.table.table-striped
       thead
-        th Company visited
+        th Workplace
         th Type of Desk
         th Price per #{@booking.time_slot_type}
       tbody

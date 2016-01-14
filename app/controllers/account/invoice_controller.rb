@@ -10,7 +10,7 @@ module Account
       respond_to do |format|
         format.html
         format.pdf do
-          render :pdf => "report", :layout => 'pdf.html.slim'
+          render :pdf => "invoice_#{@company.name.downcase.gsub(/\s+/, "")}_#{@invoice.created_at.strftime('%d_%m_%Y')}", :layout => 'pdf.html.slim'
         end
       end
     end

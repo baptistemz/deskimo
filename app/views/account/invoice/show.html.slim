@@ -1,6 +1,6 @@
 .container
   BR
-  = link_to "pdf version", account_booking_invoice_path(@booking, format: 'pdf'), class: 'fa fa-download text-center'
+  = link_to "pdf version", account_booking_invoice_path(@booking, format: 'pdf'), target: 'blank', class: 'fa fa-download text-center'
   BR
   .row
     .pdf-header
@@ -26,7 +26,7 @@
   .row
     table.table.table-striped
       thead
-        th Company visited
+        th Workplace
         th Type of Desk
         th Price per #{@booking.time_slot_type}
       tbody

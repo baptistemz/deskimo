@@ -31,5 +31,14 @@
 .share-links {
   display: flex;
   align-items: center;
-  justify-content: space-around
+  justify-content: space-between;
+  padding: none
+}
+
+.footer-brand{
+  position: absolute;
+  bottom: 2px;
+  width: 200px;
+  text-align: center;
+  left: calc(50% - 100px);
 }

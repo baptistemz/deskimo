@@ -1,4 +1,7 @@
 fr:
+  dates:
+    formats:
+      date_month_year_concise: '%d-%m-%y'
   devise:
     custom:
       social_sign_in_solutions : "Ou s'identifier avec :"
@@ -49,6 +52,7 @@ fr:
     terms: "Conditions générales d'utilisation"
   index:
     kind_of_desk: "type de bureaux"
+    details: "détails"
   show:
     services       : "Services"
     description    : "Description"

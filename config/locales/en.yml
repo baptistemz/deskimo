@@ -1,4 +1,7 @@
 en:
+  dates:
+    formats:
+      date_month_year_concise: '%d-%m-%y'
   languages:
     lang : "language"
     fr   : "French"
@@ -42,6 +45,7 @@ en:
     terms: "Terms of use"
   index:
     kind_of_desk: "kind of desk"
+    details: "details"
   show:
     services       : "Services"
     description    : "Description"

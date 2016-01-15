@@ -6,9 +6,9 @@
         .share-links
           a.share-links-item.bg-facebook href="http://www.facebook.com/"
             i.fa.fa-facebook
-          a.share-links-item.bg-twitter href="https://twitter.com/"
+          a.share-links-item.bg-twitter href="https://twitter.com/nomadoffice_co"
             i.fa.fa-twitter
-          a.share-links-item.bg-email href="#"
+          = mail_to('contact@nomadoffice.co')
             i.fa.fa-envelope-o
       .col-xs-6.hidden-xs
           p = link_to "Jobs", page_path('jobs')

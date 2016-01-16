@@ -25,7 +25,7 @@ en:
 
 # PAGES
   home:
-    banner_title                     : "Find available desks in companies around you"
+    banner_title                     : "Find available desks in companies around you in Lille"
     geoloc_btn                       : "Geotag yourself"
     city_label                       : "or tell us where you are"
     city_placeholder                 : "City or address"

@@ -32,7 +32,7 @@ fr:
       scanner    : "scanner"
 # PAGES
   home:
-    banner_title                            : "Trouvez un bureau dans une entreprise autour de vous"
+    banner_title                     : "Trouvez un bureau dans une entreprise autour de vous à Lille"
     geoloc_btn                       : "Géolocalisez-vous"
     city_label                       : "ou indiquez où vous êtes"
     city_placeholder                 : "Ville ou adresse"

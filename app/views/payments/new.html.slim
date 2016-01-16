@@ -6,7 +6,7 @@
         h2 Montant
         br
         .price-line
-          p Prix par #{@booking.time_slot_type}
+          p Prix par #{@booking.time_slot_type.text}
           p #{@booking.amount.to_i / @booking.time_slot_quantity}€
         hr
         .price-line
@@ -29,7 +29,7 @@
                 'Montant: #{humanized_money_with_symbol(@booking.amount)}
               br
 
-              script src="https://checkout.stripe.com/checkout.js" class="stripe-button btn-center" data-name="#{@company.name}" data-email="#{current_user.email}" data-description= "#{@desk.kind} - #{@booking.time_slot_quantity} #{@booking.time_slot_type}" data-amount="#{@booking.amount_cents}" data-currency="EUR" data-key="#{Rails.configuration.stripe[:publishable_key]}"
+              script src="https://checkout.stripe.com/checkout.js" class="stripe-button btn-center" data-name="#{@company.name}" data-email="#{current_user.email}" data-description= "#{@desk.kind.text} - #{@booking.time_slot_quantity} #{@booking.time_slot_type.text}" data-amount="#{@booking.amount_cents}" data-currency="EUR" data-key="#{Rails.configuration.stripe[:publishable_key]}"
 
 
         = image_tag 'payment_cards.png', class: 'payment-cards'

@@ -20,9 +20,10 @@ fr:
       company              : "Entreprise"
       credit_card          : "Carte de crédit"
       desk                 : "Bureau"
-      payment              : "Payement"
+      payment              : "Paiement"
       unavailability_range : "Indisponibilité"
     attributes:
+      status: 'status'
       created_at : "Créé le"
       updated_at : "Mis à jour le"
       wifi       : "wifi"
@@ -56,6 +57,7 @@ fr:
   show:
     services       : "Services"
     description    : "Description"
+    address        : "Adresse"
     opening_times  : "Horaires"
     price          : "Prix"
     availabilities : "Disponibilités"
@@ -64,8 +66,8 @@ fr:
     day            : "journée"
     week           : "semaine"
     book           : "Reserver"
-    length: "Durée :"
-    from: "A partir du :"
+    length: "Durée"
+    from: "A partir du"
   company_creation:
     opening_days     : "Jours d'ouverture"
     morning          : "matin"
@@ -113,9 +115,34 @@ fr:
     no_closing_day            : "Pas de jour fermé pour les prochains mois"
     add_a_closing_day         : "Ajouter un jour fermé"
     exceptionnal_closing_days : ' Plannifier des fermetures exceptionnelles'
+    invoice                   : 'Facture'
+    itinerary                 : 'itinéraire'
+    go_to                     : 'Y aller'
+    receipt                   : 'Reçu'
+    booking_made              : "Reservation passée le"
+    in_company: 'chez'
+    date: "date"
+    price_per: "Prix par"
+    pdf_version: "version pdf"
+    invoice_date: 'date de facturation'
+  checkout:
+    time_expiry: "La page expiré, vous avez pris trop de temps à payer la reservation. Aucun paiement n'a été encaissé. Merci de recommencer"
+    your_booking: 'Votre réservation'
+    place: 'Chez'
+    when: 'Quand?'
+    le: 'Le'
+    no_name_message: '* Nous avons besoin de vous connaître un peu plus pour effectuer la reservation'
+
 
 # Utilities
+  workplace: "lieu de travail"
+  workspace: "espace de travail"
+  invoice: "facture"
   and: 'et'
+  ttc: 'TTC'
+  goodbye_message: 'Merci ! A bientôt sur nomadoffice.co !'
+  feedback_message: "Pour toute info ou pour nous donner des avis, des retours n'hésitez pas à nous contacter"
+
   openings:
     from_day: 'du'
     to_day: 'au'

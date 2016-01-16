@@ -16,7 +16,6 @@
       .text-left
         p #{@user.first_name} #{@user.last_name}
         p #{@user.email}
-        p user ID : #{@user.id}
         - if @user.company
           p Company: #{@user.company.name}
           p SIRET: #{@user.company.siret}
@@ -25,23 +24,23 @@
   .row
     table.table.table-striped
       thead
-        th Workplace
-        th Type of Desk
-        th Price per #{@booking.time_slot_type}
+        th = t('workplace').capitalize
+        th = t('workspace').capitalize
+        th #{t('dashboard.price_per')} #{@booking.time_slot_type.text}
       tbody
         tr
           td.regular
             = @company.name
           td.regular
-            = @desk.kind
+            = @desk.kind.text
           td.regular
             '#{@invoice.booking.amount / @booking.time_slot_quantity} €
     table#total-calc
       tr
-        td.indented Quantity
+        td.indented= t('desk_creation.quantity').capitalize
         td.regular x #{@booking.time_slot_quantity}
       tr
-        td.indented TOTAL PRICE (All taxes incl.)
+        td.indented #{t('desk_creation.total_price').upcase} (#{t('ttc')})
         td.regular #{@invoice.booking.amount} €
     br
 

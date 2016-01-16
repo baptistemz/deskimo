@@ -1,5 +1,5 @@
 .container
-  h1 Reservation passée le #{@booking.created_at.to_date}
+  h1 #{t('dashboard.booking_made')} #{l(@booking.created_at.to_date)}
   br
   .row
     .col-sm-6
@@ -8,37 +8,47 @@
           = render partial: 'companies/company_thumbnail', locals: {company: @company}
     .col-sm-6
       .booking-show-couple
-        h4.blue Location :
-        - if @booking.desk.kind == 'open_space'
-          p Une  place en open space
-        - elsif @booking.desk.kind == 'closed_office'
-          p Un bureau
-        - else
-          p Une salle de réunion
+        h4.blue = t('index.kind_of_desk').capitalize
+        p = @booking.desk.kind.text
       .booking-show-couple
-        h4.blue Chez :
+        h4.blue = t('dashboard.in_company').capitalize
         p = @company.name
+      p #{@company.address}, #{@company.postcode}, #{@company.city}
+
       .booking-show-couple
-        h4.blue Date :
+        h4.blue = t('dashboard.date').capitalize
         - if @booking.time_slot_type == "half_day" ||(@booking.time_slot_type == "day(s)" && @booking.time_slot_quantity == 1)
           p Le #{@booking.start_date}
         -else
           p du #{@booking.start_date} au #{@booking.end_date}
       .booking-show-couple
-        h4.blue Durée :
+        h4.blue= t('show.length').capitalize
         - if @booking.time_slot_type == "half_day"
-          p #{@booking.time_slot_type}
+          p #{@booking.time_slot_type.text} - #{@booking.half_day_choice.text}
         - elsif @booking.time_slot_type == "day(s)"
-          p #{@booking.time_slot_quantity} #{@booking.time_slot_type}
+          p #{@booking.time_slot_quantity} #{@booking.time_slot_type.text}
         -else
-          p #{@booking.time_slot_quantity} #{@booking.time_slot_type}
+          p #{@booking.time_slot_quantity} #{@booking.time_slot_type.text}
       .booking-show-couple
-        h4.blue Prix :
+        h4.blue= t('show.price').capitalize
         p #{@booking.amount} € TTC
       .booking-show-couple
-        h4.blue Statut :
-        p = @booking.status
-  -if @booking.invoice
-    = link_to account_booking_invoice_path(@booking)
-      i.fa.fa-book Télécharger la facture
+        h4.blue= t('activerecord.attributes.status').capitalize
+        p = @booking.status.text
+  br
+  .row
+    .col-sm-6
+      .company-resume
+        h3.blue.text-center= t('dashboard.go_to')
+        br
+        = link_to "https://maps.google.com?saddr=Current+Location&daddr=#{@company.address.gsub(/\s+/, "+")},#{@company.postcode},#{@company.city.gsub(/\s+/, "+")}", :target => '_blank', class: 'text-center'
+          .btn.btn-primary.btn-center.marged.margin-left
+            i.fa.fa-map-marker.icon-margin #{t('dashboard.itinerary')}
+    .col-sm-6
+      .company-resume
+        h3.blue.text-center = t('dashboard.receipt')
+        br
+        = link_to account_booking_invoice_path(@booking)
+          .btn.btn-primary.btn-center.marged.margin-left
+            i.fa.fa-book = t('dashboard.invoice')
 

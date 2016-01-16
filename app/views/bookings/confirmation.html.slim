@@ -3,53 +3,48 @@
     .col-xs-12.col-sm-4
       .recap-details
         .recap-content
-          h2 Reservation
-          - if @booking.desk.kind == 'open_space'
-            p Une  place en open space
-          - elsif @booking.desk.kind == 'closed_office'
-            p Un bureau
-          - else
-            p Une salle de réunion
+          h2= t('checkout.your_booking')
+          p= @booking.desk.kind.text
     .col-xs-12.col-sm-4
       .recap-details
         .recap-content
-          h2 Chez
+          h2 = t('checkout.place')
           p #{@booking.desk.company.name}
           p #{@booking.desk.company.address}
           p #{@booking.desk.company.postcode}, #{@booking.desk.company.city}
     .col-xs-12.col-sm-4
       .recap-details
         .recap-content
-          h2 Quand?
+          h2 =t('checkout.when')
           - if @booking.time_slot_type == "half_day" ||(@booking.time_slot_type == "day(s)" && @booking.time_slot_quantity == 1)
-            p Le #{@booking.start_date}
+            p #{t('checkout.le')} #{l(@booking.start_date)}
           -else
-            p du #{@booking.start_date} au #{@booking.end_date}
+            p #{t('openings.from_day')} #{l(@booking.start_date)} #{t('openings.to_day')} #{l(@booking.end_date)}
   .price-recap
-    h2.text-center Prix
+    h2.text-center= t('show.price')
     br
     - if @booking.time_slot_type == "half_day"
-      p.text-center #{@booking.time_slot_quantity} #{@booking.time_slot_type}
+      p.text-center #{@booking.time_slot_type.text} | #{@booking.half_day_choice.text}
     - elsif @booking.time_slot_type == "day(s)"
-      p.text-center #{@booking.time_slot_quantity} #{@booking.time_slot_type}
+      p.text-center #{@booking.time_slot_quantity} #{@booking.time_slot_type.text}
     -else
-      p.text-center #{@booking.time_slot_quantity} #{@booking.time_slot_type}
+      p.text-center #{@booking.time_slot_quantity} #{@booking.time_slot_type.text}
     hr
-    p.text-center #{@booking.amount} € TTC
+    p.text-center #{@booking.amount} € #{t('ttc')}
     BR
   - if @user.first_name && @user.last_name
     =link_to new_booking_payment_path(@booking), class: 'btn-center'
-      .btn.btn-primary.login-button-width Paiement
+      .btn.btn-primary.login-button-width= t('activerecord.models.payment')
   -else
 
     .text-center
-      p.red * Nous avons besoin de vous connaître un peu plus pour effectuer la reservation
+      p.red= t('checkout.no_name_message')
       = simple_form_for @user, url: account_user_path(@desk, :booking => @booking ), method: :patch do |f|
         .form-group
           = f.input :first_name
         .form-group
           = f.input :last_name
         .form-actions.btn-center
-          = f.button :submit, 'passer au paiement', class: "btn btn-primary login-button-width center"
+          = f.button :submit, t('activerecord.models.payment'), class: "btn btn-primary login-button-width center"
 
 

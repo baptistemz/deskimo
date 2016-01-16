@@ -87,6 +87,10 @@ class Company < ActiveRecord::Base
     desks.where(activated: :true).order(daily_price: :asc).first
   end
 
+  def full_address
+    return "#{address},#{postcode},#{city},France"
+  end
+
   private
 
   def date_of_next(weekday)
@@ -108,9 +112,6 @@ class Company < ActiveRecord::Base
     end
   end
 
-  def full_address
-    return "#{address},#{postcode},#{city},France"
-  end
 
   def full_address_changed?
     address_changed? || city_changed? || postcode_changed?

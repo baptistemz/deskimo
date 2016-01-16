@@ -1,4 +1,5 @@
 class Booking < ActiveRecord::Base
+  extend ActiveModel::Naming
   extend Enumerize
 
   belongs_to :desk

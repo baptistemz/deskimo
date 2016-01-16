@@ -19,9 +19,9 @@
             - else
               td #{booking.time_slot_quantity} #{booking.time_slot_type}
             - if booking.start_date == booking.end_date
-              td #{booking.start_date}
+              td #{l(booking.start_date)}
             - else
-              td #{booking.start_date} - #{booking.end_date}
+              td #{l(booking.start_date)} - #{l(booking.end_date)}
             td #{booking.amount} €
             td = booking.status
       br
@@ -42,9 +42,9 @@
             - else
               td #{booking.time_slot_quantity} #{booking.time_slot_type}
             - if booking.start_date == booking.end_date
-              td #{booking.start_date}
+              td #{l(booking.start_date)}
             - else
-              td #{booking.start_date} - #{booking.end_date}
+              td #{l(booking.start_date)} - #{l(booking.end_date)}
             td #{booking.amount} €
             td = booking.status
       br
@@ -65,9 +65,9 @@
             - else
               td #{booking.time_slot_quantity} #{booking.time_slot_type}
             - if booking.start_date == booking.end_date
-              td #{booking.start_date}
+              td #{l(booking.start_date)}
             - else
-              td #{booking.start_date} - #{booking.end_date}
+              td #{l(booking.start_date)} - #{l(booking.end_date)}
             td #{booking.amount} €
             td = booking.status
     - if @open_space_bookings || @closed_office_bookings || @meeting_room_bookings
@@ -81,30 +81,30 @@
     br
     table
       tr
-        th Bureau
-        th Durée
-        th Dates
-        th Détails
+        th= t('index.kind_of_desk').capitalize
+        th= t('show.length').capitalize
+        th= t('dashboard.date').capitalize
+        th= t('index.details').capitalize
       - @user_bookings.each do |booking|
         tr
           td
             - if booking.desk.kind == "closed_office"
               = link_to company_desks_path(booking.desk.company, :tab_selected => "closed_office")
-                '#{booking.desk.kind} chez #{booking.desk.company.name}
+                '#{booking.desk.kind.text} #{t('dashboard.in_company')} #{booking.desk.company.name}
             - elsif booking.desk.kind == "meeting_room"
               = link_to company_desks_path(booking.desk.company, :tab_selected => "meeting_room")
-                '#{booking.desk.kind} chez #{booking.desk.company.name}
+                '#{booking.desk.kind.text} #{t('dashboard.in_company')} #{booking.desk.company.name}
             - else
               = link_to company_desks_path(booking.desk.company)
-                '#{booking.desk.kind} chez #{booking.desk.company.name}
+                '#{booking.desk.kind.text} #{t('dashboard.in_company')} #{booking.desk.company.name}
           - if booking.time_slot_type == "half_day"
-            td #{booking.time_slot_type} - #{booking.half_day_choice}
+            td #{booking.time_slot_type.text} - #{booking.half_day_choice.text}
           - else
-            td #{booking.time_slot_quantity} #{booking.time_slot_type}
+            td #{booking.time_slot_quantity} #{booking.time_slot_type.text}
           - if booking.start_date == booking.end_date
-            td #{booking.start_date}
+            td #{l(booking.start_date)}
           - else
-            td #{booking.start_date} - #{booking.end_date}
+            td #{l(booking.start_date)} - #{l(booking.end_date)}
           td
             =link_to account_booking_path(booking)
               .booking-details

@@ -39,11 +39,18 @@ class BookingsController < ApplicationController
   end
 
   def confirmation
-    @booking = current_user.bookings.find(params[:booking_id])
+    set_booking
     @user = current_user
   end
 
   private
+
+  def set_booking
+    @booking = current_user.bookings.find(params[:booking_id])
+  rescue
+    flash[:alert] = t('checkout.time_expiry')
+    redirect_to root_path
+  end
 
   def booking_params
     params.require(:booking).permit(:time_slot_quantity,

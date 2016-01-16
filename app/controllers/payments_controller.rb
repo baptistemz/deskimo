@@ -81,5 +81,8 @@ class PaymentsController < ApplicationController
 
   def set_booking
     @booking = current_user.bookings.find(params[:booking_id])
+  rescue
+    flash[:alert] = t('checkout.time_expiry')
+    redirect_to root_path
   end
 end

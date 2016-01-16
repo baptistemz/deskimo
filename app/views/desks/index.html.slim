@@ -35,6 +35,9 @@
       h4.company-section-title = t('show.description')
       p.company-description = @company.description
       hr.style-company
+      h4.company-section-title= t('show.address')
+      p #{@company.address}, #{@company.postcode}, #{@company.city}
+      hr.style-company
       h4.company-section-title = t('show.opening_times')
       - if @opening_weekdays_range == []
         p = t('openings.open_everyday')

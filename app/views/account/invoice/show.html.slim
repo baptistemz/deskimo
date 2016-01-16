@@ -1,14 +1,14 @@
 .container
   BR
-  = link_to "pdf version", account_booking_invoice_path(@booking, format: 'pdf'), target: 'blank', class: 'fa fa-download text-center'
+  = link_to t('dashboard.pdf_version'), account_booking_invoice_path(@booking, format: 'pdf'), target: 'blank', class: 'fa fa-download text-center'
   BR
   .row
     .pdf-header
       = wicked_pdf_image_tag('logo.png')
-      p Invoice n° #{@invoice.id}
-      p Invoice date : #{@invoice.created_at.strftime('%d/%m/%Y')}
+      p #{t('invoice')} n° #{@invoice.id}
+      p #{t('dashboard.invoice_date')} : #{@invoice.created_at.strftime('%d/%m/%Y')}
       BR
-      h1.text-center Invoice
+      h1.text-center= t('invoice').capitalize
       .text-right
         p nomadoffice.co
         p 24, rue Albert Prouvost
@@ -17,7 +17,7 @@
       .text-left
         p #{@user.first_name} #{@user.last_name}
         p #{@user.email}
-        p user ID : #{@user.id}
+        / p user ID : #{@user.id}
         - if @user.company
           p Company: #{@user.company.name}
           p SIRET: #{@user.company.siret}
@@ -26,29 +26,29 @@
   .row
     table.table.table-striped
       thead
-        th Workplace
-        th Type of Desk
-        th Price per #{@booking.time_slot_type}
+        th = t('workplace').capitalize
+        th = t('workspace').capitalize
+        th #{t('dashboard.price_per')} #{@booking.time_slot_type.text}
       tbody
         tr
           td.regular
             = @company.name
           td.regular
-            = @desk.kind
+            = @desk.kind.text
           td.regular
             '#{@invoice.booking.amount / @booking.time_slot_quantity} €
     table#total-calc
       tr
-        td.indented Quantity
+        td.indented= t('desk_creation.quantity').capitalize
         td.regular x #{@booking.time_slot_quantity}
       tr
-        td.indented TOTAL PRICE (All taxes incl.)
+        td.indented #{t('desk_creation.total_price').upcase} (#{t('ttc')})
         td.regular #{@invoice.booking.amount} €
     br
 
     hr
-    p.center Thank you ! See you soon on nomadoffice.co !
+    p.center= t('goodbye_message')
     hr
-    p.center For any piece of information or to give feedback don't hesitate to contact us: #{mail_to('contact@nomadoffice.co')}
+    p.center #{t('feedback_message')}: #{mail_to('contact@nomadoffice.co')}
     BR
     p.text-right &copy; nomadoffice.co

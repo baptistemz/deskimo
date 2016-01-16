@@ -15,6 +15,7 @@ en:
       payment              : "Payment"
       unavailability_range : "Unavailability"
     attributes:
+      status: 'status'
       created_at : "created at"
       updated_at : "updated at"
       wifi       : "wifi"
@@ -24,7 +25,7 @@ en:
 
 # PAGES
   home:
-    banner_title                            : "Find available desks in companies around you"
+    banner_title                     : "Find available desks in companies around you"
     geoloc_btn                       : "Geotag yourself"
     city_label                       : "or tell us where you are"
     city_placeholder                 : "City or address"
@@ -49,6 +50,7 @@ en:
   show:
     services       : "Services"
     description    : "Description"
+    address        : "Address"
     opening_times  : "Opening times"
     price          : "Price"
     availabilities : "Availabilities"
@@ -57,8 +59,8 @@ en:
     day            : "day"
     week           : "week"
     book           : "Book"
-    length: "Length :"
-    from: "From :"
+    length         : "Length"
+    from           : "From"
   company_creation:
     opening_days     : "Opening days"
     morning          : "morning"
@@ -106,9 +108,35 @@ en:
     no_closing_day            : "No closing day for the next months"
     add_a_closing_day         : "Add a closing day"
     exceptionnal_closing_days : ' Add exceptionnal closing days'
+    invoice                   : 'Invoice'
+    itinerary                 : 'itinerary'
+    go_to                     : 'Go to'
+    receipt                   : 'Receipt'
+    booking_made              : "Booking realised on"
+    in_company: 'in'
+    date: 'date'
+    price_per: 'Price per'
+    pdf_version: "pdf version"
+    invoice_date: 'invoice date'
+  checkout:
+    time_expiry: "Page expiry. You spent to much time to pay your booking. You haven't been charged on anything. Please try again"
+    your_booking: 'Your booking'
+    place: 'In'
+    when: 'When?'
+    le: ''
+    no_name_message: '* We need to know you a bit more to save the booking'
+
 
 # Utilities
+  workplace: "workplace"
+  workspace: "workspace"
+  invoice: "invoice"
   and: 'and'
+  ttc: 'All taxes inc'
+  goodbye_message: 'Thank you ! See you soon on nomadoffice.co !'
+  feedback_message: "For any piece of information or to give feedback don't hesitate to contact us"
+
+
   openings:
     from_day: 'from'
     to_day: 'to'

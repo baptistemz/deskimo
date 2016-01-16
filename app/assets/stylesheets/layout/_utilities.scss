@@ -67,6 +67,10 @@ span.error{
   color : $red
 }
 
+.margin-left{
+  margin-left: 10px
+}
+
 .btn-primary {
   height        : 46px;
   font-size     : 20px;
@@ -101,6 +105,11 @@ span.error{
 
 .disabled{
   disabled: true;
+}
+
+.marged{
+  margin-right: 20%;
+  margin-left: 20%
 }
 
 .blue {

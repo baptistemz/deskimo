@@ -1,5 +1,5 @@
 class Desk < ActiveRecord::Base
-
+  extend ActiveModel::Naming
   extend Enumerize
 
 

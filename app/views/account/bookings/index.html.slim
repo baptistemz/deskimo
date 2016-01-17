@@ -88,15 +88,9 @@
       - @user_bookings.each do |booking|
         tr
           td
-            - if booking.desk.kind == "closed_office"
-              = link_to company_desks_path(booking.desk.company, :tab_selected => "closed_office")
-                '#{booking.desk.kind.text} #{t('dashboard.in_company')} #{booking.desk.company.name}
-            - elsif booking.desk.kind == "meeting_room"
-              = link_to company_desks_path(booking.desk.company, :tab_selected => "meeting_room")
-                '#{booking.desk.kind.text} #{t('dashboard.in_company')} #{booking.desk.company.name}
-            - else
-              = link_to company_desks_path(booking.desk.company)
-                '#{booking.desk.kind.text} #{t('dashboard.in_company')} #{booking.desk.company.name}
+            = link_to company_desks_path(booking.desk.company, :tab_selected => "#{booking.desk.kind}")
+              '#{booking.desk.kind.text} #{t('dashboard.in_company')} #{booking.desk.company.name}
+
           - if booking.time_slot_type == "half_day"
             td #{booking.time_slot_type.text} - #{booking.half_day_choice.text}
           - else

@@ -29,7 +29,7 @@ ActiveAdmin.register Company do
     column :open_friday
     column :open_saturday
     column :open_sunday
-    column :open_holiday
+    column :activated
     column :start_time_am
     column :end_time_am
     column :start_time_pm

@@ -28,7 +28,9 @@ class CompaniesController < ApplicationController
       @kind                     = params[:kind]
       search_conditions[:kinds] = @kind
     end
+
     @companies = Company.search('*', where: search_conditions, aggs: aggregations)
+
     if @companies.empty?
       @empty_message = 'Aucun bureau disponible ne correspond à votre recherche'
     end

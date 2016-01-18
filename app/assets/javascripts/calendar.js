@@ -76,14 +76,14 @@ function loadCalendar(kind){
     var availableDaysArray = new Array();
     $("."+kind+"_booking #booking_start_date option").each(function()
       {
-        availableDay = parseInt($(this).val().substring(8, 10))
+        availableDay = parseInt($(this).val().substring(0, 2))
         availableDaysArray.push(('0'+availableDay).slice(-2))
       }
     );
 
     lastDayOfMonth = Math.max.apply(Math,availableDaysArray)
     firstDayOfMonth = Math.min.apply(Math,availableDaysArray)
-    firstDayMonth = parseInt($("."+kind+"_booking #booking_start_date option:nth(0)").val().substring(5, 7))
+    firstDayMonth = parseInt($("."+kind+"_booking #booking_start_date option:nth(0)").val().substring(4, 6))
     if ($('.calendar p.monthname').text().includes(months[firstDayMonth - 1])){
       $("li:contains("+availableDaysArray[0].toString()+")").addClass('available')
       for (var i = availableDaysArray[0]; i <= lastDayOfMonth; i++){

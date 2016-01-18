@@ -19,20 +19,19 @@ class CompaniesController < ApplicationController
       activated: true,
       location: {
         near:   @location,
-        within: "5km"
+        within: "15km"
       }
     }
+    sort =
 
     if params[:kind].present?
       @kind                     = params[:kind]
       search_conditions[:kinds] = @kind
     end
     @companies = Company.search('*', where: search_conditions, aggs: aggregations)
-
     if @companies.empty?
       @empty_message = 'Aucun bureau disponible ne correspond à votre recherche'
     end
-
     @kinds = @companies.aggs["kinds"]["buckets"].map { |facet| facet["key"] }
 
     @hash = Gmaps4rails.build_markers(@companies) do |company, marker|

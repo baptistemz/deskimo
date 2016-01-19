@@ -19,7 +19,7 @@ class CompaniesController < ApplicationController
       activated: true,
       location: {
         near:   @location,
-        within: "15km"
+        within: "10km"
       }
     }
     sort =

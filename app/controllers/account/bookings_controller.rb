@@ -24,6 +24,5 @@ module Account
       @desk = @booking.desk
       @company = @booking.desk.company
     end
-
   end
 end

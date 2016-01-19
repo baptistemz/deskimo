@@ -12,7 +12,7 @@ class Desk < ActiveRecord::Base
 
   monetize :hour_price_cents, :half_day_price_cents, :daily_price_cents, :weekly_price_cents
   enumerize :kind, in: [:open_space, :closed_office, :meeting_room], default: :open_space
-  validate  :one_kind_of_desk_per_company
+  validates_uniqueness_of :kind, scope: :company_id
   after_commit :reindex_company
 
   def get_next_available_days_array
@@ -26,15 +26,7 @@ class Desk < ActiveRecord::Base
     return available_days
   end
 
-
   private
-
-  def one_kind_of_desk_per_company
-    unless id
-      errors.add(:kind, "Vous avez déjà enregistré des bureaux de ce type") if
-        company.desks.where(kind: kind).any?
-    end
-  end
 
   def reindex_company
     company.reindex

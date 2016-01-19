@@ -17,6 +17,22 @@ class Booking < ActiveRecord::Base
   enumerize :half_day_choice, in: [:am, :pm]
   enumerize :status, in: ["pending", "paid", "confirmed", "canceled"], default: "pending"
 
+  def set_amount_and_dates
+    next_available_days = self.desk.get_next_available_days_array
+    if self.time_slot_type == "half_day"
+      self.end_date = self.start_date
+      self.amount = self.desk.half_day_price
+    elsif self.time_slot_type == "day(s)"
+      booking_day_number = next_available_days.find_index(self.start_date)
+      self.end_date = next_available_days[booking_day_number + self.time_slot_quantity - 1]
+      self.amount = self.desk.daily_price * self.time_slot_quantity
+    else
+      self.end_date = self.start_date + (7 * self.time_slot_quantity).days
+      self.amount = self.desk.weekly_price * self.time_slot_quantity
+    end
+  end
+
+
   private
 
   def user_cannot_be_from_the_company
@@ -26,7 +42,7 @@ class Booking < ActiveRecord::Base
 
   def desk_must_be_available
     if start_date == end_date
-      errors.add(:start_date, "Ce bureau n'est plus disponible à cette dates") unless
+      errors.add(:start_date, "Ce bureau n'est plus disponible à cette date") unless
         desk.get_next_available_days_array.include?(start_date)
 
     else

@@ -37,8 +37,8 @@ module Account
     end
 
     def update
-      @company = Company.find(params[:company_id])
       @desk = Desk.find(params[:id])
+      @company = @desk.company
       @desk.update(desk_params)
       @company.update_activation
       redirect_to account_company_desks_path(@company)

@@ -30,7 +30,7 @@ en:
     city_label                       : "or tell us where you are"
     city_placeholder                 : "City or address"
     hp_kind_title                    : "Kind of offices"
-    hp_kind_cta                      : "Find the closests"
+    hp_kind_cta                      : "Find the closest"
     hp_vp_title                      : "Instantly book a desk"
     hp_vp_one                        : "Book desks in companies around you at any moment"
     hp_vp_two                        : "Access all the services provided by companies"

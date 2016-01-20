@@ -16,6 +16,11 @@
       .recap-details
         .recap-content
           h2 =t('checkout.when')
+          - if @booking.time_slot_type == "half_day"
+            p.text-center #{@booking.time_slot_type.text} | #{@booking.half_day_choice.text}
+          - else
+            p.text-center #{@booking.time_slot_quantity} #{@booking.time_slot_type.text}
+
           - if @booking.time_slot_type == "half_day" ||(@booking.time_slot_type == "day(s)" && @booking.time_slot_quantity == 1)
             p #{t('checkout.le')} #{l(@booking.start_date)}
           -else
@@ -25,8 +30,6 @@
     br
     - if @booking.time_slot_type == "half_day"
       p.text-center #{@booking.time_slot_type.text} | #{@booking.half_day_choice.text}
-    - elsif @booking.time_slot_type == "day(s)"
-      p.text-center #{@booking.time_slot_quantity} #{@booking.time_slot_type.text}
     -else
       p.text-center #{@booking.time_slot_quantity} #{@booking.time_slot_type.text}
     hr

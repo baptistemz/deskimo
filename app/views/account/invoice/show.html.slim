@@ -1,6 +1,7 @@
 .container
   BR
-  = link_to t('dashboard.pdf_version'), account_booking_invoice_path(@booking, format: 'pdf'), target: 'blank', class: 'fa fa-download text-center'
+  .text-center
+    = link_to t('dashboard.pdf_version'), account_booking_invoice_path(@booking, format: 'pdf'), target: 'blank', class: 'fa fa-download'
   BR
   .row
     .pdf-header

@@ -1,5 +1,5 @@
 # config/meta.yml
 meta_title: 'nomadoffice.co - Trouvez un bureau dans une entreprise à Lille'
-meta_description: "Pour une demi-journée, un jour, une semaine, trouvez un bureau à louer dans une entreprise autour de vous. Des places en open space, des bureaux séparés et des salles de réunions sont déjà disponibles à Lille."
-meta_image: "meta-image.png" # Une image dans votre dossier app/assets/images/
+meta_description: "Pour une demi-journée, un jour, une semaine, trouvez un bureau à louer dans une entreprise autour de vous. Des salles de réunions, places en open space et bureaux séparés sont disponibles à Lille."
+meta_image: "metaimage.png" # Une image dans votre dossier app/assets/images/
 twitter_account: "@nomadoffice_co" #indispensable pour les Twitter Cards

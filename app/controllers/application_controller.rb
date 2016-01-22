@@ -50,13 +50,7 @@ class ApplicationController < ActionController::Base
   end
 
   def default_url_options
-
-    if Rails.env.production?
-      { host: 'nomadoffice.herokuapp.com' }
-    else
-      { host: ENV['HOST'] || 'localhost:3000' }
-    end
-    { locale: I18n.locale == I18n.default_locale ? nil : I18n.locale }
+    { host: ENV['HOST'] || 'localhost:3000' }
   end
 
 end

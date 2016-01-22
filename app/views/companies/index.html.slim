@@ -85,12 +85,15 @@
         }, function(){
           markers1 = mobile_handler.addMarkers(#{raw @hash.to_json});
           markers2 = mobile_handler.addMarkers(#{raw @mypos.to_json});
-          handler.map.centerOn(markers2[0])
+
           if(markers1.length === 0){
-            handler.map.serviceObject.setZoom(14);
+            mobile_handler.map.serviceObject.setZoom(14);
+            mobile_handler.map.centerOn(markers2[0])
           } else {
-            handler.bounds.extendWith(markers1);
-            handler.fitMapToBounds();
+            console.log(markers1)
+            mobile_handler.bounds.extendWith(markers1);
+            mobile_handler.fitMapToBounds();
+            mobile_handler.map.centerOn(markers2[0]);
           }
         });
       })

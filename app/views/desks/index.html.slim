@@ -1,11 +1,8 @@
-= content_for(:meta_title) do
-  'nomadoffice.co - Bureaux disponibles chez #{@company.name}'
+= content_for(:meta_title){"nomad office - Bureaux disponibles chez #{@company.name}"}
 - if @meeting_room && @meeting_room.activated
-  = content_for(:meta_description) do
-    'Des bureaux et salles de réunion sont disponibles chez #{@company.name} à #{@company.city}. Tu peux les reserver dès maintenant !'
+  = content_for(:meta_description){"Des bureaux et salles de réunion sont disponibles chez #{@company.name} à #{@company.city}. Tu peux les reserver dès maintenant !"}
 - else
-  = content_for(:meta_description) do
-    'Des bureaux sont disponibles chez #{@company.name} à #{@company.city}. Tu peux les reserver dès maintenant !'
+  = content_for(:meta_description){"Des bureaux sont disponibles chez #{@company.name} à #{@company.city}. Tu peux les reserver dès maintenant !"}
 .container.content
   .row
     .col-sm-6

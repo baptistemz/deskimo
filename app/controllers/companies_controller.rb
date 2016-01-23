@@ -61,7 +61,7 @@ class CompaniesController < ApplicationController
       marker.lng @location[1].to_f
 
       marker.picture(
-        url:    "assets/user_marker.svg",
+        url:    "assets/user_marker.png",
         width:  "30",
         height: "44"
       )

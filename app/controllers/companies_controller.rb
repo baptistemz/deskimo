@@ -22,18 +22,32 @@ class CompaniesController < ApplicationController
         within: "10km"
       }
     }
-    sort =
+
+    sort_conditions = [
+      {
+        _geo_distance: {
+          location: {
+            lat: @location[0],
+            lon: @location[1]
+            },
+          order: "asc",
+          unit: "km",
+          mode: "min"
+        }
+      }
+    ]
 
     if params[:kind].present?
       @kind                     = params[:kind]
       search_conditions[:kinds] = @kind
     end
 
-    @companies = Company.search('*', where: search_conditions, aggs: aggregations)
+    @companies = Company.search('*', where: search_conditions, order: sort_conditions, aggs: aggregations)
 
     if @companies.empty?
       @empty_message = 'Aucun bureau disponible ne correspond à votre recherche'
     end
+
     @kinds = @companies.aggs["kinds"]["buckets"].map { |facet| facet["key"] }
 
     @hash = Gmaps4rails.build_markers(@companies) do |company, marker|

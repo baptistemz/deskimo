@@ -62,7 +62,7 @@ class CompaniesController < ApplicationController
 
       marker.picture(
         url:    "assets/user_marker.png",
-        width:  "30",
+        width:  "28",
         height: "44"
       )
 

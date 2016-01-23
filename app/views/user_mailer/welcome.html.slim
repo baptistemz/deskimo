@@ -14,5 +14,5 @@ p #{t('mailer.welcome')}
   - if @user.first_name
     p N'hésitez pas à modifier/enrichir votre profil sur #{link_to 'votre espace perso', account_user_url }
   -else
-    p Nous ne vous connaissons pas encore très bien, n'hésitez pas à nous indiquer votre nom, votre prénom et à enrichir votre profil sur #{link_to 'votre espace perso', account_user_url }
+    p Nous ne vous connaissons pas encore très bien, n'hésitez pas à nous indiquer votre nom, votre prénom et à enrichir votre profil sur #{link_to 'votre espace perso', account_user_url, :target => "_blank" }
 

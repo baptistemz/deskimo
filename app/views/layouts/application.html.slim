@@ -29,7 +29,7 @@ html
     meta itemprop="description" content="#{meta_description}"
     meta itemprop="image" content="#{image_url(meta_image)}"
 
-
+    = csrf_meta_tags
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = render 'layouts/google_analytics'
 

@@ -4,14 +4,14 @@ User.destroy_all
 AdminUser.destroy_all
 
 #USERS
-gag = User.create!(email: "contact@mecatechnic.com", password: "12345678", password_confirmation: "12345678")
-dj =  User.create!(email: "contact@deezer.com", password: "12345678", password_confirmation: "12345678")
-thibaut =  User.create!(email: "contact@ikomobi.com", password: "12345678", password_confirmation: "12345678")
-damien =  User.create!(email: "contact@mutualab.com", password: "12345678", password_confirmation: "12345678")
-cecile = User.create!(email: "contact@lacoroutine.com", password: "12345678", password_confirmation: "12345678")
-thomas = User.create!(email: "contact@doumit.com", password: "12345678", password_confirmation: "12345678")
-mec = User.create!(email: "contact@ecotaco.com", password: "12345678", password_confirmation: "12345678")
-julien = User.create!(email: "contact@cofactory.com", password: "12345678", password_confirmation: "12345678")
+gag = User.create!(email: "contact@mecatechnic.lol", password: "12345678", password_confirmation: "12345678")
+dj =  User.create!(email: "contact@deezer.lol", password: "12345678", password_confirmation: "12345678")
+thibaut =  User.create!(email: "contact@ikomobi.lol", password: "12345678", password_confirmation: "12345678")
+damien =  User.create!(email: "contact@mutualab.lol", password: "12345678", password_confirmation: "12345678")
+cecile = User.create!(email: "contact@lacoroutine.lol", password: "12345678", password_confirmation: "12345678")
+thomas = User.create!(email: "contact@doumit.lol", password: "12345678", password_confirmation: "12345678")
+mec = User.create!(email: "contact@ecotaco.lol", password: "12345678", password_confirmation: "12345678")
+julien = User.create!(email: "contact@cofactory.lol", password: "12345678", password_confirmation: "12345678")
 
 # COMPANIES
 mecatechnic = gag.create_company!(name: "mecatechnic", siret:"40483304800022", address: "3 rue Paul Langevin", city: "Tourcoing", postcode: "59599", description: "Spécialiste de pièces détachées VW. Bossez au milieu des belles bagnoles !", coffee: false, wifi: true, printer: true, scanner: true, picture: File.open(Rails.root.join("db/seeds/images/mecatechnic.jpg")), open_monday: true, open_tuesday: true, open_wednesday: true, open_thursday: true, open_friday: true, open_saturday: true, open_sunday: false, start_time_am: "8:00 AM", end_time_am: "12:00 AM", start_time_pm: "2:00 PM", end_time_pm: "7:00 PM")

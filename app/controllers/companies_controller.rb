@@ -19,7 +19,7 @@ class CompaniesController < ApplicationController
       activated: true,
       location: {
         near:   @location,
-        within: "10km"
+        within: "5km"
       }
     }
 
@@ -61,8 +61,8 @@ class CompaniesController < ApplicationController
       marker.lng @location[1].to_f
 
       marker.picture(
-        url:    "assets/user_marker.png",
-        width:  "44",
+        url:    "assets/user_marker.svg",
+        width:  "30",
         height: "44"
       )
 

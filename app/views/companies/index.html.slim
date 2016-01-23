@@ -42,7 +42,6 @@
                 =link_to company_desks_path(company)
                   = render partial: 'company_thumbnail', locals: {company: company}
 
-
     .col-sm-5.hidden-xs.fixed
 
 
@@ -90,7 +89,6 @@
             mobile_handler.map.serviceObject.setZoom(14);
             mobile_handler.map.centerOn(markers2[0])
           } else {
-            console.log(markers1)
             mobile_handler.bounds.extendWith(markers1);
             mobile_handler.fitMapToBounds();
             mobile_handler.map.centerOn(markers2[0]);

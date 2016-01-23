@@ -60,7 +60,7 @@ class CompaniesController < ApplicationController
       marker.lat @location[0]
       marker.lng @location[1]
       marker.picture(
-        url:    "assets/user_marker.svg",
+        url:    "/assets/user_marker.svg",
         width:  "28",
         height: "44"
       )

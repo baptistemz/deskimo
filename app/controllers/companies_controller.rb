@@ -57,11 +57,10 @@ class CompaniesController < ApplicationController
     end
 
     @mypos = Gmaps4rails.build_markers(@location) do |location, marker|
-      marker.lat @location[0].to_f
-      marker.lng @location[1].to_f
-
+      marker.lat @location[0]
+      marker.lng @location[1]
       marker.picture(
-        url:    "assets/user_marker.png",
+        url:    "assets/user_marker.svg",
         width:  "28",
         height: "44"
       )

@@ -87,9 +87,15 @@ en:
     my_account    : "My account"
     first_name    : "First name"
     last_name     : "Last name"
-    no_first_name : "We don't know your first name yet"
-    no_last_name  : "We don't know your last name yet"
-    edit_profile  : "Edit profile"
+    no_first_name : "We still don't know your first name"
+    no_last_name  : "We still don't know your last name"
+    edit_profile  : "Enrich / Edit profile"
+    personal_details: 'My personal details'
+    change_of_password: 'Change of password'
+    cancel_my_account: 'Cancel my account'
+    cancel_your_account: 'Cancel your account'
+    unhappy_message: 'Unhappy? Send your feedback to:'
+    sure_to_cancel_message: 'And if you are really sure :'
   dashboard:
     edit_company              : "Edit company details"
     change_quantity           : "Change quantity"
@@ -135,7 +141,8 @@ en:
   ttc: 'All taxes inc'
   goodbye_message: 'Thank you ! See you soon on nomadoffice.co !'
   feedback_message: "For any piece of information or to give feedback don't hesitate to contact us"
-
+  update: 'update'
+  back: 'Back'
 
   openings:
     from_day: 'from'

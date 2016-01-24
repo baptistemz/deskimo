@@ -30,6 +30,7 @@ fr:
       coffee     : "café"
       printer    : "imprimante"
       scanner    : "scanner"
+
 # PAGES
   home:
     banner_title                     : "Trouvez un bureau dans une entreprise à Lille"
@@ -96,7 +97,14 @@ fr:
     last_name     : "Nom"
     no_first_name : "Votre prénom n'est pas encore enregistré"
     no_last_name  : "Votre nom de famille n'est pas encore enregistré"
-    edit_profile  : "Modifier votre profil"
+    edit_profile  : "Enrichir / Modifier votre profil"
+    personal_details: 'Informations personnelles'
+    change_of_password: 'Changer de mot de passe'
+    cancel_my_account: 'Supprimer mon compte'
+    cancel_your_account: 'Supprimer le compte'
+    unhappy_message: 'Mécontent? Ton feedback nous interesse:'
+    sure_to_cancel_message: 'Si tu es vraiment sûr :'
+
   dashboard:
     edit_company              : "Modifier les informations de l'entreprise"
     change_quantity           : "modifier la quantité"
@@ -142,6 +150,8 @@ fr:
   ttc: 'TTC'
   goodbye_message: 'Merci ! A bientôt sur nomadoffice.co !'
   feedback_message: "Pour toute info ou pour nous donner des avis, des retours n'hésitez pas à nous contacter"
+  update: 'modifier'
+  back: 'Retour'
 
   openings:
     from_day: 'du'
@@ -178,3 +188,14 @@ fr:
   mailer:
     hello: 'Bonjour'
     welcome: 'Bienvenue sur nomad office !'
+
+
+#DEVISE
+
+
+  devise:
+    registrations:
+      edit_password_hint: "Ne saisissez rien si vous ne souhaitez pas le modifier"
+      current_password_hint : "Nous avons besoin de votre mot de passe actuel pour modifier ces changements"
+
+

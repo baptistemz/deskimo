@@ -1,0 +1,54 @@
+.container
+  .form-margin-top
+    h2.center = t('account.edit_profile')
+
+    = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+      .col-sm-8
+        .payment-confirmation
+          #edit-personal-infos
+            h4.blue.center= t('account.personal_details')
+            br
+            .center
+              = f.error_notification
+            .form-group
+              = f.input :first_name, label: t('account.first_name')
+            .form-group
+              = f.input :last_name, label: t('account.last_name')
+            br
+            .form-group
+              = f.input :email, required: true, autofocus: true, label: "email"
+
+              - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+                p Currently waiting confirmation for: #{resource.unconfirmed_email}
+          #password-change.hidden
+            .h4.blue.center= t('account.change_of_password')
+            br
+            = f.error_notification
+            .form-group
+              = f.input :password, autocomplete: "off", required: false
+            .form-group
+              = f.input :password_confirmation, required: false
+          br
+          .form-group
+            = f.input :current_password, hint: "#{t('devise.registrations.current_password_hint')}", required: true
+          .form-group
+            = f.button :submit, t('update'), class: "btn-primary full-width"
+      .col-sm-4
+        .payment-confirmation.center
+          br
+          #link_to_pc
+            .btn.btn-primary= t('account.change_of_password')
+          #link_to_pi.hidden
+            .btn.btn-primary= t('account.personal_details')
+          br
+          hr
+          br
+          h4.blue= t('account.cancel_your_account')
+          BR
+          p= t('account.unhappy_message')
+          = mail_to('contact@nomadoffice.co')
+          BR
+          p= t('account.sure_to_cancel_message')
+          = link_to "#{t('account.cancel_your_account')}", registration_path(resource_name), class: 'red', data: { confirm: "Are you sure?" }, method: :delete
+          BR
+          = link_to "<< #{t('back')}", :back

@@ -1,18 +1,12 @@
 h1
 
-p #{t('mailer.hello')} #{@user.first_name},
+- if @user.first_name
+  p #{t('mailer.hello')} #{@user.first_name},
 p #{t('mailer.welcome')}
-- if @user.company
-  p Votre entreprise #{@user.company.name} a bien été enregistrée,
-  - if @user.company.desks.any?
-    p vos bureaux sont dès à présent en location, nous vous informerons par email à chaque reservation de bureau. Restez connectés !
-  - else
-    p aucun bureau de votre entreprise n'est pour le moment mis en location, si vous voulez mettre des bureaux en location rendez-vous sur :
-    =link_to 'la page de création de bureaux', new_account_company_desk_url(@user.company)
-- else
-  p Vous pouvez rechercher des bureaux en location dès maintenant dans des entreprises autour de vous.
-  - if @user.first_name
-    p N'hésitez pas à modifier/enrichir votre profil sur #{link_to 'votre espace perso', account_user_url }
-  -else
-    p Nous ne vous connaissons pas encore très bien, n'hésitez pas à nous indiquer votre nom, votre prénom et à enrichir votre profil sur #{link_to 'votre espace perso', account_user_url }
+
+p Vous pouvez rechercher des bureaux en location dès maintenant dans des entreprises autour de vous.
+- if @user.first_name
+  p N'hésitez pas à modifier/enrichir votre profil sur #{link_to 'votre espace perso', account_user_url }
+-else
+  p Nous ne vous connaissons pas encore très bien, n'hésitez pas à nous indiquer votre nom, votre prénom et à enrichir votre profil sur #{link_to 'votre espace perso', account_user_url }
 

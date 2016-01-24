@@ -1,4 +1,23 @@
 .container
-  h1 = t('about.about')
-  h2.center Nomad office
-  h2.center = t('about.team')
+  h1.center = t('about.about')
+  / h2 Nomad office
+  BR
+  .col-xs-12
+    p.center nomad office se base sur un constat simple de manque d'intermédiaire entre les loueurs et demandeurs de bureaux à courte durée.
+  BR
+  .col-sm-6
+    .explanation-snippet
+      =image_tag 'about_1.png', class: 'about-image'
+      .explanation-text
+        p En moyenne dans les entreprises françaises plus de <b>30% des postes de travail sont vacants</b>. Beaucoup cherchent un moyen d'optimiser cet espace vide et ainsi amortir les charges.
+  .col-sm-6
+    .explanation-snippet
+      =image_tag 'about_2.png', class: 'about-image'
+      .explanation-text
+        p Pour un travailleur nomade, ou un professionnel en déplacement, il est <b>difficile de trouver un endroit où travailler</b> autour de lui en dernière minute. Ce travailleur finit souvent dans un café wifi bruyant.
+  .col-xs-12
+    .explanation-snippet
+      =image_tag 'about_3.png', class: 'about-image'
+      .explanation-text
+        p En reservant au dernier moment sur nomad office, ce travailleur peut <b>trouver les bureaux libres dans les entreprises les plus proches</b> et ainsi accéder à tous les services de l'entreprise.
+  / h2 = t('about.team')

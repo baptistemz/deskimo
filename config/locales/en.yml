@@ -96,6 +96,8 @@ en:
     cancel_your_account: 'Cancel your account'
     unhappy_message: 'Unhappy? Send your feedback to:'
     sure_to_cancel_message: 'And if you are really sure :'
+    8_char_min: '8 characters minimum'
+    new_password: 'new password'
   dashboard:
     edit_company              : "Edit company details"
     change_quantity           : "Change quantity"

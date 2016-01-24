@@ -8,7 +8,7 @@
           #edit-personal-infos
             h4.blue.center= t('account.personal_details')
             br
-            .center
+            .center.red
               = f.error_notification
             .form-group
               = f.input :first_name, label: t('account.first_name')
@@ -23,9 +23,10 @@
           #password-change.hidden
             .h4.blue.center= t('account.change_of_password')
             br
-            = f.error_notification
+            .center.red
+              = f.error_notification
             .form-group
-              = f.input :password, autocomplete: "off", required: false
+              = f.input :password, autocomplete: "off", required: false, label: "#{t('account.new_password')} (#{t('account.8_char_min')})"
             .form-group
               = f.input :password_confirmation, required: false
           br

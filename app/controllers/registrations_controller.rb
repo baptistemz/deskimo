@@ -8,6 +8,15 @@ class RegistrationsController < Devise::RegistrationsController
   #     params.require(:user).permit( :email, :password, :password_confirmation)
   #   end
   # end
+  def after_update_path_for(resource)
+    # if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
+    #   user_params = params[:user]
+    #   current_user.update(email: user_params[:email], first_name: user_params[:first_name], last_name: user_params[:last_name])
+    # end
+    user_params = params[:user]
+    resource.update(first_name: user_params[:first_name], last_name: user_params[:last_name])
+    account_user_path
+  end
 
   def after_sign_up_path_for(resource)
     if params[:user_type] == "company"

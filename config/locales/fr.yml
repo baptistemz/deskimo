@@ -104,6 +104,8 @@ fr:
     cancel_your_account: 'Supprimer le compte'
     unhappy_message: 'Mécontent? Ton feedback nous interesse:'
     sure_to_cancel_message: 'Si tu es vraiment sûr :'
+    8_char_min: '8 caractères min'
+    new_password: 'nouveau mot de passe'
 
   dashboard:
     edit_company              : "Modifier les informations de l'entreprise"

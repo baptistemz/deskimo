@@ -1,6 +1,6 @@
 - if params[:user_type] == "company"
   = content_for(:meta_title){"nomad office - Sous-louez des bureaux dès maintenant."}
-  = content_for(:meta_description){"Sous-louez vos salles de réunion et bureaux en inscrivant votre entreprise sur nomad office."}
+  = content_for(:meta_description){"Sous-louez vos salles de réunion, bureaux et places en open-space en inscrivant votre entreprise sur nomad office."}
 - else
   = content_for(:meta_title){"nomad office - Inscription"}
   = content_for(:meta_description){"Louez des bureaux à la demi-journée/journée/semaine en last-minute."}
@@ -15,8 +15,7 @@
         br
         br
         = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-          .red
-            = f.error_notification
+          = f.error_notification
           .form-group
             = f.input :email, label: false, required: true, autofocus: true, placeholder:"email"
           br
@@ -39,11 +38,11 @@
             .form-group
               p.text-left = t('devise.custom.social_sign_up_solutions')
             .row.form-group
-              .col-xs-12.col-sm-6.no-padding
+              .col-xs-6.no-padding
                 = link_to user_omniauth_authorize_path(:facebook, resource)
                   .btn-primary.login-button-width.facebook-btn
                     i.fa.fa-facebook
-              .col-xs-12.col-sm-6.no-padding
+              .col-xs-6.no-padding
                 = link_to user_omniauth_authorize_path(:google_oauth2)
                   .btn-primary.login-button-width.google-btn
                     i.fa.fa-google
@@ -69,4 +68,4 @@
   - else
     .col-sm-5.hidden-xs
     = image_tag 'signup_image.png', class: 'side-image visible-md visible-lg'
-    = image_tag 'signup_image_mobile.png', class: 'side-image visible-sm'
+    = image_tag 'signup_image.png', class: 'small-side-image visible-sm'

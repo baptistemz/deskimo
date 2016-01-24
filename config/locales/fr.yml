@@ -2,14 +2,7 @@ fr:
   dates:
     formats:
       date_month_year_concise: '%d-%m-%y'
-  devise:
-    custom:
-      social_sign_in_solutions : "Ou s'identifier avec :"
-      social_sign_up_solutions : "Ou s'identifier avec :"
-      already_an_account       : "Déjà un compte ?"
-      forgotten_password       : "Mot de passe oublié"
-      create_user_account      : "Créer un compte utilisateur"
-      create_company_account   : "Créer un compte entreprise"
+
   languages:
     lang : "Langue"
     fr   : "Français"
@@ -199,5 +192,12 @@ fr:
     registrations:
       edit_password_hint: "Ne saisissez rien si vous ne souhaitez pas le modifier"
       current_password_hint : "Nous avons besoin de votre mot de passe actuel pour modifier ces changements"
+    custom:
+      social_sign_in_solutions : "Ou s'identifier avec :"
+      social_sign_up_solutions : "Ou s'identifier avec :"
+      already_an_account       : "Déjà un compte ?"
+      forgotten_password       : "Mot de passe oublié"
+      create_user_account      : "Créer un compte utilisateur"
+      create_company_account   : "Créer un compte entreprise"
 
 

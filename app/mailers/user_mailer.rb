@@ -10,6 +10,6 @@ class UserMailer < ApplicationMailer
     mail to: @user.email, subject: t("mailer.welcome")
   end
 
-  def booking(booking)
-  end
+  # def booking(booking)
+  # end
 end

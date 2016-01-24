@@ -10,6 +10,6 @@ class CompanyMailer < ApplicationMailer
     @user = company.user
     mail to: @user.email, subject:
   end
-  def booking(booking)
-  end
+  # def booking(booking)
+  # end
 end

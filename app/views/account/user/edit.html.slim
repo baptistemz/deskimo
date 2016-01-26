@@ -1,0 +1,23 @@
+.container
+  h2.center = t('account.edit_profile')
+  =simple_form_for @user, :url => account_user_path, :method => :patch do |f|
+    .col-sm-8
+      .payment-confirmation
+        #edit-personal-infos
+          h4.blue.center= t('account.personal_details')
+          br
+          .center.red
+            = f.error_notification
+          .form-group
+            = f.input :first_name , default:'#{@user.first_name}', label: t('account.first_name')
+          .form-group
+            = f.input :last_name , default:'#{@user.last_name}', label: t('account.last_name')
+        .form-group
+          = f.button :submit, t('update'), class: "btn-primary full-width"
+    .col-sm-4
+      .payment-confirmation.center
+        br
+        = link_to edit_user_registration_path
+          .btn.btn-primary= t('account.change_identifiers')
+        hr
+        = link_to "<< #{t('back')}", :back

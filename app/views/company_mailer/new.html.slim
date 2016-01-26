@@ -1,0 +1,16 @@
+- if @user.first_name
+  p #{t('mailer.hello')} #{@user.first_name},
+p #{t('mailer.hello')},
+p Votre entreprise #{@company.name} a bien été enregistrée sur nomadoffice.co
+p Vous êtes enregistré en tant qu'administrateur de l'entreprise vous pouvez donc accéder au #{link_to "dashboard de l'entreprise", account_company_desks_url(@company, locale: I18n.locale.to_s)} depuis lequel vous pourrez :
+ul
+  li Modifier les informations et la photo de votre page entreprise
+  li Enregistrer/modifier des bureaux, salles de réunions ou places en open-space à mettre en location
+  li Activer/désactiver/changer le nombre de bureaux mis en location
+  li Ajouter des jours fériés et jours de fermeture exceptionnelle pour vous assurer qu'aucun utilisateur ne reserve un de vos bureaux sur ces dates.
+
+p IMPORTANT :
+p C'est sur cette addresse email que vous serez informé des reservations passées par des utilisateurs de nomadoffice.co sur vos bureaux. Arrangez-vous pour être notifié des messages qui arrivent sur cette boîte email. Si vous ne voulez pas recevoir ces emails sur cette addresse #{link_to "changez d'addresse email sur nomad office", edit_user_registration_url}.
+p Nous avons besoin de votre IBAN afin de vous virer le dû de chaque reservation faîte dans votre entreprise. Merci de nous l'envoyer au plus vite à #{mail_to('contact@nomadoffice.co')}
+br
+p.right Baptiste de chez nomad office

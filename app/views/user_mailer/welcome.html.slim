@@ -1,12 +1,11 @@
-h1
-
 - if @user.first_name
   p #{t('mailer.hello')} #{@user.first_name},
 p #{t('mailer.welcome')}
 
-p Vous pouvez rechercher des bureaux en location dès maintenant dans des entreprises autour de vous.
+p Tu peux rechercher des bureaux en location dès maintenant dans des entreprises autour de toi.
 - if @user.first_name
-  p N'hésitez pas à modifier/enrichir votre profil sur #{link_to 'votre espace perso', account_user_url }
+  p N'hésite pas à modifier/enrichir ton profil sur #{link_to 'ton espace perso', account_user_url }
 -else
-  p Nous ne vous connaissons pas encore très bien, n'hésitez pas à nous indiquer votre nom, votre prénom et à enrichir votre profil sur #{link_to 'votre espace perso', account_user_url }
-
+  p Nous ne te connaissons pas encore très bien, n'hésite pas à nous indiquer ton nom, ton prénom et à enrichir ton profil sur #{link_to 'ton espace perso', account_user_url }
+br
+p.right Baptiste de chez nomad office

@@ -5,11 +5,11 @@ class CompanyMailer < ApplicationMailer
   #
   #   en.user_mailer.welcome.subject
   #
-  # def new(company)
-  #   @company = company
-  #   @user = company.user
-  #   mail to: @user.email, subject:
-  # end
+  def new(company)
+    @company = company
+    @user = company.user
+    mail to: @user.email, subject: 'enregistrement de ' + @company.name
+  end
   # def booking(booking)
   # end
 end

@@ -18,6 +18,8 @@ class Company < ActiveRecord::Base
   geocoded_by :full_address
   after_validation :geocode, if: :full_address_changed?
 
+  after_create :send_new_company_email
+
   def search_data
     {
       activated:        activated,
@@ -92,6 +94,10 @@ class Company < ActiveRecord::Base
   end
 
   private
+
+  def send_new_company_email
+    CompanyMailer.new(self).deliver_later
+  end
 
   def date_of_next(weekday)
     date  = Date.parse(weekday)

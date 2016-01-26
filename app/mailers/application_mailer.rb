@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "baptiste@nomadoffice.co"
+  default from: Settings.mails.default.from
   layout 'mailer'
 end

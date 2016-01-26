@@ -92,7 +92,7 @@ fr:
     no_last_name  : "Votre nom de famille n'est pas encore enregistré"
     edit_profile  : "Enrichir / Modifier votre profil"
     personal_details: 'Informations personnelles'
-    change_of_password: 'Changer de mot de passe'
+    change_identifiers: "Changer d'identifiants"
     cancel_my_account: 'Supprimer mon compte'
     cancel_your_account: 'Supprimer le compte'
     unhappy_message: 'Mécontent? Ton feedback nous interesse:'
@@ -147,6 +147,7 @@ fr:
   feedback_message: "Pour toute info ou pour nous donner des avis, des retours n'hésitez pas à nous contacter"
   update: 'modifier'
   back: 'Retour'
+  password: 'mot de passe'
 
   openings:
     from_day: 'du'

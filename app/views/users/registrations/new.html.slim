@@ -28,10 +28,10 @@
           .form-actions
           - if params[:user_type] == "company"
             = hidden_field_tag(:user_type, 'company')
-            = f.button :submit, "Sign up", class: "btn-primary login-button-width", value: "Authentification"
+            = f.button :submit, "Sign up", class: "btn-primary login-button-width"
           - else
             = hidden_field_tag(:user_type, 'user')
-            = f.button :submit, "Sign up", class: "btn-primary login-button-width", value: "Authentification"
+            = f.button :submit, "Sign up", class: "btn-primary login-button-width"
           br
           - if params[:user_type] != "company"
             br

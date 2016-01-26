@@ -34,6 +34,37 @@ ActiveAdmin.register Company do
     column :end_time_am
     column :start_time_pm
     column :end_time_pm
+    actions
   end
+
+  form do |f|
+    f.inputs "legal info" do
+      f.input :name
+      f.input :id
+      f.input :siret
+      f.input :address
+      f.input :city
+      f.input :postcode
+    end
+    f.inputs "practical info" do
+      f.input :latitude
+      f.input :longitude
+      f.input :open_monday
+      f.input :open_tuesday
+      f.input :open_wednesday
+      f.input :open_thursday
+      f.input :open_friday
+      f.input :open_saturday
+      f.input :open_sunday
+      f.input :activated
+      f.input :start_time_am
+      f.input :end_time_am
+      f.input :start_time_pm
+      f.input :end_time_pm
+    end
+    f.actions
+  end
+
+  permit_params :name, :id, :siret, :address, :city, :postcode, :latitude, :longitude, :open_monday, :open_tuesday, :open_wednesday, :open_thursday, :open_friday, :open_saturday, :open_sunday, :activated, :start_time_am, :end_time_am, :start_time_pm, :end_time_pm
 
 end

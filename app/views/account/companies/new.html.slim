@@ -10,8 +10,6 @@
           = f.input :name, label:false, required: true, autofocus: true, placeholder:"Nom de l'entreprise"
         .form-group
           = f.input :description, label:false, required: true, autofocus: true, placeholder:"description de l'entreprise", as: :text
-        / .form-group
-        /   = f.input :siret, label:false, required: true, autofocus: true, placeholder:"SIRET"
         br
         .form-group
           = f.input :address, label:false, required: true, autofocus: true, placeholder:"Adresse"
@@ -19,6 +17,8 @@
           = f.input :postcode, label:false, required: true, autofocus: true, placeholder:"Code postal"
         .form-group
           = f.input :city, label:false, required: true, autofocus: true, placeholder:"Ville"
+        .form-group
+          = f.input :siret, label:false, required: true, autofocus: true, placeholder:"SIRET"
         br
         .form-group
           h4.blue #{t('company_creation.company_picture')} :

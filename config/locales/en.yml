@@ -91,7 +91,7 @@ en:
     no_last_name  : "We still don't know your last name"
     edit_profile  : "Enrich / Edit profile"
     personal_details: 'My personal details'
-    change_of_password: 'Change of password'
+    change_identifiers: 'Change identifiers'
     cancel_my_account: 'Cancel my account'
     cancel_your_account: 'Cancel your account'
     unhappy_message: 'Unhappy? Send your feedback to:'
@@ -145,6 +145,7 @@ en:
   feedback_message: "For any piece of information or to give feedback don't hesitate to contact us"
   update: 'update'
   back: 'Back'
+  password: 'password'
 
   openings:
     from_day: 'from'

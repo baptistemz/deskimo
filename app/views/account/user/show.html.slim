@@ -3,7 +3,7 @@
     .col-md-8
       .profile-resume
         .row
-          .col-sm-6
+          .col-sm-8
             h1 = t('account.my_account')
             h4.company-section-title = t('account.email')
             = @user.email
@@ -18,13 +18,13 @@
             - else
               p =t('account.no_last_name')
           .col-sm-3.hidden-xs
-            = link_to edit_user_registration_path
+            = link_to edit_account_user_path
               .edit-profile-cta
                 .rounded-icon
                   i.fa.fa-pencil
                 p =t('account.edit_profile')
           .col-xs-12.visible-xs
-            = link_to edit_user_registration_path
+            = link_to edit_account_user_path
               .cta-newdesk
                 .rounded-icon
                   i.fa.fa-edit

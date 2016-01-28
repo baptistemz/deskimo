@@ -17,6 +17,8 @@ class Booking < ActiveRecord::Base
   enumerize :half_day_choice, in: [:am, :pm]
   enumerize :status, in: ["pending", "paid", "confirmed", "canceled"], default: "pending"
 
+  after_update :send_booking_emails
+
   def set_amount_and_dates
     next_available_days = self.desk.get_next_available_days_array
     if self.time_slot_type == "half_day"
@@ -48,6 +50,13 @@ class Booking < ActiveRecord::Base
     else
       errors.add(:start_date, "Ce bureau n'est plus disponible à ces dates") unless
         [start_date, end_date] & desk.get_next_available_days_array == [start_date, end_date]
+    end
+  end
+
+  def send_booking_emails
+    if self.status == 'paid'
+      CompanyMailer.booking_recorded(self).deliver_later
+      UserMailer.booking_confirmation(self).deliver_later
     end
   end
 end

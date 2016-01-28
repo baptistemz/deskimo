@@ -1,0 +1,19 @@
+- if @user.first_name?
+  p #{t('mailer.hello')} #{@user.first_name},
+-else
+  p #{t('mailer.hello')},
+p Votre réservation de 1 #{@desk.kind.text} à bien été enregistrée chez #{@company.name}. L'entreprise en a été informée.
+p Voici les détails de votre réservation:
+ul
+  li Entreprise : #{@company.name}
+  li Bureaux : #{@desk.kind.text}
+  li Durée : #{@booking.time_slot_quantity} #{@booking.time_slot_type.text}
+  - if @booking.start_date == @booking.end_date
+    li Date: #{l(@booking.start_date)}
+  - else
+    li Dates: du #{l(@booking.start_date)} au #{l(@booking.end_date)} (inclus)
+p Pour toute information concernant cette reservation merci de contacter l'entreprise à l'adresse suivante : #{mail_to("#{@company.user.email}")}
+p L'équipe de nomad office reste également à votre disposition sur #{mail_to('contact@nomadoffice.co')} ou au 0679788468.
+br
+p.right Baptiste de chez nomad office
+

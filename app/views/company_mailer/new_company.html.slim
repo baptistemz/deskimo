@@ -1,6 +1,7 @@
 - if @user.first_name
   p #{t('mailer.hello')} #{@user.first_name},
-p #{t('mailer.hello')},
+-else
+  p #{t('mailer.hello')},
 p Votre entreprise #{@company.name} a bien été enregistrée sur nomadoffice.co
 p Vous êtes enregistré en tant qu'administrateur de l'entreprise vous pouvez donc accéder au #{link_to "dashboard de l'entreprise", account_company_desks_url(@company, locale: I18n.locale.to_s)} depuis lequel vous pourrez :
 ul

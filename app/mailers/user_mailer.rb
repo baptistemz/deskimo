@@ -10,6 +10,11 @@ class UserMailer < ApplicationMailer
     mail to: @user.email, subject: t("mailer.welcome")
   end
 
-  # def booking(booking)
-  # end
+  def booking_confirmation(booking)
+    @booking = booking
+    @user = @booking.user
+    @desk = @booking.desk
+    @company = @booking.desk.company
+    mail to: @company.user.email, subject: 'Votre réservation de bureaux chez ' + @company.name
+  end
 end

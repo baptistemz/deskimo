@@ -6,7 +6,6 @@ class RegistrationsController < Devise::RegistrationsController
     if params[:user_type] == "company"
       new_account_company_path
     elsif session[:previous_url]
-      UserMailer.welcome(params[:user]).deliver_later
       session[:previous_url]
     else
       '/'

@@ -192,7 +192,7 @@ fr:
   devise:
     registrations:
       edit_password_hint: "Ne saisissez rien si vous ne souhaitez pas le modifier"
-      current_password_hint : "Nous avons besoin de votre mot de passe actuel pour modifier ces changements"
+      current_password_hint : "Nous avons besoin de votre mot de passe actuel pour effectuer tout changement d'email ou mot de passe"
     custom:
       social_sign_in_solutions : "Ou s'identifier avec :"
       social_sign_up_solutions : "Ou s'identifier avec :"

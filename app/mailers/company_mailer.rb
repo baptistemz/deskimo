@@ -1,15 +1,16 @@
 class CompanyMailer < ApplicationMailer
-
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.user_mailer.welcome.subject
-  #
-  def new(company)
+  def new_company(company)
     @company = company
     @user = company.user
     mail to: @user.email, subject: 'enregistrement de ' + @company.name
   end
-  # def booking(booking)
-  # end
+
+  def booking_recorded(booking)
+    @booking = booking
+    @client = @booking.user
+    @desk = @booking.desk
+    @company = @booking.desk.company
+    @user = @company.user
+    mail to: @company.user.email, subject: "Réservation de bureaux chez " + @company.name
+  end
 end

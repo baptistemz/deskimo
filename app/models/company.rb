@@ -13,7 +13,7 @@ class Company < ActiveRecord::Base
   validates_attachment_content_type :picture,
     content_type: /\Aimage\/.*\z/
 
-  validates_presence_of :name, :address, :city, :description, :postcode
+  validates_presence_of :name, :address, :city, :description, :postcode, :picture
 
   geocoded_by :full_address
   after_validation :geocode, if: :full_address_changed?
@@ -96,7 +96,7 @@ class Company < ActiveRecord::Base
   private
 
   def send_new_company_email
-    CompanyMailer.new(self).deliver_later
+    CompanyMailer.new_company(self).deliver_later
   end
 
   def date_of_next(weekday)

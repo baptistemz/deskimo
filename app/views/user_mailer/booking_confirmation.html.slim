@@ -12,7 +12,7 @@ ul
     li Date: #{l(@booking.start_date)}
   - else
     li Dates: du #{l(@booking.start_date)} au #{l(@booking.end_date)} (inclus)
-p Pour toute information concernant cette reservation merci de contacter l'entreprise à l'adresse suivante : #{mail_to("#{@company.user.email}")}
+p Pour toute information concernant cette reservation merci de contacter l'entreprise à l'adresse suivante : #{mail_to("#{@company.user.email}")} ou au #{tel_to(@company.phone_number)}
 p L'équipe de nomad office reste également à votre disposition sur #{mail_to('contact@nomadoffice.co')} ou au 0679788468.
 br
 p.right L'équipe nomad office

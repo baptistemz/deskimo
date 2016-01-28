@@ -30,6 +30,8 @@ module Account
                                       :address,
                                       :city,
                                       :postcode,
+                                      :phone_number,
+                                      :siret,
                                       :coffee,
                                       :wifi,
                                       :printer,

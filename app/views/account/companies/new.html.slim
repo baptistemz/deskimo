@@ -8,16 +8,21 @@
         .form-group
           h4.blue #{t('company_creation.company_details')} :
           = f.input :name, label:false, required: true, autofocus: true, placeholder:"Nom de l'entreprise"
-        .form-group
-          = f.input :description, label:false, required: true, autofocus: true, placeholder:"description de l'entreprise", as: :text
         br
         .form-group
+          h4.blue Contact :
           = f.input :address, label:false, required: true, autofocus: true, placeholder:"Adresse"
         .form-group
           = f.input :postcode, label:false, required: true, autofocus: true, placeholder:"Code postal"
         .form-group
           = f.input :city, label:false, required: true, autofocus: true, placeholder:"Ville"
         .form-group
+          = f.input :phone_number, label:false, required: true, autofocus: true, placeholder:"Téléphone"
+        br
+        .form-group
+          h4.blue Infos :
+        .form-group
+          = f.input :description, label:false, required: true, autofocus: true, placeholder:"description de l'entreprise", as: :text, :input_html => {:maxlength => 220}
           = f.input :siret, label:false, required: true, autofocus: true, placeholder:"SIRET"
         br
         .form-group

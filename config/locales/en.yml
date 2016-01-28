@@ -126,6 +126,7 @@ en:
     price_per: 'Price per'
     pdf_version: "pdf version"
     invoice_date: 'invoice date'
+    receipt_versions: 'available in html and pdf versions'
   checkout:
     time_expiry: "Page expiry. You spent to much time to pay your booking. You haven't been charged on anything. Please try again"
     your_booking: 'Your booking'

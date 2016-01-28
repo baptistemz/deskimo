@@ -13,7 +13,7 @@ class Company < ActiveRecord::Base
   validates_attachment_content_type :picture,
     content_type: /\Aimage\/.*\z/
 
-  validates_presence_of :name, :address, :city, :description, :postcode, :picture
+  validates_presence_of :name, :address, :city, :description, :postcode, :picture, :phone_number
 
   geocoded_by :full_address
   after_validation :geocode, if: :full_address_changed?

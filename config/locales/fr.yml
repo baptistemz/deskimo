@@ -128,6 +128,7 @@ fr:
     price_per: "Prix par"
     pdf_version: "version pdf"
     invoice_date: 'date de facturation'
+    receipt_versions: 'versions html et pdf du reçu'
   checkout:
     time_expiry: "La page expiré, vous avez pris trop de temps à payer la reservation. Aucun paiement n'a été encaissé. Merci de recommencer"
     your_booking: 'Votre réservation'

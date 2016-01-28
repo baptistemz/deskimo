@@ -15,6 +15,6 @@ class UserMailer < ApplicationMailer
     @user = @booking.user
     @desk = @booking.desk
     @company = @booking.desk.company
-    mail to: @company.user.email, subject: 'Votre réservation de bureaux chez ' + @company.name
+    mail to: @user.email, subject: 'Votre réservation de bureaux chez ' + @company.name
   end
 end

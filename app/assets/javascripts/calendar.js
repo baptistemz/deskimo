@@ -20,25 +20,16 @@ if($("#desk-choice").length > 0){
 
 
 function loadCalendar(kind){
-  console.log(kind)
   if ($("." + kind + "_booking #booking_start_date").length ) {
-    if (typeof themonth === 'undefined'){
-      var themonth = 1;
-      renderCal(themonth);
-    };
-
-    $('.minusmonth').click(function(){
-        themonth += -1;
-        renderCal(themonth);
-    });
 
 
-    $('.addmonth').click(function(){
-        themonth += 1;
-        renderCal(themonth);
+    function firstDay(month,year) {
+      return new Date(year,month,1).getDay();
+    }
 
-    });
-
+    function numDays(month,year) {
+      return new Date(year,month,0).getDate();
+    }
 
     function renderCal(themonth){
     $('.calendar li').remove();
@@ -107,14 +98,22 @@ function loadCalendar(kind){
     }
 
     }
+    if (typeof themonth === 'undefined'){
+      var themonth = 1;
+      renderCal(themonth);
+    };
+    $('.minusmonth').click(function(){
+        themonth += -1;
+        renderCal(themonth);
+    });
 
-    function firstDay(month,year) {
-      return new Date(year,month,1).getDay();
-    }
 
-    function numDays(month,year) {
-      return new Date(year,month,0).getDate();
-    }
+    $('.addmonth').click(function(){
+        themonth += 1;
+        renderCal(themonth);
+
+    });
+
 
     var clicker = 0;
     var min = 0;

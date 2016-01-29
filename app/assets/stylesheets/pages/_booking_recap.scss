@@ -1,0 +1,23 @@
+.booking-recap {
+  padding: 20px;
+  margin-top: 20px
+}
+
+.recap-details {
+  color: $dark-blue;
+  height: 200px;
+  // border: 1px solid $dark-blue;
+  background-color: $gray;
+  border-radius: 3px;
+  margin: 20px;
+  padding-top: 1%
+}
+
+.recap-content{
+  width: 100%;
+  text-align: center
+}
+
+.recap-phone{
+  margin-bottom: 24px
+}

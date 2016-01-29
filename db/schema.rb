@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160128131811) do
+ActiveRecord::Schema.define(version: 20160129114725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,8 +84,8 @@ ActiveRecord::Schema.define(version: 20160128131811) do
     t.string   "address"
     t.string   "city"
     t.string   "postcode"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
     t.text     "description"
     t.boolean  "coffee"
     t.boolean  "wifi"
@@ -98,20 +98,21 @@ ActiveRecord::Schema.define(version: 20160128131811) do
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "user_id"
-    t.boolean  "open_monday",          default: false
-    t.boolean  "open_tuesday",         default: false
-    t.boolean  "open_wednesday",       default: false
-    t.boolean  "open_thursday",        default: false
-    t.boolean  "open_friday",          default: false
-    t.boolean  "open_saturday",        default: false
-    t.boolean  "open_sunday",          default: false
-    t.boolean  "open_holiday",         default: false
-    t.boolean  "activated",            default: true
+    t.boolean  "open_monday",               default: false
+    t.boolean  "open_tuesday",              default: false
+    t.boolean  "open_wednesday",            default: false
+    t.boolean  "open_thursday",             default: false
+    t.boolean  "open_friday",               default: false
+    t.boolean  "open_saturday",             default: false
+    t.boolean  "open_sunday",               default: false
+    t.boolean  "open_holiday",              default: false
+    t.boolean  "activated",                 default: true
     t.time     "start_time_am"
     t.time     "end_time_am"
     t.time     "start_time_pm"
     t.time     "end_time_pm"
     t.string   "phone_number"
+    t.integer  "cheapest_desk_price_cents", default: 0,     null: false
   end
 
   add_index "companies", ["user_id"], name: "index_companies_on_user_id", using: :btree

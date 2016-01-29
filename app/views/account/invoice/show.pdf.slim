@@ -1,5 +1,5 @@
 = content_for(:title) do
-  'invoice_#{@company.name.downcase.gsub(/\s+/, "")}_#{@invoice.created_at.strftime('%d_%m_%Y')}
+  'invoice_#{@company.name.downcase.gsub(/\s+/, "")}_#{@invoice.created_at.strftime('%d_%m_%Y')}'
 .container
   .row
     .pdf-header

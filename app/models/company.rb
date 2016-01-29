@@ -5,19 +5,18 @@ class Company < ActiveRecord::Base
   belongs_to :user
   has_many :desks, dependent: :destroy
   has_many :closing_days, dependent: :destroy
-
   has_attached_file :picture,
     styles: { large: "500x500", medium: "300x300>", thumb: "100x100>" , list: "740x370#"}
     # rake paperclip:refresh CLASS=Company
 
   validates_attachment_content_type :picture,
     content_type: /\Aimage\/.*\z/
-
   validates_presence_of :name, :address, :city, :description, :postcode, :picture, :phone_number
 
+  monetize :cheapest_desk_price_cents
   geocoded_by :full_address
-  after_validation :geocode, if: :full_address_changed?
 
+  after_validation :geocode, if: :full_address_changed?
   after_create :send_new_company_email
 
   def search_data
@@ -85,8 +84,11 @@ class Company < ActiveRecord::Base
     @hour_range << self.end_time_pm.strftime("%I:%M%p") if self.end_time_pm
   end
 
-  def cheapest_desk
-    desks.where(activated: :true).order(daily_price: :asc).first
+  def update_cheapest_desk_price
+    @activated_desks = desks.where(activated: :true)
+    if @activated_desks.any?
+      self.update(cheapest_desk_price: @activated_desks.order(daily_price: :asc).first.daily_price)
+    end
   end
 
   def full_address

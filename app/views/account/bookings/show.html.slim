@@ -40,11 +40,13 @@
     .col-sm-4
       .company-resume
         h3.blue.text-center= t('dashboard.go_to')
-        p.center #{@company.address}, #{@company.postcode}, #{@company.city}
+        p#company_address.center #{@company.address}, #{@company.postcode}, #{@company.city}
         br
-        = link_to "https://maps.google.com?saddr=Current+Location&daddr=#{@company.address.gsub(/\s+/, "+")},#{@company.postcode},#{@company.city.gsub(/\s+/, "+")}", :target => '_blank', class: 'text-center'
+        / = link_to "https://maps.google.com?saddr=#{t('maps_my')}+#{t('maps_location')}&daddr=#{@company.address.gsub(/\s+/, "+")},#{@company.postcode},#{@company.city.gsub(/\s+/, "+")}", :target => '_blank', class: 'text-center'
+        .text-center#geo-itinerary
           .btn.btn-primary.btn-center.marged.margin-left
-            i.fa.fa-map-marker.icon-margin #{t('dashboard.itinerary')}
+            p
+              i.fa.fa-map-marker.icon-margin #{t('dashboard.itinerary')}
     .col-sm-4
       .company-resume
         h3.blue.text-center Contact
@@ -59,5 +61,6 @@
         br
         = link_to account_booking_invoice_path(@booking)
           .btn.btn-primary.btn-center.marged.margin-left
-            i.fa.fa-book = t('dashboard.invoice')
+            p
+              i.fa.fa-book = t('dashboard.invoice')
 

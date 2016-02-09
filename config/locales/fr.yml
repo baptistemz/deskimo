@@ -149,6 +149,8 @@ fr:
   update: 'modifier'
   back: 'Retour'
   password: 'mot de passe'
+  maps_my: 'Ma'
+  maps_location: 'Position'
 
   openings:
     from_day: 'du'

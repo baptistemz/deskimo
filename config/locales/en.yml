@@ -147,6 +147,8 @@ en:
   update: 'update'
   back: 'Back'
   password: 'password'
+  maps_my: 'My'
+  maps_location: 'Location'
 
   openings:
     from_day: 'from'

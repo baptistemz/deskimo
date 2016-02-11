@@ -1,7 +1,7 @@
 .product-thumbnail
   .product-thumbnail-gradient
     h4 = t('index.details')
-  = image_tag company.picture.url(:list), class: "img-responsive"
+  = image_tag company.picture.url(:list), class: "img-responsive full-width"
   .distance
     p #{number_with_precision(company.distance_from(@location), precision: 1)} km
   ul.list-unstyle.list-inline#services

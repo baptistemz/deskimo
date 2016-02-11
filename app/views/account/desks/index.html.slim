@@ -6,7 +6,7 @@
     .row
       .col-sm-6
         .product-thumbnail
-          = image_tag @company.picture.url(:list), class: "img-responsive"
+          = image_tag @company.picture.url(:show), class: "img-responsive"
           .product-thumbnail-content
             .product-name
               h1 = @company.name

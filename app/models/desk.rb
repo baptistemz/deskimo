@@ -13,7 +13,9 @@ class Desk < ActiveRecord::Base
   monetize :hour_price_cents, :half_day_price_cents, :daily_price_cents, :weekly_price_cents
   enumerize :kind, in: [:open_space, :closed_office, :meeting_room], default: :open_space
   validates_uniqueness_of :kind, scope: :company_id
-  after_commit :reindex_company, :update_company_cheapest_price
+  after_commit :reindex_company
+  after_create :update_company_cheapest_price
+  after_update :update_company_cheapest_price
 
   def get_next_available_days_array
     available_days = []

@@ -85,9 +85,9 @@ class Company < ActiveRecord::Base
   end
 
   def update_cheapest_desk_price
-    @activated_desks = desks.where(activated: :true)
-    if @activated_desks.any?
-      self.update(cheapest_desk_price: @activated_desks.order(daily_price: :asc).first.daily_price)
+    activated_desks = desks.where(activated: :true)
+    if activated_desks.any?
+      self.update(cheapest_desk_price_cents: activated_desks.minimum(:daily_price_cents))
     end
   end
 

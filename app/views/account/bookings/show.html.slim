@@ -17,9 +17,9 @@
       .booking-show-couple
         h4.blue = t('dashboard.date').capitalize
         - if @booking.time_slot_type == "half_day" ||(@booking.time_slot_type == "day(s)" && @booking.time_slot_quantity == 1)
-          p Le #{@booking.start_date}
+          p #{@booking.start_date}
         -else
-          p du #{@booking.start_date} au #{@booking.end_date}
+          p #{t('openings.from_day')} #{@booking.start_date} #{t('openings.to_day')} #{@booking.end_date}
       .booking-show-couple
         h4.blue= t('show.length').capitalize
         - if @booking.time_slot_type == "half_day"
@@ -42,16 +42,15 @@
         h3.blue.text-center= t('dashboard.go_to')
         p#company_address.center #{@company.address}, #{@company.postcode}, #{@company.city}
         br
-        / = link_to "https://maps.google.com?saddr=#{t('maps_my')}+#{t('maps_location')}&daddr=#{@company.address.gsub(/\s+/, "+")},#{@company.postcode},#{@company.city.gsub(/\s+/, "+")}", :target => '_blank', class: 'text-center'
         .text-center#geo-itinerary
           .btn.btn-primary.btn-center.marged.margin-left
             p
               i.fa.fa-map-marker.icon-margin #{t('dashboard.itinerary')}
     .col-sm-4
       .company-resume
-        h3.blue.text-center Contact
+        h3.blue.text-center= t('dashboard.contact')
         br
-        p.center #{mail_to("#{@company.user.email}")}  ou
+        p.center #{mail_to("#{@company.user.email}")}  #{t('or')}
 
         p.center.recap-phone= tel_to(@company.phone_number)
     .col-sm-4

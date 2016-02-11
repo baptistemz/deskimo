@@ -118,8 +118,8 @@ en:
     exceptionnal_closing_days : ' Add exceptionnal closing days'
     invoice                   : 'Invoice'
     itinerary                 : 'itinerary'
-    go_to                     : 'Go to'
-    receipt                   : 'Receipt'
+    go_to                     : 'go to'
+    receipt                   : 'receipt'
     booking_made              : "Booking realised on"
     in_company: 'in'
     date: 'date'
@@ -127,6 +127,7 @@ en:
     pdf_version: "pdf version"
     invoice_date: 'invoice date'
     receipt_versions: 'available in html and pdf versions'
+    contact: 'contact'
   checkout:
     time_expiry: "Page expiry. You spent to much time to pay your booking. You haven't been charged on anything. Please try again"
     your_booking: 'Your booking'
@@ -149,6 +150,7 @@ en:
   password: 'password'
   maps_my: 'My'
   maps_location: 'Location'
+  or: 'or'
 
   openings:
     from_day: 'from'

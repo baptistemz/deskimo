@@ -16,7 +16,7 @@ fr:
       payment              : "Paiement"
       unavailability_range : "Indisponibilité"
     attributes:
-      status: 'status'
+      status: 'statut'
       created_at : "Créé le"
       updated_at : "Mis à jour le"
       wifi       : "wifi"
@@ -120,8 +120,8 @@ fr:
     exceptionnal_closing_days : ' Plannifier des fermetures exceptionnelles'
     invoice                   : 'Facture'
     itinerary                 : 'itinéraire'
-    go_to                     : 'Y aller'
-    receipt                   : 'Reçu'
+    go_to                     : 'y aller'
+    receipt                   : 'reçu'
     booking_made              : "Reservation passée le"
     in_company: 'chez'
     date: "date"
@@ -129,6 +129,7 @@ fr:
     pdf_version: "version pdf"
     invoice_date: 'date de facturation'
     receipt_versions: 'versions html et pdf du reçu'
+    contact: 'contact'
   checkout:
     time_expiry: "La page expiré, vous avez pris trop de temps à payer la reservation. Aucun paiement n'a été encaissé. Merci de recommencer"
     your_booking: 'Votre réservation'
@@ -151,6 +152,7 @@ fr:
   password: 'mot de passe'
   maps_my: 'Ma'
   maps_location: 'Position'
+  or: 'ou'
 
   openings:
     from_day: 'du'

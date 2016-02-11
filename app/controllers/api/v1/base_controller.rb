@@ -1,4 +1,5 @@
-class ApplicationController < ActionController::Base
+class Api::V1::BaseController < ActionController::Base
+
   protect_from_forgery with: :exception
   before_action :set_locale
 

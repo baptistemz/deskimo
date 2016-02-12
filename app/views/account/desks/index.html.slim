@@ -1,4 +1,4 @@
-.container.content
+.container
   h1= t('navbar.company_dashboard')
   p = link_to t('dashboard.link_to_public'), company_desks_path(@company)
 
@@ -34,7 +34,7 @@
               p imprimante
         hr.style-company
         h4.company-section-title= t('show.description')
-        .company-description = @company.description
+        .company = @company.description
         hr.style-company
         h4.company-section-title = t('show.opening_times')
         - if @opening_weekdays_range == []

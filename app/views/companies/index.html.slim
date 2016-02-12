@@ -4,7 +4,7 @@
 #mobile-map.visible-xs.out-window
 .container-fluid#main
   .row
-    .col-xs-12.col-sm-7#left
+    .col-xs-12.col-sm-7
       .row.research-bar
         .col-xs-9.col-sm-12
           = form_tag companies_path, method: :get, class: "flexform"
@@ -26,7 +26,7 @@
             = image_tag 'map-icon.png', id: 'map-icon'
             .i.fa.fa-list#list-icon.hidden
 
-      .row.products-list
+      .row
         - if @empty_message
           p.text-center = @empty_message
         -else

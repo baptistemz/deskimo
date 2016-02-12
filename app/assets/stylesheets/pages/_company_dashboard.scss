@@ -2,39 +2,39 @@
   height:580px;
   overflow: hidden;
   padding: 50px;
-  margin-bottom: 20px
-}
-
-.dashboard-desk-thumbnail > h3 {
-  color: $dark-blue;
-  margin-top: 0;
-  max-height: 60px
-}
-.dashboard-desk-thumbnail > p {
-  height: 44px;
-  overflow: hidden;
-}
-
-.dashboard-desk-thumbnail.active-desk {
-  border: 1px solid $green;
+  margin-bottom: 20px;
   border-radius: 3px;
+  & > h3 {
+    color: $dark-blue;
+    margin-top: 0;
+    margin-bottom: 20px;
+    max-height: 60px;
+    text-align: center;
+  }
+  & > p {
+    height: 44px;
+    overflow: hidden;
+  }
+  &.active-desk {
+    border: 1px solid $green;
+  }
+  &.inactive-desk {
+    border: 1px solid $red;
+  }
+  &.add-desk {
+    border: 1px solid $dark-blue;
+    background-color: $gray-light;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:580px;
+    position: relative
+  }
 }
 
-.dashboard-desk-thumbnail.inactive-desk {
-  border: 1px solid $red;
-  border-radius: 3px;
-}
 
-.dashboard-desk-thumbnail.add-desk {
-  border: 1px solid $dark-blue;
-  border-radius: 3px;
-  background-color: $gray-light;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:580px;
-  position: relative
-}
+
+
 
 .green-btn{
   background-color: $green;
@@ -44,10 +44,6 @@
 .red-btn{
   background-color: $red;
   width: 100%
-}
-
-.big-plus {
-  font-size: 120px;
 }
 
 .cta-newdesk {
@@ -71,15 +67,12 @@
   margin: 10px 0;
 }
 
-.dashboard-desk-thumbnail.active-desk > h3 {
-  height : 60px;
-  text-align:center
-}
-
-.booking-show-couple > h4{
-  display: inline-block;
-  margin-right: 8px
-}
-.booking-show-couple > p{
-  display: inline-block;
+.booking-show-couple {
+  & > h4{
+    display: inline-block;
+    margin-right: 8px
+  }
+  & > p{
+    display: inline-block;
+  }
 }

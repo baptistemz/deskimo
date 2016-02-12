@@ -1,58 +1,108 @@
 .card {
-  position: relative;
-  height: 175px;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
-  color: white;
-  margin: 20px auto;
+  position    : relative;
+  height      : 300px;
+  text-shadow : 0 1px 3px rgba(0,0,0,0.6);
+  color       : white;
+  margin      : 20px auto;
 }
+
+.list-inline {
+  padding        : 20px 40px;
+  list-style     : none;
+  display        : inline-block;
+  margin-left    : 150px;
+  margin-right   : 150px;
+  padding        : 5px;
+  border-spacing : 5px;
+  margin-top     : 50px;
+}
+
+.avatar img {
+  width               : 40px;
+}
+
 .card-bg{
-  background-size: cover;
-  border-radius: 3px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100%;
+  background-size : cover;
+  border-radius   : 3px;
+  position        : absolute;
+  top             : 0;
+  bottom          : 0;
+  width           : 100%;
 }
-.card-gradient {
-  background-image: linear-gradient(to right, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 80%);
-  border-radius: 3px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100%;
+.card-bg1,
+.card-bg2,
+.card-bg3{
+  background-size     : cover;
+  border-radius       : 3px;
+  position            : absolute;
+  top                 : 0;
+  bottom              : 0;
+  width               : 100%;
+  background-position : center
+}
+
+.card-bg1 {
+  background-image : image-url('homecompany.jpeg');
+}
+
+.card-bg2{
+  background-image : image-url('homeclosedoffice.jpeg');
+}
+
+.card-bg3{
+  background-image : image-url('homemeetingroom.jpeg');
+}
+
+.card-gradient:hover {
+  background-color : rgba(52, 73, 94, 0);
 }
 .card-category {
-  font-size: 10px;
-  text-transform: uppercase;
-  position: absolute;
-  top: 10px;
-  left: 10px;
+  font-size      : 10px;
+  text-transform : uppercase;
+  position       : absolute;
+  top            : 10px;
+  left           : 10px;
 }
 .card-text {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
+  position : absolute;
+  bottom   : 220px;
+  left     : 20px;
+  color    : white;
+  z-index  : 10px;
   h2 {
-    font-size: 24px;
+    font-size     : 28px;
+    z-index       : 10;
+    margin-bottom : 20px;
   }
   p {
-    font-size: 13px;
+    font-size: 18px;
   }
 }
-.card-user {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-}
-.card-link {
+
+.card-gradient {
+  background-image: linear-gradient(to right, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 80%);
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 100%;
-  z-index:2;
-  background: black;
-  opacity: 0;
-  &:hover{
-    opacity: 0.1;
-  }
+  background-color : rgba(52, 73, 94, 0.1);
+  border-radius    : 3px;
+  position         : flex;
+  display          : flex;
+  justify-content  : center;
+  align-items      : center;
+  width            : 100%;
+}
+
+.huge-card {
+  background-image : image-url('homepro.jpg');
+  background-size  : cover;
+  height           : 500px;
+  text-shadow      : 0 1px 3px rgba(0,0,0,0.6);
+  color            : white;
+  display          : flex;
+  border-radius    : 3px;
+  justify-content  : center;
+  align-items      : center;
+  margin-top       : 30px ;
+
 }

@@ -19,10 +19,6 @@
   width: 105%;
 }
 
-#index-search-btn {
-  right: 5px
-}
-
 
 .search-btn {
   position: absolute;
@@ -53,7 +49,6 @@
 #list-icon{
   font-size: 30px;
   margin-top:15px
-
 }
 
 select{
@@ -86,7 +81,10 @@ select{
 }
 
 .form-services {
-  padding-left: 20px
+  padding-left: 20px;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .quantity-modifier {
@@ -171,39 +169,16 @@ select{
 }
 
 
-#company_open_monday{
-margin-top: -10px;
-margin-left: -3px;
-}
-
-#company_open_tuesday{
-margin-top: -10px;
-margin-left: -3px;
-}
-
-#company_open_wednesday{
-margin-top: -10px;
-margin-left: -3px;
-}
-
-#company_open_thursday{
-margin-top: -10px;
-margin-left: -3px;
-}
-
-#company_open_friday{
-margin-top: -10px;
-margin-left: -3px;
-}
-
-#company_open_saturday{
-margin-top: -10px;
-margin-left: -3px;
-}
-
+#company_open_monday,
+#company_open_tuesday,
+#company_open_wednesday,
+#company_open_thursday,
+#company_open_friday,
+#company_open_saturday,
 #company_open_sunday{
 margin-top: -10px;
-margin-left: -3px;}
+margin-left: -3px;
+}
 
 .closing-date {
   max-width: 200px;

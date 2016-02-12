@@ -3,14 +3,6 @@
   margin-bottom : 30px;
 }
 
-h3.company-section-title{
-  font-size      : 24px;
-  color          : $light-blue;
-  margin         : 20.8px 0 Opx 0;
-  line-height    : 1;
-  text-transform : uppercase;
-}
-
 h4.company-section-title{
   font-size   : 18px;
   color       : $light-blue;
@@ -27,17 +19,7 @@ hr.style-company {
   width         : 100%;
 }
 
-p.company-description{
-  // font-size  : 16px;
-  margin-bottom : 20.8px;
-  line-height   : 20.8px;
-  margin        : 0 0 10px;
-  color         : #888888;
-  margin-bottom : 20px;
-}
-
 p.company{
-  margin-bottom : 20.8px;
   line-height   : 20.8px;
   margin        : 0 0 10px;
   color         : #888888;
@@ -54,6 +36,7 @@ p.company{
   width         : 25%;
   margin-bottom : 10px;
 }
+
 .price-category {
   width       : 99%;
   margin      : 0;
@@ -65,55 +48,10 @@ p.company{
 .prices-list {
   display: flex;
   justify-content: space-between
-
 }
 
-
-.action{
-  font-size: 30px;
-}
-
-
-.p-destinataire{
-  line-height: 20.8px;
-  margin: 0 0 10px;
-  color: #888888;
-}
-
-.step{
-  color: white;
-  background-color: #FF989E;
-  padding: 5px;
-}
-
-.step.active{
-  background-color: #34495E;
-}
-
-p.step{
-  color: white;
-  font-size: 16px;
-}
-
-p.stop{
-  color: white;
-  font-size: 16px;
-}
-
-p.margin{
-  margin: 0;
-}
-
-hr.delivery{
-  border-top: 1px solid #e1e1e1;
-  width: 100%;
-  margin-top: 0;
-  margin-bottom: 22px;
-}
 .service-box{
-
   display: flex;
-  // justify-content: center
 }
 
 #services-list-show{

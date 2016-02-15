@@ -52,7 +52,7 @@ br
     p.company = t('show.from')
     = f.select :start_date, options_for_select(desk.get_next_available_days_array.map{ |date| date.strftime('%d/%m/%Y') })
   br
-  .booking-quantity-modifier.end_prediction.hidden
+  .booking-quantity-modifier.end_prediction
     p Jusqu'au
     p.predicted_end
   br

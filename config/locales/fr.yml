@@ -130,6 +130,7 @@ fr:
     invoice_date: 'date de facturation'
     receipt_versions: 'versions html et pdf du reçu'
     contact: 'contact'
+    back_to_bookings: ' Retour à la liste des résérvations'
   checkout:
     time_expiry: "La page expiré, vous avez pris trop de temps à payer la reservation. Aucun paiement n'a été encaissé. Merci de recommencer"
     your_booking: 'Votre réservation'

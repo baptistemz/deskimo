@@ -4,4 +4,16 @@
 //= require underscore
 //= require gmaps/google
 //= require google_analytics
-//= require_tree .
+//= require autocomplete
+//= require quantity_plus_and_minus
+//= require booking_creation
+//= require calendar
+//= require company_creation
+//= require geolocalization
+//= require google_analytics
+//= require index_map
+//= require payment
+//= require price_share
+//= require scroll_reveal
+//= require user_profile
+

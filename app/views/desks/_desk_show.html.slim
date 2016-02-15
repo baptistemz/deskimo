@@ -52,6 +52,10 @@ br
     p.company = t('show.from')
     = f.select :start_date, options_for_select(desk.get_next_available_days_array.map{ |date| date.strftime('%d/%m/%Y') })
   br
+  .booking-quantity-modifier.end_prediction.hidden
+    p Jusqu'au
+    p.predicted_end
+  br
   .booking-quantity-modifier.half-day-select.hidden
     p.company #{t('show.half_day')} :
     = f.input :half_day_choice, label: false, include_blank: false

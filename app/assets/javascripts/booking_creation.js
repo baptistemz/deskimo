@@ -20,6 +20,69 @@ $(document).on( 'shown.bs.tab', 'a[data-toggle="tab"]', function () {
   }
 });
 
+// $(document).on( 'shown.bs.tab', 'a[data-toggle="tab"]', clearEnd)
+if($("#desk-choice").length > 0){
+  $(document).ready(function(){
+    kind = $("#desk-choice li.active a").attr('id').slice(0,-4)
+    giveEndEstimation(kind)
 
+  });
+
+  $(document).on( 'shown.bs.tab', 'a[data-toggle="tab"]', function (e) {
+   kind = e.currentTarget.id.slice(0,-4)
+   giveEndEstimation(kind)
+  });
+}
+
+
+function giveEndEstimation(kind) {
+  $("." + kind + "_booking #booking_time_slot_type").on('change', predictEnd )
+  $("." + kind + "_booking #booking_time_slot_quantity").on('change', predictEnd )
+  $("." + kind + "_booking .plus-button").on('click', predictEnd )
+  $("." + kind + "_booking .minus-button").on('click', predictEnd )
+  $("." + kind + "_booking #booking_start_date").on('change', predictEnd )
+
+  function predictEnd() {
+    if($("." + kind + "_booking #booking_time_slot_type").val() == 'day(s)'){
+      $("." + kind + "_booking .end_prediction").removeClass('hidden')
+      var nextDays = $("." + kind + "_booking #booking_start_date > option").map(function() { return $(this).val(); });
+      var firstDayIndex = $.inArray($("." + kind + "_booking #booking_start_date").val(), nextDays)
+      var lastDayIndex = parseInt(firstDayIndex) + parseInt($("." + kind + "_booking #booking_time_slot_quantity").val()) - 1
+      var endDay = nextDays.get(lastDayIndex)
+    } else if($("." + kind + "_booking #booking_time_slot_type").val() == 'week(s)'){
+      $("." + kind + "_booking .end_prediction").removeClass('hidden')
+      var nextDays = $("." + kind + "_booking #booking_start_date > option").map(function() { return $(this).val(); });
+      var firstDayParts = $("." + kind + "_booking #booking_start_date").val().split('/')
+      var firstDayDate = new Date(firstDayParts[2], firstDayParts[1] - 1, firstDayParts[0])
+      var fictiveLastDay = getDateString(new Date(firstDayParts[2], firstDayParts[1] - 1, (parseInt(firstDayParts[0]) + parseInt($("." + kind + "_booking #booking_time_slot_quantity").val()) * 7 - 1).toString()))
+      var fictiveLastDayMinusOne = getDateString(new Date(firstDayParts[2], firstDayParts[1] - 1, (parseInt(firstDayParts[0]) + parseInt($("." + kind + "_booking #booking_time_slot_quantity").val()) * 7 - 2).toString()))
+      var fictiveLastDayMinusTwo = getDateString(new Date(firstDayParts[2], firstDayParts[1] - 1, (parseInt(firstDayParts[0]) + parseInt($("." + kind + "_booking #booking_time_slot_quantity").val()) * 7 - 3).toString()))
+      var fictiveLastDayMinusThree = getDateString(new Date(firstDayParts[2], firstDayParts[1] - 1, (parseInt(firstDayParts[0]) + parseInt($("." + kind + "_booking #booking_time_slot_quantity").val()) * 7 - 4).toString()))
+      if ($.inArray(fictiveLastDay, nextDays) != -1){
+        endDay = fictiveLastDay
+      } else if ($.inArray(fictiveLastDayMinusOne, nextDays) != -1){
+        endDay = fictiveLastDayMinusOne
+      } else if ($.inArray(fictiveLastDayMinusTwo, nextDays) != -1){
+        endDay = fictiveLastDayMinusTwo
+      } else if ($.inArray(fictiveLastDayMinusThree, nextDays) != -1){
+        endDay = fictiveLastDayMinusThree
+      } else {
+        console.log(fictiveLastDay)
+        endDay = "Week(s) booking impossible"
+      }
+    }
+
+    function getDateString(date) {
+      var year = date.getFullYear();
+      var month = '' + (date.getMonth() + 1);
+      var day = '' + date.getDate();
+      if (month.length < 2) month = '0' + month;
+      if (day.length < 2) day = '0' + day;
+      return day + '/' + month + '/' + year
+    }
+  $(".predicted_end").text(endDay)
+  console.log(endDay)
+  }
+}
 
 

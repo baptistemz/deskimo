@@ -76,20 +76,29 @@ function loadCalendar(kind){
     firstDayOfMonth = Math.min.apply(Math,availableDaysArray)
     firstDayMonth = parseInt($("."+kind+"_booking #booking_start_date option:nth(0)").val().substring(4, 6))
     if ($('.calendar p.monthname').text().includes(months[firstDayMonth - 1])){
+      for (var i = availableDaysArray[1]; i <= lastDayOfMonth; i++){
+        $("li:contains("+('0'+i).slice(-2)+")").addClass('unavailable')
+      }
       $("li:contains("+availableDaysArray[0].toString()+")").addClass('available')
-      for (var i = availableDaysArray[0]; i <= lastDayOfMonth; i++){
+      for (var i = availableDaysArray[1]; i <= lastDayOfMonth; i++){
         if (availableDaysArray.includes(('0'+i).slice(-2))){
           $("li:contains("+('0'+i).slice(-2)+")").addClass('available')
         }
       }
     }else if ($('.calendar p.monthname').text().includes(months[firstDayMonth])){
+      for (var i = firstDayOfMonth; i <= availableDaysArray[availableDaysArray.length - 1]; i++){
+        $("li:contains("+('0'+i).slice(-2)+")").addClass('unavailable')
+      }
       $("li:contains("+('0'+firstDayOfMonth).slice(-2)+")").addClass('available')
       for (var i = firstDayOfMonth; i <= availableDaysArray[availableDaysArray.length - 1]; i++){
         if (availableDaysArray.includes(('0'+i).slice(-2))){
           $("li:contains("+('0'+i).slice(-2)+")").addClass('available')
         }
       }
-    }else if ($('.calendar p.monthname').text().includes(months[0])){
+    }else if ($('.calendar p.monthname').text().includes(months[0]) && (firstDayMonth === '01' || firstDayMonth === '12') ){
+      for (var i = firstDayOfMonth; i <= availableDaysArray[availableDaysArray.length - 1]; i++){
+        $("li:contains("+('0'+i).slice(-2)+")").addClass('unavailable')
+      }
       for (var i = firstDayOfMonth; i <= availableDaysArray[availableDaysArray.length - 1]; i++){
         if (availableDaysArray.includes(('0'+i).slice(-2))){
           $("li:contains("+('0'+i).slice(-2)+")").addClass('available')

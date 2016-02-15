@@ -38,7 +38,7 @@ ul.group {
 
 .calendar {
   border: 1px solid $dark-blue ;
-  color: $red;
+  color: $gray;
   padding: .5em .5em 1em;
   width: 100%;
   margin: .5em auto;
@@ -56,6 +56,10 @@ ul.group {
   padding: .25em 0;
   cursor: pointer;
   border-bottom: 1px solid #444;
+}
+
+.calendar li.unavailable {
+  color: $red;
 }
 
 .calendar li.available {

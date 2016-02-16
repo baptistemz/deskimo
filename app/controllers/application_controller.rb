@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   after_filter :store_location
 
-  # http_basic_authenticate_with name: [ENV['MY_SITE_USERNAME'], password: ENV['MY_SITE_SECRET']] if Rails.env == 'staging'
+  http_basic_authenticate_with name: [ENV['MY_SITE_USERNAME'], password: ENV['MY_SITE_SECRET']] if Rails.env == 'staging'
 
   def store_location
     # store last url - this is needed for post-login redirect to whatever the user last visited.

@@ -161,11 +161,10 @@ select{
   color: white;
 }
 
-#booking_time_slot_type,
-#booking_start_date_time,
-#booking_start_date_time_4i,
-#booking_start_date_time_5i {
-  height: 28px
+
+#booking_start_date {
+  width: 65%;
+  margin-right: 0
 }
 
 

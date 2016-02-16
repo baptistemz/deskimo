@@ -1,5 +1,6 @@
 .map_box
-  = image_tag company.picture.url(:list), class: "img-small img-responsive"
+  = link_to company_desks_path(company)
+    = image_tag company.picture.url(:list), class: "img-small img-responsive"
   .map-box-content
     h3 #{company.name}
     p #{number_with_precision(company.distance_from(@location), precision: 1)} km

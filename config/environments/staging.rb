@@ -1,6 +1,6 @@
 Rails.application.configure do
   config.middleware.use '::Rack::Auth::Basic' do |u, p|
-    [u, p] == ['username', 'password']
+    [u, p] == [ENV['MY_SITE_USERNAME'], ENV['MY_SITE_SECRET']]
   end
 
   # Settings specified here will take precedence over those in config/application.rb.

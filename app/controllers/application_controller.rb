@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
 
   after_filter :store_location
-  before_filter :authenticate
 
   # http_basic_authenticate_with name: [ENV['MY_SITE_USERNAME'], password: ENV['MY_SITE_SECRET']] if Rails.env == 'staging'
 
@@ -45,13 +44,5 @@ class ApplicationController < ActionController::Base
       cookies.permanent[:educator_locale] = l
     end
     I18n.locale = l
-  end
-
-  def authenticate
-    if Rails.env == 'staging'
-      authenticate_or_request_with_http_basic 'Staging' do |name, password|
-        name == ENV['MY_SITE_USERNAME'] && password == ENV['MY_SITE_SECRET']
-      end
-    end
   end
 end

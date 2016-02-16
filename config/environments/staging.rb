@@ -1,6 +1,6 @@
-Rails.application.configure do
-  config.middleware.insert_after(::Rack::Lock, "::Rack::Auth::Basic", "Staging") do |u, p|
-    [u, p] == [ENV['MY_SITE_USERNAME'], ENV['MY_SITE_SECRET']]
+MyApp::Application.configure do
+  config.middleware.use '::Rack::Auth::Basic' do |u, p|
+    [u, p] == ['username', 'password']
   end
 
   # Settings specified here will take precedence over those in config/application.rb.

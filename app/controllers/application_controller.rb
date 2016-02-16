@@ -3,9 +3,25 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
 
   after_filter :store_location
-  before_filter :authenticate_tester
+  before_filter :authenticate
 
   # http_basic_authenticate_with name: [ENV['MY_SITE_USERNAME'], password: ENV['MY_SITE_SECRET']] if Rails.env == 'staging'
+
+
+  def after_sign_in_path_for(resource)
+    session[:previous_url] || root_path
+  end
+
+  def lat_lng
+    @lat_lng ||= session[:lat_lng]
+  end
+
+  def default_url_options
+    { host: ENV['HOST'] || 'localhost:3000' }
+    { locale: I18n.locale == I18n.default_locale ? nil : I18n.locale }
+  end
+
+  private
 
   def store_location
     # store last url - this is needed for post-login redirect to whatever the user last visited.
@@ -21,10 +37,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def after_sign_in_path_for(resource)
-    session[:previous_url] || root_path
-  end
-
   def set_locale
     if cookies[:educator_locale] && I18n.available_locales.include?(cookies[:educator_locale].to_sym)
       l = cookies[:educator_locale].to_sym
@@ -35,16 +47,7 @@ class ApplicationController < ActionController::Base
     I18n.locale = l
   end
 
-  def lat_lng
-    @lat_lng ||= session[:lat_lng]
-  end
-
-  def default_url_options
-    { host: ENV['HOST'] || 'localhost:3000' }
-    { locale: I18n.locale == I18n.default_locale ? nil : I18n.locale }
-  end
-
-  def authenticate_tester
+  def authenticate
     if Rails.env == 'staging'
       authenticate_or_request_with_http_basic 'Staging' do |name, password|
         name == ENV['MY_SITE_USERNAME'] && password == ENV['MY_SITE_SECRET']

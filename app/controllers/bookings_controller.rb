@@ -13,7 +13,7 @@ class BookingsController < ApplicationController
                                             end_date: @booking.end_date
                                             )
       if @unavailability.save
-        CleanUnpaidBookingsJob.set(wait: 20.minutes).perform_later(@booking.id)
+        CleanUnpaidBookingsJob.set(wait: 20.minute).perform_later(@booking.id)
         redirect_to company_desk_booking_confirmation_path(@booking.desk.company, @booking.desk, @booking )
       else
         @booking.update(status: 'canceled')
@@ -34,7 +34,7 @@ class BookingsController < ApplicationController
   private
 
   def set_booking
-    @booking = current_user.bookings.find(params[:booking_id])
+    @booking = current_user.bookings.where(status: 'pending').find(params[:booking_id])
   rescue
     flash[:alert] = t('checkout.time_expiry')
     redirect_to root_path

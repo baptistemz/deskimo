@@ -80,7 +80,7 @@ class PaymentsController < ApplicationController
   private
 
   def set_booking
-    @booking = current_user.bookings.find(params[:booking_id])
+    @booking = current_user.bookings.where(status: 'pending').find(params[:booking_id])
   rescue
     flash[:alert] = t('checkout.time_expiry')
     redirect_to root_path

@@ -11,14 +11,16 @@ module Account
     end
 
     def update
-      if current_user.update(user_params)
+      @user = current_user
+      if @user.update(user_params)
         if params[:booking]
           redirect_to new_booking_payment_path(params[:booking])
         else
           redirect_to account_user_path
         end
       else
-        redirect_to :back
+        render :edit
+        return
       end
     end
 
@@ -27,7 +29,7 @@ module Account
     def user_params
       params.require(:user).permit( :first_name,
                                     :last_name,
-                                    :picture )
+                                    :avatar )
     end
   end
 end

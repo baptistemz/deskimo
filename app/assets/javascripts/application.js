@@ -9,6 +9,7 @@
 //= require booking_creation
 //= require calendar
 //= require company_creation
+//= require profile_edit
 //= require geolocalization
 //= require google_analytics
 //= require index_map

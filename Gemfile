@@ -46,8 +46,6 @@ gem 'searchkick'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 gem 'bonsai-elasticsearch-rails'
-
-
 gem 'sidekiq'
 gem 'sinatra'  # Dependency of sidekiq
 gem 'sidekiq-failures'

@@ -8,12 +8,31 @@
           br
           .center.red
             = f.error_notification
+          #current_avatar
+            -if @user.avatar_file_name
+              .avatar
+                .croping-frame
+                  = image_tag @user.avatar.url(:avatar)
+            - elsif @user.picture
+              .avatar
+                .croping-frame
+                  = image_tag @user.picture
+            - else
+              .avatar
+                .croping-frame
+                  = image_tag 'placeholder.png'
+          #new_avatar.hidden
+            .avatar
+              .croping-frame
+                #preview-avatar
+          .form-group
+            = f.input :avatar
           .form-group
             = f.input :first_name , default:'#{@user.first_name}', label: t('account.first_name')
           .form-group
             = f.input :last_name , default:'#{@user.last_name}', label: t('account.last_name')
-        .form-group
-          = f.button :submit, t('update'), class: "btn-primary full-width"
+          .form-group
+            = f.button :submit, t('update'), class: "btn-primary full-width"
     .col-sm-4
       .payment-confirmation.center
         br

@@ -1,6 +1,4 @@
 $(document).ready(function(){
-    var preview = $("#preview-image");
-
   $('.file').on('change', function(event) {
     var files = event.target.files;
     var image = files[0]

@@ -1,10 +1,10 @@
 .container
+  h1 = t('account.my_account')
   .row.profile-page
     .col-md-8
       .profile-resume
         .row
-          .col-sm-8
-            h1 = t('account.my_account')
+          .col-xs-6.col-sm-4
             h4.company-section-title = t('account.email')
             = @user.email
             h4.company-section-title =t('account.first_name')
@@ -17,18 +17,26 @@
               p = @user.last_name
             - else
               p =t('account.no_last_name')
-          .col-sm-3.hidden-xs
+          .col-xs-6.col-sm-4
+            -if @user.avatar_file_name
+              .avatar
+                .croping-frame
+                  = image_tag @user.avatar.url(:avatar)
+            - elsif @user.picture
+              .avatar
+                .croping-frame
+                  = image_tag @user.picture
+            - else
+              .avatar
+                .croping-frame
+                  = image_tag 'placeholder.png'
+          .col-xs-12.col-sm-4
             = link_to edit_account_user_path
               .edit-profile-cta
                 .rounded-icon
                   i.fa.fa-pencil
                 p =t('account.edit_profile')
-          .col-xs-12.visible-xs
-            = link_to edit_account_user_path
-              .cta-newdesk
-                .rounded-icon
-                  i.fa.fa-edit
-                p =t('account.edit_profile')
+
     .col-xs-12.col-md-4
       .profile-resume
         h2 = t('activerecord.models.company')

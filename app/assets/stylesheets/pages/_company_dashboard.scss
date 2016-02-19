@@ -1,5 +1,5 @@
 .dashboard-desk-thumbnail {
-  height:580px;
+  height:640px;
   overflow: hidden;
   padding: 50px;
   margin-bottom: 20px;
@@ -33,7 +33,12 @@
 }
 
 
-
+.unavailability-wrap {
+  border: 1px solid $gray;
+  border-radius: 5px;
+  padding: 20px;
+  height: 360px;
+}
 
 
 .green-btn{

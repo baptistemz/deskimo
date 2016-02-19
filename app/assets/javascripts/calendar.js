@@ -76,7 +76,7 @@ function loadCalendar(kind){
     firstDayOfMonth = Math.min.apply(Math,availableDaysArray)
     firstDayMonth = parseInt($("."+kind+"_booking #booking_start_date option:nth(0)").val().substring(4, 6))
     if ($('.calendar p.monthname').text().includes(months[firstDayMonth - 1])){
-      for (var i = availableDaysArray[1]; i <= lastDayOfMonth; i++){
+      for (var i = availableDaysArray[0]; i <= lastDayOfMonth; i++){
         $("li:contains("+('0'+i).slice(-2)+")").addClass('unavailable')
       }
       $("li:contains("+availableDaysArray[0].toString()+")").addClass('available')

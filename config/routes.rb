@@ -37,6 +37,7 @@ Rails.application.routes.draw do
         resources :closing_days, only: [:index, :create, :destroy], controller: 'companies/closing_days'
         resources :desks, only: [:new, :create, :edit, :index, :update, :destroy] do
           resource :activation, only: [:create, :destroy], controller: 'desks/activation'
+          resources :unavailability_ranges, only: [:index, :create, :destroy]
         end
       end
       resources :bookings, only: [:index, :show, :edit, :update] do

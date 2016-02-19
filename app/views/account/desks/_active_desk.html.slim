@@ -1,6 +1,6 @@
 .dashboard-desk-thumbnail.active-desk
   p.green =t('dashboard.activated')
-  h3
+  h3.same-height
     = desk.quantity
     - if desk.kind == "closed_office"
       =t('dashboard.closed_offices')
@@ -37,3 +37,5 @@
   br
   =link_to account_company_desk_activation_path(company, desk), method: :delete
     .btn.btn-primary.red-btn = t('dashboard.deactivate')
+  BR
+  = link_to t('dashboard.plan_unavailabilities'), account_company_desk_unavailability_ranges_path(company, desk), class: 'fa fa-exclamation-circle'

@@ -1,0 +1,30 @@
+.container
+  h1 Next unavailabilities for #{@desk.kind}
+  BR
+  .row
+    .col-md-5
+      .unavailability-wrap
+        - if @ranges.any?
+          - @ranges.each do |range|
+            p #{range[1]} x #{t(@desk.kind)} - from #{l(range[0][0])} to #{l(range[0][1])} #{link_to '', account_company_desk_unavailability_range_path(@company, @desk, range), method: :delete, range: range, class: 'fa fa-trash'}
+        -else
+          p No unavailability recorded yet
+    .col-md-7
+      .unavailability-wrap
+        h3 Add unavailability
+        ul.list-inline#unavailabilities_number
+          li planned for
+          li = select_tag :quantity, options_for_select(1..@desk.quantity), name: 'quantity', class: 'integer-input'
+          li #{@desk.kind}
+        = simple_form_for [:account, @company, @desk, @unavailability_range] do |f|
+          .two-dates-picker
+            .closing-date
+              = f.input :start_date, as: 'date', name: 'date', discard_year: true, class: 'date-choice'
+            .closing-date
+              = f.input :end_date, as: 'date', name: 'date', discard_year: true, class: 'date-choice'
+          br
+          = f.submit 'OK', class: 'submit-dates btn btn-primary full-width'
+
+
+  .center.padded
+    = link_to " #{t('navbar.company_dashboard')}", account_company_desks_path(current_user.company), class: "fa fa-dashboard"

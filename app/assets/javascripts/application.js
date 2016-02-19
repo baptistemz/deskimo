@@ -7,6 +7,7 @@
 //= require autocomplete
 //= require quantity_plus_and_minus
 //= require booking_creation
+//= require unavailability_creation
 //= require calendar
 //= require company_creation
 //= require profile_edit

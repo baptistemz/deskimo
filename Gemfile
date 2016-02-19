@@ -47,6 +47,7 @@ gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 gem 'bonsai-elasticsearch-rails'
 gem 'sidekiq'
+gem 'whenever', :require => false
 gem 'sinatra'  # Dependency of sidekiq
 gem 'sidekiq-failures'
 

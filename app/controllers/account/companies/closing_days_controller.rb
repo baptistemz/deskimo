@@ -17,7 +17,7 @@ module Account
           end
         end
         if @closing_day.save
-          flash[:notice] = 'Closing day successfully deleted'
+          flash[:notice] = 'Closing day successfully saved'
           redirect_to account_company_closing_days_path(@company)
         else
           flash[:error] = 'A problem occured'

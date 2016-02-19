@@ -129,6 +129,7 @@ en:
     receipt_versions: 'available in html and pdf versions'
     contact: 'contact'
     back_to_bookings: ' Back to your bookings list'
+    plan_unavailabilities: " plan unavailabilities"
   checkout:
     time_expiry: "Page expiry. You spent to much time to pay your booking. You haven't been charged on anything. Please try again"
     your_booking: 'Your booking'

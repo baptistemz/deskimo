@@ -46,6 +46,10 @@
   margin-top:5px
 }
 
+.integer-input{
+  padding: 0 50px
+}
+
 #list-icon{
   font-size: 30px;
   margin-top:15px
@@ -97,6 +101,7 @@ select{
 }
 
 .quantity-modifier input.numeric,
+.quantity-modifier input#quantity,
 .booking_time_slot_quantity input.numeric, {
   width: 40px;
   text-align: center;
@@ -189,4 +194,14 @@ margin-left: -3px;
   margin-top: 10px;
 }
 
+.two-dates-picker{
+  display:flex;
+  justify-content: space-around;
+  align-items:center;
+}
+
+#unavailabilities_number {
+  margin: 0;
+  padding: 0
+}
 

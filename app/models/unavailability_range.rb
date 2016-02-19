@@ -7,7 +7,7 @@ class UnavailabilityRange < ActiveRecord::Base
   validate :start_date_cannot_be_in_the_past
   validate :end_date_must_be_after_start_date
 
-  enumerize :kind, in: [:booked, :closed], default: :closed
+  enumerize :kind, in: [:booked, :closed, :planned], default: :closed
 
   private
 

@@ -1,8 +1,14 @@
 .map_box
-  = link_to company_desks_path(company)
-    = image_tag company.picture.url(:list), class: "img-small img-responsive"
+  = image_tag company.picture.url(:list), class: "img-small img-responsive"
   .map-box-content
     h3 #{company.name}
     p #{number_with_precision(company.distance_from(@location), precision: 1)} km
-  = link_to company_desks_path(company)
-    .btn.btn-primary.full-width.map-box-btn= t('index.details')
+  - if params[:kind] == "closed_office"
+    =link_to company_desks_path(company, :tab_selected => "closed_office")
+      .btn.btn-primary.full-width.map-box-btn= t('index.details')
+  - elsif params[:kind] == "meeting_room"
+    =link_to company_desks_path(company, :tab_selected => "meeting_room")
+      .btn.btn-primary.full-width.map-box-btn= t('index.details')
+  -else
+    = link_to company_desks_path(company)
+      .btn.btn-primary.full-width.map-box-btn= t('index.details')

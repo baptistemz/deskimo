@@ -58,3 +58,10 @@
 .map-box-btn{
   font-size: 20px;
 }
+
+
+@media (max-width: 480px) {
+  .img-small{
+    height: 120px
+  }
+}

@@ -17,10 +17,10 @@ module Account
           end
         end
         if @closing_day.save
-          flash[:notice] = 'Closing day successfully saved'
+          flash[:notice] = t('flashes.closing_saved')
           redirect_to account_company_closing_days_path(@company)
         else
-          flash[:error] = 'A problem occured'
+          flash[:error] = t('flashes.impossible_action')
           redirect_to account_company_closing_days_path(@company)
         end
       end
@@ -32,10 +32,10 @@ module Account
           desk.unavailability_ranges.where(start_date: @date, end_date: @date, kind: 'closed').destroy_all
         end
         if @closing_day.destroy
-          flash[:notice] = 'Closing day successfully deleted'
+          flash[:notice] = t('flashes.closing_deleted')
           redirect_to account_company_closing_days_path(@company)
         else
-          flash[:error] = 'A problem occured'
+          flash[:error] = t('flashes.impossible_action')
           redirect_to account_company_closing_days_path(@company)
         end
       end

@@ -109,7 +109,7 @@ fr:
     activate                  : "activer l'offre"
     deactivate                : "désactiver l'offre"
     rent_new_desks            : "Ajouter un nouveau bureau"
-    closed_offices            : "  bureau(x) fermé(s)"
+    closed_offices            : "  bureau(x) séparé(s)"
     open_space_desks          : "  place(s) en open space"
     meeting_rooms             : "  salle(s) de réunion"
     edit_desk_offer           : "Modifier cette offre"
@@ -132,6 +132,10 @@ fr:
     contact: 'contact'
     back_to_bookings: ' Retour à la liste des résérvations'
     plan_unavailabilities: ' prévoir des indisponibilités'
+    next_unavailabilities: 'Prochaines indisponibilités de vos'
+    add_unavailability: 'Ajouter une indisponibilité'
+    planned_for: 'planinifée pour'
+
   checkout:
     time_expiry: "La page expiré, vous avez pris trop de temps à payer la reservation. Aucun paiement n'a été encaissé. Merci de recommencer"
     your_booking: 'Votre réservation'
@@ -155,6 +159,8 @@ fr:
   maps_my: 'Ma'
   maps_location: 'Position'
   or: 'ou'
+  start_date: 'date de début'
+  end_date: 'date de fin'
 
   openings:
     from_day: 'du'
@@ -186,6 +192,16 @@ fr:
   footer:
     cgu   : "CGU"
     about : "à propos"
+  flashes:
+    booking_impossible: 'Reservation impossible'
+    unavailable_desk: "Bureau indisponible à ces dates"
+    company_not_registered: "Votre entreprise n'a pas pu être enregistrée"
+    company_registered: "Votre entreprise a bien été enregistrée."
+    desk_registered: "Le bureau a bien été enregistré."
+    desk_not_registered: "Le bureau n'a pas pu être enregistré"
+    closing_saved: 'Jour de fermeture enregistré'
+    impossible_action: 'Action impossible'
+    closing_deleted: 'Jour de fermeture supprimé'
 
 #MAILER
   mailer:

@@ -11,10 +11,10 @@ module Account
       @desk = @company.desks.build(desk_params)
       if @desk.save
         @company.update_activation
-        flash[:notice] = "Le bureau a bien été enregistré."
+        flash[:notice] = t('flashes.desk_registered')
         redirect_to account_company_desks_path(@company)
       else
-        flash[:alert] = "Le bureau n'a pas pu être enregistré"
+        flash[:alert] = t('flashes.desk_not_registered')
         render :new
       end
     end

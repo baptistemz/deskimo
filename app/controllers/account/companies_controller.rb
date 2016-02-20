@@ -9,10 +9,10 @@ module Account
       @company.activated = false
       if @company.save
         # current_user.create_or_update_wallet
-        flash[:notice] = "Votre entreprise a bien été enregistrée."
+        flash[:notice] = t('flashes.company_registered')
         redirect_to new_account_company_desk_path(@company)
       else
-        flash[:alert] = "Votre entreprise n'a pas pu être enregistrée"
+        flash[:alert] = t('flashes.company_not_registered')
         render :new
       end
     end

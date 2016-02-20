@@ -130,6 +130,9 @@ en:
     contact: 'contact'
     back_to_bookings: ' Back to your bookings list'
     plan_unavailabilities: " plan unavailabilities"
+    next_unavailabilities: 'Next unavailabilities for your'
+    add_unavailability: 'Add unavailability'
+    planned_for: 'planned for'
   checkout:
     time_expiry: "Page expiry. You spent to much time to pay your booking. You haven't been charged on anything. Please try again"
     your_booking: 'Your booking'
@@ -153,6 +156,8 @@ en:
   maps_my: 'My'
   maps_location: 'Location'
   or: 'or'
+  start_date: 'start date'
+  end_date: 'end date'
 
   openings:
     from_day: 'from'
@@ -183,6 +188,16 @@ en:
   footer:
     cgu   : "terms"
     about : "about"
+  flashes:
+    booking_impossible: 'Impossible to book'
+    unavailable_desk: "This desk is not available at these dates"
+    company_not_registered: "The company couldn't be registered"
+    company_registered: "Company registered successfully"
+    desk_registered: "Desk registered successfully"
+    desk_not_registered: "The desk couldn't be registered"
+    closing_saved: 'Closing day successfully saved'
+    impossible_action: 'A problem occured'
+    closing_deleted: 'Closing day successfully deleted'
 
 #MAILER
   mailer:

@@ -17,11 +17,11 @@ class BookingsController < ApplicationController
         redirect_to company_desk_booking_confirmation_path(@booking.desk.company, @booking.desk, @booking )
       else
         @booking.update(status: 'canceled')
-        flash[:alert] = "Bureau indisponible à ces dates"
+        flash[:alert] = t('flashes.unavailable_desk')
         redirect_to(:back)
       end
     else
-      flash[:alert] = 'Reservation impossible'
+      flash[:alert] = t('flashes.booking_impossible')
       redirect_to(:back)
     end
   end

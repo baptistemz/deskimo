@@ -1,7 +1,7 @@
 en:
-  dates:
+  date:
     formats:
-      date_month_year_concise: '%d/%m/%y'
+      default: '%d/%m/%y'
   languages:
     lang : "language"
     fr   : "French"
@@ -133,6 +133,13 @@ en:
     next_unavailabilities: 'Next unavailabilities for your'
     add_unavailability: 'Add unavailability'
     planned_for: 'planned for'
+    bookings_in_your_company: 'Bookings in your company'
+    guest: "guest"
+    length: "length"
+    amount: "amount"
+    your_bookings: 'Your desk bookings'
+    no_company_bookings: "No bookings recorded yet in your company"
+    no_user_bookings: "You didn't make any  desk booking yet"
   checkout:
     time_expiry: "Page expiry. You spent to much time to pay your booking. You haven't been charged on anything. Please try again"
     your_booking: 'Your booking'

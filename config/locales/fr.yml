@@ -1,7 +1,7 @@
 fr:
-  dates:
+  date:
     formats:
-      date_month_year_concise: '%d-%m-%y'
+      default: '%d/%m/%y'
 
   languages:
     lang : "Langue"
@@ -135,7 +135,13 @@ fr:
     next_unavailabilities: 'Prochaines indisponibilités de vos'
     add_unavailability: 'Ajouter une indisponibilité'
     planned_for: 'planinifée pour'
-
+    bookings_in_your_company: 'Réservations de bureaux dans votre entreprise'
+    guest: "visiteur"
+    length: "durée"
+    amount: "montant"
+    your_bookings: 'Vos réservations de bureaux'
+    no_company_bookings: "Aucune reservation enregistrée pour l'instant dans votre entreprise"
+    no_user_bookings: "Aucune reservation enregistrée pour l'instant"
   checkout:
     time_expiry: "La page expiré, vous avez pris trop de temps à payer la reservation. Aucun paiement n'a été encaissé. Merci de recommencer"
     your_booking: 'Votre réservation'

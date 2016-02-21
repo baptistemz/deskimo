@@ -1,0 +1,107 @@
+{
+  "name": "staging-nomadoffice",
+  "scripts": {
+  },
+  "env": {
+    "AWS_ACCESS_KEY_ID": {
+      "required": true
+    },
+    "AWS_SECRET_ACCESS_KEY": {
+      "required": true
+    },
+    "BONSAI_URL": {
+      "required": true
+    },
+    "DEV_EMAIL": {
+      "required": true
+    },
+    "development": {
+      "required": true
+    },
+    "DEVISE_SECRET_KEY": {
+      "required": true
+    },
+    "DOWNSTREAM_APP": {
+      "required": true
+    },
+    "ELASTICSEARCH_URL": {
+      "required": true
+    },
+    "FB_ID": {
+      "required": true
+    },
+    "FB_SECRET": {
+      "required": true
+    },
+    "GOOGLE_ANALYTICS_ID": {
+      "required": true
+    },
+    "GOOGLE_BROWSER_API_KEY": {
+      "required": true
+    },
+    "GOOGLE_CLIENT_ID": {
+      "required": true
+    },
+    "GOOGLE_CLIENT_SECRET": {
+      "required": true
+    },
+    "GOOGLE_SERVER_API_KEY": {
+      "required": true
+    },
+    "HOST": {
+      "required": true
+    },
+    "LANG": {
+      "required": true
+    },
+    "MANGOPAY_CLIENT_ID": {
+      "required": true
+    },
+    "MANGOPAY_CLIENT_PASSWORD": {
+      "required": true
+    },
+    "MY_SITE_SECRET": {
+      "required": true
+    },
+    "MY_SITE_USERNAME": {
+      "required": true
+    },
+    "production": {
+      "required": true
+    },
+    "RACK_ENV": {
+      "required": true
+    },
+    "RAILS_ENV": {
+      "required": true
+    },
+    "RAILS_SERVE_STATIC_FILES": {
+      "required": true
+    },
+    "S3_BUCKET_NAME": {
+      "required": true
+    },
+    "SECRET_KEY_BASE": {
+      "required": true
+    },
+    "STRIPE_API_KEY": {
+      "required": true
+    },
+    "STRIPE_PUBLISHABLE_KEY": {
+      "required": true
+    },
+    "STRIPE_SECRET_KEY": {
+      "required": true
+    }
+  },
+  "addons": [
+    "heroku-postgresql",
+    "postmark",
+    "rediscloud"
+  ],
+  "buildpacks": [
+    {
+      "url": "urn:buildpack:heroku/ruby"
+    }
+  ]
+}

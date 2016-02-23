@@ -2,6 +2,9 @@ module Account
   class CompaniesController < Account::Base
     def new
       @company = current_user.build_company
+    rescue
+      flash[:alert] = t('company_creation.already_have_company')
+      redirect_to(:back)
     end
 
     def create

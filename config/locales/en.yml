@@ -72,6 +72,7 @@ en:
     account_creation : "Create an account"
     company_register : "Register your company"
     publish_desks    : "Rent out your desks"
+    already_company  : 'You already registered your company'
   desk_creation:
     desks_to_rent  : "Desks for rent"
     which_kind     : "Kind of desks"

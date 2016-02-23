@@ -73,6 +73,8 @@ fr:
     account_creation : "Création de compte"
     company_register : "Enregistrement de l'entreprise"
     publish_desks    : "Mise en location de bureaux"
+    already_company: 'Vous avez déjà inscrit votre entreprise'
+
   desk_creation:
     desks_to_rent  : "Votre offre en bureaux"
     which_kind     : "Que souhaitez-vous mettre en location?"

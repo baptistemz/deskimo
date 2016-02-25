@@ -1,6 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
-require "rails"
+require "rails/all"
+require "rails/test_unit/railtie"
 # Pick the frameworks you want:
 require "active_model/railtie"
 require "active_job/railtie"
@@ -38,14 +39,7 @@ module Nomadoffice
     config.active_job.queue_adapter = :sidekiq
 
     config.generators do |g|
-      g.test_framework :rspec,
-        :fixtures => true,
-        :view_specs => false,
-        :helper_specs => false,
-        :routing_specs => false,
-        :controller_specs => true,
-        :request_specs => true
-      g.fixture_replacement :factory_girl, :dir => "spec/factories"
+        g.test_framework :minitest, spec: true
     end
   end
 end

@@ -159,6 +159,7 @@ en:
   or: 'or'
   start_date: 'start date'
   end_date: 'end date'
+  until: 'until'
 
   openings:
     from_day: 'from'

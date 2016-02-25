@@ -1,29 +1,18 @@
 $(document).ready(function(){
-  kind = $("#desk-choice li.active a").attr('id').slice(0,-4)
-  giveEndEstimation(kind)
+  if($("#desk-choice").length){
+    kind = $("#desk-choice li.active a").attr('id').slice(0,-4)
+    giveEndEstimation(kind)
+  }
 
   $(document).on( 'shown.bs.tab', 'a[data-toggle="tab"]', function (e) {
     kind = e.currentTarget.id.slice(0,-4)
     $("." + kind +'_booking #booking_time_slot_quantity.numeric').val(1)
     $("." + kind +'_booking #booking_time_slot_type').val('day(s)')
-
-    // if($('.time-slot-quantity').is( ":hidden" )){
-    //   $(this).removeClass('hidden')
-    // }
     $("." + kind +'_booking .time-slot-quantity.hidden').removeClass('hidden')
-
-    // if($('.end_prediction').is( ":hidden" )){
-    //   $(this).removeClass('hidden')
-    // }
     $("." + kind + "_booking .end_prediction.hidden").removeClass('hidden')
-
-    // if($('.half-day-select').is( ":visible" )){
-    //   $(this).addClass('hidden')
-    // }
     $("." + kind +'_booking .half-day-select:not(.hidden)').addClass('hidden')
-
-   $(".predicted_end").empty()
-   giveEndEstimation(kind)
+    $(".predicted_end").empty()
+    giveEndEstimation(kind)
   });
 });
 
@@ -114,7 +103,7 @@ function giveEndEstimation(kind) {
             if (i >= selectedDate){
               $("li.available:not(.selected):contains("+('0'+i).slice(-2)+")").addClass('selected')
             }
-            if (i <= selectedDate){
+            if (i < selectedDate){
               $("li.available.selected:contains("+('0'+i).slice(-2)+")").removeClass('selected')
             }
           }

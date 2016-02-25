@@ -1,5 +1,6 @@
 //= require jquery
 //= require jquery_ujs
+//= require geolocalization
 //= require bootstrap-sprockets
 //= require underscore
 //= require gmaps/google
@@ -11,7 +12,6 @@
 //= require booking_creation
 //= require company_creation
 //= require profile_edit
-//= require geolocalization
 //= require google_analytics
 //= require index_map
 //= require payment

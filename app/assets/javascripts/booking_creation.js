@@ -127,25 +127,7 @@ function giveEndEstimation(kind) {
             }
           }
         }
-        // else {
-        //   for (var i = 1; i <= lastDayOfCurrentMonth; i++){
-        //     if (i >= selectedDate){
-        //       $("li.available:not(.selected):contains("+('0'+i).slice(-2)+")").addClass('selected')
-        //     } else {
-        //       $("li.available.selected:contains("+('0'+i).slice(-2)+")").removeClass('selected')
-        //     }
-        //   }
-        // }
       }
-      // else if (monthsEqual(calendarMonth, selectedDayMonth + 1)){
-      //   for (var i = 1; i <= availableDaysArray[availableDaysArray.length - 1]; i++){
-      //     $("li:contains("+('0'+i).slice(-2)+")").addClass('unavailable')
-      //   }
-      // }else if ($('.calendar p.monthname').text().includes(months[0]) && (firstDayMonth === '01' || firstDayMonth === '12') ){
-      //   for (var i = 1; i <= availableDaysArray[availableDaysArray.length - 1]; i++){
-      //     $("li:contains("+('0'+i).slice(-2)+")").addClass('unavailable')
-      //   }
-      // }
     }
     function dayNumber(dateString){
       parseInt(dateString.substring(0, 2))

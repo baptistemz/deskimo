@@ -1,5 +1,6 @@
 ul.group {
   list-style-type: none;
+  padding-left: 0
 }
 
 .left {
@@ -77,4 +78,20 @@ ul.group {
 
 .center {
   text-align: center;
+}
+
+.addmonth,
+.minusmonth{
+  font-size: 30px;
+}
+
+.monthname{
+  font-size: 20px;
+  margin-top:10px
+}
+.addmonth{
+  margin-right: 10px;
+}
+.minusmonth{
+  margin-left : 20px
 }

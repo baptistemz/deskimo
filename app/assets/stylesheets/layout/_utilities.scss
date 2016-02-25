@@ -118,6 +118,11 @@ span.error{
   height: 60px
 }
 
+.flexinline{
+  display: flex;
+  justify-content: space-between
+}
+
 //---- MEDIA QUERIES ----//
 
 @media (min-width: 900px){

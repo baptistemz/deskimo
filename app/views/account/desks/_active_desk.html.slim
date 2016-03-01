@@ -35,7 +35,8 @@
   .text-center
     = link_to t('dashboard.edit_desk_offer'), edit_account_company_desk_path(company,desk), class: "fa fa-pencil"
   br
+  = link_to account_company_desk_unavailability_ranges_path(company, desk), class: ' btn btn-primary full-width'
+    p.forteen-px = t('dashboard.plan_unavailabilities')
+  BR
   =link_to account_company_desk_activation_path(company, desk), method: :delete
     .btn.btn-primary.red-btn = t('dashboard.deactivate')
-  BR
-  = link_to t('dashboard.plan_unavailabilities'), account_company_desk_unavailability_ranges_path(company, desk), class: 'fa fa-exclamation-circle'

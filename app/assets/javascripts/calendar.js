@@ -42,6 +42,7 @@ function loadCalendar(kind){
         var currentMonth = currentMonth - 12;
         d.setYear(d.getFullYear() + 1)
       }
+      lastDayOfCurrentMonth = new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate()
 
       var days = numDays(currentMonth,d.getYear()), // get number of days in the month
         fDay = firstDay(currentMonth,d.getYear())-1, // find what day of the week the 1st lands on
@@ -67,39 +68,43 @@ function loadCalendar(kind){
     var availableDaysArray = new Array();
     $("."+kind+"_booking #booking_start_date option").each(function()
       {
-        availableDay = parseInt($(this).val().substring(0, 2))
-        availableDaysArray.push(('0'+availableDay).slice(-2))
+        if (parseInt($(this).val().substring(4, 6)) === themonth+2){
+          availableDay = parseInt($(this).val().substring(0, 2))
+          availableDaysArray.push(('0'+availableDay).slice(-2))
+        }
       }
     );
 
-    lastDayOfMonth = Math.max.apply(Math,availableDaysArray)
-    firstDayOfMonth = Math.min.apply(Math,availableDaysArray)
+    lastAvailableDayOfMonth = Math.max.apply(Math,availableDaysArray)
+    firstAvailableDayOfNextMonth = Math.min.apply(Math,availableDaysArray)
     firstDayMonth = parseInt($("."+kind+"_booking #booking_start_date option:nth(0)").val().substring(4, 6))
     if ($('.calendar p.monthname').text().includes(months[firstDayMonth - 1])){
-      for (var i = availableDaysArray[0]; i <= lastDayOfMonth; i++){
+      for (var i = availableDaysArray[0]; i <= lastDayOfCurrentMonth; i++){
         $("li:contains("+('0'+i).slice(-2)+")").addClass('unavailable')
       }
       $("li:contains("+availableDaysArray[0].toString()+")").addClass('available')
-      for (var i = availableDaysArray[1]; i <= lastDayOfMonth; i++){
-        if (availableDaysArray.includes(('0'+i).slice(-2))){
-          $("li:contains("+('0'+i).slice(-2)+")").addClass('available')
+      if (availableDaysArray[1] > availableDaysArray[0]) {
+        for (var i = availableDaysArray[1]; i <= lastAvailableDayOfMonth; i++){
+          if (availableDaysArray.includes(('0'+i).slice(-2))){
+            $("li:contains("+('0'+i).slice(-2)+")").addClass('available')
+          }
         }
       }
     }else if ($('.calendar p.monthname').text().includes(months[firstDayMonth])){
-      for (var i = firstDayOfMonth; i <= availableDaysArray[availableDaysArray.length - 1]; i++){
+      for (var i = 1; i <= availableDaysArray[availableDaysArray.length - 1]; i++){
         $("li:contains("+('0'+i).slice(-2)+")").addClass('unavailable')
       }
-      $("li:contains("+('0'+firstDayOfMonth).slice(-2)+")").addClass('available')
-      for (var i = firstDayOfMonth; i <= availableDaysArray[availableDaysArray.length - 1]; i++){
+      $("li:contains("+('0'+firstAvailableDayOfNextMonth).slice(-2)+")").addClass('available')
+      for (var i = firstAvailableDayOfNextMonth; i <= availableDaysArray[availableDaysArray.length - 1]; i++){
         if (availableDaysArray.includes(('0'+i).slice(-2))){
           $("li:contains("+('0'+i).slice(-2)+")").addClass('available')
         }
       }
     }else if ($('.calendar p.monthname').text().includes(months[0]) && (firstDayMonth === '01' || firstDayMonth === '12') ){
-      for (var i = firstDayOfMonth; i <= availableDaysArray[availableDaysArray.length - 1]; i++){
+      for (var i = 1; i <= availableDaysArray[availableDaysArray.length - 1]; i++){
         $("li:contains("+('0'+i).slice(-2)+")").addClass('unavailable')
       }
-      for (var i = firstDayOfMonth; i <= availableDaysArray[availableDaysArray.length - 1]; i++){
+      for (var i = firstAvailableDayOfNextMonth; i <= availableDaysArray[availableDaysArray.length - 1]; i++){
         if (availableDaysArray.includes(('0'+i).slice(-2))){
           $("li:contains("+('0'+i).slice(-2)+")").addClass('available')
         }
@@ -127,22 +132,5 @@ function loadCalendar(kind){
     var clicker = 0;
     var min = 0;
     var max = 0;
-
-    // $('.calendar li.available').click(function(){ // toggle selected dates
-    //   if(clicker==0){
-    //     clicker=1;
-    //     $(this).toggleClass('selected');
-    //     min = $(this).text();
-    //   } else {
-    //     clicker=0;
-    //     $(this).addClass('red');
-    //     $('.calendar li.red').each(function(){
-    //       max = $(this).text();
-    //     });
-    //     for(i=parseInt(min);i<parseInt(max);i++){
-    //       $('.calendar li:nth-of-type('+(i+7+fDay-1)+')').addClass('red');
-    //     };
-    //   };
-    // });
   };
 };

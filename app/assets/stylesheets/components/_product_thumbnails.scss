@@ -51,6 +51,12 @@
   bottom: 0;
 }
 
+.office-kind {
+  position : absolute;
+  right: 3%;
+  bottom: 20%
+}
+
 #services {
   position: absolute;
   right: 3%;
@@ -85,4 +91,8 @@
   margin-bottom: 0;
   color: $dark-blue;
   font-size: 10px;
+}
+
+.small-font{
+  font-size: 10px
 }

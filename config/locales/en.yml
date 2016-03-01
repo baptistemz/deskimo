@@ -160,6 +160,7 @@ en:
   start_date: 'start date'
   end_date: 'end date'
   until: 'until'
+  from_price: "from"
 
   openings:
     from_day: 'from'

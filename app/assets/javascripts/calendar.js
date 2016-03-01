@@ -91,7 +91,6 @@ function loadCalendar(kind){
         }
       }
     }else if ($('.calendar p.monthname').text().includes(months[firstDayMonth])){
-      // console.log(availableDaysArray)
       for (var i = 1; i <= availableDaysArray[availableDaysArray.length - 1]; i++){
         $("li:contains("+('0'+i).slice(-2)+")").addClass('unavailable')
       }

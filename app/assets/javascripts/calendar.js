@@ -68,17 +68,17 @@ function loadCalendar(kind){
     var availableDaysArray = new Array();
     $("."+kind+"_booking #booking_start_date option").each(function()
       {
-        availableDay = parseInt($(this).val().substring(0, 2))
-        availableDaysArray.push(('0'+availableDay).slice(-2))
+        if (parseInt($(this).val().substring(4, 6)) === themonth+2){
+          availableDay = parseInt($(this).val().substring(0, 2))
+          availableDaysArray.push(('0'+availableDay).slice(-2))
+        }
       }
     );
 
     lastAvailableDayOfMonth = Math.max.apply(Math,availableDaysArray)
     firstAvailableDayOfNextMonth = Math.min.apply(Math,availableDaysArray)
     firstDayMonth = parseInt($("."+kind+"_booking #booking_start_date option:nth(0)").val().substring(4, 6))
-    console.log()
     if ($('.calendar p.monthname').text().includes(months[firstDayMonth - 1])){
-      console.log()
       for (var i = availableDaysArray[0]; i <= lastDayOfCurrentMonth; i++){
         $("li:contains("+('0'+i).slice(-2)+")").addClass('unavailable')
       }
@@ -91,6 +91,7 @@ function loadCalendar(kind){
         }
       }
     }else if ($('.calendar p.monthname').text().includes(months[firstDayMonth])){
+      // console.log(availableDaysArray)
       for (var i = 1; i <= availableDaysArray[availableDaysArray.length - 1]; i++){
         $("li:contains("+('0'+i).slice(-2)+")").addClass('unavailable')
       }

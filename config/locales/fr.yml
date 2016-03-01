@@ -164,6 +164,7 @@ fr:
   end_date: 'date de fin'
   until: "jusqu'au"
   from_price: "à partir de"
+  d_day: 'j'
 
   openings:
     from_day: 'du'

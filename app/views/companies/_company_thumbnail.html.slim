@@ -20,5 +20,23 @@
   .product-thumbnail-content
     .product-name
       p = company.name
-    .product-price
-      p #{company.cheapest_desk_price}€ / j
+    - if params[:kind] == "closed_office"
+      .office-kind
+        p.small-font #{t('dashboard.closed_offices')} #{t('from_price')} :
+      .product-price
+        p #{humanized_money cheapest_daily_price(company.desks.where(kind: "closed_office"))}€ / j
+    - elsif params[:kind] == "meeting_room"
+      .office-kind
+        p.small-font #{t('dashboard.meeting_rooms')} #{t('from_price')} :
+      .product-price
+        p #{humanized_money cheapest_daily_price(company.desks.where(kind: "closed_office"))}€ / j
+    - elsif params[:kind] == "open_space"
+      .office-kind
+        p.small-font #{t('dashboard.open_space_desks')} #{t('from_price')} :
+      .product-price
+        p #{humanized_money cheapest_daily_price(company.desks)}€ / j
+    - else
+      .office-kind
+        p.small-font #{t('from_price')} :
+      .product-price
+        p #{company.cheapest_desk_price}€ / j

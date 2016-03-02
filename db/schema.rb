@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160302150918) do
+ActiveRecord::Schema.define(version: 20160302161643) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -144,6 +144,10 @@ ActiveRecord::Schema.define(version: 20160302150918) do
     t.integer  "weekly_price_cents",   default: 0,    null: false
     t.integer  "capacity",             default: 1
     t.integer  "number",               default: 1
+    t.boolean  "projector"
+    t.boolean  "screen"
+    t.boolean  "computer"
+    t.boolean  "paperboard"
   end
 
   add_index "desks", ["company_id"], name: "index_desks_on_company_id", using: :btree

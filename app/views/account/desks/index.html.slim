@@ -55,43 +55,27 @@
   .row
     br
     - @desks.each do |desk|
-      - if desk == @open_space
-        .col-sm-6.col-md-4
-          - if desk.activated == true
-            = render partial: 'active_desk', locals: {desk: @desk, desk: desk, company: @company}
-          - else
-            = render partial: 'inactive_desk', locals: {desk: @desk, desk: desk, company: @company}
-      - if desk == @closed_office
-        .col-sm-6.col-md-4
-          - if desk.activated == true
-            = render partial: 'active_desk', locals: {desk: @desk, desk: desk, company: @company}
-          - else
-            = render partial: 'inactive_desk', locals: {desk: @desk, desk: desk, company: @company}
-      - if desk == @meeting_room
-        .col-sm-6.col-md-4
-          - if desk.activated == true
-            = render partial: 'active_desk', locals: {desk: @desk, desk: desk, company: @company}
-          - else
-            = render partial: 'inactive_desk', locals: {desk: @desk, desk: desk, company: @company}
-
-
-
-
-    -if @desks.length < 3
       .col-sm-6.col-md-4
-        .dashboard-desk-thumbnail.add-desk
-          =link_to new_account_company_desk_path(@company)
-            .cta-newdesk
-              .rounded-icon
-                i.fa.fa-plus
-              br
-              p = t('dashboard.rent_new_desks')
-          ul.thumbnail-bottom
+        - if desk.activated == true
+          = render partial: 'active_desk', locals: {desk: @desk, desk: desk, company: @company}
+        - else
+          = render partial: 'inactive_desk', locals: {desk: @desk, desk: desk, company: @company}
+
+    .col-sm-6.col-md-4
+      .dashboard-desk-thumbnail.add-desk
+        =link_to new_account_company_desk_path(@company)
+          .cta-newdesk
+            .rounded-icon
+              i.fa.fa-plus
+            br
+            p = t('dashboard.rent_new_desks')
+        ul.thumbnail-bottom
+          - unless @desks.where(kind: 'open_space').any?
             li= t('dashboard.open_space_desks')
             br
-            li= t('dashboard.closed_offices')
-            br
-            li= t('dashboard.meeting_rooms')
+          li= t('dashboard.closed_offices')
+          br
+          li= t('dashboard.meeting_rooms')
 
 
   .center.padded

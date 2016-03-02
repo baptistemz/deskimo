@@ -9,11 +9,13 @@ class Desk < ActiveRecord::Base
   has_many :unavailability_ranges, dependent: :destroy
 
   validates_presence_of :quantity, :description, :half_day_price, :daily_price, :weekly_price
-  validates :quantity, :half_day_price, :daily_price, :weekly_price, numericality: {greater_than_or_equal_to: 1}
+  validates :quantity, :half_day_price, :daily_price, :weekly_price, :capacity, numericality: {greater_than_or_equal_to: 1}
 
   monetize :hour_price_cents, :half_day_price_cents, :daily_price_cents, :weekly_price_cents
   enumerize :kind, in: [:open_space, :closed_office, :meeting_room], default: :open_space
-  validates_uniqueness_of :kind, scope: :company_id
+  validate  :one_open_space_maximum
+  validate  :three_desks_of_each_kind_maximum
+  validates_uniqueness_of :number, scope: [:company_id, :kind]
   after_commit :reindex_company
   after_create :update_company_cheapest_price
   after_update :update_company_cheapest_price
@@ -30,6 +32,16 @@ class Desk < ActiveRecord::Base
   end
 
   private
+
+  def one_open_space_maximum
+    errors.add(:kind, "Vous avez déjà un open space, ajoutez-y des places") if
+      company.desks.where(kind: "open_space").any? && kind == "open_space"
+  end
+
+  def three_desks_of_each_kind_maximum
+    errors.add(:kind, "Vous avez déjà atteint le maximum de bureaux de ce type (3)") if
+      company.desks.where(kind: kind).length == 3
+  end
 
   def update_company_cheapest_price
     company.update_cheapest_desk_price

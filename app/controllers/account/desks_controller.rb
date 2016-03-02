@@ -1,5 +1,4 @@
 module Account
-
   class DesksController < Account::Base
     def new
       @company = Company.find(params[:company_id])
@@ -9,6 +8,11 @@ module Account
     def create
       @company = Company.find(params[:company_id])
       @desk = @company.desks.build(desk_params)
+      unless @desk.kind == "open_space"
+        @desk.number = @company.desks.where(kind: @desk.kind).length + 1
+        @desk.capacity = @desk.quantity
+        @desk.quantity = 1
+      end
       if @desk.save
         @company.update_activation
         flash[:notice] = t('flashes.desk_registered')
@@ -23,9 +27,6 @@ module Account
       @desk = Desk.new
       @company = Company.find(params[:company_id])
       @desks = @company.desks
-      @open_space = @desks.where(kind: :open_space).first
-      @closed_office = @desks.where(kind: :closed_office).first
-      @meeting_room = @desks.where(kind: :meeting_room).first
       @opening_weekdays_range = @company.get_opening_weekdays_range
       @opening_hours_range = @company.get_opening_hours_range
     end

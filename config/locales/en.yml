@@ -61,6 +61,7 @@ en:
     book           : "Book"
     length         : "Length"
     from           : "From"
+    additional_services: "Additional services"
   company_creation:
     opening_days     : "Opening days"
     morning          : "morning"
@@ -76,7 +77,7 @@ en:
   desk_creation:
     desks_to_rent  : "Desks for rent"
     which_kind     : "Kind of desks"
-    quantity       : "Quantity"
+    quantity       : "Quantity of seats"
     price_incl_tax : "Price (incl tax)"
     price_half_day : "Half day price"
     price_day      : "Daily price"
@@ -84,6 +85,7 @@ en:
     you            : "You"
     vat            : "VAT"
     total_price    : "Total price"
+    capacity       : "Capacity of the desk"
   account:
     my_account    : "My account"
     first_name    : "First name"
@@ -101,16 +103,16 @@ en:
     new_password: 'new password'
   dashboard:
     edit_company              : "Edit company details"
-    change_quantity           : "Change quantity"
+    change_quantity           : "Change quantity of seats"
     link_to_public            : "Public profile of your company >"
     activated                 : "activated"
     non_activated             : "non activated"
     activate                  : "activate"
     deactivate                : "deactivate"
     rent_new_desks            : "Rent out new desks"
-    closed_offices            : "  office(s)"
+    closed_offices            : "  office"
     open_space_desks          : "  open space desk(s)"
-    meeting_rooms             : "  meeting room(s)"
+    meeting_rooms             : "  meeting room"
     edit_desk_offer           : "Edit"
     edit                      : "edit"
     next_closing_days         : "Next closing days"
@@ -162,6 +164,7 @@ en:
   until: 'until'
   from_price: "from"
   d_day: 'd'
+  people: 'people'
 
   openings:
     from_day: 'from'

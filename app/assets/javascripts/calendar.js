@@ -1,13 +1,23 @@
 if($("#desk-choice").length > 0){
   $(document).ready(function(){
-    kind = $("#desk-choice li.active a").attr('id').slice(0,-4)
-    loadCalendar(kind)
-
+    kind = $("#desk-choice li.first-degree.active a").attr('id').slice(0,-4)
+    if(typeof $(".tab-pane.active .nav li.second-degree.active a").attr('id') != 'undefined'){
+      number = $(".tab-pane.active .nav li.second-degree.active a").attr('id').slice(4,-4)
+    } else {
+      number = 1
+    }
+    loadCalendar(kind, number)
   });
 
   $(document).on( 'shown.bs.tab', 'a[data-toggle="tab"]', function (e) {
-   kind = e.currentTarget.id.slice(0,-4)
-   loadCalendar(kind)
+   // kind = e.currentTarget.id.slice(0,-4)
+    kind = $("#desk-choice li.first-degree.active a").attr('id').slice(0,-4)
+    if(typeof $(".tab-pane.active .nav li.second-degree.active a").attr('id') != 'undefined'){
+      number = $(".tab-pane.active .nav li.second-degree.active a").attr('id').slice(4,-4)
+    } else {
+      number = 1
+    }
+    loadCalendar(kind, number)
   });
 }
 
@@ -19,8 +29,8 @@ if($("#desk-choice").length > 0){
 // });
 
 
-function loadCalendar(kind){
-  if ($("." + kind + "_booking #booking_start_date").length ) {
+function loadCalendar(kind, number){
+  if ($("." + kind + '_' + number + "_booking #booking_start_date").length ) {
 
 
     function firstDay(month,year) {
@@ -66,7 +76,7 @@ function loadCalendar(kind){
 
 
     var availableDaysArray = new Array();
-    $("."+kind+"_booking #booking_start_date option").each(function()
+    $("."+kind + '_' + number +"_booking #booking_start_date option").each(function()
       {
         if (parseInt($(this).val().substring(4, 6)) === themonth+2){
           availableDay = parseInt($(this).val().substring(0, 2))
@@ -77,7 +87,7 @@ function loadCalendar(kind){
 
     lastAvailableDayOfMonth = Math.max.apply(Math,availableDaysArray)
     firstAvailableDayOfNextMonth = Math.min.apply(Math,availableDaysArray)
-    firstDayMonth = parseInt($("."+kind+"_booking #booking_start_date option:nth(0)").val().substring(4, 6))
+    firstDayMonth = parseInt($("."+kind + '_' + number +"_booking #booking_start_date option:nth(0)").val().substring(4, 6))
     if ($('.calendar p.monthname').text().includes(months[firstDayMonth - 1])){
       for (var i = availableDaysArray[0]; i <= lastDayOfCurrentMonth; i++){
         $("li:contains("+('0'+i).slice(-2)+")").addClass('unavailable')

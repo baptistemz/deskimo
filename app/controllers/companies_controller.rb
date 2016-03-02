@@ -61,8 +61,8 @@ class CompaniesController < ApplicationController
       marker.lng @location[1]
       marker.picture(
         url:    "/assets/user_marker.svg",
-        width:  "30",
-        height: "44"
+        width:  30,
+        height: 44
       )
 
       marker.title   "votre position"

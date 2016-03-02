@@ -62,6 +62,7 @@ fr:
     book           : "Reserver"
     length: "Durée"
     from: "A partir du"
+    additional_services: "Services additionnels"
   company_creation:
     opening_days     : "Jours d'ouverture"
     morning          : "matin"
@@ -77,7 +78,7 @@ fr:
   desk_creation:
     desks_to_rent  : "Votre offre en bureaux"
     which_kind     : "Que souhaitez-vous mettre en location?"
-    quantity       : "Quantité"
+    quantity       : "Quantité de bureaux"
     price_incl_tax : "Prix TTC"
     price_half_day : "Par demi-journée"
     price_day      : "Par jour"
@@ -85,6 +86,7 @@ fr:
     you            : "Vous"
     vat            : "TVA"
     total_price    : "Prix total"
+    capacity       : "Capacité du bureau"
   account:
     my_account    : "Mon compte"
     first_name    : "Prénom"
@@ -103,16 +105,16 @@ fr:
 
   dashboard:
     edit_company              : "Modifier les informations de l'entreprise"
-    change_quantity           : "modifier la quantité"
+    change_quantity           : "modifier la quantité de bureaux"
     link_to_public            : "Fiche publique de l'entreprise >"
     activated                 : "offre activée"
     non_activated             : "offre désactivée"
     activate                  : "activer l'offre"
     deactivate                : "désactiver l'offre"
     rent_new_desks            : "Ajouter un nouveau bureau"
-    closed_offices            : "  bureau(x) séparé(s)"
+    closed_offices            : "  bureau séparé"
     open_space_desks          : "  place(s) en open space"
-    meeting_rooms             : "  salle(s) de réunion"
+    meeting_rooms             : "  salle de réunion"
     edit_desk_offer           : "Modifier cette offre"
     edit                      : "modifier"
     next_closing_days         : "Prochains jours fermés"
@@ -165,6 +167,7 @@ fr:
   until: "jusqu'au"
   from_price: "à partir de"
   d_day: 'j'
+  people: 'personnes'
 
   openings:
     from_day: 'du'

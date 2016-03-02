@@ -9,15 +9,19 @@
       =t('dashboard.open_space_desks')
     - else
       =t('dashboard.meeting_rooms')
-  = simple_form_for desk, url: account_company_desk_path(company,desk), method: :patch do |f|
-    .quantity-modifier
-      .quantity-input-buttons
-        .minus-button
-          i.fa.fa-minus
-        = f.input :quantity, label: false, input_html: {value: desk.quantity|| 1}
-        .plus-button
-          i.fa.fa-plus
-      = f.submit t('dashboard.change_quantity'), class: 'btn qty-update-btn'
+  - if desk.kind == "open_space"
+    = simple_form_for desk, url: account_company_desk_path(company,desk), method: :patch do |f|
+      .quantity-modifier
+        .quantity-input-buttons
+          .minus-button
+            i.fa.fa-minus
+          = f.input :quantity, label: false, input_html: {value: desk.quantity|| 1}
+          .plus-button
+            i.fa.fa-plus
+        = f.submit t('dashboard.change_quantity'), class: 'btn qty-update-btn'
+  -else
+    hr
+    p #{desk.capacity} #{t('people')}
   hr
   p = desk.description
   hr

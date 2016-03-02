@@ -1,22 +1,28 @@
 .dashboard-desk-thumbnail.active-desk
   p.green =t('dashboard.activated')
   h3.same-height
-    = desk.quantity
-    - if desk.kind == "closed_office"
-      =t('dashboard.closed_offices')
-    - elsif desk.kind == "open_space"
-      =t('dashboard.open_space_desks')
+    - if desk.kind == "open_space"
+      |#{desk.quantity} #{t('dashboard.open_space_desks')}
+    - elsif desk.kind == "closed_office"
+      |#{t('dashboard.closed_offices')} n°#{desk.number}
     - else
-      =t('dashboard.meeting_rooms')
-  = simple_form_for desk, url: account_company_desk_path(company,desk), method: :patch do |f|
-    .quantity-modifier
-      .quantity-input-buttons
-        .minus-button
-          i.fa.fa-minus
-        = f.input :quantity, label: false, input_html: {value: desk.quantity|| 1}
-        .plus-button
-          i.fa.fa-plus
-      = f.submit t('dashboard.change_quantity'), class: 'btn qty-update-btn'
+      |#{t('dashboard.meeting_rooms')} n°#{desk.number}
+  - if desk.kind == "open_space"
+    = simple_form_for desk, url: account_company_desk_path(company,desk), method: :patch do |f|
+      .quantity-modifier
+        .quantity-input-buttons
+          .minus-button
+            i.fa.fa-minus
+          = f.input :quantity, label: false, input_html: {value: desk.quantity|| 1}
+          .plus-button
+            i.fa.fa-plus
+        = f.submit t('dashboard.change_quantity'), class: 'btn qty-update-btn'
+  -else
+
+    .booking-show-couple
+      p.blue.no-margin-top #{t('desk_creation.capacity')} :
+      p #{desk.capacity} #{t('people')}
+
   hr
   p = desk.description
   hr

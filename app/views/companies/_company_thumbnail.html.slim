@@ -29,7 +29,7 @@
       .office-kind
         p.small-font #{t('dashboard.meeting_rooms')} #{t('from_price')} :
       .product-price
-        p #{humanized_money cheapest_daily_price(company.desks.where(kind: "meeting_rooms"))}€ / j
+        p #{humanized_money cheapest_daily_price(company.desks.where(kind: "meeting_room"))}€ / j
     - elsif params[:kind] == "open_space"
       .office-kind
         p.small-font #{t('dashboard.open_space_desks')} #{t('from_price')} :

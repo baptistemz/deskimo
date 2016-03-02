@@ -63,18 +63,19 @@ p.company{
 .nav-tabs.nav-justified > li > a {
   padding: 10px 6px;
   color: $dark-blue;
+  border-bottom: 1px solid $green;
 
 }
 
 .nav-tabs.nav-justified > li.active > a,
 .nav-tabs.nav-justified > li.active > a:focus {
   color: $green;
+  border: 1px solid $green;
   border-bottom-color: transparent
 }
 
 
 #desk-choice {
-  border-color: $green;
   padding-top: 85px;
   margin-top: -85px;
 }

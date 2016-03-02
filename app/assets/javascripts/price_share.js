@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $("#desk_half_day_price").keyup(function(){
+  $("#desk_half_day_price").bind('keyup mouseup', function(){
     var totalprice = $(this).val();
     var tva = (totalprice * 0.2).toFixed(2);
     var company = ((totalprice - tva) * 0.85).toFixed(2);
@@ -10,7 +10,7 @@ $(document).ready(function(){
     $("#half_day_no_amount").html(no);
   });
 
-  $("#desk_daily_price").keyup(function(){
+  $("#desk_daily_price").bind('keyup mouseup', function(){
     var totalprice = $(this).val();
     var tva = (totalprice * 0.2).toFixed(2);
     var company = ((totalprice - tva) * 0.85).toFixed(2);
@@ -21,7 +21,7 @@ $(document).ready(function(){
     $("#daily_no_amount").html(no);
   });
 
-  $("#desk_weekly_price").keyup(function(){
+  $("#desk_weekly_price").bind('keyup mouseup', function(){
     var totalprice = $(this).val();
     var tva = (totalprice * 0.2).toFixed(2);
     var company = ((totalprice - tva) * 0.85).toFixed(2);
@@ -30,6 +30,15 @@ $(document).ready(function(){
     $("#weekly_tva").html(tva);
     $("#weekly_company_amount").html(company);
     $("#weekly_no_amount").html(no);
+  });
+  $('#desk_kind').on('change', function() {
+    if ($(this).val()=== "closed_office" || $(this).val()=== "meeting_room") {
+        $('#desk_capacity_label.hidden').removeClass('hidden')
+        $('#desk_quantity_label:not(.hidden)').addClass('hidden')
+    } else {
+        $('#desk_capacity_label:not(.hidden)').addClass('hidden')
+        $('#desk_quantity_label.hidden').removeClass('hidden')
+    }
   });
 });
 

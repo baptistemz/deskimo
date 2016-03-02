@@ -60,16 +60,21 @@ p.company{
   justify-content: space-around
 }
 
-.nav-tabs > li > a {
+.nav-tabs.nav-justified > li > a {
   padding: 10px 6px;
+  color: $dark-blue;
+
 }
 
-.nav-tabs > li.active > a,
-.nav-tabs > li.active > a:focus {
-  color: $light-blue;
+.nav-tabs.nav-justified > li.active > a,
+.nav-tabs.nav-justified > li.active > a:focus {
+  color: $green;
+  border-bottom-color: transparent
 }
+
 
 #desk-choice {
+  border-color: $green;
   padding-top: 85px;
   margin-top: -85px;
 }
@@ -80,7 +85,7 @@ p.company{
 
 
 .tab-pane.active {
-  color: $light-blue;
+  color: $dark-blue;
 }
 
 #booking_start_date_time {

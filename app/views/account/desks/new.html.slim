@@ -7,17 +7,20 @@
       = simple_form_for [:account, @company, @desk] do |f|
         .form-group
           h5 = t('desk_creation.which_kind')
-          = f.input :kind, label: false
+          = f.input :kind, label: false, include_blank: false
         .form-group
-          h5 = t('desk_creation.quantity')
-          = f.input :quantity, label:false, type: 'number', autofocus: true, placeholder:"Nombre de bureaux"
+          #desk_quantity_label
+            h5 = t('desk_creation.quantity')
+          #desk_capacity_label.hidden
+            h5 = t('desk_creation.capacity')
+          = f.input :quantity, label:false, type: 'number', autofocus: true, placeholder:"Nombre de bureaux", input_html: {value: '1', min: '1'}
         .form-group
           = f.input :description, label:false, required: true, autofocus: true, placeholder:"description", as: :text, :input_html => {:maxlength => 220}
 
         h4 = t('desk_creation.price_incl_tax')
         .form-group
           h5 #{t('desk_creation.price_half_day')} (€)
-          = f.input :half_day_price, label:false, required: true, autofocus: true, placeholder: false
+          = f.input :half_day_price, label:false, required: true, autofocus: true, placeholder: false, input_html: {value: '1',min: '1'}
           br
           table
             tr
@@ -33,7 +36,7 @@
 
         .form-group
           h5 #{t('desk_creation.price_day')} (€)
-          = f.input :daily_price, label:false, required: true, autofocus: true, placeholder: false
+          = f.input :daily_price, label:false, required: true, autofocus: true, placeholder: false, input_html: {value: '1', min: '1'}
           br
           table
             tr.active
@@ -48,7 +51,7 @@
               td#daily_totalprice
         .form-group
           h5 #{t('desk_creation.price_week')} (€)
-          = f.input :weekly_price, label:false, required: true, autofocus: true, placeholder: false
+          = f.input :weekly_price, label:false, required: true, autofocus: true, placeholder: false, input_html: {value: '1', min: '1'}
           br
           table
             tr

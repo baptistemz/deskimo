@@ -1,5 +1,5 @@
 .dashboard-desk-thumbnail {
-  height:640px;
+  height:660px;
   overflow: hidden;
   padding: 50px;
   margin-bottom: 20px;
@@ -12,7 +12,7 @@
     text-align: center;
   }
   & > p {
-    height: 44px;
+    height: 42px;
     overflow: hidden;
   }
   &.active-desk {
@@ -27,7 +27,6 @@
     display:flex;
     justify-content:center;
     align-items:center;
-    height:580px;
     position: relative
   }
 }

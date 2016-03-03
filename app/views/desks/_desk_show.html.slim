@@ -1,23 +1,24 @@
 br
-- if desk.projector || desk.screen || desk.computer
+- if desk.projector || desk.desktop || desk.tv || desk.call_conference
   h4.company-section-title = t('show.additional_services')
   #services-list-show
-    - if desk.screen
+    - if desk.call_conference
       .service-box
-        .service-badge
-          i.fa.fa-wifi
-        p wifi
-    - if desk.projector
+        = image_tag 'call_service.png'
+        p Call conf.
+    - if desk.desktop
       .service-box
-        .service-badge
-          i.fa.fa-coffee
-        p café
-    - if desk.computer
+        = image_tag 'desktop_service.png'
+        p desktop
+    - if desk.projector && (desk.call_conference = false || desk.tv = false || desk.desktop = false)
       .service-box
-        .service-badge
-          i.fa.fa-print
-        p imprimante
-hr.style-company
+        = image_tag 'projector_service.png'
+        p projector
+    - if desk.tv
+      .service-box
+        = image_tag 'tv_service.png'
+        p TV
+  hr.style-company
 h4.company-section-title = t('show.description')
 p.company = desk.description
 hr.style-company
@@ -62,7 +63,7 @@ br
     .quantity-input-buttons.time-slot-quantity
       .minus-button
         i.fa.fa-minus
-      = f.input :time_slot_quantity, label: false, input_html: {value: 1}
+      = f.input :time_slot_quantity, label: false, input_html: {value: '1', min: '1', max: '15'}
       .plus-button
         i.fa.fa-plus
 

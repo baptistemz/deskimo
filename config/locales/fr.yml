@@ -62,7 +62,7 @@ fr:
     book           : "Reserver"
     length: "Durée"
     from: "A partir du"
-    additional_services: "Services additionnels"
+    additional_services: "Services liés"
   company_creation:
     opening_days     : "Jours d'ouverture"
     morning          : "matin"
@@ -78,7 +78,7 @@ fr:
   desk_creation:
     desks_to_rent  : "Votre offre en bureaux"
     which_kind     : "Que souhaitez-vous mettre en location?"
-    quantity       : "Quantité de bureaux"
+    quantity       : "Nombre de places"
     price_incl_tax : "Prix TTC"
     price_half_day : "Par demi-journée"
     price_day      : "Par jour"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160302161643) do
+ActiveRecord::Schema.define(version: 20160303092351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -128,8 +128,8 @@ ActiveRecord::Schema.define(version: 20160302161643) do
 
   create_table "desks", force: :cascade do |t|
     t.text     "description"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.integer  "company_id"
     t.integer  "quantity"
     t.string   "kind"
@@ -138,16 +138,17 @@ ActiveRecord::Schema.define(version: 20160302161643) do
     t.integer  "weekly_price"
     t.boolean  "activated",            default: true
     t.integer  "half_day_price"
-    t.integer  "hour_price_cents",     default: 0,    null: false
-    t.integer  "half_day_price_cents", default: 0,    null: false
-    t.integer  "daily_price_cents",    default: 0,    null: false
-    t.integer  "weekly_price_cents",   default: 0,    null: false
+    t.integer  "hour_price_cents",     default: 0,     null: false
+    t.integer  "half_day_price_cents", default: 0,     null: false
+    t.integer  "daily_price_cents",    default: 0,     null: false
+    t.integer  "weekly_price_cents",   default: 0,     null: false
     t.integer  "capacity",             default: 1
     t.integer  "number",               default: 1
-    t.boolean  "projector"
-    t.boolean  "screen"
-    t.boolean  "computer"
+    t.boolean  "projector",            default: false
     t.boolean  "paperboard"
+    t.boolean  "desktop",              default: false
+    t.boolean  "tv",                   default: false
+    t.boolean  "call_conference",      default: false
   end
 
   add_index "desks", ["company_id"], name: "index_desks_on_company_id", using: :btree

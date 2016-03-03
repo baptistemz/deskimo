@@ -40,9 +40,18 @@ module Account
     def update
       @desk = Desk.find(params[:id])
       @company = @desk.company
-      @desk.update(desk_params)
-      @company.update_activation
-      redirect_to account_company_desks_path(@company)
+      unless @desk.kind == "open_space"
+        @desk.number = @company.desks.where(kind: @desk.kind).length + 1
+        @desk.capacity = @desk.quantity
+        @desk.quantity = 1
+      end
+      if @desk.update(desk_params)
+        @company.update_activation
+        redirect_to account_company_desks_path(@company)
+      else
+        flash[:alert] = t('flashes.desk_not_registered')
+        render :edit
+      end
     end
 
     private
@@ -53,7 +62,11 @@ module Account
                                     :quantity,
                                     :half_day_price,
                                     :daily_price,
-                                    :weekly_price)
+                                    :weekly_price,
+                                    :desktop,
+                                    :projector,
+                                    :tv,
+                                    :call_conference)
     end
   end
 end

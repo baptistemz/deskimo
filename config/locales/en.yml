@@ -61,7 +61,7 @@ en:
     book           : "Book"
     length         : "Length"
     from           : "From"
-    additional_services: "Additional services"
+    additional_services: "Included services"
   company_creation:
     opening_days     : "Opening days"
     morning          : "morning"

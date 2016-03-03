@@ -39,8 +39,15 @@ class Desk < ActiveRecord::Base
   end
 
   def three_desks_of_each_kind_maximum
-    errors.add(:kind, "Vous avez déjà atteint le maximum de bureaux de ce type (3)") if
-      company.desks.where(kind: kind).length == 3
+    if id
+      if company.desks.where(kind: kind).length >= 4
+        errors.add(:kind, "Vous avez déjà atteint le maximum de bureaux de ce type (3)")
+      end
+    else
+      if company.desks.where(kind: kind).length >= 3
+        errors.add(:kind, "Vous avez déjà atteint le maximum de bureaux de ce type (3)")
+      end
+    end
   end
 
   def update_company_cheapest_price

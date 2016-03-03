@@ -16,6 +16,13 @@
           = f.input :quantity, label:false, type: 'number', autofocus: true, placeholder:"Nombre de bureaux", input_html: {value: '1', min: '1'}
         .form-group
           = f.input :description, label:false, required: true, autofocus: true, placeholder:"description", as: :text, :input_html => {:maxlength => 220}
+        .form-group
+          h4.blue #{t('show.additional_services')} :
+          .form-services
+            = f.input :desktop
+            = f.input :projector
+            = f.input :tv
+            = f.input :call_conference
 
         h4 = t('desk_creation.price_incl_tax')
         .form-group

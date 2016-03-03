@@ -52,6 +52,14 @@ p.company{
 
 .service-box{
   display: flex;
+  & img{
+    width: 25px;
+    height: 25px;
+    margin-right: 3px
+  }
+  & p {
+    color: $gray-dark
+  }
 }
 
 #services-list-show{
@@ -59,6 +67,8 @@ p.company{
   display: flex;
   justify-content: space-around
 }
+
+
 
 .nav-tabs.nav-justified > li > a {
   padding: 10px 6px;

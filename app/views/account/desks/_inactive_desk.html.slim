@@ -15,7 +15,7 @@
         .quantity-input-buttons
           .minus-button
             i.fa.fa-minus
-          = f.input :quantity, label: false, input_html: {value: desk.quantity|| 1}
+          = f.input :quantity, label: false, input_html: {value: desk.quantity|| '1', min: '1'}
           .plus-button
             i.fa.fa-plus
         = f.submit t('dashboard.change_quantity'), class: 'btn qty-update-btn'
@@ -24,6 +24,23 @@
     p #{desk.capacity} #{t('people')}
   hr
   p = desk.description
+  #services-list-show
+    - if desk.call_conference
+      .service-box
+        = image_tag 'call_service.png'
+        p Call conf.
+    - if desk.desktop
+      .service-box
+        = image_tag 'desktop_service.png'
+        p desktop
+    - if desk.projector && (desk.call_conference = false || desk.tv = false || desk.desktop = false)
+      .service-box
+        = image_tag 'projector_service.png'
+        p projector
+    - if desk.tv
+      .service-box
+        = image_tag 'tv_service.png'
+        p TV
   hr
   h4.company-section-title= t('show.price')
   .prices-list

@@ -61,9 +61,11 @@
       - if @open_space.any?
         li.active =link_to t('enumerize.desk.kind.open_space'), '#dashboard_open_space', data: { toggle: 'tab' }, id: 'dashboard_open_space_tab'
       - if @closed_office.any?
-        li =link_to t('enumerize.desk.kind.closed_office'), '#dashboard_closed_office', data: { toggle: 'tab' }, id: 'dashboard_closed_office_tab'
+        li class= "#{ 'active' unless @open_space.any?}"
+          =link_to t('enumerize.desk.kind.closed_office'), '#dashboard_closed_office', data: { toggle: 'tab' }, id: 'dashboard_closed_office_tab'
       - if @meeting_room.any?
-        li =link_to t('enumerize.desk.kind.meeting_room'), '#dashboard_meeting_room', data: { toggle: 'tab' }, id: 'dashboard_meeting_room_tab'
+        li class= "#{ 'active' unless (@open_space.any? || @closed_office.any?)}"
+          =link_to t('enumerize.desk.kind.meeting_room'), '#dashboard_meeting_room', data: { toggle: 'tab' }, id: 'dashboard_meeting_room_tab'
     .col-xs-12
       BR
       .tab-content
@@ -75,7 +77,7 @@
                   = render partial: 'active_desk', locals: {desk: @desk, desk: desk, company: @company}
                 - else
                   = render partial: 'inactive_desk', locals: {desk: @desk, desk: desk, company: @company}
-        .tab-pane.fade#dashboard_closed_office
+        .tab-pane.fade#dashboard_closed_office class= "#{ 'active' unless @open_space.any?}"
           - if @closed_office.any?
             - @closed_office.each do |desk|
               .col-sm-6.col-md-4
@@ -83,7 +85,7 @@
                   = render partial: 'active_desk', locals: {desk: @desk, desk: desk, company: @company}
                 - else
                   = render partial: 'inactive_desk', locals: {desk: @desk, desk: desk, company: @company}
-        .tab-pane.fade#dashboard_meeting_room
+        .tab-pane.fade#dashboard_meeting_room class= "#{ 'active' unless (@open_space.any? || @closed_office.any?)}"
           - if @meeting_room.any?
             - @meeting_room.each do |desk|
               .col-sm-6.col-md-4

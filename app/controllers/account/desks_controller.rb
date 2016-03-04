@@ -27,8 +27,8 @@ module Account
       @desk = Desk.new
       @company = Company.find(params[:company_id])
       @open_space = @company.desks.where(kind: :open_space)
-      @closed_office = @company.desks.where(kind: :closed_office)
-      @meeting_room = @company.desks.where(kind: :meeting_room)
+      @closed_office = @company.desks.where(kind: :closed_office).order(:number)
+      @meeting_room = @company.desks.where(kind: :meeting_room).order(:number)
       @opening_weekdays_range = @company.get_opening_weekdays_range
       @opening_hours_range = @company.get_opening_hours_range
     end
@@ -52,6 +52,18 @@ module Account
       else
         flash[:alert] = t('flashes.desk_not_registered')
         render :edit
+      end
+    end
+
+    def destroy
+      @desk = Desk.find(params[:id])
+      @company = @desk.company
+      if @desk.destroy
+        flash[:notice] = t('flashes.desk_deleted')
+        redirect_to account_company_desks_path(@company)
+      else
+        redirect_to :back
+        flash[:alert] = t('flashes.desk_not_deleted')
       end
     end
 

@@ -22,6 +22,10 @@ en:
       coffee     : "coffee"
       printer    : "printer"
       scanner    : "scanner"
+      tv: "écran"
+      call_conference: "Call conférence"
+      desktop: "ordinateur"
+      projector: "projecteur"
 
 # PAGES
   home:
@@ -62,6 +66,7 @@ en:
     length         : "Length"
     from           : "From"
     additional_services: "Included services"
+    no_desks_available: "No desk available in this company"
   company_creation:
     opening_days     : "Opening days"
     morning          : "morning"
@@ -85,7 +90,8 @@ en:
     you            : "You"
     vat            : "VAT"
     total_price    : "Total price"
-    capacity       : "Capacity of the desk"
+    desk_capacity       : "Capacity of the desk"
+    capacity       : "Capacity"
   account:
     my_account    : "My account"
     first_name    : "First name"
@@ -136,6 +142,7 @@ en:
     next_unavailabilities: 'Next unavailabilities for your'
     add_unavailability: 'Add unavailability'
     planned_for: 'planned for'
+    desk_destroy_message: "Do you really want to delete this desk?"
   checkout:
     time_expiry: "Page expiry. You spent to much time to pay your booking. You haven't been charged on anything. Please try again"
     your_booking: 'Your booking'
@@ -205,6 +212,8 @@ en:
     closing_saved: 'Closing day successfully saved'
     impossible_action: 'A problem occured'
     closing_deleted: 'Closing day successfully deleted'
+    desk_deleted: 'Desk successfully deleted'
+    desk_not_deleted: "Couldn't delete the desk"
 
 #MAILER
   mailer:

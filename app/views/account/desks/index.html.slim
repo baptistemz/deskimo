@@ -21,17 +21,17 @@
             .service-box
               .service-badge
                 i.fa.fa-wifi
-              p wifi
+              p= t('activerecord.attributes.wifi')
           - if @company.coffee?
             .service-box
               .service-badge
                 i.fa.fa-coffee
-              p café
+              p= t('activerecord.attributes.coffee')
           - if @company.printer?
             .service-box
               .service-badge
                 i.fa.fa-print
-              p imprimante
+              p= t('activerecord.attributes.printer')
         hr.style-company
         h4.company-section-title= t('show.description')
         .company = @company.description
@@ -57,7 +57,7 @@
       i.fa.fa-list = t('navbar.bookings')
   br
   .row
-    ul.nav.nav-tabs.nav-justified#desk-choice
+    ul.nav.nav-tabs.nav-justified
       - if @open_space.any?
         li.active =link_to t('enumerize.desk.kind.open_space'), '#dashboard_open_space', data: { toggle: 'tab' }, id: 'dashboard_open_space_tab'
       - if @closed_office.any?

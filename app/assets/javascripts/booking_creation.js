@@ -11,7 +11,7 @@ $(document).ready(function(){
 
 
 
-  $(document).on( 'shown.bs.tab', 'a[data-toggle="tab"]', function (e) {
+  $(document).on( 'shown.bs.tab', 'a.show-tab[data-toggle="tab"]', function (e) {
     kind = $("#desk-choice li.first-degree.active a").attr('id').slice(0,-4)
     if(typeof $(".tab-pane.active .nav li.second-degree.active a").attr('id') != 'undefined'){
       number = $(".tab-pane.active .nav li.second-degree.active a").attr('id').slice(4,-4)

@@ -7,12 +7,15 @@
       = simple_form_for [:account, @company, @desk] do |f|
         .form-group
           h5 = t('desk_creation.which_kind')
-          = f.input :kind, label: false, include_blank: false
+          - if @desk.id
+            p.blue= @desk.kind
+          -else
+            = f.input :kind, label: false, include_blank: false
         .form-group
           #desk_quantity_label
             h5 = t('desk_creation.quantity')
           #desk_capacity_label.hidden
-            h5 = t('desk_creation.capacity')
+            h5 = t('desk_creation.desk_capacity')
           = f.input :quantity, label:false, type: 'number', autofocus: true, placeholder:"Nombre de bureaux", input_html: {value: '1', min: '1'}
         .form-group
           = f.input :description, label:false, required: true, autofocus: true, placeholder:"description", as: :text, :input_html => {:maxlength => 220}

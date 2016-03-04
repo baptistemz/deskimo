@@ -23,6 +23,12 @@ fr:
       coffee     : "café"
       printer    : "imprimante"
       scanner    : "scanner"
+      tv: "écran"
+      call_conference: "Call conférence"
+      desktop: "ordinateur"
+      projector: "projecteur"
+
+
 
 # PAGES
   home:
@@ -63,6 +69,7 @@ fr:
     length: "Durée"
     from: "A partir du"
     additional_services: "Services liés"
+    no_desks_available: "Aucun bureau n'est disponible dans cette entreprise"
   company_creation:
     opening_days     : "Jours d'ouverture"
     morning          : "matin"
@@ -86,7 +93,8 @@ fr:
     you            : "Vous"
     vat            : "TVA"
     total_price    : "Prix total"
-    capacity       : "Capacité du bureau"
+    desk_capacity       : "Capacité du bureau"
+    capacity       : "Capacité"
   account:
     my_account    : "Mon compte"
     first_name    : "Prénom"
@@ -138,7 +146,7 @@ fr:
     next_unavailabilities: 'Prochaines indisponibilités de vos'
     add_unavailability: 'Ajouter une indisponibilité'
     planned_for: 'planinifée pour'
-
+    desk_destroy_message: "Voulez-vous vraiment supprimer ce bureau?"
   checkout:
     time_expiry: "La page expiré, vous avez pris trop de temps à payer la reservation. Aucun paiement n'a été encaissé. Merci de recommencer"
     your_booking: 'Votre réservation'
@@ -209,6 +217,8 @@ fr:
     closing_saved: 'Jour de fermeture enregistré'
     impossible_action: 'Action impossible'
     closing_deleted: 'Jour de fermeture supprimé'
+    desk_deleted: 'Le bureau a bien été supprimé'
+    desk_not_deleted: "Impossible de supprimer le bureau"
 
 #MAILER
   mailer:

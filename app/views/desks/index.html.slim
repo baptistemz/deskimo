@@ -17,17 +17,17 @@
           .service-box
             .service-badge
               i.fa.fa-wifi
-            p wifi
+            p= t('activerecord.attributes.wifi')
         - if @company.coffee?
           .service-box
             .service-badge
               i.fa.fa-coffee
-            p café
+            p= t('activerecord.attributes.coffee')
         - if @company.printer?
           .service-box
             .service-badge
               i.fa.fa-print
-            p imprimante
+            p= t('activerecord.attributes.printer')
       hr.style-company
       h4.company-section-title = t('show.description')
       p.company-description = @company.description
@@ -45,18 +45,18 @@
 
     .col-sm-6
       - if @desks.any? == false
-        h4.text-center Aucun bureau n'est disponible dans cette entreprise
+        h4.text-center= t('show.no_desks_available')
       - else
         ul.nav.nav-tabs.nav-justified#desk-choice
           - if @open_space.any?
             li.first-degree class= "#{ 'active' if params[:tab_selected] == nil || params[:tab_selected] == 'open_space' }"
-              =link_to t('enumerize.desk.kind.open_space'), '#open_space', data: { toggle: 'tab' }, id: 'open_space_tab'
+              =link_to t('enumerize.desk.kind.open_space'), '#open_space', data: { toggle: 'tab' }, class: 'show-tab', id: 'open_space_tab'
           - if @closed_office.any?
             li.first-degree class= "#{ 'active' if params[:tab_selected] == 'closed_office'|| @open_space.first == nil }"
-              =link_to t('enumerize.desk.kind.closed_office'), '#closed_office', data: { toggle: 'tab' }, id: 'closed_office_tab'
+              =link_to t('enumerize.desk.kind.closed_office'), '#closed_office', data: { toggle: 'tab' }, class: 'show-tab', id: 'closed_office_tab'
           - if @meeting_room.any?
             li.first-degree class= "#{ 'active' if params[:tab_selected] == 'meeting_room' || (@open_space.first == nil && @closed_office.first == nil) }"
-              =link_to t('enumerize.desk.kind.meeting_room'), '#meeting_room', data: { toggle: 'tab' }, id: 'meeting_room_tab'
+              =link_to t('enumerize.desk.kind.meeting_room'), '#meeting_room', data: { toggle: 'tab' }, class: 'show-tab', id: 'meeting_room_tab'
         .tab-content
           - @desks.each do |desk|
             - if desk.kind == :open_space
@@ -69,7 +69,7 @@
                   ul.nav.nav-pills.nav-justified.margin-top#number-choice
                     - @closed_office.each do |c_o|
                       li.second-degree class= "#{'in active' if c_o == @closed_office.first}"
-                        =link_to "n°#{c_o.number} (#{c_o.capacity} #{t('people')})", "#c_o_#{c_o.number}", data: { toggle: 'tab' }, id: "c_o_#{c_o.number}_tab"
+                        =link_to "n°#{c_o.number} (#{c_o.capacity} #{t('people')})", "#c_o_#{c_o.number}", data: { toggle: 'tab' }, class: 'show-tab', id: "c_o_#{c_o.number}_tab"
                   .tab-content
                     - @closed_office.each do |c_o|
                       .tab-pane.fade.second-degree id="c_o_#{c_o.number}" class= "#{'in active' if c_o == @closed_office.first}"
@@ -83,7 +83,7 @@
                   ul.nav.nav-pills.nav-justified.margin-top
                     - @meeting_room.each do |m_r|
                       li.second-degree class= "#{'in active' if m_r == @meeting_room.first}"
-                        =link_to "n°#{m_r.number} (#{m_r.capacity} #{t('people')})", "#m_r_#{m_r.number}", data: { toggle: 'tab' }, id: "m_r_#{m_r.number}_tab"
+                        =link_to "n°#{m_r.number} (#{m_r.capacity} #{t('people')})", "#m_r_#{m_r.number}", data: { toggle: 'tab' }, class: 'show-tab', id: "m_r_#{m_r.number}_tab"
                   .tab-content
                     - @meeting_room.each do |m_r|
                       .tab-pane.fade.second-degree id="m_r_#{m_r.number}" class= "#{'in active' if m_r == @meeting_room.first}"

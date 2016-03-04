@@ -9,7 +9,7 @@ if($("#desk-choice").length > 0){
     loadCalendar(kind, number)
   });
 
-  $(document).on( 'shown.bs.tab', 'a[data-toggle="tab"]', function (e) {
+  $(document).on( 'shown.bs.tab', 'a.show-tab[data-toggle="tab"]', function (e) {
    // kind = e.currentTarget.id.slice(0,-4)
     kind = $("#desk-choice li.first-degree.active a").attr('id').slice(0,-4)
     if(typeof $(".tab-pane.active .nav li.second-degree.active a").attr('id') != 'undefined'){
@@ -20,14 +20,6 @@ if($("#desk-choice").length > 0){
     loadCalendar(kind, number)
   });
 }
-
-
-
-// $('#closed_office').on('shown.bs.tab', function (e) {
-//   loadCalendar
-//   console.log(e)
-// });
-
 
 function loadCalendar(kind, number){
   if ($("." + kind + '_' + number + "_booking #booking_start_date").length ) {

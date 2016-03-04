@@ -4,9 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
-  has_many :bookings
+  has_many :bookings, dependent: :nullify
   has_one :credit_card, dependent: :destroy
-  has_one :company, :dependent => :destroy
+  has_one :company, :dependent => :nullify
   has_many :inbound_payments, class_name: 'Payment', foreign_key: :receiver_id
   has_many :outbound_payments, class_name: 'Payment', foreign_key: :payer_id
   validates_presence_of :first_name, :last_name, :on => :update

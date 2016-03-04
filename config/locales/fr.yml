@@ -154,7 +154,7 @@ fr:
   invoice: "facture"
   and: 'et'
   ttc: 'TTC'
-  goodbye_message: 'Merci ! A bientôt sur nomadoffice.co !'
+  goodbye_message: 'Merci ! A bientôt sur deskimo !'
   feedback_message: "Pour toute info ou pour nous donner des avis, des retours n'hésitez pas à nous contacter"
   update: 'modifier'
   back: 'Retour'
@@ -213,7 +213,7 @@ fr:
 #MAILER
   mailer:
     hello: 'Bonjour'
-    welcome: 'Bienvenue sur nomad office !'
+    welcome: 'Bienvenue sur deskimo !'
 
 
 #DEVISE

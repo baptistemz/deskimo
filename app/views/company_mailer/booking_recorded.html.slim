@@ -2,7 +2,7 @@
   p #{t('mailer.hello')} #{@user.first_name},
 -else
   p #{t('mailer.hello')},
-p Une réservation de bureaux a été enregistrée chez #{@company.name} sur nomadoffice.co
+p Une réservation de bureaux a été enregistrée chez #{@company.name} sur deskimo
 p Voici les détails de réservation:
 ul
   li Visiteur : #{@client.first_name} #{@client.last_name}
@@ -15,6 +15,6 @@ ul
   li Statut de la réservation: #{@booking.status.text}
 p Merci de reserver un bon accueil à #{@client.first_name}
 br
-p.right L'équipe nomad office
+p.right L'équipe deskimo
 br
-p PS : vos revenus liés à cette réservation sont ajoutés à votre cagnote et vous seront adressés lors de la remise de fin de mois. Pour tout problème concernant cette réservation contactez-nous au plus vite sur #{mail_to('contact@nomadoffice.co')} ou au 0679788468.
+p PS : vos revenus liés à cette réservation sont ajoutés à votre cagnote et vous seront adressés lors de la remise de fin de mois. Pour tout problème concernant cette réservation contactez-nous au plus vite sur #{mail_to('contact@deskimo.co')} ou au 0679788468.

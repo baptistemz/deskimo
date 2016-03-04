@@ -41,7 +41,6 @@ module Account
       @desk = Desk.find(params[:id])
       @company = @desk.company
       unless @desk.kind == "open_space"
-        @desk.number = @company.desks.where(kind: @desk.kind).length + 1
         @desk.capacity = @desk.quantity
         @desk.quantity = 1
       end

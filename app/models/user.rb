@@ -85,7 +85,7 @@ class User < ActiveRecord::Base
   #   self.update_mangopay_profile
   #   params = {
   #     "Owners" => ["#{self.mangopay_user_id}"],
-  #     "Description" => "nomadoffice Wallet #{self.email}",
+  #     "Description" => "deskimo Wallet #{self.email}",
   #     "Currency" => "EUR"
   #   }
 

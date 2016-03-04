@@ -6,11 +6,11 @@ locations:
 
 mails:
   default:
-    from: contact@nomadoffice.co
+    from: contact@deskimo.co
 
 
 
 price_share:
   vat: 19.6
   company: 0.85
-  nomad_office: 0.15
+  deskimo: 0.15

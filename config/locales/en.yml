@@ -151,7 +151,7 @@ en:
   invoice: "invoice"
   and: 'and'
   ttc: 'All taxes inc'
-  goodbye_message: 'Thank you ! See you soon on nomadoffice.co !'
+  goodbye_message: 'Thank you ! See you soon on deskimo !'
   feedback_message: "For any piece of information or to give feedback don't hesitate to contact us"
   update: 'update'
   back: 'Back'
@@ -209,4 +209,4 @@ en:
 #MAILER
   mailer:
     hello   : 'Hi'
-    welcome : "Welcome to nomad office !"
+    welcome : "Welcome to deskimo !"

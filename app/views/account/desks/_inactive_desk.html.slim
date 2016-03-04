@@ -33,14 +33,14 @@
       .service-box
         = image_tag 'desktop_service.png'
         p desktop
-    - if desk.projector && (desk.call_conference = false || desk.tv = false || desk.desktop = false)
-      .service-box
-        = image_tag 'projector_service.png'
-        p projector
     - if desk.tv
       .service-box
         = image_tag 'tv_service.png'
         p TV
+    - if desk.projector && (desk.call_conference != true || desk.tv != true || desk.desktop != true)
+      .service-box
+        = image_tag 'projector_service.png'
+        p projector
   hr
   h4.company-section-title= t('show.price')
   .prices-list

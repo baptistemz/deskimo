@@ -21,15 +21,16 @@
   &.inactive-desk {
     border: 1px solid $red;
   }
-  &.add-desk {
+}
+.add-desk {
     border: 1px solid $dark-blue;
     background-color: $gray-light;
     display:flex;
     justify-content:center;
     align-items:center;
-    position: relative
+    position: relative;
+    padding: 20px;
   }
-}
 
 
 .unavailability-wrap {
@@ -52,16 +53,6 @@
 
 .cta-newdesk {
   text-align: center;
-}
-
-.thumbnail-bottom {
-  position: absolute;
-  bottom: 20px;
-  left: -20px;
-  width: 100%;
-  text-align: center;
-  list-style: none;
-  font-size: 16px;
 }
 
 .forteen-px{

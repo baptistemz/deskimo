@@ -26,7 +26,9 @@ module Account
     def index
       @desk = Desk.new
       @company = Company.find(params[:company_id])
-      @desks = @company.desks
+      @open_space = @company.desks.where(kind: :open_space)
+      @closed_office = @company.desks.where(kind: :closed_office)
+      @meeting_room = @company.desks.where(kind: :meeting_room)
       @opening_weekdays_range = @company.get_opening_weekdays_range
       @opening_hours_range = @company.get_opening_hours_range
     end

@@ -50,34 +50,75 @@
     hr
     .center.padded
       = link_to t('dashboard.edit_company'), edit_account_company_path(@company), class: "fa fa-pencil"
-
   br
-  .row
-    br
-    - @desks.each do |desk|
-      .col-sm-6.col-md-4
-        - if desk.activated == true
-          = render partial: 'active_desk', locals: {desk: @desk, desk: desk, company: @company}
-        - else
-          = render partial: 'inactive_desk', locals: {desk: @desk, desk: desk, company: @company}
-
-    .col-sm-6.col-md-4
-      .dashboard-desk-thumbnail.add-desk
-        =link_to new_account_company_desk_path(@company)
-          .cta-newdesk
-            .rounded-icon
-              i.fa.fa-plus
-            br
-            p = t('dashboard.rent_new_desks')
-        ul.thumbnail-bottom
-          - unless @desks.where(kind: 'open_space').any?
-            li= t('dashboard.open_space_desks')
-            br
-          li= t('dashboard.closed_offices')
-          br
-          li= t('dashboard.meeting_rooms')
-
-
+  h3.center Desks
   .center.padded
     = link_to account_bookings_path
       i.fa.fa-list = t('navbar.bookings')
+  br
+  .row
+    ul.nav.nav-tabs.nav-justified#desk-choice
+      - if @open_space.any?
+        li.active =link_to t('enumerize.desk.kind.open_space'), '#dashboard_open_space', data: { toggle: 'tab' }, id: 'dashboard_open_space_tab'
+      - if @closed_office.any?
+        li =link_to t('enumerize.desk.kind.closed_office'), '#dashboard_closed_office', data: { toggle: 'tab' }, id: 'dashboard_closed_office_tab'
+      - if @meeting_room.any?
+        li =link_to t('enumerize.desk.kind.meeting_room'), '#dashboard_meeting_room', data: { toggle: 'tab' }, id: 'dashboard_meeting_room_tab'
+    .col-xs-12
+      BR
+      .tab-content
+        .tab-pane.fade.in#dashboard_open_space.active
+          - if @open_space.any?
+            - @open_space.each do |desk|
+              .col-sm-offset-3.col-sm-6
+                - if desk.activated == true
+                  = render partial: 'active_desk', locals: {desk: @desk, desk: desk, company: @company}
+                - else
+                  = render partial: 'inactive_desk', locals: {desk: @desk, desk: desk, company: @company}
+        .tab-pane.fade#dashboard_closed_office
+          - if @closed_office.any?
+            - @closed_office.each do |desk|
+              .col-sm-6.col-md-4
+                - if desk.activated == true
+                  = render partial: 'active_desk', locals: {desk: @desk, desk: desk, company: @company}
+                - else
+                  = render partial: 'inactive_desk', locals: {desk: @desk, desk: desk, company: @company}
+        .tab-pane.fade#dashboard_meeting_room
+          - if @meeting_room.any?
+            - @meeting_room.each do |desk|
+              .col-sm-6.col-md-4
+                - if desk.activated == true
+                  = render partial: 'active_desk', locals: {desk: @desk, desk: desk, company: @company}
+                - else
+                  = render partial: 'inactive_desk', locals: {desk: @desk, desk: desk, company: @company}
+
+    .row
+      .col-xs-12.col-sm-offset-3.col-sm-6
+        .add-desk
+          .col-sm-6
+            =link_to new_account_company_desk_path(@company)
+              .cta-newdesk
+                .rounded-icon
+                  i.fa.fa-plus
+                br
+                p = t('dashboard.rent_new_desks')
+          .col-sm-6
+            ul.thumbnail-bottom
+              - unless @open_space.any?
+                li= t('dashboard.open_space_desks')
+                br
+              li= t('dashboard.closed_offices')
+              br
+              li= t('dashboard.meeting_rooms')
+
+
+    / - @desks.each do |desk|
+    /   .col-sm-6.col-md-4
+    /     - if desk.activated == true
+    /       = render partial: 'active_desk', locals: {desk: @desk, desk: desk, company: @company}
+    /     - else
+    /       = render partial: 'inactive_desk', locals: {desk: @desk, desk: desk, company: @company}
+
+    / .col-sm-6.col-md-4
+
+

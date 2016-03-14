@@ -11,12 +11,12 @@ class PaymentsController < ApplicationController
     @company = @booking.desk.company
     @desk = @booking.desk
     # current_user.create_or_update_wallet
-    if current_user.credit_card
-      @credit_card = current_user.credit_card
-    else
-      @credit_card = current_user.build_credit_card
-    end
-    @payment = current_user.outbound_payments.build
+    # if current_user.credit_card
+    #   @credit_card = current_user.credit_card
+    # else
+    #   @credit_card = current_user.build_credit_card
+    # end
+    # @payment = current_user.outbound_payments.build
 
     # params = {
     #     UserId: current_user.mangopay_user_id,
@@ -42,8 +42,7 @@ class PaymentsController < ApplicationController
       currency:     'eur'
     )
 
-    @booking.update(payment: charge.to_json)
-    @booking.update(status: 'paid')
+    @booking.update(status: 'paid', payment: charge.to_json)
     @booking.build_invoice(payment: charge.to_json).save
     redirect_to account_booking_path(@booking)
 

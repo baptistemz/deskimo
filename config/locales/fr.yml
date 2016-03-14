@@ -61,7 +61,7 @@ fr:
     opening_times  : "Horaires"
     price          : "Prix"
     availabilities : "Disponibilités"
-    booking        : "Reservation"
+    booking        : "Réservation"
     half_day       : "1/2 journée"
     day            : "journée"
     week           : "semaine"
@@ -133,7 +133,7 @@ fr:
     itinerary                 : 'itinéraire'
     go_to                     : 'y aller'
     receipt                   : 'reçu'
-    booking_made              : "Reservation passée le"
+    booking_made              : "Réservation passée le"
     in_company: 'chez'
     date: "date"
     price_per: "Prix par"
@@ -148,12 +148,12 @@ fr:
     planned_for: 'planinifée pour'
     desk_destroy_message: "Voulez-vous vraiment supprimer ce bureau?"
   checkout:
-    time_expiry: "La page expiré, vous avez pris trop de temps à payer la reservation. Aucun paiement n'a été encaissé. Merci de recommencer"
+    time_expiry: "La page expiré, vous avez pris trop de temps à payer la réservation. Aucun paiement n'a été encaissé. Merci de recommencer"
     your_booking: 'Votre réservation'
     place: 'Chez'
     when: 'Quand?'
     le: 'Le'
-    no_name_message: '* Nous avons besoin de vous connaître un peu plus pour effectuer la reservation'
+    no_name_message: '* Nous avons besoin de vous connaître un peu plus pour effectuer la réservation'
 
 
 # Utilities
@@ -208,7 +208,7 @@ fr:
     cgu   : "CGU"
     about : "à propos"
   flashes:
-    booking_impossible: 'Reservation impossible'
+    booking_impossible: 'Réservation impossible'
     unavailable_desk: "Bureau indisponible à ces dates"
     company_not_registered: "Votre entreprise n'a pas pu être enregistrée"
     company_registered: "Votre entreprise a bien été enregistrée."
@@ -219,6 +219,8 @@ fr:
     closing_deleted: 'Jour de fermeture supprimé'
     desk_deleted: 'Le bureau a bien été supprimé'
     desk_not_deleted: "Impossible de supprimer le bureau"
+  popups:
+    booking_cancelation_message: "Êtes-vous sur de vouloir annuler cette réservation ? (L'annulation fréquente de réservations dans votre entreprise est passible de bannissement)"
 
 #MAILER
   mailer:

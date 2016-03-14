@@ -1,0 +1,28 @@
+table
+    tr
+      th Visiteur
+      th= t('dashboard.date').capitalize
+      th Montant
+      th= t('index.details').capitalize
+    - bookings.each do |booking|
+      tr
+        - if booking.user
+            td #{booking.user.first_name} #{booking.user.last_name}
+        -else
+            td ...
+        / - if booking.time_slot_type == "half_day"
+        /   td #{booking.time_slot_type} - #{booking.half_day_choice}
+        / - else
+        /   td #{booking.time_slot_quantity} #{booking.time_slot_type}
+        - if booking.start_date == booking.end_date
+            - if booking.time_slot_type == 'half_day'
+                td #{l(booking.start_date)} - #{booking.half_day_choice}
+            - else
+                td #{l(booking.start_date)}
+        - else
+          td #{l(booking.start_date)} - #{l(booking.end_date)}
+        td #{booking.amount} €
+        td
+          =link_to account_booking_confirmation_path(booking)
+            .booking-details
+              i.fa.fa-info-circle

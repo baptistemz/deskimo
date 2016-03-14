@@ -10,11 +10,29 @@ class UserMailer < ApplicationMailer
     mail to: @user.email, subject: t("mailer.welcome")
   end
 
-  def booking_confirmation(booking)
+  def paid_booking(booking)
     @booking = booking
     @user = @booking.user
     @desk = @booking.desk
-    @company = @booking.desk.company
+    @company = @desk.company
     mail to: @user.email, subject: 'Votre réservation de bureaux chez ' + @company.name
   end
+
+  def confirmed_booking(booking)
+    @booking = booking
+    @user = @booking.user
+    @desk = @booking.desk
+    @company = @desk.company
+    mail to: @user.email, subject: 'Réservation confirmée par ' + @company.name
+  end
+
+  def canceled_booking(booking)
+    @booking = booking
+    @user = @booking.user
+    @desk = @booking.desk
+    @company = @desk.company
+    mail to: @user.email, subject: 'Réservation annulée par ' + @company.name
+  end
 end
+
+

@@ -214,6 +214,8 @@ en:
     closing_deleted: 'Closing day successfully deleted'
     desk_deleted: 'Desk successfully deleted'
     desk_not_deleted: "Couldn't delete the desk"
+  popups:
+    booking_cancelation_message: 'Are you sure you want to cancel this booking ? (Recurrent cancellations can result in a banishment)'
 
 #MAILER
   mailer:

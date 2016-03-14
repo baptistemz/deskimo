@@ -1,0 +1,28 @@
+.profile-resume
+  .row
+    .col-xs-5
+      h4.company-section-title = t('account.email')
+      = @user.email
+      h4.company-section-title =t('account.first_name')
+      - if @user.first_name
+        p = @user.first_name
+      - else
+        p =t('account.no_first_name')
+      h4.company-section-title =t('account.last_name')
+      - if @user.last_name
+        p = @user.last_name
+      - else
+        p =t('account.no_last_name')
+    .col-xs-7
+      -if @user.avatar_file_name
+        .avatar
+          .croping-frame
+            = image_tag @user.avatar.url(:avatar)
+      - elsif @user.picture
+        .avatar
+          .croping-frame
+            = image_tag @user.picture
+      - else
+        .avatar
+          .croping-frame
+            = image_tag 'placeholder.png'

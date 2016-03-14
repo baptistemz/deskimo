@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160303092351) do
+ActiveRecord::Schema.define(version: 20160314144426) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20160303092351) do
     t.integer  "amount_cents",       default: 0,     null: false
     t.json     "payment"
     t.boolean  "archived",           default: false
+    t.json     "refund"
   end
 
   add_index "bookings", ["desk_id"], name: "index_bookings_on_desk_id", using: :btree
@@ -159,6 +160,7 @@ ActiveRecord::Schema.define(version: 20160303092351) do
     t.datetime "updated_at", null: false
     t.json     "payment"
     t.integer  "user_id"
+    t.json     "refund"
   end
 
   add_index "invoices", ["booking_id"], name: "index_invoices_on_booking_id", using: :btree

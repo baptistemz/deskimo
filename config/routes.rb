@@ -41,6 +41,8 @@ Rails.application.routes.draw do
         end
       end
       resources :bookings, only: [:index, :show, :edit, :update] do
+        # get 'confirmation'
+        resource :confirmation, only: [ :show, :create, :destroy], controller: 'bookings/confirmation'
         resource :invoice, only: [:show], controller: 'invoice'
       end
     end

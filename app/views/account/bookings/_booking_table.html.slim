@@ -5,7 +5,7 @@ table
       th Montant
       th= t('index.details').capitalize
     - bookings.each do |booking|
-      tr
+      tr class= "#{booking.status}_background"
         - if booking.user
             td #{booking.user.first_name} #{booking.user.last_name}
         -else
@@ -24,5 +24,17 @@ table
         td #{booking.amount} €
         td
           =link_to account_booking_confirmation_path(booking)
-            .booking-details
-              i.fa.fa-info-circle
+            - if booking.status == 'paid'
+              .btn.qty-update-btn
+                'En attente de confirmation
+                .chip
+                  i.fa.fa-exclamation
+            - elsif booking.status == 'confirmed'
+              .btn.qty-update-btn
+                'Réservation confirmée
+                .fa.fa-smile-o
+            - else
+              .btn.qty-update-btn
+                'Réservation annulée
+                .fa.fa-frown-o
+

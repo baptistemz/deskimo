@@ -17,12 +17,9 @@ module Account
       end
 
       def destroy
-        raise
         refund = Stripe::Refund.create(
-          charge: "ch_17owUg2eZvKYlo2Cwcmpe3op"
+          charge: @booking.payment['id']
         )
-
-
 
         @booking.update(status: :canceled, refund: refund.to_json)
         # @booking.invoice.update(refund: refund.to_json)

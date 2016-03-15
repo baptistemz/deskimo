@@ -16,6 +16,16 @@ table {
   width:100%;
 }
 
+.paid_background .qty-update-btn{
+  position: relative
+}
+
+.canceled_background{
+  background-color: rgba(245, 139, 119, 0.2)
+}
+.confirmed_background{
+  background-color: rgba(78, 206, 151, 0.2)
+}
 
 
 

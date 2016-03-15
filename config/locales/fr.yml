@@ -147,6 +147,8 @@ fr:
     add_unavailability: 'Ajouter une indisponibilité'
     planned_for: 'planinifée pour'
     desk_destroy_message: "Voulez-vous vraiment supprimer ce bureau?"
+    booking_confirmed: "réservation confirmée"
+    booking_canceled: "réservation annulée"
   checkout:
     time_expiry: "La page expiré, vous avez pris trop de temps à payer la réservation. Aucun paiement n'a été encaissé. Merci de recommencer"
     your_booking: 'Votre réservation'

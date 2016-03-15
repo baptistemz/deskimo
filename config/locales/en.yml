@@ -143,6 +143,8 @@ en:
     add_unavailability: 'Add unavailability'
     planned_for: 'planned for'
     desk_destroy_message: "Do you really want to delete this desk?"
+    booking_confirmed: "booking confirmed"
+    booking_canceled: "booking canceled"
   checkout:
     time_expiry: "Page expiry. You spent to much time to pay your booking. You haven't been charged on anything. Please try again"
     your_booking: 'Your booking'

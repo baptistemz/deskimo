@@ -48,10 +48,10 @@
             p annuler
     - elsif @booking.status == 'confirmed'
       .booking-band.gbg
-        p Confirmé
+        p = t('dashboard.booking_confirmed')
     - elsif @booking.status == 'canceled'
       .booking-band.rbg
-        p Annulé
+        p = t('dashboard.booking_canceled')
   .row
     br
     .center

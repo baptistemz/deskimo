@@ -37,6 +37,7 @@
   br
   .row
     - if @booking.status == 'paid'
+      p.center Merci de confirmer ou annuler la réservation
       .col-xs-6.col-sm-offset-2.col-sm-4
         = link_to account_booking_confirmation_path(@booking), method: :create
           .btn.btn-primary.green-btn
@@ -44,14 +45,17 @@
       .col-xs-6.col-sm-4
         = link_to account_booking_confirmation_path(@booking), data: { confirm: t('popups.booking_cancelation_message') }, method: :delete
           .btn.btn-primary.red-btn
-            p Annuler
+            p annuler
     - elsif @booking.status == 'confirmed'
-      p Confirmé
+      .booking-band.gbg
+        p Confirmé
     - elsif @booking.status == 'canceled'
-      p Annulé
+      .booking-band.rbg
+        p Annulé
   .row
     br
     .center
       =link_to account_bookings_path
         i.fa.fa-list = t('dashboard.back_to_bookings')
+
 

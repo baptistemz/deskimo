@@ -20,6 +20,9 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
 
           li.dropdown
             = link_to "#", {class: "dropdown-toggle", "data-toggle" => "dropdown", "role" => "button", "aria-expanded" => "false"}
+              - if new_inbound_bookings
+                .small-chip
+                  i.fa.fa-exclamation
               i.fa.fa-home.icon-margin
               = t('navbar.account')
               span.caret
@@ -32,6 +35,9 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
                 = t('navbar.company_dashboard')
               li = link_to account_bookings_path
                 i.fa.fa-list.icon-margin
+                  - if new_inbound_bookings
+                    .small-chip.nm-left
+                      i.fa.fa-exclamation
                 = t('navbar.bookings')
 
           li = link_to destroy_user_session_path, method: :delete

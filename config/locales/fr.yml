@@ -221,6 +221,8 @@ fr:
     closing_deleted: 'Jour de fermeture supprimé'
     desk_deleted: 'Le bureau a bien été supprimé'
     desk_not_deleted: "Impossible de supprimer le bureau"
+    welcome_message_recorded: "Les informations de bienvenue ont bien été enregistrées"
+    welcome_message_not_recorded: "Les informations de bienvenue n'ont pas pu être enregistrées"
   popups:
     booking_cancelation_message: "Êtes-vous sur de vouloir annuler cette réservation ? (L'annulation fréquente de réservations dans votre entreprise est passible de bannissement)"
 

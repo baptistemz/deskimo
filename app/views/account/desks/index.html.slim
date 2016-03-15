@@ -43,18 +43,63 @@
           p #{t('openings.from_day')} #{t("openings.#{@opening_weekdays_range[0]}")} #{t('openings.to_day')} #{t("openings.#{@opening_weekdays_range[1]}")}
         - if @opening_hours_range.length == 4
           p #{t('openings.from_time')} #{@opening_hours_range[0]} #{t('openings.to_time')} #{@opening_hours_range[1]} #{t('and')} #{t('openings.from_time')} #{@opening_hours_range[2]} #{t('openings.to_time')} #{@opening_hours_range[3]}
-        = link_to t('dashboard.exceptionnal_closing_days'), account_company_closing_days_path, class: 'fa fa-exclamation-circle'
 
+        = link_to account_company_closing_days_path
+          .btn.qty-update-btn
+            i.fa.fa-exclamation-circle = t('dashboard.exceptionnal_closing_days')
 
+    .row
+      .center.padded
+        = link_to edit_account_company_path(@company)
+          .btn.qty-update-btn
+            i.fa.fa-pencil = t('dashboard.edit_company')
+      hr.style-company
 
-    hr
-    .center.padded
-      = link_to t('dashboard.edit_company'), edit_account_company_path(@company), class: "fa fa-pencil"
+      h4.company-section-title.center Informations de bienvue
+      -if @company.welcome_message
+        #services-list-show
+          p Votre message de bienvenue contient :
+          .service-box
+            - if @company.welcome_message.message.blank?
+              i.fa.fa-times.red
+              p bienvenue
+            - else
+              i.fa.fa-check.green
+              p bienvenue
+          .service-box
+            - if @company.welcome_message.wifi_password.blank?
+              i.fa.fa-times.red
+              p wifi password
+            - else
+              i.fa.fa-check.green
+              p wifi password
+          .service-box
+            - if @company.welcome_message.access_information.blank?
+              i.fa.fa-times.red
+              p access info
+            - else
+              i.fa.fa-check.green
+              p access info
+        .row
+          .center.padded
+            = link_to edit_account_company_welcome_message_path(@company)
+              .btn.qty-update-btn
+                i.fa.fa-envelope-o
+                |  Modifier le message
+      -else
+        .row
+          .center.padded
+            = link_to new_account_company_welcome_message_path(@company)
+              .btn.qty-update-btn
+                i.fa.fa-envelope-o
+                |  Créer le message
+
   br
   h3.center Desks
   .center.padded
     = link_to account_bookings_path
-      i.fa.fa-list = t('navbar.bookings')
+      .btn.btn-primary
+        i.fa.fa-list = t('navbar.bookings')
   br
   .row
     ul.nav.nav-tabs.nav-justified

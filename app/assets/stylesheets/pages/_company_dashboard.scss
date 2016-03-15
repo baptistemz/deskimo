@@ -107,7 +107,11 @@
 .rbg{
   background-color: $red
 }
-
+.booking-confirmation-details{
+  height: 300px;
+  display:flex;
+  align-items:center;
+}
 // &-canceled{
 //   background-color: $red
 // }

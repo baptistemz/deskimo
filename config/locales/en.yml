@@ -216,6 +216,8 @@ en:
     closing_deleted: 'Closing day successfully deleted'
     desk_deleted: 'Desk successfully deleted'
     desk_not_deleted: "Couldn't delete the desk"
+    welcome_message_recorded: "The welcome informations have been saved"
+    welcome_message_not_recorded: "The welcome informations could not be saved"
   popups:
     booking_cancelation_message: 'Are you sure you want to cancel this booking ? (Recurrent cancellations can result in a banishment)'
 

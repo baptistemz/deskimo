@@ -5,6 +5,7 @@ class Company < ActiveRecord::Base
   belongs_to :user
   has_many :desks, dependent: :destroy
   has_many :closing_days, dependent: :destroy
+  has_one :welcome_message
   has_attached_file :picture,
     styles: {list: "400x200#", show: "740x370#"}
     # rake paperclip:refresh CLASS=Company

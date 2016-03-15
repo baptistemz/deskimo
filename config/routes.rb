@@ -34,6 +34,7 @@ Rails.application.routes.draw do
       resource :user, only: [:show, :edit, :update], controller: 'user'
       resource :credit_card, only: [:new, :create, :edit, :update], controller: 'credit_card'
       resources :companies, only: [:new, :create, :edit, :update] do
+        resource :welcome_message, only:[:new, :create, :edit, :update], controller: 'companies/welcome_message'
         resources :closing_days, only: [:index, :create, :destroy], controller: 'companies/closing_days'
         resources :desks, only: [:new, :create, :edit, :index, :update, :destroy] do
           resource :activation, only: [:create, :destroy], controller: 'desks/activation'

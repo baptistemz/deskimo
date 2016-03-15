@@ -1,0 +1,27 @@
+.container
+  br
+  h1 Informations de bienvenue
+  br
+  p Les utilisateurs dont vous avez validé la réservation dans vos bureaux recevront ces informations avant leur arrivée. Détaillez bien les informations dont peut avoir besoin un nouvel arrivant dans vos bureaux. Cela vous évitera de dédier du temps à l'accueil de travailleurs nomades.
+  BR
+  = simple_form_for @welcome_message, url: account_company_welcome_message_path(@company) do |f|
+    .form-group
+      h4.blue Welcome message :
+      = f.input :message, label:false, required: true, autofocus: true, placeholder:"Hi ! Welcome to #{@company.name} ", :input_html => {:maxlength => 500}
+    .form-group
+      h4.blue Informations d'accés aux bureaux :
+      = f.input :access_information, label:false, required: true, autofocus: true, placeholder:"N° d'étage, n° de porte, où sonner, code d'entrée etc."
+    br
+    .form-group
+      h4.blue Nom du wifi :
+      = f.input :wifi_name, label:false, required: true, autofocus: true, placeholder:"ex: wifi_invite"
+    .form-group
+      h4.blue Mot de passe du wifi :
+      = f.input :wifi_password, label:false, required: true, autofocus: true, placeholder:"mot de passe"
+    br
+    .form-group
+      h4.blue Additional information :
+      = f.input :additional_information, label:false, required: true, autofocus: true, placeholder:"Where the coffee machine is, who to talk to if any problem etc.", :input_html => {:maxlength => 500}
+    BR
+    .form-group
+      = f.submit class: "btn-primary full-width"

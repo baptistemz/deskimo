@@ -8,12 +8,13 @@ en:
     en   : "English"
   activerecord:
     models:
-      booking              : "Booking"
-      company              : "Company"
-      credit_card          : "Credit card"
-      desk                 : "Desk"
-      payment              : "Payment"
-      unavailability_range : "Unavailability"
+      booking              : "booking"
+      company              : "company"
+      credit_card          : "credit card"
+      desk                 : "desk"
+      payment              : "payment"
+      unavailability_range : "unavailability"
+      welcome_message      : "welcome message"
     attributes:
       status: 'status'
       created_at : "created at"
@@ -145,6 +146,10 @@ en:
     desk_destroy_message: "Do you really want to delete this desk?"
     booking_confirmed: "booking confirmed"
     booking_canceled: "booking canceled"
+    welcome_information: 'Welcome information'
+    your_message_contains: 'Your welcome message contains :'
+    create_message: 'create message'
+    edit_message: 'edit message'
   checkout:
     time_expiry: "Page expiry. You spent to much time to pay your booking. You haven't been charged on anything. Please try again"
     your_booking: 'Your booking'
@@ -174,6 +179,9 @@ en:
   from_price: "from"
   d_day: 'd'
   people: 'people'
+  welcome: 'welcome'
+  wifi_password: 'wifi password'
+  access_info: "access information"
 
   openings:
     from_day: 'from'
@@ -224,4 +232,4 @@ en:
 #MAILER
   mailer:
     hello   : 'Hi'
-    welcome : "Welcome to deskimo !"
+    welcome_to_deskimo : "Welcome to deskimo !"

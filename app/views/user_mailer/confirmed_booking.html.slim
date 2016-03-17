@@ -2,4 +2,26 @@
   p #{t('mailer.hello')} #{@user.first_name},
 -else
   p #{t('mailer.hello')},
-p Votre réservation a été confirmée
+  p Ta réservation de bureaux a été confirmée par #{@company.name}. Tu y es attendu(e).
+- unless @welcome_message.message.blank?
+  p #{@company.name} te transmet les informations suivantes :
+  br
+  p = @welcome_message.message
+
+- unless @welcome_message.access_information
+  p Accès :
+  p = @welcome_message.access_information
+
+- unless @welcome_message.wifi_password.blank?
+  p Une fois arrivé dans l'entreprise vous pourrez vous connecter au wifi suivant:
+  ul
+    li Nom du wifi : #{@welcome_message.wifi_name}
+    li Mot de passe : #{@welcome_message.wifi_password}
+
+- unless @welcome_message.additional_information.blank?
+  p Informations compémentaires :
+  p = @welcome_message.additional_information
+br
+
+p N'hésite pas à envoyer tes feebbacks à #{mail_to('contact@deskimo.co')}
+P Happy desk sharing !

@@ -56,9 +56,9 @@ class Booking < ActiveRecord::Base
   end
 
   def send_booking_emails
-    # CompanyMailer.booking_status(self).deliver_later
-    CompanyMailer.send("#{self.status}_booking", self).deliver_later
-    # UserMailer.'#{status}'(self).deliver_later
+    unless self.status == :confirmed
+      CompanyMailer.send("#{self.status}_booking", self).deliver_later
+    end
     UserMailer.send("#{self.status}_booking", self).deliver_later
   end
 end

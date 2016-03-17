@@ -3,9 +3,14 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
 
   after_filter :store_location
-  before_filter :authenticate
+  before_filter :staging_authenticate
 
-  # http_basic_authenticate_with name: [ENV['MY_SITE_USERNAME'], password: ENV['MY_SITE_SECRET']] if Rails.env == 'staging'
+  # include Pundit
+
+  # after_action :verify_authorized, except: :index, unless: :authorized_controller?
+  # after_action :verify_policy_scoped, only: :index, unless: :authorized_controller?
+
+  # rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
 
   def after_sign_in_path_for(resource)
@@ -20,6 +25,20 @@ class ApplicationController < ActionController::Base
     { host: ENV['HOST'] || 'localhost:3000' }
     { locale: I18n.locale == I18n.default_locale ? nil : I18n.locale }
   end
+
+  private
+
+  # def user_not_authorized
+  #   flash[:alert] = "You are not authorized to perform this action."
+  #   redirect_to(root_path)
+  # end
+
+  # def authorized_controller?
+  #   devise_controller? ||
+  #   params[:controller] = "high_voltage/pages" ||
+  #   companies_controller? ||
+  #   desks_controller?
+  # end
 
   def store_location
     # store last url - this is needed for post-login redirect to whatever the user last visited.
@@ -45,7 +64,7 @@ class ApplicationController < ActionController::Base
     I18n.locale = l
   end
 
-  def authenticate
+  def staging_authenticate
     if Rails.env == 'staging'
       authenticate_or_request_with_http_basic 'Staging' do |name, password|
         name == ENV['MY_SITE_USERNAME'] && password == ENV['MY_SITE_SECRET']

@@ -9,12 +9,13 @@ fr:
     en   : "Anglais"
   activerecord:
     models:
-      booking              : "Réservation"
-      company              : "Entreprise"
-      credit_card          : "Carte de crédit"
-      desk                 : "Bureau"
-      payment              : "Paiement"
-      unavailability_range : "Indisponibilité"
+      booking              : "réservation"
+      company              : "entreprise"
+      credit_card          : "carte de crédit"
+      desk                 : "bureau"
+      payment              : "paiement"
+      unavailability_range : "indisponibilité"
+      welcome_message      : "message de bienvenue"
     attributes:
       status: 'statut'
       created_at : "Créé le"
@@ -149,6 +150,10 @@ fr:
     desk_destroy_message: "Voulez-vous vraiment supprimer ce bureau?"
     booking_confirmed: "réservation confirmée"
     booking_canceled: "réservation annulée"
+    welcome_information: 'Informations de bienvue'
+    your_message_contains: 'Votre message de bienvenue contient :'
+    create_message: 'créer le message'
+    edit_message: 'modifier le message'
   checkout:
     time_expiry: "La page expiré, vous avez pris trop de temps à payer la réservation. Aucun paiement n'a été encaissé. Merci de recommencer"
     your_booking: 'Votre réservation'
@@ -178,6 +183,9 @@ fr:
   from_price: "à partir de"
   d_day: 'j'
   people: 'personnes'
+  welcome: 'bienvenue'
+  wifi_password: 'mot de passe wifi'
+  access_info: "informations d'accés"
 
   openings:
     from_day: 'du'
@@ -229,7 +237,7 @@ fr:
 #MAILER
   mailer:
     hello: 'Bonjour'
-    welcome: 'Bienvenue sur deskimo !'
+    welcome_to_deskimo: 'Bienvenue sur deskimo !'
 
 
 #DEVISE

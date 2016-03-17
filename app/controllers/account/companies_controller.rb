@@ -23,13 +23,14 @@ module Account
     end
 
     def edit
-      @company = Company.find(params[:id])
-      render 'new'
+      @company = current_user.company
+      render :new
     end
 
     def update
-      @company = Company.find(params[:id])
+      @company = current_user.company
       @company.update(company_params)
+      redirect_to account_company_desks_path(@company)
     end
 
     private

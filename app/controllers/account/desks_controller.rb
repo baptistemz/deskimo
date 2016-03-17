@@ -1,12 +1,13 @@
 module Account
   class DesksController < Account::Base
+
+    before_action :set_company
+
     def new
-      @company = Company.find(params[:company_id])
       @desk = @company.desks.build
     end
 
     def create
-      @company = Company.find(params[:company_id])
       @desk = @company.desks.build(desk_params)
       unless @desk.kind == "open_space"
         @desk.number = @company.desks.where(kind: @desk.kind).length + 1
@@ -24,8 +25,7 @@ module Account
     end
 
     def index
-      @desk = Desk.new
-      @company = Company.find(params[:company_id])
+      @desk = @company.desks.build
       @open_space = @company.desks.where(kind: :open_space)
       @closed_office = @company.desks.where(kind: :closed_office).order(:number)
       @meeting_room = @company.desks.where(kind: :meeting_room).order(:number)
@@ -34,14 +34,12 @@ module Account
     end
 
     def edit
-      @desk = Desk.find(params[:id])
-      @company = @desk.company
-      render 'new'
+      @desk = @company.desks.find(params[:id])
+      render :new
     end
 
     def update
-      @desk = Desk.find(params[:id])
-      @company = @desk.company
+      @desk = @company.desks.find(params[:id])
       unless @desk.kind == "open_space"
         @desk.capacity = @desk.quantity
         @desk.quantity = 1
@@ -57,7 +55,6 @@ module Account
 
     def destroy
       @desk = Desk.find(params[:id])
-      @company = @desk.company
       if @desk.destroy
         flash[:notice] = t('flashes.desk_deleted')
         redirect_to account_company_desks_path(@company)
@@ -68,6 +65,10 @@ module Account
     end
 
     private
+
+    def set_company
+      @company = current_user.company
+    end
 
     def desk_params
       params.require(:desk).permit( :kind,

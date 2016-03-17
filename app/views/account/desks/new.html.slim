@@ -16,7 +16,7 @@
             h5 = t('desk_creation.quantity')
           #desk_capacity_label.hidden
             h5 = t('desk_creation.desk_capacity')
-          = f.input :quantity, label:false, type: 'number', autofocus: true, placeholder:"Nombre de bureaux", input_html: {value: '1', min: '1'}
+          = f.input :quantity, label:false, type: 'number', autofocus: true, placeholder:"Nombre de bureaux", input_html: { value: f.object.quantity || '1', min: '1'}
         .form-group
           = f.input :description, label:false, required: true, autofocus: true, placeholder:"description", as: :text, :input_html => {:maxlength => 220}
         .form-group
@@ -30,7 +30,7 @@
         h4 = t('desk_creation.price_incl_tax')
         .form-group
           h5 #{t('desk_creation.price_half_day')} (€)
-          = f.input :half_day_price, label:false, required: true, autofocus: true, placeholder: false, input_html: {value: '1',min: '1'}
+          = f.input :half_day_price, label:false, type: 'number', required: true, autofocus: true, placeholder: false, input_html: {value: f.object.half_day_price_cents/100 || '1', min: '1'}
           br
           table
             tr
@@ -46,7 +46,7 @@
 
         .form-group
           h5 #{t('desk_creation.price_day')} (€)
-          = f.input :daily_price, label:false, required: true, autofocus: true, placeholder: false, input_html: {value: '1', min: '1'}
+          = f.input :daily_price, label:false, type: 'number', required: true, autofocus: true, placeholder: false, input_html: { value: f.object.daily_price_cents/100 || '1', min: '1'}
           br
           table
             tr.active
@@ -61,7 +61,7 @@
               td#daily_totalprice
         .form-group
           h5 #{t('desk_creation.price_week')} (€)
-          = f.input :weekly_price, label:false, required: true, autofocus: true, placeholder: false, input_html: {value: '1', min: '1'}
+          = f.input :weekly_price, label:false, type: 'number', required: true, autofocus: true, placeholder: false, input_html: { value: f.object.weekly_price_cents/100 || '1', min: '1'}
           br
           table
             tr

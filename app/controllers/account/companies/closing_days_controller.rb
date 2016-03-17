@@ -3,7 +3,7 @@ module Account
     class ClosingDaysController < Account::Base
       before_action :set_company
       def index
-        @closing_day = ClosingDay.new
+        @closing_day = @company.closing_days.build
         @closing_days = @company.closing_days
       end
 
@@ -43,7 +43,7 @@ module Account
       private
 
       def set_company
-        @company = Company.find(params[:company_id])
+        @company = current_user.company
       end
     end
   end

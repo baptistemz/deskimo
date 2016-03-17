@@ -33,7 +33,7 @@ module Account
       private
 
       def set_booking
-        @booking = Booking.find(params[:booking_id])
+        @booking =  Booking.joins(:desk).where(desks: { company_id: current_user.company.id }).find(params[:booking_id])
       end
     end
   end

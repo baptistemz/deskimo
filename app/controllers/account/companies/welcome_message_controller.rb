@@ -25,12 +25,13 @@ module Account
       def update
         @welcome_message = @company.welcome_message
         @welcome_message.update(welcome_message_params)
+        redirect_to account_company_desks_path(@company)
       end
 
       private
 
       def set_company
-        @company = Company.find(params[:company_id])
+        @company = current_user.company
       end
 
       def welcome_message_params

@@ -23,6 +23,7 @@ class UserMailer < ApplicationMailer
     @user = @booking.user
     @desk = @booking.desk
     @company = @desk.company
+    @welcome_message = @company.welcome_message
     mail to: @user.email, subject: 'Réservation confirmée par ' + @company.name
   end
 

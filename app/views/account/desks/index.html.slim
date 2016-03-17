@@ -55,44 +55,44 @@
             i.fa.fa-pencil = t('dashboard.edit_company')
       hr.style-company
 
-      h4.company-section-title.center Informations de bienvue
+      h4.company-section-title.center = t('dashboard.welcome_information')
       -if @company.welcome_message
         #services-list-show
-          p Votre message de bienvenue contient :
+          p = t('dashboard.your_message_contains')
           .service-box
             - if @company.welcome_message.message.blank?
               i.fa.fa-times.red
-              p bienvenue
+              p = t('welcome')
             - else
               i.fa.fa-check.green
-              p bienvenue
+              p = t('welcome')
           .service-box
             - if @company.welcome_message.wifi_password.blank?
               i.fa.fa-times.red
-              p wifi password
+              p = t('wifi_password')
             - else
               i.fa.fa-check.green
-              p wifi password
+              p = t('wifi_password')
           .service-box
             - if @company.welcome_message.access_information.blank?
               i.fa.fa-times.red
-              p access info
+              p = t('access_info')
             - else
               i.fa.fa-check.green
-              p access info
+              p = t('access_info')
         .row
           .center.padded
             = link_to edit_account_company_welcome_message_path(@company)
               .btn.qty-update-btn
                 i.fa.fa-envelope-o
-                |  Modifier le message
+                |  #{t('dashboard.create_message')}
       -else
         .row
           .center.padded
             = link_to new_account_company_welcome_message_path(@company)
               .btn.qty-update-btn
                 i.fa.fa-envelope-o
-                |  Créer le message
+                |  #{t('dashboard.edit_message')}
 
   br
   h3.center Desks

@@ -14,14 +14,14 @@ class CompanyMailer < ApplicationMailer
     mail to: @company.user.email, subject: "Réservation - " + @desk.kind + " n°" + @desk.number.to_s
   end
 
-  def confirmed_booking(booking)
-    @booking = booking
-    @client = @booking.user
-    @desk = @booking.desk
-    @company = @desk.company
-    @user = @company.user
-    mail to: @company.user.email, subject: "Réservation confirmée- " + @desk.kind + " n°" + @desk.number.to_s
-  end
+  # def confirmed_booking(booking)
+  #   @booking = booking
+  #   @client = @booking.user
+  #   @desk = @booking.desk
+  #   @company = @desk.company
+  #   @user = @company.user
+  #   mail to: @company.user.email, subject: "Réservation confirmée- " + @desk.kind + " n°" + @desk.number.to_s
+  # end
 
   def canceled_booking(booking)
     @booking = booking

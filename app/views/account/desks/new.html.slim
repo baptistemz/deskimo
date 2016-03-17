@@ -7,13 +7,16 @@
       = simple_form_for [:account, @company, @desk] do |f|
         .form-group
           h5 = t('desk_creation.which_kind')
-          = f.input :kind, label: false, include_blank: false
+          - if @desk.id
+            p.blue= @desk.kind
+          -else
+            = f.input :kind, label: false, include_blank: false
         .form-group
           #desk_quantity_label
             h5 = t('desk_creation.quantity')
           #desk_capacity_label.hidden
-            h5 = t('desk_creation.capacity')
-          = f.input :quantity, label:false, type: 'number', autofocus: true, placeholder:"Nombre de bureaux", input_html: {value: '1', min: '1'}
+            h5 = t('desk_creation.desk_capacity')
+          = f.input :quantity, label:false, type: 'number', autofocus: true, placeholder:"Nombre de bureaux", input_html: { value: f.object.quantity || '1', min: '1'}
         .form-group
           = f.input :description, label:false, required: true, autofocus: true, placeholder:"description", as: :text, :input_html => {:maxlength => 220}
         .form-group
@@ -27,12 +30,12 @@
         h4 = t('desk_creation.price_incl_tax')
         .form-group
           h5 #{t('desk_creation.price_half_day')} (€)
-          = f.input :half_day_price, label:false, required: true, autofocus: true, placeholder: false, input_html: {value: '1',min: '1'}
+          = f.input :half_day_price, label:false, type: 'number', required: true, autofocus: true, placeholder: false, input_html: {value: f.object.half_day_price_cents/100 || '1', min: '1'}
           br
           table
             tr
               th #{t('desk_creation.you')} (#{Settings.price_share.company * 100}%)
-              th nomad office (#{Settings.price_share.nomad_office * 100}%)
+              th deskimo (#{Settings.price_share.deskimo * 100}%)
               th.danger #{t('desk_creation.vat')}
               th.primary #{t('desk_creation.total_price')}
             tr
@@ -43,12 +46,12 @@
 
         .form-group
           h5 #{t('desk_creation.price_day')} (€)
-          = f.input :daily_price, label:false, required: true, autofocus: true, placeholder: false, input_html: {value: '1', min: '1'}
+          = f.input :daily_price, label:false, type: 'number', required: true, autofocus: true, placeholder: false, input_html: { value: f.object.daily_price_cents/100 || '1', min: '1'}
           br
           table
             tr.active
               th #{t('desk_creation.you')} (#{Settings.price_share.company * 100}%)
-              th nomad office (#{Settings.price_share.nomad_office * 100}%)
+              th deskimo (#{Settings.price_share.deskimo * 100}%)
               th #{t('desk_creation.vat')}
               th.primary #{t('desk_creation.total_price')}
             tr.active
@@ -58,12 +61,12 @@
               td#daily_totalprice
         .form-group
           h5 #{t('desk_creation.price_week')} (€)
-          = f.input :weekly_price, label:false, required: true, autofocus: true, placeholder: false, input_html: {value: '1', min: '1'}
+          = f.input :weekly_price, label:false, type: 'number', required: true, autofocus: true, placeholder: false, input_html: { value: f.object.weekly_price_cents/100 || '1', min: '1'}
           br
           table
             tr
               th #{t('desk_creation.you')} (#{Settings.price_share.company * 100}%)
-              th nomad office (#{Settings.price_share.nomad_office * 100}%)
+              th deskimo (#{Settings.price_share.deskimo * 100}%)
               th #{t('desk_creation.vat')}
               th.primary #{t('desk_creation.total_price')}
             tr

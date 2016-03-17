@@ -3,7 +3,7 @@ module Account
     before_action :set_company_desk_and_ranges
 
     def index
-      @company = @desk.company
+      @unavailability_range = @desk.unavailability_ranges.build
       # @unavailability_range = @desk.unavailability_ranges.build
       # @unavailability_ranges = @desk.unavailability_ranges.where(kind: 'planned')$
     end
@@ -34,12 +34,10 @@ module Account
     private
 
     def set_company_desk_and_ranges
-      @desk = Desk.find(params[:desk_id])
-      @company = @desk.company
-
+      @company = current_user.company
+      @desk = @company.desks.find(params[:desk_id])
       @ranges = @desk.unavailability_ranges.where(kind: 'planned').group(:start_date, :end_date).count
       # @ranges = @desk.unavailability_ranges.where(kind: 'planned').select(:id,:start_date,:end_date).group(:id,:start_date,:end_date)
-      @unavailability_range = @desk.unavailability_ranges.build
     end
   end
 end

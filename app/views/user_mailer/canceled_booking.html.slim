@@ -1,0 +1,13 @@
+- if @user.first_name?
+  p #{t('mailer.hello')} #{@user.first_name},
+-else
+  p #{t('mailer.hello')},
+br
+p Nous sommes désolés de vous annoncer que votre réservation a été annulée par #{@company.name}.
+p Un remboursement total de la réservation (#{@booking.amount} €), vous a été adressé. Votre compte peut mettre quelques jours à se recréditer.
+p Nous vous proposons #{link_to 'ces autres workplaces', companies_url( lat: @company.latitude, lng: @company.longitude)} situées autour de #{@company.name}.
+p Nous travaillons à ce que les annulations de ce type ne se reproduisent plus sur notre plateforme et nous excusons encore pour le désagrément.
+p merci de votre compréhension,
+br
+p L'équipe deskimo
+

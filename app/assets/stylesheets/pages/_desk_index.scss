@@ -68,8 +68,6 @@ p.company{
   justify-content: space-around
 }
 
-
-
 .nav-tabs.nav-justified > li > a {
   padding: 10px 6px;
   color: $dark-blue;
@@ -96,7 +94,7 @@ p.company{
 
 
 .tab-pane.active {
-  color: $dark-blue;
+  // color: $dark-blue;
 }
 
 #booking_start_date_time {

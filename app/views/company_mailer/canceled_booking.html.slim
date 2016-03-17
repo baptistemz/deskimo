@@ -1,0 +1,15 @@
+- if @user.first_name?
+  p #{t('mailer.hello')} #{@user.first_name},
+-else
+  p #{t('mailer.hello')},
+br
+p Vous avez annulé une réservation de bureau passée sur deskimo.
+p Nous vous rappelons que l'annulation trop fréquente de réservations peut mener au banissement de votre entreprise sur deskimo.
+p Nous travaillons à ce que deskimo se connecte avec vos outils de gestion de salles pour que vous n'ayez plus à vous soucier de la disponibilité d'une salle avant de la proposer sur deskimo.
+p D'ici à ce que cette nouvelle fonctionnalité sorte nous vous demandons de prévoir :
+ul
+  li #{link_to "les périodes d'insponibilité de vos bureaux", account_company_desk_unavailability_ranges_url(@company, @desk, locale: I18n.locale.to_s)}
+  li #{link_to "les jours de fermeture exceptionnels de l'entreprise", account_company_closing_days_url(@company, locale: I18n.locale.to_s)}
+p Merci de votre compréhension
+br
+p L'équipe deskimo

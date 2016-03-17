@@ -3,8 +3,8 @@ module Account
     class ClosingDaysController < Account::Base
       before_action :set_company
       def index
-        @closing_day = ClosingDay.new
-        @closing_days = @company.closing_days
+        @closing_day = @company.closing_days.build
+        @closing_days = @company.closing_days.where("closing_days.date IS NOT NULL")
       end
 
       def create
@@ -43,7 +43,7 @@ module Account
       private
 
       def set_company
-        @company = Company.find(params[:company_id])
+        @company = current_user.company
       end
     end
   end

@@ -5,18 +5,20 @@
       .profile-resume
         .row
           .col-xs-6.col-sm-4
-            h4.company-section-title = t('account.email')
-            = @user.email
-            h4.company-section-title =t('account.first_name')
-            - if @user.first_name
-              p = @user.first_name
-            - else
-              p =t('account.no_first_name')
-            h4.company-section-title =t('account.last_name')
-            - if @user.last_name
-              p = @user.last_name
-            - else
-              p =t('account.no_last_name')
+            .user-avatar-left
+              .user-avatar-content
+                h4.company-section-title = t('account.email')
+                = @user.email
+                h4.company-section-title =t('account.first_name')
+                - if @user.first_name
+                  p = @user.first_name
+                - else
+                  p =t('account.no_first_name')
+                h4.company-section-title =t('account.last_name')
+                - if @user.last_name
+                  p = @user.last_name
+                - else
+                  p =t('account.no_last_name')
           .col-xs-6.col-sm-4
             -if @user.avatar_file_name
               .avatar
@@ -67,7 +69,7 @@
                 = t('navbar.company_dashboard')
         -else
           br
-          p Vous n'êtes pas administrateur d'un compte entreprise. Si vous voulez enregistrer votre workplace sur nomad office et louer vos bureaux :
+          p Vous n'êtes pas administrateur d'un compte entreprise. Si vous voulez enregistrer votre workplace sur deskimo et louer vos bureaux :
           = link_to new_account_company_path
             p enregistrez votre entreprise
   .row

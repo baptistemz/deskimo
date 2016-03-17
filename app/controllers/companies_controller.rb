@@ -48,6 +48,7 @@ class CompaniesController < ApplicationController
       @empty_message = 'Aucun bureau disponible ne correspond à votre recherche'
     end
 
+
     @kinds = @companies.aggs["kinds"]["buckets"].map { |facet| facet["key"] }
 
     @hash = Gmaps4rails.build_markers(@companies) do |company, marker|

@@ -9,12 +9,13 @@ fr:
     en   : "Anglais"
   activerecord:
     models:
-      booking              : "Réservation"
-      company              : "Entreprise"
-      credit_card          : "Carte de crédit"
-      desk                 : "Bureau"
-      payment              : "Paiement"
-      unavailability_range : "Indisponibilité"
+      booking              : "réservation"
+      company              : "entreprise"
+      credit_card          : "carte de crédit"
+      desk                 : "bureau"
+      payment              : "paiement"
+      unavailability_range : "indisponibilité"
+      welcome_message      : "message de bienvenue"
     attributes:
       status: 'statut'
       created_at : "Créé le"
@@ -23,6 +24,12 @@ fr:
       coffee     : "café"
       printer    : "imprimante"
       scanner    : "scanner"
+      tv: "écran"
+      call_conference: "Call conférence"
+      desktop: "ordinateur"
+      projector: "projecteur"
+
+
 
 # PAGES
   home:
@@ -55,7 +62,7 @@ fr:
     opening_times  : "Horaires"
     price          : "Prix"
     availabilities : "Disponibilités"
-    booking        : "Reservation"
+    booking        : "Réservation"
     half_day       : "1/2 journée"
     day            : "journée"
     week           : "semaine"
@@ -63,6 +70,7 @@ fr:
     length: "Durée"
     from: "A partir du"
     additional_services: "Services liés"
+    no_desks_available: "Aucun bureau n'est disponible dans cette entreprise"
   company_creation:
     opening_days     : "Jours d'ouverture"
     morning          : "matin"
@@ -86,7 +94,8 @@ fr:
     you            : "Vous"
     vat            : "TVA"
     total_price    : "Prix total"
-    capacity       : "Capacité du bureau"
+    desk_capacity       : "Capacité du bureau"
+    capacity       : "Capacité"
   account:
     my_account    : "Mon compte"
     first_name    : "Prénom"
@@ -125,7 +134,7 @@ fr:
     itinerary                 : 'itinéraire'
     go_to                     : 'y aller'
     receipt                   : 'reçu'
-    booking_made              : "Reservation passée le"
+    booking_made              : "Réservation passée le"
     in_company: 'chez'
     date: "date"
     price_per: "Prix par"
@@ -135,17 +144,23 @@ fr:
     contact: 'contact'
     back_to_bookings: ' Retour à la liste des résérvations'
     plan_unavailabilities: ' prévoir des indisponibilités'
-    next_unavailabilities: 'Prochaines indisponibilités de vos'
+    next_unavailabilities: 'Prochaines indisponibilités de '
     add_unavailability: 'Ajouter une indisponibilité'
     planned_for: 'planinifée pour'
-
+    desk_destroy_message: "Voulez-vous vraiment supprimer ce bureau?"
+    booking_confirmed: "réservation confirmée"
+    booking_canceled: "réservation annulée"
+    welcome_information: 'Informations de bienvue'
+    your_message_contains: 'Votre message de bienvenue contient :'
+    create_message: 'créer le message'
+    edit_message: 'modifier le message'
   checkout:
-    time_expiry: "La page expiré, vous avez pris trop de temps à payer la reservation. Aucun paiement n'a été encaissé. Merci de recommencer"
+    time_expiry: "La page expiré, vous avez pris trop de temps à payer la réservation. Aucun paiement n'a été encaissé. Merci de recommencer"
     your_booking: 'Votre réservation'
     place: 'Chez'
     when: 'Quand?'
     le: 'Le'
-    no_name_message: '* Nous avons besoin de vous connaître un peu plus pour effectuer la reservation'
+    no_name_message: '* Nous avons besoin de vous connaître un peu plus pour effectuer la réservation'
 
 
 # Utilities
@@ -154,7 +169,7 @@ fr:
   invoice: "facture"
   and: 'et'
   ttc: 'TTC'
-  goodbye_message: 'Merci ! A bientôt sur nomadoffice.co !'
+  goodbye_message: 'Merci ! A bientôt sur deskimo !'
   feedback_message: "Pour toute info ou pour nous donner des avis, des retours n'hésitez pas à nous contacter"
   update: 'modifier'
   back: 'Retour'
@@ -168,6 +183,9 @@ fr:
   from_price: "à partir de"
   d_day: 'j'
   people: 'personnes'
+  welcome: 'bienvenue'
+  wifi_password: 'mot de passe wifi'
+  access_info: "informations d'accés"
 
   openings:
     from_day: 'du'
@@ -200,7 +218,7 @@ fr:
     cgu   : "CGU"
     about : "à propos"
   flashes:
-    booking_impossible: 'Reservation impossible'
+    booking_impossible: 'Réservation impossible'
     unavailable_desk: "Bureau indisponible à ces dates"
     company_not_registered: "Votre entreprise n'a pas pu être enregistrée"
     company_registered: "Votre entreprise a bien été enregistrée."
@@ -209,11 +227,17 @@ fr:
     closing_saved: 'Jour de fermeture enregistré'
     impossible_action: 'Action impossible'
     closing_deleted: 'Jour de fermeture supprimé'
+    desk_deleted: 'Le bureau a bien été supprimé'
+    desk_not_deleted: "Impossible de supprimer le bureau"
+    welcome_message_recorded: "Les informations de bienvenue ont bien été enregistrées"
+    welcome_message_not_recorded: "Les informations de bienvenue n'ont pas pu être enregistrées"
+  popups:
+    booking_cancelation_message: "Êtes-vous sur de vouloir annuler cette réservation ? (L'annulation fréquente de réservations dans votre entreprise est passible de bannissement)"
 
 #MAILER
   mailer:
     hello: 'Bonjour'
-    welcome: 'Bienvenue sur nomad office !'
+    welcome_to_deskimo: 'Bienvenue sur deskimo !'
 
 
 #DEVISE

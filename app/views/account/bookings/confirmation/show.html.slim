@@ -1,0 +1,63 @@
+.container
+  h1 #{t('dashboard.booking_made')} #{l(@booking.created_at.to_date)}
+  br
+  .row
+    .col-sm-6
+      =link_to company_desks_path(@company, :tab_selected => "#{@desk.kind}")
+        .limited-width-centered
+          = render partial: 'users/user_avatar', locals: {company: @company}
+    .col-sm-6
+      .booking-confirmation-details
+        .booking-confirmation-details-content
+          .booking-show-couple
+            h4.blue = t('activerecord.models.desk').capitalize
+            p = @desk.kind.text
+            - unless @desk.kind == 'open_space'
+              |, n°#{@desk.number}
+
+          .booking-show-couple
+            h4.blue = t('dashboard.date').capitalize
+            - if @booking.time_slot_type == "half_day" ||(@booking.time_slot_type == "day(s)" && @booking.time_slot_quantity == 1)
+              p #{l(@booking.start_date)}
+            -else
+              p #{t('openings.from_day')} #{l(@booking.start_date)} #{t('openings.to_day')} #{l(@booking.end_date)}
+          .booking-show-couple
+            h4.blue= t('show.length').capitalize
+            - if @booking.time_slot_type == "half_day"
+              p #{@booking.time_slot_type.text} - #{@booking.half_day_choice.text}
+            - elsif @booking.time_slot_type == "day(s)"
+              p #{@booking.time_slot_quantity} #{@booking.time_slot_type.text}
+            -else
+              p #{@booking.time_slot_quantity} #{@booking.time_slot_type.text}
+          .booking-show-couple
+            h4.blue= t('show.price').capitalize
+            p #{@booking.amount} € TTC
+          .booking-show-couple
+            h4.blue= t('activerecord.attributes.status').capitalize
+            p = @booking.status.text
+
+  br
+  .row
+    - if @booking.status == 'paid'
+      p.center Merci de confirmer ou annuler la réservation
+      .col-xs-6.col-sm-offset-2.col-sm-4
+        = link_to account_booking_confirmation_path(@booking), method: :create
+          .btn.btn-primary.green-btn
+            p confirmer
+      .col-xs-6.col-sm-4
+        = link_to account_booking_confirmation_path(@booking), data: { confirm: t('popups.booking_cancelation_message') }, method: :delete
+          .btn.btn-primary.red-btn
+            p annuler
+    - elsif @booking.status == 'confirmed'
+      .booking-band.gbg
+        p = t('dashboard.booking_confirmed')
+    - elsif @booking.status == 'canceled'
+      .booking-band.rbg
+        p = t('dashboard.booking_canceled')
+  .row
+    br
+    .center
+      =link_to account_bookings_path
+        i.fa.fa-list = t('dashboard.back_to_bookings')
+
+

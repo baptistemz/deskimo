@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160303092351) do
+ActiveRecord::Schema.define(version: 20160315161654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20160303092351) do
     t.integer  "amount_cents",       default: 0,     null: false
     t.json     "payment"
     t.boolean  "archived",           default: false
+    t.json     "refund"
   end
 
   add_index "bookings", ["desk_id"], name: "index_bookings_on_desk_id", using: :btree
@@ -159,6 +160,7 @@ ActiveRecord::Schema.define(version: 20160303092351) do
     t.datetime "updated_at", null: false
     t.json     "payment"
     t.integer  "user_id"
+    t.json     "refund"
   end
 
   add_index "invoices", ["booking_id"], name: "index_invoices_on_booking_id", using: :btree
@@ -220,6 +222,19 @@ ActiveRecord::Schema.define(version: 20160303092351) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "welcome_messages", force: :cascade do |t|
+    t.text     "message"
+    t.string   "wifi_name"
+    t.string   "wifi_password"
+    t.integer  "company_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.text     "access_information"
+    t.text     "additional_information"
+  end
+
+  add_index "welcome_messages", ["company_id"], name: "index_welcome_messages_on_company_id", using: :btree
+
   add_foreign_key "bookings", "desks"
   add_foreign_key "bookings", "users"
   add_foreign_key "closing_days", "companies"
@@ -229,4 +244,5 @@ ActiveRecord::Schema.define(version: 20160303092351) do
   add_foreign_key "invoices", "users"
   add_foreign_key "unavailability_ranges", "bookings"
   add_foreign_key "unavailability_ranges", "desks"
+  add_foreign_key "welcome_messages", "companies"
 end

@@ -24,8 +24,6 @@
         h4.blue= t('show.length').capitalize
         - if @booking.time_slot_type == "half_day"
           p #{@booking.time_slot_type.text} - #{@booking.half_day_choice.text}
-        - elsif @booking.time_slot_type == "day(s)"
-          p #{@booking.time_slot_quantity} #{@booking.time_slot_type.text}
         -else
           p #{@booking.time_slot_quantity} #{@booking.time_slot_type.text}
       .booking-show-couple

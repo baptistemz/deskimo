@@ -12,9 +12,9 @@ fr:
         week(s): 'semaine(s)'
       status:
         pending: 'En attente'
-        paid: 'Payé'
-        confirmed: 'Confirmé'
-        canceled: 'Annulé'
+        paid: 'Payée'
+        confirmed: 'Confirmée'
+        canceled: 'Annulée'
       half_day_choice:
         am: 'matin'
         pm: 'après-midi'

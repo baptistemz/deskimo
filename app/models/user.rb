@@ -4,9 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
-  has_many :bookings
+  has_many :bookings, dependent: :nullify
   has_one :credit_card, dependent: :destroy
-  has_one :company, :dependent => :destroy
+  has_one :company, :dependent => :nullify
   has_many :inbound_payments, class_name: 'Payment', foreign_key: :receiver_id
   has_many :outbound_payments, class_name: 'Payment', foreign_key: :payer_id
   validates_presence_of :first_name, :last_name, :on => :update
@@ -17,7 +17,6 @@ class User < ActiveRecord::Base
     content_type: /\Aimage\/.*\z/
 
   after_create :send_welcome_email
-
 
 
   def self.find_for_facebook_oauth(auth)
@@ -85,7 +84,7 @@ class User < ActiveRecord::Base
   #   self.update_mangopay_profile
   #   params = {
   #     "Owners" => ["#{self.mangopay_user_id}"],
-  #     "Description" => "nomadoffice Wallet #{self.email}",
+  #     "Description" => "deskimo Wallet #{self.email}",
   #     "Currency" => "EUR"
   #   }
 

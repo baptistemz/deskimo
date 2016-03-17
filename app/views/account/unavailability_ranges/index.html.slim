@@ -1,11 +1,11 @@
 .container
   h1
     - if @desk.kind == "closed_office"
-      '#{t('dashboard.next_unavailabilities')} #{t('dashboard.closed_offices')}
+      '#{t('dashboard.next_unavailabilities')} #{t('dashboard.closed_offices')} n°#{@desk.number}
     - elsif @desk.kind == "open_space"
       '#{t('dashboard.next_unavailabilities')} #{t('dashboard.open_space_desks')}
     - else
-      '#{t('dashboard.next_unavailabilities')} #{t('dashboard.meeting_rooms')}
+      '#{t('dashboard.next_unavailabilities')} #{t('dashboard.meeting_rooms')} n°#{@desk.number}
   BR
   .row
     .col-md-5

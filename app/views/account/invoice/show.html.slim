@@ -11,10 +11,10 @@
       BR
       h1.text-center= t('invoice').capitalize
       .text-right
-        p nomadoffice.co
+        p deskimo
         p 24, rue Albert Prouvost
         p 59700 Marcq-en-Baroeul, France
-        p = mail_to('contact@nomadoffice.co')
+        p = mail_to('contact@deskimo.co')
       .text-left
         p #{@user.first_name} #{@user.last_name}
         p #{@user.email}
@@ -50,6 +50,6 @@
     hr
     p.center= t('goodbye_message')
     hr
-    p.center #{t('feedback_message')}: #{mail_to('contact@nomadoffice.co')}
+    p.center #{t('feedback_message')}: #{mail_to('contact@deskimo.co')}
     BR
-    p.text-right &copy; nomadoffice.co
+    p.text-right &copy; deskimo

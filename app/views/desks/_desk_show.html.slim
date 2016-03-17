@@ -5,19 +5,19 @@ br
     - if desk.call_conference
       .service-box
         = image_tag 'call_service.png'
-        p Call conf.
+        p= t('activerecord.attributes.call_conference')
     - if desk.desktop
       .service-box
         = image_tag 'desktop_service.png'
-        p desktop
-    - if desk.projector && (desk.call_conference = false || desk.tv = false || desk.desktop = false)
-      .service-box
-        = image_tag 'projector_service.png'
-        p projector
+        p= t('activerecord.attributes.desktop')
     - if desk.tv
       .service-box
         = image_tag 'tv_service.png'
-        p TV
+        p= t('activerecord.attributes.tv')
+    - if desk.projector && (desk.call_conference != true || desk.tv != true || desk.desktop != true)
+      .service-box
+        = image_tag 'projector_service.png'
+        p= t('activerecord.attributes.projector')
   hr.style-company
 h4.company-section-title = t('show.description')
 p.company = desk.description

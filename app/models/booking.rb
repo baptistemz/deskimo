@@ -5,7 +5,7 @@ class Booking < ActiveRecord::Base
   belongs_to :desk
   belongs_to :user
   has_one :unavailability_range, dependent: :destroy
-  has_one :invoice, dependent: :destroy
+  has_one :invoice, dependent: :nullify
 
   validates_presence_of :time_slot_type, :time_slot_quantity, :desk_id, :user_id, :start_date
   validate  :user_cannot_be_from_the_company
@@ -17,7 +17,7 @@ class Booking < ActiveRecord::Base
   enumerize :half_day_choice, in: [:am, :pm]
   enumerize :status, in: ["pending", "paid", "confirmed", "canceled"], default: "pending"
 
-  after_update :send_booking_emails
+  after_update :booking_status_management
 
   def set_amount_and_dates
     next_available_days = self.desk.get_next_available_days_array
@@ -34,7 +34,6 @@ class Booking < ActiveRecord::Base
     end
   end
 
-
   private
 
   def user_cannot_be_from_the_company
@@ -46,17 +45,20 @@ class Booking < ActiveRecord::Base
     if start_date == end_date
       errors.add(:start_date, "Ce bureau n'est plus disponible à cette date") unless
         desk.get_next_available_days_array.include?(start_date)
-
     else
       errors.add(:start_date, "Ce bureau n'est plus disponible à ces dates") unless
         [start_date, end_date] & desk.get_next_available_days_array == [start_date, end_date]
     end
   end
 
+  def booking_status_management
+    send_booking_emails
+  end
+
   def send_booking_emails
-    if self.status == 'paid'
-      CompanyMailer.booking_recorded(self).deliver_later
-      UserMailer.booking_confirmation(self).deliver_later
+    unless self.status == :confirmed
+      CompanyMailer.send("#{self.status}_booking", self).deliver_later
     end
+    UserMailer.send("#{self.status}_booking", self).deliver_later
   end
 end

@@ -1,4 +1,5 @@
 .dashboard-desk-thumbnail.active-desk
+  = link_to '',account_company_desk_path(company, desk), method: :delete,data: {confirm: t("dashboard.desk_destroy_message")}, class: 'fa fa-trash delete-button'
   p.green =t('dashboard.activated')
   h3.same-height
     - if desk.kind == "open_space"
@@ -18,30 +19,29 @@
             i.fa.fa-plus
         = f.submit t('dashboard.change_quantity'), class: 'btn qty-update-btn'
   -else
-
     .booking-show-couple
-      p.blue.no-margin-top #{t('desk_creation.capacity')} :
-      p #{desk.capacity} #{t('people')}
+      p.blue.no-margin-top #{t('desk_creation.capacity')}:
+      p.margin-left  #{desk.capacity} #{t('people')}
 
   hr
-  p = desk.description
+  = desk.description
   #services-list-show
     - if desk.call_conference
       .service-box
         = image_tag 'call_service.png'
-        p Call conf.
+        p = t('activerecord.attributes.call_conference')
     - if desk.desktop
       .service-box
         = image_tag 'desktop_service.png'
-        p desktop
+        p = t('activerecord.attributes.desktop')
     - if desk.tv
       .service-box
         = image_tag 'tv_service.png'
-        p TV
+        p = t('activerecord.attributes.tv')
     - if desk.projector && (desk.call_conference != true || desk.tv != true || desk.desktop != true)
       .service-box
         = image_tag 'projector_service.png'
-        p projector
+        p = t('activerecord.attributes.projector')
   hr
   h4.company-section-title = t('show.price')
   .prices-list

@@ -1,4 +1,5 @@
 .dashboard-desk-thumbnail {
+  position: relative;
   height:690px;
   overflow: hidden;
   padding: 50px;
@@ -21,15 +22,16 @@
   &.inactive-desk {
     border: 1px solid $red;
   }
-  &.add-desk {
+}
+.add-desk {
     border: 1px solid $dark-blue;
     background-color: $gray-light;
     display:flex;
     justify-content:center;
     align-items:center;
-    position: relative
+    position: relative;
+    padding: 20px;
   }
-}
 
 
 .unavailability-wrap {
@@ -54,16 +56,6 @@
   text-align: center;
 }
 
-.thumbnail-bottom {
-  position: absolute;
-  bottom: 20px;
-  left: -20px;
-  width: 100%;
-  text-align: center;
-  list-style: none;
-  font-size: 16px;
-}
-
 .forteen-px{
   font-size: 16px;
   margin-top: 2px;
@@ -85,3 +77,42 @@
     display: inline-block;
   }
 }
+
+.delete-button {
+  position: absolute;
+  font-size: 26px;
+  right: 10px;
+  top : 10px
+}
+
+.booking-band{
+  width: 100%;
+  height: 80px;
+  font-color: white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  & p {
+    margin-top: 11px;
+    text-align: center;
+    line-height: 6px;
+    color:white;
+    z-index: 20px
+  }
+}
+
+.gbg{
+  background-color: $green
+}
+.rbg{
+  background-color: $red
+}
+.booking-confirmation-details{
+  height: 300px;
+  display:flex;
+  align-items:center;
+}
+// &-canceled{
+//   background-color: $red
+// }
+// }

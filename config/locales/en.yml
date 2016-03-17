@@ -8,12 +8,13 @@ en:
     en   : "English"
   activerecord:
     models:
-      booking              : "Booking"
-      company              : "Company"
-      credit_card          : "Credit card"
-      desk                 : "Desk"
-      payment              : "Payment"
-      unavailability_range : "Unavailability"
+      booking              : "booking"
+      company              : "company"
+      credit_card          : "credit card"
+      desk                 : "desk"
+      payment              : "payment"
+      unavailability_range : "unavailability"
+      welcome_message      : "welcome message"
     attributes:
       status: 'status'
       created_at : "created at"
@@ -22,6 +23,10 @@ en:
       coffee     : "coffee"
       printer    : "printer"
       scanner    : "scanner"
+      tv: "écran"
+      call_conference: "Call conférence"
+      desktop: "ordinateur"
+      projector: "projecteur"
 
 # PAGES
   home:
@@ -62,6 +67,7 @@ en:
     length         : "Length"
     from           : "From"
     additional_services: "Included services"
+    no_desks_available: "No desk available in this company"
   company_creation:
     opening_days     : "Opening days"
     morning          : "morning"
@@ -85,7 +91,8 @@ en:
     you            : "You"
     vat            : "VAT"
     total_price    : "Total price"
-    capacity       : "Capacity of the desk"
+    desk_capacity       : "Capacity of the desk"
+    capacity       : "Capacity"
   account:
     my_account    : "My account"
     first_name    : "First name"
@@ -133,9 +140,16 @@ en:
     contact: 'contact'
     back_to_bookings: ' Back to your bookings list'
     plan_unavailabilities: " plan unavailabilities"
-    next_unavailabilities: 'Next unavailabilities for your'
+    next_unavailabilities: 'Next unavailabilities for '
     add_unavailability: 'Add unavailability'
     planned_for: 'planned for'
+    desk_destroy_message: "Do you really want to delete this desk?"
+    booking_confirmed: "booking confirmed"
+    booking_canceled: "booking canceled"
+    welcome_information: 'Welcome information'
+    your_message_contains: 'Your welcome message contains :'
+    create_message: 'create message'
+    edit_message: 'edit message'
   checkout:
     time_expiry: "Page expiry. You spent to much time to pay your booking. You haven't been charged on anything. Please try again"
     your_booking: 'Your booking'
@@ -151,7 +165,7 @@ en:
   invoice: "invoice"
   and: 'and'
   ttc: 'All taxes inc'
-  goodbye_message: 'Thank you ! See you soon on nomadoffice.co !'
+  goodbye_message: 'Thank you ! See you soon on deskimo !'
   feedback_message: "For any piece of information or to give feedback don't hesitate to contact us"
   update: 'update'
   back: 'Back'
@@ -165,6 +179,9 @@ en:
   from_price: "from"
   d_day: 'd'
   people: 'people'
+  welcome: 'welcome'
+  wifi_password: 'wifi password'
+  access_info: "access information"
 
   openings:
     from_day: 'from'
@@ -205,8 +222,14 @@ en:
     closing_saved: 'Closing day successfully saved'
     impossible_action: 'A problem occured'
     closing_deleted: 'Closing day successfully deleted'
+    desk_deleted: 'Desk successfully deleted'
+    desk_not_deleted: "Couldn't delete the desk"
+    welcome_message_recorded: "The welcome informations have been saved"
+    welcome_message_not_recorded: "The welcome informations could not be saved"
+  popups:
+    booking_cancelation_message: 'Are you sure you want to cancel this booking ? (Recurrent cancellations can result in a banishment)'
 
 #MAILER
   mailer:
     hello   : 'Hi'
-    welcome : "Welcome to nomad office !"
+    welcome_to_deskimo : "Welcome to deskimo !"

@@ -1,80 +1,94 @@
 .container
   - if current_user.company
     h2.center Réservations de bureaux dans votre entreprise
+    -if @desks
+      - @desks.each do |desk|
+        - if desk.bookings.where(archived: false).any?
+          - if desk.kind == "open_space"
+            h4.company-section-title #{desk.kind.text}
+          - else
+            h4.company-section-title #{desk.kind.text} n°#{desk.number}
+          = render partial: 'booking_table', locals: {desk: desk, bookings: desk.bookings.where(archived: false)}
 
-    - if @open_space && @open_space_bookings.any?
-      h4.company-section-title = t('enumerize.desk.kind.open_space')
-      table
-        tr
-          th Visiteur
-          th Durée
-          th Dates
-          th Montant
-          th Statut
-        - @open_space_bookings.each do |booking|
-          tr
-            td #{booking.user.first_name} #{booking.user.last_name}
-            - if booking.time_slot_type == "half_day"
-              td #{booking.time_slot_type} - #{booking.half_day_choice}
-            - else
-              td #{booking.time_slot_quantity} #{booking.time_slot_type}
-            - if booking.start_date == booking.end_date
-              td #{l(booking.start_date)}
-            - else
-              td #{l(booking.start_date)} - #{l(booking.end_date)}
-            td #{booking.amount} €
-            td = booking.status
-      br
-    - if @closed_office && @closed_office_bookings.any?
-      h4.company-section-title = t('enumerize.desk.kind.closed_office')
-      table
-        tr
-          th Visiteur
-          th Durée
-          th Dates
-          th Montant
-          th Statut
-        - @closed_office_bookings.each do |booking|
-          tr
-            td #{booking.user.first_name} #{booking.user.last_name}
-            - if booking.time_slot_type == "half_day"
-              td #{booking.time_slot_type} - #{booking.half_day_choice}
-            - else
-              td #{booking.time_slot_quantity} #{booking.time_slot_type}
-            - if booking.start_date == booking.end_date
-              td #{l(booking.start_date)}
-            - else
-              td #{l(booking.start_date)} - #{l(booking.end_date)}
-            td #{booking.amount} €
-            td = booking.status
-      br
-    - if @meeting_room && @meeting_room_bookings.any?
-      h4.company-section-title = t('enumerize.desk.kind.meeting_room')
-      table
-        tr
-          th Visiteur
-          th Durée
-          th Dates
-          th Montant
-          th Statut
-        - @meeting_room_bookings.each do |booking|
-          tr
-            td #{booking.user.first_name} #{booking.user.last_name}
-            - if booking.time_slot_type == "half_day"
-              td #{booking.time_slot_type} - #{booking.half_day_choice}
-            - else
-              td #{booking.time_slot_quantity} #{booking.time_slot_type}
-            - if booking.start_date == booking.end_date
-              td #{l(booking.start_date)}
-            - else
-              td #{l(booking.start_date)} - #{l(booking.end_date)}
-            td #{booking.amount} €
-            td = booking.status
-    - if @open_space_bookings || @closed_office_bookings || @meeting_room_bookings
-      p Aucune reservation enregistrée pour l'instant dans votre entreprise
-    .center.padded
-        / p.red Reservations Archivées >>
-        = link_to t('navbar.company_dashboard'), account_company_desks_path(current_user.company), class: "fa fa-dashboard"
+    / - if @open_space && @open_space_bookings.any?
+    /   h4.company-section-title = t('enumerize.desk.kind.open_space')
+    /   table
+    /     tr
+    /       th Visiteur
+    /       th= t('dashboard.date').capitalize
+    /       th Montant
+    /       th= t('index.details').capitalize
+    /     - @open_space_bookings.each do |booking|
+    /       tr
+    /         td #{booking.user.first_name} #{booking.user.last_name}
+    /         - if booking.time_slot_type == "half_day"
+    /           td #{booking.time_slot_type} - #{booking.half_day_choice}
+    /         - else
+    /           td #{booking.time_slot_quantity} #{booking.time_slot_type}
+    /         - if booking.start_date == booking.end_date
+    /           td #{l(booking.start_date)}
+    /         - else
+    /           td #{l(booking.start_date)} - #{l(booking.end_date)}
+    /         td #{booking.amount} €
+    /         td
+    /           =link_to account_booking_path(booking)
+    /             .booking-details
+    /               i.fa.fa-info-circle
+    /   br
+    / - if @closed_office && @closed_office_bookings.any?
+    /   h4.company-section-title = t('enumerize.desk.kind.closed_office')
+    /   table
+    /     tr
+    /       th Visiteur
+    /       th= t('dashboard.date').capitalize
+    /       th Montant
+    /       th= t('index.details').capitalize
+    /     - @closed_office_bookings.each do |booking|
+    /       tr
+    /         td #{booking.user.first_name} #{booking.user.last_name}
+    /         - if booking.time_slot_type == "half_day"
+    /           td #{booking.time_slot_type} - #{booking.half_day_choice}
+    /         - else
+    /           td #{booking.time_slot_quantity} #{booking.time_slot_type}
+    /         - if booking.start_date == booking.end_date
+    /           td #{l(booking.start_date)}
+    /         - else
+    /           td #{l(booking.start_date)} - #{l(booking.end_date)}
+    /         td #{booking.amount} €
+    /         td
+    /           =link_to account_booking_path(booking)
+    /             .booking-details
+    /               i.fa.fa-info-circle
+    /   br
+    / - if @meeting_room && @meeting_room_bookings.any?
+    /   h4.company-section-title = t('enumerize.desk.kind.meeting_room')
+    /   table
+    /     tr
+    /       th Visiteur
+    /       th= t('dashboard.date').capitalize
+    /       th Montant
+    /       th= t('index.details').capitalize
+    /     - @meeting_room_bookings.each do |booking|
+    /       tr
+    /         td #{booking.user.first_name} #{booking.user.last_name}
+    /         - if booking.time_slot_type == "half_day"
+    /           td #{booking.time_slot_type} - #{booking.half_day_choice}
+    /         - else
+    /           td #{booking.time_slot_quantity} #{booking.time_slot_type}
+    /         - if booking.start_date == booking.end_date
+    /           td #{l(booking.start_date)}
+    /         - else
+    /           td #{l(booking.start_date)} - #{l(booking.end_date)}
+    /         td #{booking.amount} €
+    /         td
+    /           =link_to account_booking_path(booking)
+    /             .booking-details
+    /               i.fa.fa-info-circle
+    / - if @open_space_bookings || @closed_office_bookings || @meeting_room_bookings
+    /   p Aucune reservation enregistrée pour l'instant dans votre entreprise
+    / .center.padded
+    /     / p.red Reservations Archivées >>
+    /     = link_to t('navbar.company_dashboard'), account_company_desks_path(current_user.company), class: "fa fa-dashboard"
     hr
   h2.center Vos réservations de bureaux
   - if @user_bookings.any?

@@ -4,7 +4,7 @@ class Desk < ActiveRecord::Base
 
 
   belongs_to :company
-  has_many :bookings
+  has_many :bookings, dependent: :nullify
 
   has_many :unavailability_ranges, dependent: :destroy
 
@@ -13,8 +13,8 @@ class Desk < ActiveRecord::Base
 
   monetize :hour_price_cents, :half_day_price_cents, :daily_price_cents, :weekly_price_cents
   enumerize :kind, in: [:open_space, :closed_office, :meeting_room], default: :open_space
-  validate  :one_open_space_maximum
-  validate  :three_desks_of_each_kind_maximum
+  validate  :one_open_space_maximum, on: :create
+  validate  :six_desks_of_each_kind_maximum
   validates_uniqueness_of :number, scope: [:company_id, :kind]
   after_commit :reindex_company
   after_create :update_company_cheapest_price
@@ -38,13 +38,13 @@ class Desk < ActiveRecord::Base
       company.desks.where(kind: "open_space").any? && kind == "open_space"
   end
 
-  def three_desks_of_each_kind_maximum
+  def six_desks_of_each_kind_maximum
     if id
-      if company.desks.where(kind: kind).length >= 4
+      if company.desks.where(kind: kind).length >= 7
         errors.add(:kind, "Vous avez déjà atteint le maximum de bureaux de ce type (3)")
       end
     else
-      if company.desks.where(kind: kind).length >= 3
+      if company.desks.where(kind: kind).length >= 6
         errors.add(:kind, "Vous avez déjà atteint le maximum de bureaux de ce type (3)")
       end
     end

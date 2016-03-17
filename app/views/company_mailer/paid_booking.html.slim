@@ -1,0 +1,22 @@
+- if @user.first_name?
+  p #{t('mailer.hello')} #{@user.first_name},
+-else
+  p #{t('mailer.hello')},
+p Une réservation de bureaux a été enregistrée chez #{@company.name} sur deskimo
+p Voici les détails de réservation:
+ul
+  li Visiteur : #{link_to "#{@client.first_name} #{@client.last_name}", account_booking_confirmation_url(@booking, locale: I18n.locale.to_s)}
+  li Bureaux : #{@desk.kind.text} chez #{@company.name}
+  li Durée : #{t@booking.time_slot_quantity} #{@booking.time_slot_type.text}
+  - if @booking.start_date == @booking.end_date
+    li Date: #{l(@booking.start_date)}
+  - else
+    li Dates: du #{l(@booking.start_date)} au #{l(@booking.end_date)} (inclus)
+  li Statut de la réservation: #{@booking.status.text}
+p Merci de #{link_to "confirmer ou annuler la réservation", account_booking_confirmation_url(@booking, locale: I18n.locale.to_s)} et de reserver un bon accueil à #{@client.first_name}.
+br
+p Vos revenus liés à cette réservation seront ajoutés à votre cagnote une fois la réservation confirmée. Ils vous seront adressés lors de la remise de fin de mois.
+br
+p.right L'équipe deskimo
+br
+p Pour tout problème concernant cette réservation contactez-nous au plus vite sur #{mail_to('contact@deskimo.co')} ou au 0679788468.

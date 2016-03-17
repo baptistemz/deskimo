@@ -9,7 +9,7 @@ if($("#desk-choice").length > 0){
     loadCalendar(kind, number)
   });
 
-  $(document).on( 'shown.bs.tab', 'a[data-toggle="tab"]', function (e) {
+  $(document).on( 'shown.bs.tab', 'a.show-tab[data-toggle="tab"]', function (e) {
    // kind = e.currentTarget.id.slice(0,-4)
     kind = $("#desk-choice li.first-degree.active a").attr('id').slice(0,-4)
     if(typeof $(".tab-pane.active .nav li.second-degree.active a").attr('id') != 'undefined'){
@@ -21,20 +21,12 @@ if($("#desk-choice").length > 0){
   });
 }
 
-
-
-// $('#closed_office').on('shown.bs.tab', function (e) {
-//   loadCalendar
-//   console.log(e)
-// });
-
-
 function loadCalendar(kind, number){
   if ($("." + kind + '_' + number + "_booking #booking_start_date").length ) {
 
 
     function firstDay(month,year) {
-      return new Date(year,month,1).getDay();
+      return new Date(year + 1, month - 1,1).getDay();
     }
 
     function numDays(month,year) {
@@ -51,17 +43,22 @@ function loadCalendar(kind, number){
       if(currentMonth > 12){
         var currentMonth = currentMonth - 12;
         d.setYear(d.getFullYear() + 1)
+      } else if(currentMonth < 1){
+        var currentMonth = currentMonth + 12;
+        d.setYear(d.getFullYear() - 1)
       }
       lastDayOfCurrentMonth = new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate()
 
-      var days = numDays(currentMonth,d.getYear()), // get number of days in the month
-        fDay = firstDay(currentMonth,d.getYear())-1, // find what day of the week the 1st lands on
+      var days = numDays(currentMonth,d.getFullYear()), // get number of days in the month
         months = ['Janvier','Fevrier','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','Octobre','Novembre','Decembre']; // month names
+    if( firstDay(currentMonth,d.getFullYear())-1 < 1){
+      var fDay = firstDay(currentMonth,d.getFullYear())+6 // find what day of the week the 1st lands on
+    }else{
+      var fDay = firstDay(currentMonth,d.getFullYear())-1 // find what day of the week the 1st lands on
+    }
     $('.calendar p.monthname').text(months[currentMonth-1]); // add month name to calendar
-
-
-
-    for (var i=0;i<fDay-1;i++) { // place the first day of the month in the correct position
+    console.log(fDay)
+    for (var i=0;i<fDay - 1;i++) { // place the first day of the month in the correct position
       $('<li>&nbsp;</li>').appendTo('.calendar ul');
     }
 

@@ -21,17 +21,17 @@
             .service-box
               .service-badge
                 i.fa.fa-wifi
-              p wifi
+              p= t('activerecord.attributes.wifi')
           - if @company.coffee?
             .service-box
               .service-badge
                 i.fa.fa-coffee
-              p café
+              p= t('activerecord.attributes.coffee')
           - if @company.printer?
             .service-box
               .service-badge
                 i.fa.fa-print
-              p imprimante
+              p= t('activerecord.attributes.printer')
         hr.style-company
         h4.company-section-title= t('show.description')
         .company = @company.description
@@ -43,41 +43,129 @@
           p #{t('openings.from_day')} #{t("openings.#{@opening_weekdays_range[0]}")} #{t('openings.to_day')} #{t("openings.#{@opening_weekdays_range[1]}")}
         - if @opening_hours_range.length == 4
           p #{t('openings.from_time')} #{@opening_hours_range[0]} #{t('openings.to_time')} #{@opening_hours_range[1]} #{t('and')} #{t('openings.from_time')} #{@opening_hours_range[2]} #{t('openings.to_time')} #{@opening_hours_range[3]}
-        = link_to t('dashboard.exceptionnal_closing_days'), account_company_closing_days_path, class: 'fa fa-exclamation-circle'
 
+        = link_to account_company_closing_days_path
+          .btn.qty-update-btn
+            i.fa.fa-exclamation-circle = t('dashboard.exceptionnal_closing_days')
 
+    .row
+      .center.padded
+        = link_to edit_account_company_path(@company)
+          .btn.qty-update-btn
+            i.fa.fa-pencil = t('dashboard.edit_company')
+      hr.style-company
 
-    hr
-    .center.padded
-      = link_to t('dashboard.edit_company'), edit_account_company_path(@company), class: "fa fa-pencil"
+      h4.company-section-title.center = t('dashboard.welcome_information')
+      -if @company.welcome_message
+        #services-list-show
+          p = t('dashboard.your_message_contains')
+          .service-box
+            - if @company.welcome_message.message.blank?
+              i.fa.fa-times.red
+              p = t('welcome')
+            - else
+              i.fa.fa-check.green
+              p = t('welcome')
+          .service-box
+            - if @company.welcome_message.wifi_password.blank?
+              i.fa.fa-times.red
+              p = t('wifi_password')
+            - else
+              i.fa.fa-check.green
+              p = t('wifi_password')
+          .service-box
+            - if @company.welcome_message.access_information.blank?
+              i.fa.fa-times.red
+              p = t('access_info')
+            - else
+              i.fa.fa-check.green
+              p = t('access_info')
+        .row
+          .center.padded
+            = link_to edit_account_company_welcome_message_path(@company)
+              .btn.qty-update-btn
+                i.fa.fa-envelope-o
+                |  #{t('dashboard.edit_message')}
+      -else
+        .row
+          .center.padded
+            = link_to new_account_company_welcome_message_path(@company)
+              .btn.qty-update-btn
+                i.fa.fa-envelope-o
+                |  #{t('dashboard.create_message')}
 
   br
-  .row
-    br
-    - @desks.each do |desk|
-      .col-sm-6.col-md-4
-        - if desk.activated == true
-          = render partial: 'active_desk', locals: {desk: @desk, desk: desk, company: @company}
-        - else
-          = render partial: 'inactive_desk', locals: {desk: @desk, desk: desk, company: @company}
-
-    .col-sm-6.col-md-4
-      .dashboard-desk-thumbnail.add-desk
-        =link_to new_account_company_desk_path(@company)
-          .cta-newdesk
-            .rounded-icon
-              i.fa.fa-plus
-            br
-            p = t('dashboard.rent_new_desks')
-        ul.thumbnail-bottom
-          - unless @desks.where(kind: 'open_space').any?
-            li= t('dashboard.open_space_desks')
-            br
-          li= t('dashboard.closed_offices')
-          br
-          li= t('dashboard.meeting_rooms')
-
-
+  h3.center Desks
   .center.padded
     = link_to account_bookings_path
-      i.fa.fa-list = t('navbar.bookings')
+      .btn.btn-primary
+        i.fa.fa-list = t('navbar.bookings')
+  br
+  .row
+    ul.nav.nav-tabs.nav-justified
+      - if @open_space.any?
+        li.active =link_to t('enumerize.desk.kind.open_space'), '#dashboard_open_space', data: { toggle: 'tab' }, id: 'dashboard_open_space_tab'
+      - if @closed_office.any?
+        li class= "#{ 'active' unless @open_space.any?}"
+          =link_to t('enumerize.desk.kind.closed_office'), '#dashboard_closed_office', data: { toggle: 'tab' }, id: 'dashboard_closed_office_tab'
+      - if @meeting_room.any?
+        li class= "#{ 'active' unless (@open_space.any? || @closed_office.any?)}"
+          =link_to t('enumerize.desk.kind.meeting_room'), '#dashboard_meeting_room', data: { toggle: 'tab' }, id: 'dashboard_meeting_room_tab'
+    .col-xs-12
+      BR
+      .tab-content
+        .tab-pane.fade.in#dashboard_open_space.active
+          - if @open_space.any?
+            - @open_space.each do |desk|
+              .col-sm-offset-3.col-sm-6
+                - if desk.activated == true
+                  = render partial: 'active_desk', locals: {desk: @desk, desk: desk, company: @company}
+                - else
+                  = render partial: 'inactive_desk', locals: {desk: @desk, desk: desk, company: @company}
+        .tab-pane.fade#dashboard_closed_office class= "#{ 'in active' unless @open_space.any?}"
+          - if @closed_office.any?
+            - @closed_office.each do |desk|
+              .col-sm-6.col-md-4
+                - if desk.activated == true
+                  = render partial: 'active_desk', locals: {desk: @desk, desk: desk, company: @company}
+                - else
+                  = render partial: 'inactive_desk', locals: {desk: @desk, desk: desk, company: @company}
+        .tab-pane.fade#dashboard_meeting_room class= "#{ 'in active' unless (@open_space.any? || @closed_office.any?)}"
+          - if @meeting_room.any?
+            - @meeting_room.each do |desk|
+              .col-sm-6.col-md-4
+                - if desk.activated == true
+                  = render partial: 'active_desk', locals: {desk: @desk, desk: desk, company: @company}
+                - else
+                  = render partial: 'inactive_desk', locals: {desk: @desk, desk: desk, company: @company}
+
+    .row
+      .col-xs-12
+        .add-desk
+          .col-sm-6
+            =link_to new_account_company_desk_path(@company)
+              .cta-newdesk
+                .rounded-icon
+                  i.fa.fa-plus
+                br
+                p = t('dashboard.rent_new_desks')
+          .col-sm-6
+            ul.thumbnail-bottom
+              - unless @open_space.any?
+                li= t('dashboard.open_space_desks')
+                br
+              li= t('dashboard.closed_offices')
+              br
+              li= t('dashboard.meeting_rooms')
+
+
+    / - @desks.each do |desk|
+    /   .col-sm-6.col-md-4
+    /     - if desk.activated == true
+    /       = render partial: 'active_desk', locals: {desk: @desk, desk: desk, company: @company}
+    /     - else
+    /       = render partial: 'inactive_desk', locals: {desk: @desk, desk: desk, company: @company}
+
+    / .col-sm-6.col-md-4
+
+

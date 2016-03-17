@@ -5,11 +5,9 @@
       - @desks.each do |desk|
         - if desk.bookings.where(archived: false).any?
           - if desk.kind == "open_space"
-            h4.company-section-title #{t('dashboard.open_space_desks')}
-          - elsif desk.kind == "closed_office"
-            h4.company-section-title #{t('dashboard.closed_offices')} n°#{desk.number}
+            h4.company-section-title #{desk.kind.text}
           - else
-            h4.company-section-title #{t('dashboard.meeting_rooms')} n°#{desk.number}
+            h4.company-section-title #{desk.kind.text} n°#{desk.number}
           = render partial: 'booking_table', locals: {desk: desk, bookings: desk.bookings.where(archived: false)}
 
     / - if @open_space && @open_space_bookings.any?

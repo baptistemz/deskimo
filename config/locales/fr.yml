@@ -144,7 +144,7 @@ fr:
     contact: 'contact'
     back_to_bookings: ' Retour à la liste des résérvations'
     plan_unavailabilities: ' prévoir des indisponibilités'
-    next_unavailabilities: 'Prochaines indisponibilités de vos'
+    next_unavailabilities: 'Prochaines indisponibilités de '
     add_unavailability: 'Ajouter une indisponibilité'
     planned_for: 'planinifée pour'
     desk_destroy_message: "Voulez-vous vraiment supprimer ce bureau?"

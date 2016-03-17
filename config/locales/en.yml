@@ -140,7 +140,7 @@ en:
     contact: 'contact'
     back_to_bookings: ' Back to your bookings list'
     plan_unavailabilities: " plan unavailabilities"
-    next_unavailabilities: 'Next unavailabilities for your'
+    next_unavailabilities: 'Next unavailabilities for '
     add_unavailability: 'Add unavailability'
     planned_for: 'planned for'
     desk_destroy_message: "Do you really want to delete this desk?"

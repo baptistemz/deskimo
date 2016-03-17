@@ -4,7 +4,7 @@ module Account
       before_action :set_company
       def index
         @closing_day = @company.closing_days.build
-        @closing_days = @company.closing_days
+        @closing_days = @company.closing_days.where("closing_days.date IS NOT NULL")
       end
 
       def create

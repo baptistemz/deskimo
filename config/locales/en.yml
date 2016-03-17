@@ -130,7 +130,7 @@ en:
     itinerary                 : 'itinerary'
     go_to                     : 'go to'
     receipt                   : 'receipt'
-    booking_made              : "Booking realised on"
+    booking_made              : "Booking recorded on"
     in_company: 'in'
     date: 'date'
     price_per: 'Price per'

@@ -66,7 +66,7 @@
             - if desk.kind == :closed_office
               .tab-pane.fade.first-degree#closed_office class= "#{ 'in active' if params[:tab_selected] == 'closed_office'|| @open_space == nil }"
                 -if @closed_office.length > 1
-                  ul.nav.nav-pills.margin-top#number-choice
+                  ul.nav.nav-pills.margin-top.nav-justified#number-choice
                     - @closed_office.each do |c_o|
                       li.second-degree class= "#{'in active' if c_o == @closed_office.first}"
                         =link_to "n°#{c_o.number} (#{c_o.capacity} #{t('people')})", "#c_o_#{c_o.number}", data: { toggle: 'tab' }, class: 'show-tab', id: "c_o_#{c_o.number}_tab"
@@ -80,7 +80,7 @@
             - if desk.kind == :meeting_room
               .tab-pane.fade.first-degree#meeting_room class= "#{ 'in active' if params[:tab_selected] == 'meeting_room' || (@open_space == nil && @closed_office == nil) }"
                 -if @meeting_room.length > 1
-                  ul.nav.nav-pills.margin-top
+                  ul.nav.nav-pills.margin-top.nav-justified
                     - @meeting_room.each do |m_r|
                       li.second-degree class= "#{'in active' if m_r == @meeting_room.first}"
                         =link_to "n°#{m_r.number} (#{m_r.capacity} #{t('people')})", "#m_r_#{m_r.number}", data: { toggle: 'tab' }, class: 'show-tab', id: "m_r_#{m_r.number}_tab"

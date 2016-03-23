@@ -39,24 +39,27 @@ class Desk < ActiveRecord::Base
     end
   end
 
-  def create_and_delete_unavailabilities(freebusy)
-    freebusy.each do |event|
-      self.unavailability_ranges.where(start_date: event['start'].to_date,
-                                       end_date: event['end'].to_date).first_or_create(kind: :calendar)
+  def create_and_delete_unavailabilities(events)
+    events.each do |event|
+      self.unavailability_ranges.where(start_date: event.raw['start']['date'].to_date,
+                                       end_date: event.raw['end']['date'].to_date).first_or_create(kind: :calendar)
     end
     self.unavailability_ranges.where(kind: :calendar).each do |u_r|
-      @associated = freebusy.find{|event| event['start'].to_date == u_r.start_date && event['end'].to_date == u_r.end_date}
+      @associated = events.find{|event| event.raw['start']['date'].to_date == u_r.start_date && event.raw['end']['date'].to_date == u_r.end_date}
       u_r.delete unless @associated
     end
   end
 
   def get_next_calendar_events
-    freebusy_data = Google::Freebusy.new(client_id: ENV.fetch('GOOGLE_CLIENT_ID'),
-                                         client_secret: ENV.fetch('GOOGLE_CLIENT_SECRET'),
-                                         refresh_token:     self.company.user.calendar_refresh_token,
-                                         redirect_url: "urn:ietf:wg:oauth:2.0:oob" # this is what Google uses for 'applications'
-                                         )
-    @freebusy = freebusy_data.query([self.calendar_id], Time.now, (Time.now + 30.days))[self.calendar_id]
+    # freebusy_data = Google::Freebusy.new(client_id: ENV.fetch('GOOGLE_CLIENT_ID'),
+    #                                      client_secret: ENV.fetch('GOOGLE_CLIENT_SECRET'),
+    #                                      refresh_token:     self.company.user.calendar_refresh_token,
+    #                                      redirect_url: "urn:ietf:wg:oauth:2.0:oob" # this is what Google uses for 'applications'
+    #                                      )
+    # @freebusy = freebusy_data.query([self.calendar_id], Time.now, (Time.now + 30.days))[self.calendar_id]
+    calendar = initialize_calendar
+    calendar.login_with_refresh_token(self.company.user.calendar_refresh_token)
+    @events = calendar.find_events_in_range(Time.now, (Time.now + 30.days))
   end
 
   def create_google_calendar_event(booking)

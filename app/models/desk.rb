@@ -44,7 +44,7 @@ class Desk < ActiveRecord::Base
       if event.raw['start']['dateTime']
         self.unavailability_ranges.where(start_date: event.raw['start']['dateTime'].to_date,
                                          end_date: event.raw['end']['dateTime'].to_date).first_or_create(kind: :calendar)
-      else
+      elsif event.raw['start']['date']
         self.unavailability_ranges.where(start_date: (event.raw['start']['date'].to_date),
                                          end_date: (event.raw['end']['date'].to_date - 1.day)).first_or_create(kind: :calendar)
       end
@@ -54,7 +54,7 @@ class Desk < ActiveRecord::Base
       @associated = events.find do |event|
         if event.raw['start']['dateTime']
           event.raw['start']['dateTime'].to_date == u_r.start_date && event.raw['end']['dateTime'].to_date == u_r.end_date
-        else
+        elsif event.raw['start']['date']
           event.raw['start']['date'].to_date == u_r.start_date && (event.raw['end']['date'].to_date - 1.day) == u_r.end_date
         end
       end

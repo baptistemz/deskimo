@@ -54,10 +54,12 @@ class Booking < ActiveRecord::Base
 
   def booking_status_management
     send_booking_emails
-    if self.status == :paid
-      self.desk.create_google_calendar_event(self)
-    elsif self.status == :canceled
-      self.desk.delete_google_calendar_event(self)
+    if self.desk.calendar_id
+      if self.status == :paid
+        CreateGoogleCalendarEventJob.perform_later(self.id)
+      elsif self.status == :canceled
+        DeleteGoogleCalendarEventJob.perform_later(self.id)
+      end
     end
 
   end

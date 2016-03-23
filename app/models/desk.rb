@@ -10,6 +10,7 @@ class Desk < ActiveRecord::Base
 
   validates_presence_of :quantity, :description, :half_day_price, :daily_price, :weekly_price
   validates :quantity, :half_day_price, :daily_price, :weekly_price, :capacity, numericality: {greater_than_or_equal_to: 1}
+  validates_length_of :description, :maximum => 220
 
   monetize :hour_price_cents, :half_day_price_cents, :daily_price_cents, :weekly_price_cents
   enumerize :kind, in: [:open_space, :closed_office, :meeting_room], default: :open_space

@@ -1,4 +1,7 @@
 .dashboard-desk-thumbnail.inactive-desk
+  - if desk.calendar_id
+    = link_to "https://calendar.google.com/calendar/embed?src=#{desk.calendar_id}&ctz=Europe/Paris", target: "_blank"
+      =image_tag 'calendar_logo.png', class: 'small-calendar-icon'
   = link_to '',account_company_desk_path(company, desk), method: :delete,data: {confirm: t("dashboard.desk_destroy_message")}, class: 'fa fa-trash delete-button'
   p.red =t('dashboard.non_activated')
   h3.same-height
@@ -56,8 +59,8 @@
       p.price-category #{desk.weekly_price}€
   br
   .text-center
-    = link_to t('dashboard.edit_desk_offer'), edit_account_company_desk_path(company,desk), class: "fa fa-pencil"
-  br
+    .fa.fa-pencil.blue
+    |  #{link_to t('dashboard.edit_desk_offer'), edit_account_company_desk_path(company,desk)}  br
   = link_to account_company_desk_unavailability_ranges_path(company, desk), class: ' btn btn-primary full-width'
     p.forteen-px = t('dashboard.plan_unavailabilities')
   BR

@@ -2,6 +2,10 @@
 / -@calendar_list.items.each do |calendar|
 /   li = calendar.summary
 .container
+  h1 Choix des calendriers
+  br
+  p Vous pouvez associer vos salles de réunions et bureaux séparés à leurs calendriers google. Si ces salles ou bureaux n'ont pas encore de calendrier, vous pouvez en créer en suivant les instructions de google: #{link_to t('calendar_room_tuto_url')}. Puis rafraichissez cette page et les nouveaux calendriers apparaîtront.
+  BR
   = form_tag associate_account_calendars_path do
     - @desks.each do |desk|
       .booking-show-couple

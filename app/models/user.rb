@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
   has_many :bookings, dependent: :nullify
   has_one :credit_card, dependent: :destroy
-  has_one :company, :dependent => :destroy
+  has_one :company, :dependent => :nullify
   has_many :inbound_payments, class_name: 'Payment', foreign_key: :receiver_id
   has_many :outbound_payments, class_name: 'Payment', foreign_key: :payer_id
   has_attached_file :avatar,
@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
     # rake paperclip:refresh CLASS=User
   validates_attachment_content_type :avatar,
     content_type: /\Aimage\/.*\z/
+  validates_presence_of :first_name, :last_name, :on => :update
 
   after_create :send_welcome_email
 

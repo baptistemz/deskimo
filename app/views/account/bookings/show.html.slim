@@ -43,7 +43,8 @@
         .text-center#geo-itinerary
           .btn.btn-primary.btn-center.marged.margin-left
             p
-              i.fa.fa-map-marker.icon-margin #{t('dashboard.itinerary')}
+              i.fa.fa-map-marker.icon-margin
+              | #{t('dashboard.itinerary')}
     .col-sm-4
       .company-resume
         h3.blue.text-center= t('dashboard.contact')
@@ -59,10 +60,12 @@
         = link_to account_booking_invoice_path(@booking)
           .btn.btn-primary.btn-center.marged.margin-left
             p
-              i.fa.fa-book = t('dashboard.invoice')
+              i.fa.fa-book
+              | #{t('dashboard.invoice')}
   .row
     br
     .center
       =link_to account_bookings_path
-        i.fa.fa-list = t('dashboard.back_to_bookings')
+        i.fa.fa-list
+        |  #{t('dashboard.back_to_bookings')}
 

@@ -19,4 +19,5 @@
 
 
   .center.padded
-    = link_to " #{t('navbar.company_dashboard')}", account_company_desks_path(current_user.company), class: "fa fa-dashboard"
+    .fa.fa-dashboard.blue
+    |  #{link_to " #{t('navbar.company_dashboard')}", account_company_desks_path(current_user.company)}

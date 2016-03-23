@@ -87,7 +87,7 @@ en:
     price_incl_tax : "Price (incl tax)"
     price_hour: "Hour price"
     price_half_day : "Half day price"
-    price_day      : "Daily price"
+    price_day      : "Daily price (compulsory)"
     price_week     : "Weekly price"
     you            : "You"
     vat            : "VAT"
@@ -183,6 +183,7 @@ en:
   welcome: 'welcome'
   wifi_password: 'wifi password'
   access_info: "access information"
+  calendar_room_tuto_url: 'https://support.google.com/calendar/answer/44105?hl=en'
 
   openings:
     from_day: 'from'

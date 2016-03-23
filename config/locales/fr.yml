@@ -90,7 +90,7 @@ fr:
     price_incl_tax : "Prix TTC"
     price_hour: "Par heure"
     price_half_day : "Par demi-journée"
-    price_day      : "Par jour"
+    price_day      : "Par jour (obligatoire)"
     price_week     : "Par semaine"
     you            : "Vous"
     vat            : "TVA"
@@ -187,6 +187,7 @@ fr:
   welcome: 'bienvenue'
   wifi_password: 'mot de passe wifi'
   access_info: "informations d'accés"
+  calendar_room_tuto_url: 'https://support.google.com/calendar/answer/44105?hl=fr'
 
   openings:
     from_day: 'du'
@@ -233,7 +234,7 @@ fr:
     welcome_message_recorded: "Les informations de bienvenue ont bien été enregistrées"
     welcome_message_not_recorded: "Les informations de bienvenue n'ont pas pu être enregistrées"
   popups:
-    booking_cancelation_message: "Êtes-vous sur de vouloir annuler cette réservation ? (L'annulation fréquente de réservations dans votre entreprise est passible de bannissement)"
+    booking_cancelation_message: "Êtes-vous sur de vouloir annuler cette réservation ? (L'annulation fréquente de réservations dans votre entreprise est passible d'exclusion)"
 
 #MAILER
   mailer:

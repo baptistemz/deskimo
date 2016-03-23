@@ -24,15 +24,18 @@ p.company = desk.description
 hr.style-company
 h4.company-section-title = t('show.price')
 .prices-list
-  .desk-price
-    p.price-category #{t('show.half_day')} :
-    p.price-category #{desk.half_day_price}€
-  .desk-price
-    p.price-category #{t('show.day')} :
-    p.price-category #{desk.daily_price}€
-  .desk-price
-    p.price-category #{t('show.week')} :
-    p.price-category #{desk.weekly_price}€
+  - if desk.half_day_price
+    .desk-price
+      p.price-category #{t('show.half_day')} :
+      p.price-category #{desk.half_day_price}€
+  - if desk.daily_price
+    .desk-price
+      p.price-category #{t('show.day')} :
+      p.price-category #{desk.daily_price}€
+  - if desk.weekly_price
+    .desk-price
+      p.price-category #{t('show.week')} :
+      p.price-category #{desk.weekly_price}€
 br
 hr.style-company
 h4.company-section-title = t('show.availabilities')

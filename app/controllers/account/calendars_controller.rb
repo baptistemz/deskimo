@@ -24,7 +24,8 @@ module Account
       })
       response = client.fetch_access_token!
       if response['refresh_token']
-        current_user.update!(calendar_access_token: response['access_token'], calendar_refresh_token: response['refresh_token'])
+        current_user.update_attribute(:calendar_access_token, response['access_token'])
+        current_user.update_attribute(:calendar_refresh_token, response['refresh_token'])
       end
       session[:access_token] = response['access_token']
       redirect_to account_calendars_path

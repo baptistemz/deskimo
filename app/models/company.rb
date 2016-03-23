@@ -14,6 +14,8 @@ class Company < ActiveRecord::Base
     content_type: /\Aimage\/.*\z/
   validates_presence_of :name, :address, :city, :description, :postcode, :picture, :phone_number
   validate :opening_hours_validation
+  validates_length_of :name, :maximum => 25
+  validates_length_of :description, :maximum => 220
 
   monetize :cheapest_desk_price_cents
   geocoded_by :full_address

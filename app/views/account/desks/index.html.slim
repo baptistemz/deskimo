@@ -1,5 +1,5 @@
 = link_to redirect_account_calendars_path
-  - if @closed_office.where(calendar_id: nil).any? || @meeting_room.where(calendar_id: nil).any?
+  - if @closed_office.any? || @meeting_room.any?
     .calendar-icon
       p Liez vos bureaux à leurs calendriers Google
       =image_tag 'calendar_logo.png'
@@ -51,13 +51,15 @@
 
         = link_to account_company_closing_days_path
           .btn.qty-update-btn
-            i.fa.fa-exclamation-circle = t('dashboard.exceptionnal_closing_days')
+            i.fa.fa-exclamation-circle
+            |  #{t('dashboard.exceptionnal_closing_days')}
 
     .row
       .center.padded
         = link_to edit_account_company_path(@company)
           .btn.qty-update-btn
-            i.fa.fa-pencil = t('dashboard.edit_company')
+            i.fa.fa-pencil
+            |  #{t('dashboard.edit_company')}
       hr.style-company
 
       h4.company-section-title.center = t('dashboard.welcome_information')
@@ -104,7 +106,8 @@
   .center.padded
     = link_to account_bookings_path
       .btn.btn-primary
-        i.fa.fa-list = t('navbar.bookings')
+        i.fa.fa-list
+        |  #{t('navbar.bookings')}
   br
   .row
     ul.nav.nav-tabs.nav-justified

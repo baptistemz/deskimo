@@ -65,8 +65,8 @@
           br
           = link_to account_company_desks_path(@company)
             .center
-              i.fa.fa-dashboard.icon-margin
-                = t('navbar.company_dashboard')
+              i.fa.fa-dashboard.blue
+              |  #{t('navbar.company_dashboard')}
         -else
           br
           p Vous n'êtes pas administrateur d'un compte entreprise. Si vous voulez enregistrer votre workplace sur deskimo et louer vos bureaux :
@@ -75,4 +75,5 @@
   .row
     .center.padded
       = link_to account_bookings_path
-        i.fa.fa-list = t('navbar.bookings')
+        i.fa.fa-list.blue
+        |  #{t('navbar.bookings')}

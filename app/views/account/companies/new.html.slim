@@ -7,7 +7,7 @@
       = simple_form_for [:account, @company] do |f|
         .form-group
           h4.blue #{t('company_creation.company_details')} :
-          = f.input :name, label:false, required: true, autofocus: true, placeholder:"Nom de l'entreprise"
+          = f.input :name, label:false, required: true, autofocus: true, placeholder:"Nom de l'entreprise", :input_html => {:maxlength => 25}
         br
         .form-group
           h4.blue Contact :

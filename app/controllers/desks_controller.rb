@@ -1,6 +1,5 @@
 class DesksController < ApplicationController
 
-
   def index
     @company = Company.find(params[:company_id])
     @desks = @company.desks.where(activated: true)

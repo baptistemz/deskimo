@@ -45,11 +45,12 @@ module Account
         @desk.quantity = 1
       end
       if @desk.update(desk_params)
+        flash[:notice] = t('flashes.desk_registered')
         @company.update_activation
         redirect_to account_company_desks_path(@company)
       else
         flash[:alert] = t('flashes.desk_not_registered')
-        render :edit
+        render :new
       end
     end
 

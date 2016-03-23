@@ -139,6 +139,11 @@ span.error{
     display: table-cell;
     width: 1%;
 }
+.two-lines{
+  height: 48px;
+  // overflow: hidden;
+  text-overflow: clip ellipsis;
+}
 
 //---- MEDIA QUERIES ----//
 

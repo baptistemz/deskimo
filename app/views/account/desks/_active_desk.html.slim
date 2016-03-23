@@ -27,7 +27,8 @@
       p.margin-left  #{desk.capacity} #{t('people')}
 
   hr
-  = desk.description
+  .two-lines
+    = desk.description
   #services-list-show
     - if desk.call_conference
       .service-box

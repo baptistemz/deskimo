@@ -29,6 +29,21 @@
 
         h4 = t('desk_creation.price_incl_tax')
         .form-group
+          h5 #{t('desk_creation.price_hour')} (€)
+          = f.input :hour_price, label:false, type: 'number', required: true, autofocus: true, placeholder: false, input_html: {value: f.object.hour_price_cents/100 || '1', min: '1'}
+          br
+          table
+            tr
+              th #{t('desk_creation.you')} (#{Settings.price_share.company * 100}%)
+              th deskimo (#{Settings.price_share.deskimo * 100}%)
+              th.danger #{t('desk_creation.vat')}
+              th.primary #{t('desk_creation.total_price')}
+            tr
+              td#hour_company_amount
+              td#hour_no_amount
+              td#hour_tva
+              td#hour_totalprice
+        .form-group
           h5 #{t('desk_creation.price_half_day')} (€)
           = f.input :half_day_price, label:false, type: 'number', required: true, autofocus: true, placeholder: false, input_html: {value: f.object.half_day_price_cents/100 || '1', min: '1'}
           br

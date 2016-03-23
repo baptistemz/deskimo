@@ -13,7 +13,7 @@ module Account
         @closing_day = @company.closing_days.build(date: @date)
         @company.desks.each do |desk|
           desk.quantity.times do
-            desk.unavailability_ranges.create(start_date: @date, end_date: @date)
+            desk.unavailability_ranges.create(start_date: @date, end_date: @date, kind: 'closed')
           end
         end
         if @closing_day.save

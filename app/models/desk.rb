@@ -31,7 +31,82 @@ class Desk < ActiveRecord::Base
     return available_days
   end
 
+  def name
+    if self.kind == :open_space
+      self.kind.text
+    else
+      "#{self.kind.text} n° #{self.number}"
+    end
+  end
+
+  def create_and_delete_unavailabilities(freebusy)
+    freebusy.each do |event|
+      self.unavailability_ranges.where(start_date: event['start'].to_date,
+                                       end_date: event['end'].to_date).first_or_create(kind: :calendar)
+    end
+    self.unavailability_ranges.where(kind: :calendar).each do |u_r|
+      @associated = freebusy.find{|event| event['start'].to_date == u_r.start_date && event['end'].to_date == u_r.end_date}
+      u_r.delete unless @associated
+    end
+  end
+
+  def get_next_calendar_events
+    freebusy_data = Google::Freebusy.new(client_id: ENV.fetch('GOOGLE_CLIENT_ID'),
+                                         client_secret: ENV.fetch('GOOGLE_CLIENT_SECRET'),
+                                         refresh_token:     self.company.user.calendar_refresh_token,
+                                         redirect_url: "urn:ietf:wg:oauth:2.0:oob" # this is what Google uses for 'applications'
+                                         )
+    @freebusy = freebusy_data.query([self.calendar_id], Time.now, (Time.now + 30.days))[self.calendar_id]
+  end
+
+  def create_google_calendar_event(booking)
+    calendar = initialize_calendar
+    calendar.login_with_refresh_token(self.company.user.calendar_refresh_token)
+    event = calendar.create_event do |e|
+      e.title = "réservation deskimo - #{booking.user.first_name} #{booking.user.last_name}"
+      if booking.time_slot_type == 'half_day'
+        if booking.half_day_choice == 'am'
+          d = booking.start_date
+          st = self.company.start_time_am
+          et = self.company.end_time_am
+          e.start_time = Time.zone.parse(DateTime.new(d.year, d.month, d.day, st.hour, st.min, st.sec, '+2').to_s)
+          e.end_time = Time.zone.parse(DateTime.new(d.year, d.month, d.day, et.hour, et.min, et.sec, '+2').to_s)
+        elsif booking.half_day_choice == 'pm'
+          d = booking.start_date
+          st = self.company.start_time_pm
+          et = self.company.end_time_pm
+          e.start_time = Time.zone.parse(DateTime.new(d.year, d.month, d.day, st.hour, st.min, st.sec, '+2').to_s)
+          e.end_time = Time.zone.parse(DateTime.new(d.year, d.month, d.day, et.hour, et.min, et.sec, '+2').to_s)
+        end
+      else
+        sd = booking.start_date
+        st = self.company.start_time_am
+        ed = booking.end_date
+        et = self.company.end_time_pm
+        e.start_time = Time.zone.parse(DateTime.new(sd.year, sd.month, sd.day, st.hour, st.min, st.sec, '+2').to_s)
+        e.end_time = Time.zone.parse(DateTime.new(ed.year, ed.month, ed.day, et.hour, et.min, et.sec, '+2').to_s)
+        # sd = start date ; ed = end date ; st = start time ; et = end time
+      end
+    end
+    booking.unavailability_range.update(calendar_event_id: event.id)
+  end
+
+  def delete_google_calendar_event(booking)
+    calendar = initialize_calendar
+    calendar.login_with_refresh_token(self.company.user.calendar_refresh_token)
+    event = calendar.find_or_create_event_by_id(booking.unavailability_range.calendar_event_id)
+    event.delete
+  end
+
   private
+
+  def initialize_calendar
+    Google::Calendar.new(client_id: ENV.fetch('GOOGLE_CLIENT_ID'),
+                         client_secret: ENV.fetch('GOOGLE_CLIENT_SECRET'),
+                         calendar:  self.calendar_id,
+                         redirect_url: "urn:ietf:wg:oauth:2.0:oob" # this is what Google uses for 'applications'
+                         )
+  end
 
   def one_open_space_maximum
     errors.add(:kind, "Vous avez déjà un open space, ajoutez-y des places") if

@@ -1,3 +1,8 @@
+= link_to redirect_account_calendars_path
+  - if @closed_office.where(calendar_id: nil).any? || @meeting_room.where(calendar_id: nil).any?
+    .calendar-icon
+      p Liez vos bureaux à leurs calendriers Google
+      =image_tag 'calendar_logo.png'
 .container
   h1= t('navbar.company_dashboard')
   p = link_to t('dashboard.link_to_public'), company_desks_path(@company)

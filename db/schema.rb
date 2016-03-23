@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160315161654) do
+ActiveRecord::Schema.define(version: 20160322101735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -150,6 +150,7 @@ ActiveRecord::Schema.define(version: 20160315161654) do
     t.boolean  "desktop",              default: false
     t.boolean  "tv",                   default: false
     t.boolean  "call_conference",      default: false
+    t.string   "calendar_id"
   end
 
   add_index "desks", ["company_id"], name: "index_desks_on_company_id", using: :btree
@@ -183,10 +184,11 @@ ActiveRecord::Schema.define(version: 20160315161654) do
     t.date     "start_date"
     t.date     "end_date"
     t.integer  "desk_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.string   "kind"
     t.integer  "booking_id"
+    t.string   "calendar_event_id"
   end
 
   add_index "unavailability_ranges", ["booking_id"], name: "index_unavailability_ranges_on_booking_id", using: :btree
@@ -217,6 +219,9 @@ ActiveRecord::Schema.define(version: 20160315161654) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "google_token"
+    t.string   "calendar_access_token"
+    t.string   "calendar_refresh_token"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

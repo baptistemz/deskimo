@@ -13,6 +13,7 @@ class Company < ActiveRecord::Base
   validates_attachment_content_type :picture,
     content_type: /\Aimage\/.*\z/
   validates_presence_of :name, :address, :city, :description, :postcode, :picture, :phone_number
+  validate :opening_hours_validation
 
   monetize :cheapest_desk_price_cents
   geocoded_by :full_address
@@ -80,9 +81,9 @@ class Company < ActiveRecord::Base
   end
 
   def get_opening_hours_range
-    @hour_range = [self.start_time_am.strftime("%I:%M%p"), self.end_time_am.strftime("%I:%M%p")]
-    @hour_range << self.start_time_pm.strftime("%I:%M%p") if self.start_time_pm
-    @hour_range << self.end_time_pm.strftime("%I:%M%p") if self.end_time_pm
+    @hour_range = [self.start_time_am.strftime("%I:%M"), self.end_time_am.strftime("%I:%M")]
+    @hour_range << self.start_time_pm.strftime("%I:%M") if self.start_time_pm
+    @hour_range << self.end_time_pm.strftime("%I:%M") if self.end_time_pm
   end
 
   def update_cheapest_desk_price
@@ -97,6 +98,12 @@ class Company < ActiveRecord::Base
   end
 
   private
+
+  def opening_hours_validation
+    if (end_time_am < start_time_am) ||(end_time_pm < start_time_pm) || (end_time_am > start_time_pm)
+      errors.add(:kind, "Contraintes horaires impossibles")
+    end
+  end
 
   def send_new_company_email
     CompanyMailer.new_company(self).deliver_later

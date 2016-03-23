@@ -85,6 +85,7 @@ en:
     which_kind     : "Kind of desks"
     quantity       : "Quantity of seats"
     price_incl_tax : "Price (incl tax)"
+    price_hour: "Hour price"
     price_half_day : "Half day price"
     price_day      : "Daily price"
     price_week     : "Weekly price"

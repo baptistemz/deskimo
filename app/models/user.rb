@@ -6,10 +6,9 @@ class User < ActiveRecord::Base
          :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
   has_many :bookings, dependent: :nullify
   has_one :credit_card, dependent: :destroy
-  has_one :company, :dependent => :nullify
+  has_one :company, :dependent => :destroy
   has_many :inbound_payments, class_name: 'Payment', foreign_key: :receiver_id
   has_many :outbound_payments, class_name: 'Payment', foreign_key: :payer_id
-  validates_presence_of :first_name, :last_name, :on => :update
   has_attached_file :avatar,
     styles: {avatar: "150x150#"}
     # rake paperclip:refresh CLASS=User
@@ -43,9 +42,18 @@ class User < ActiveRecord::Base
           last_name: data["last_name"],
           picture: data["image"],
           email: data["email"],
-          password: Devise.friendly_token[0,20]
+          password: Devise.friendly_token[0,20],
+          provider: access_token.provider,
+          uid: access_token.uid,
+          google_token: access_token.credentials.token
         )
     end
+
+    # client = Signet::OAuth2::Client.new(access_token: access_token)
+    # service = Google::Apis::CalendarV3::CalendarService.new
+    # service.authorization = client
+    # @calendar_list = service.list_calendar_lists
+
     user
   end
 

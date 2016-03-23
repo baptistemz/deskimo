@@ -16,13 +16,11 @@ module Account
       @quantity.times do |t|
         @desk.unavailability_ranges.create(start_date: @start_date, end_date: @end_date, kind: "planned")
       end
-      # raise
       redirect_to account_company_desk_unavailability_ranges_path(@company, @desk)
     rescue
       flash[:alert] = "Action impossible"
       render :index
       return
-
     end
 
     def destroy

@@ -64,7 +64,7 @@
 
                 = render partial: 'desk_show', locals: {desk: desk, booking: @booking}
             - if desk.kind == :closed_office
-              .tab-pane.fade.first-degree#closed_office class= "#{ 'in active' if params[:tab_selected] == 'closed_office'|| @open_space == nil }"
+              .tab-pane.fade.first-degree#closed_office class= "#{ 'in active' if params[:tab_selected] == 'closed_office'|| @open_space.first == nil }"
                 -if @closed_office.length > 1
                   ul.nav.nav-pills.margin-top.nav-justified#number-choice
                     - @closed_office.each do |c_o|
@@ -78,7 +78,7 @@
                   = render partial: 'desk_show', locals: {desk: desk, booking: @booking}
 
             - if desk.kind == :meeting_room
-              .tab-pane.fade.first-degree#meeting_room class= "#{ 'in active' if params[:tab_selected] == 'meeting_room' || (@open_space == nil && @closed_office == nil) }"
+              .tab-pane.fade.first-degree#meeting_room class= "#{ 'in active' if params[:tab_selected] == 'meeting_room' || (@open_space.first == nil && @closed_office.first == nil) }"
                 -if @meeting_room.length > 1
                   ul.nav.nav-pills.margin-top.nav-justified
                     - @meeting_room.each do |m_r|

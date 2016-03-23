@@ -39,6 +39,8 @@ gem 'omniauth-oauth2', '~> 1.3.1' # see https://github.com/intridea/omniauth-oau
 gem 'omniauth-facebook'
 gem "omniauth-google-oauth2"
 # , '~> 1.3.1'
+gem 'google_calendar'
+gem 'google-api-client', '~> 0.9', require: 'google/apis/calendar_v3'
 gem 'underscore-rails'
 gem 'coffee-rails'
 gem "pundit"
@@ -50,6 +52,7 @@ gem 'sidekiq'
 gem 'whenever', :require => false
 gem 'sinatra'  # Dependency of sidekiq
 gem 'sidekiq-failures'
+gem 'sidekiq-scheduler', '~> 2.0'
 
 # gem 'mangopay', '~> 3.0.0'
 

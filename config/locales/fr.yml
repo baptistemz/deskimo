@@ -88,6 +88,7 @@ fr:
     which_kind     : "Que souhaitez-vous mettre en location?"
     quantity       : "Nombre de places"
     price_incl_tax : "Prix TTC"
+    price_hour: "Par heure"
     price_half_day : "Par demi-journée"
     price_day      : "Par jour"
     price_week     : "Par semaine"

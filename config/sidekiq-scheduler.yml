@@ -1,0 +1,9 @@
+clean_unavailability_daily:
+  cron: "20 0 * * *" # everyday at 12:20am
+  class: CleanOldUnavailabilitiesJob
+  description: "clean old unavailabilities"
+
+link_with_calendar_every_10_minutes:
+  cron: "10 * * * *" # every 10 minutes
+  class: UpdateCalendarJob
+  description: "link calendar data to unavailabilities"

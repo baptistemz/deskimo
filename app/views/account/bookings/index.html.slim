@@ -114,9 +114,11 @@
           - else
             td #{l(booking.start_date)} - #{l(booking.end_date)}
           td
-            =link_to account_booking_path(booking)
-              .booking-details
-                i.fa.fa-info-circle
+            ul.list-unstyle.list-inline#no-margin class= "#{booking.status}_cell"
+                li #{booking.status.text}
+                li =link_to account_booking_path(booking)
+                      .booking-details
+                        i.fa.fa-info-circle
   -else
     p Aucune reservation enregistrée pour l'instant
 

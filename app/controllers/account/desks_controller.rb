@@ -74,6 +74,7 @@ module Account
       params.require(:desk).permit( :kind,
                                     :description,
                                     :quantity,
+                                    :hour_price,
                                     :half_day_price,
                                     :daily_price,
                                     :weekly_price,

@@ -5,6 +5,6 @@ class CleanOldUnavailabilitiesJob < ActiveJob::Base
   def perform
     @today = Date.today
     @unavailabilities = UnavailabilityRange.where("end_date < ?", @today)
-    @unavailabilities.first.destroy
+    @unavailabilities.destroy_all
   end
 end

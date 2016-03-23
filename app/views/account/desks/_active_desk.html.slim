@@ -1,4 +1,7 @@
 .dashboard-desk-thumbnail.active-desk
+  - if desk.calendar_id
+    = link_to "https://calendar.google.com/calendar/embed?src=#{desk.calendar_id}&ctz=Europe/Paris", target: "_blank"
+      =image_tag 'calendar_logo.png', class: 'small-calendar-icon'
   = link_to '',account_company_desk_path(company, desk), method: :delete,data: {confirm: t("dashboard.desk_destroy_message")}, class: 'fa fa-trash delete-button'
   p.green =t('dashboard.activated')
   h3.same-height

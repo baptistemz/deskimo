@@ -116,3 +116,46 @@
 //   background-color: $red
 // }
 // }
+.calendar-icon {
+  & img {
+    position: absolute;
+    right: 60px;
+    top: 70px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 60px;
+    padding: 10px;
+    background-color: $gray;
+    border-radius: 30px;
+  }
+  & p{
+    position: absolute;
+    right: 0;
+    top: 135px;
+    width: 180px;
+    font-size: 10px;
+    text-align: center;
+  }
+}
+
+.small-calendar-icon {
+  width: 30px;
+  position:absolute;
+  top: 10px;
+  left: 10px
+}
+
+.confirmed_cell {
+  li {color: $green}
+  & a {color: $green}
+}
+
+.canceled_cell {
+  li {color: $red}
+  & a {color: $red}
+}
+
+.paid_cell {
+  p {}
+  & a {color: $dark-blue}
+}

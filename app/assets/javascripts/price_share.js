@@ -1,4 +1,15 @@
 $(document).ready(function(){
+  $("#desk_hour_price").bind('keyup mouseup', function(){
+    var totalprice = $(this).val();
+    var tva = (totalprice * 0.2).toFixed(2);
+    var company = ((totalprice - tva) * 0.85).toFixed(2);
+    var no = ((totalprice - tva) * 0.15).toFixed(2);
+    $("#hour_totalprice").html(totalprice);
+    $("#hour_tva").html(tva);
+    $("#hour_company_amount").html(company);
+    $("#hour_no_amount").html(no);
+  });
+
   $("#desk_half_day_price").bind('keyup mouseup', function(){
     var totalprice = $(this).val();
     var tva = (totalprice * 0.2).toFixed(2);

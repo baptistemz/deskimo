@@ -33,19 +33,19 @@
             = hidden_field_tag(:user_type, 'user')
             = f.button :submit, "Sign up", class: "btn-primary login-button-width"
           br
-          - if params[:user_type] != "company"
-            br
-            .form-group
-              p.text-left = t('devise.custom.social_sign_up_solutions')
-            .row.form-group
-              .col-xs-6.no-padding
-                = link_to user_omniauth_authorize_path(:facebook, resource)
-                  .btn-primary.login-button-width.facebook-btn
-                    i.fa.fa-facebook
-              .col-xs-6.no-padding
-                = link_to user_omniauth_authorize_path(:google_oauth2)
-                  .btn-primary.login-button-width.google-btn
-                    i.fa.fa-google
+          / - if params[:user_type] != "company"
+          br
+          .form-group
+            p.text-left = t('devise.custom.social_sign_up_solutions')
+          .row.form-group
+            .col-xs-6.no-padding
+              = link_to user_omniauth_authorize_path(:facebook, resource)
+                .btn-primary.login-button-width.facebook-btn
+                  i.fa.fa-facebook
+            .col-xs-6.no-padding
+              = link_to user_omniauth_authorize_path(:google_oauth2)
+                .btn-primary.login-button-width.google-btn
+                  i.fa.fa-google
           = render "users/shared/links"
 
   - if params[:user_type] == "company"

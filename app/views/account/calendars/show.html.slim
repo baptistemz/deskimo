@@ -1,0 +1,13 @@
+/ ul
+/ -@calendar_list.items.each do |calendar|
+/   li = calendar.summary
+.container
+  = form_tag associate_account_calendars_path do
+    - @desks.each do |desk|
+      .booking-show-couple
+        p = desk.name
+        p = select_tag "#{desk.id}_calendar", options_for_select(@calendar_list), include_blank: true
+    = submit_tag 'Associer ces bureaux / calendriers', class: 'btn-primary'
+
+
+

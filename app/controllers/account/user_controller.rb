@@ -29,7 +29,9 @@ module Account
     def user_params
       params.require(:user).permit( :first_name,
                                     :last_name,
-                                    :avatar )
+                                    :avatar,
+                                    :calendar_access_token,
+                                    :calendar_refresh_token )
     end
   end
 end

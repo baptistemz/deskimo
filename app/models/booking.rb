@@ -8,6 +8,7 @@ class Booking < ActiveRecord::Base
   has_one :invoice, dependent: :nullify
 
   validates_presence_of :time_slot_type, :time_slot_quantity, :desk_id, :user_id, :start_date
+  validates :time_slot_quantity, :numericality => { :greater_than => 0 }
   validate  :user_cannot_be_from_the_company
   validate  :desk_must_be_available, on: :create
 
@@ -53,6 +54,12 @@ class Booking < ActiveRecord::Base
 
   def booking_status_management
     send_booking_emails
+    if self.status == :paid
+      self.desk.create_google_calendar_event(self)
+    elsif self.status == :canceled
+      self.desk.delete_google_calendar_event(self)
+    end
+
   end
 
   def send_booking_emails
@@ -61,4 +68,24 @@ class Booking < ActiveRecord::Base
     end
     UserMailer.send("#{self.status}_booking", self).deliver_later
   end
+
+  # def create_google_calendar_event
+  #   @event = {
+  #     'summary' => 'Reservation deskimo',
+  #     'description' => 'Réservé par #{self.user.first_name} #{self.user.last_name}, statut:#{self.status.text}',
+  #     'location' => self.desk.company.full_address,
+  #     'start' => { 'dateTime' => Chronic.parse('tomorrow 4 pm') },
+  #     'end' => { 'dateTime' => Chronic.parse('tomorrow 5pm') },
+  #     'attendees' => [ { "email" => self.user.email } ]
+  #     }
+
+  #   client = Google::APIClient.new
+  #   client.authorization.access_token = self.desk.company.user.google_token
+  #   service = client.discovered_api('calendar', 'v3')
+
+  #   @set_event = client.execute(:api_method => service.events.insert,
+  #                           :parameters => {'calendarId' => current_user.email, 'sendNotifications' => true},
+  #                           :body => JSON.dump(@event),
+  #                           :headers => {'Content-Type' => 'application/json'})
+  # end
 end

@@ -10,6 +10,7 @@ fr:
         half_day: 'demi-journée'
         day(s): 'jour(s)'
         week(s): 'semaine(s)'
+        hour(s): 'heure(s)'
       status:
         pending: 'En attente'
         paid: 'Payée'

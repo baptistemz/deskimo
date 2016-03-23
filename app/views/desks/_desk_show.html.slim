@@ -21,6 +21,11 @@ br
   hr.style-company
 h4.company-section-title = t('show.description')
 p.company = desk.description
+-if desk.kind == :closed_office || desk.kind == :meeting_room
+  hr.style-company
+  .booking-show-couple
+    h4.company-section-title = t('desk_creation.capacity')
+    p.company #{desk.capacity} #{t('people')}
 hr.style-company
 h4.company-section-title = t('show.price')
 .prices-list

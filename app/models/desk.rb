@@ -41,11 +41,23 @@ class Desk < ActiveRecord::Base
 
   def create_and_delete_unavailabilities(events)
     events.each do |event|
-      self.unavailability_ranges.where(start_date: event.raw['start']['date'].to_date,
-                                       end_date: event.raw['end']['date'].to_date).first_or_create(kind: :calendar)
+      if event.raw['start']['dateTime']
+        self.unavailability_ranges.where(start_date: event.raw['start']['dateTime'].to_date,
+                                         end_date: event.raw['end']['dateTime'].to_date).first_or_create(kind: :calendar)
+      else
+        self.unavailability_ranges.where(start_date: (event.raw['start']['date'].to_date),
+                                         end_date: (event.raw['end']['date'].to_date - 1.day)).first_or_create(kind: :calendar)
+      end
+
     end
     self.unavailability_ranges.where(kind: :calendar).each do |u_r|
-      @associated = events.find{|event| event.raw['start']['date'].to_date == u_r.start_date && event.raw['end']['date'].to_date == u_r.end_date}
+      @associated = events.find do |event|
+        if event.raw['start']['dateTime']
+          event.raw['start']['dateTime'].to_date == u_r.start_date && event.raw['end']['dateTime'].to_date == u_r.end_date
+        else
+          event.raw['start']['date'].to_date == u_r.start_date && (event.raw['end']['date'].to_date - 1.day) == u_r.end_date
+        end
+      end
       u_r.delete unless @associated
     end
   end

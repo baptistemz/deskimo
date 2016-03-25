@@ -2,8 +2,8 @@
 var pr = document.querySelector( '.paginate.left' );
 var pl = document.querySelector( '.paginate.right' );
 
-pr.onClick(slide.bind( this, -1 ));
-pl.onClick(slide.bind( this, 1 ));
+$('.paginate.left').click(slide.bind( this, -1 ));
+$('.paginate.right').click(slide.bind( this, 1 ));
 
 var total = parseInt($('.counter').text().substring(2,3));
 var index = parseInt($('.counter').text().substring(0,1)) - 1;

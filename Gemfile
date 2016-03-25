@@ -17,6 +17,7 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'turbolinks'
+gem 'will_paginate', '~> 3.0.7'
 
 
 gem 'wicked_pdf'
@@ -80,10 +81,10 @@ group :test do
   gem 'minitest-reporters'
 end
 
-group :staging do
-  gem 'rails_12factor'
-  gem 'puma'
-end
+# group :staging do
+#   gem 'rails_12factor'
+#   gem 'puma'
+# end
 
 group :production do
   gem 'rails_12factor'

@@ -42,11 +42,9 @@
                 -else
                   =link_to company_desks_path(company)
                     = render partial: 'company_thumbnail', locals: {company: company}
-      / = will_paginate @companies
       - if @companies.total_pages > 1
         .pagination
           .counter #{@companies.current_page}/#{@companies.total_pages}
-          / = link_to companies_path(@companies)}, page: @companies.current_page+1
           = link_to params.merge({page: @companies.previous_page})
             .paginate.left
               i

@@ -1,6 +1,6 @@
 // basic paging logic to demo the buttons
-var pr = document.querySelector( '.paginate.left' );
-var pl = document.querySelector( '.paginate.right' );
+// var pr = document.querySelector( '.paginate.left' );
+// var pl = document.querySelector( '.paginate.right' );
 
 $('.paginate.left').click(slide.bind( this, -1 ));
 $('.paginate.right').click(slide.bind( this, 1 ));
@@ -13,8 +13,8 @@ function slide(offset) {
 
   $('.counter').html(( index + 1 ) + ' / ' + total);
 
-  pr.setAttribute( 'data-state', index === 0 ? 'disabled' : '' );
-  pl.setAttribute( 'data-state', index === total - 1 ? 'disabled' : '' );
+  $('.paginate.left').setAttribute( 'data-state', index === 0 ? 'disabled' : '' );
+  $('.paginate.right').setAttribute( 'data-state', index === total - 1 ? 'disabled' : '' );
 }
 
 slide(0);

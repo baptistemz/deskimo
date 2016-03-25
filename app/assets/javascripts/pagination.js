@@ -13,8 +13,8 @@ function slide(offset) {
 
   $('.counter').html(( index + 1 ) + ' / ' + total);
 
-  $('.paginate.left').setAttribute( 'data-state', index === 0 ? 'disabled' : '' );
-  $('.paginate.right').setAttribute( 'data-state', index === total - 1 ? 'disabled' : '' );
+  $('.paginate.left').attr( 'data-state', index === 0 ? 'disabled' : '' );
+  $('.paginate.right').attr( 'data-state', index === total - 1 ? 'disabled' : '' );
 }
 
 slide(0);

@@ -11,7 +11,7 @@ var index = parseInt($('.counter').text().substring(0,1)) - 1;
 function slide(offset) {
   index = Math.min( Math.max( index + offset, 0 ), total - 1 );
 
-  document.querySelector( '.counter' ).innerHTML = ( index + 1 ) + ' / ' + total;
+  $('.counter').html(( index + 1 ) + ' / ' + total);
 
   pr.setAttribute( 'data-state', index === 0 ? 'disabled' : '' );
   pl.setAttribute( 'data-state', index === total - 1 ? 'disabled' : '' );

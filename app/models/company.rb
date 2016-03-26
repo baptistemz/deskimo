@@ -1,5 +1,6 @@
 class Company < ActiveRecord::Base
   require 'elasticsearch/model'
+  require 'kaminari'
   searchkick locations: ["location"], settings: {number_of_shards: 1}
 
   belongs_to :user
@@ -22,7 +23,10 @@ class Company < ActiveRecord::Base
 
   after_validation :geocode, if: :full_address_changed?
   after_create :send_new_company_email
-  self.per_page = 6
+
+  def self.per_page
+    4
+  end
 
   def search_data
     {

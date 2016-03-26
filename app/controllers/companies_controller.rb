@@ -42,7 +42,7 @@ class CompaniesController < ApplicationController
       search_conditions[:kinds] = @kind
     end
 
-    @companies = Company.search('*', where: search_conditions, order: sort_conditions, aggs: aggregations, :page => params[:page], :per_page => 6)
+    @companies = Company.search('*', where: search_conditions, order: sort_conditions, aggs: aggregations, :page => params[:page], :per_page => 2)
     if @companies.empty?
       @empty_message = 'Aucun bureau disponible ne correspond à votre recherche'
     end

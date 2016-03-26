@@ -22,6 +22,7 @@ class Company < ActiveRecord::Base
 
   after_validation :geocode, if: :full_address_changed?
   after_create :send_new_company_email
+  self.per_page = 6
 
   def search_data
     {

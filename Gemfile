@@ -17,7 +17,8 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'turbolinks'
-gem 'kaminari'
+gem 'will_paginate', '~> 3.0.7'
+
 
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'

@@ -1,6 +1,6 @@
 class Company < ActiveRecord::Base
-  require 'will_paginate'
   require 'elasticsearch/model'
+  require 'will_paginate'
   searchkick locations: ["location"], settings: {number_of_shards: 1}
 
   belongs_to :user

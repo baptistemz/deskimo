@@ -1,4 +1,5 @@
 class Company < ActiveRecord::Base
+  require 'will_paginate'
   require 'elasticsearch/model'
   searchkick locations: ["location"], settings: {number_of_shards: 1}
 

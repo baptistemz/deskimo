@@ -3,7 +3,7 @@
 $size: 30px;
 $thickness: 5px;
 $angle: 40deg;
-$angleHover: 25deg;
+$angleHover: 30deg;
 $angleActive: 10deg;
 
 @mixin arrowTransform( $angle, $x: 0, $y: 0 ) {

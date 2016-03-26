@@ -10,9 +10,7 @@ var index = parseInt($('.counter').text().substring(0,1)) - 1;
 
 function slide(offset) {
   index = Math.min( Math.max( index + offset, 0 ), total - 1 );
-
   $('.counter').html(( index + 1 ) + ' / ' + total);
-
   $('.paginate.left').attr( 'data-state', index === 0 ? 'disabled' : '' );
   $('.paginate.right').attr( 'data-state', index === total - 1 ? 'disabled' : '' );
 }

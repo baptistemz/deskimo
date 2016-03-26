@@ -2,9 +2,9 @@
   p #{t('mailer.hello')} #{@user.first_name},
 -else
   p #{t('mailer.hello')},
-p Ta réservation de bureaux a été confirmée par #{@company.name}. Tu y es attendu(e).
+p Votre réservation de bureaux a été confirmée par #{@company.name}. Vous t êtes attendu(e).
 - if @welcome_message
-  p #{@company.name} te transmet les informations suivantes :
+  p #{@company.name} vous transmet les informations suivantes :
   br
   strong
     - unless @welcome_message.message.blank?
@@ -25,5 +25,5 @@ p Ta réservation de bureaux a été confirmée par #{@company.name}. Tu y es at
       p = @welcome_message.additional_information
 br
 
-p N'hésite pas à envoyer tes feebbacks à #{mail_to('contact@deskimo.co')}
+p N'hésitez pas à envoyer vos feebbacks à #{mail_to('contact@deskimo.co')}
 P Happy desk sharing !

@@ -33,9 +33,9 @@ fr:
 
 # PAGES
   home:
-    banner_title                     : "Utilisez les bureaux d'une entreprise autour de vous à Lille"
+    banner_title                     : "Utilisez les bureaux d'une entreprise à Lille"
     geoloc_btn                       : "Géolocalisez-vous"
-    city_label                       : "ou indiquez où vous êtes"
+    city_label                       : "ou indiquez où vous comptez travailler"
     city_placeholder                 : "Ville ou adresse"
     hp_kind_title                    : "Quels bureaux reserver ?"
     hp_kind_cta                      : "Trouvez les plus proches"
@@ -108,8 +108,8 @@ fr:
     change_identifiers: "Changer d'identifiants"
     cancel_my_account: 'Supprimer mon compte'
     cancel_your_account: 'Supprimer le compte'
-    unhappy_message: 'Mécontent? Ton feedback nous interesse:'
-    sure_to_cancel_message: 'Si tu es vraiment sûr :'
+    unhappy_message: 'Mécontent? Votre feedback nous interesse:'
+    sure_to_cancel_message: 'Si vous êtes vraiment sûr :'
     8_char_min: '8 caractères min'
     new_password: 'nouveau mot de passe'
 

@@ -5,12 +5,20 @@ ActiveAdmin.register Desk do
     column :description
     column :company
     column :quantity
+    column :capacity
+    column :number
     column :kind
     column :hour_price
     column :half_day_price
     column :daily_price
     column :weekly_price
     column :activated
+    column :projector
+    column :paperboard
+    column :desktop
+    column :tv
+    column :call_conference
+    column :calendar_id
     actions
   end
 

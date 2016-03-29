@@ -41,7 +41,7 @@ module Account
     def update
       @desk = @company.desks.find(params[:id])
       unless @desk.kind == "open_space"
-        if desk_params[:capacity] == nil
+        if desk_params[:capacity] == nil || desk_params[:capacity] == @desk.capacity
           @desk.capacity = params[:desk][:quantity]
           @desk.quantity = 1
         end

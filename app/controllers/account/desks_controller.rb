@@ -41,8 +41,10 @@ module Account
     def update
       @desk = @company.desks.find(params[:id])
       unless @desk.kind == "open_space"
-        @desk.capacity = params[:desk][:quantity]
-        @desk.quantity = 1
+        if desk_params[:capacity] == nil
+          @desk.capacity = params[:desk][:quantity]
+          @desk.quantity = 1
+        end
       end
       if @desk.update(desk_params)
         flash[:notice] = t('flashes.desk_registered')
@@ -75,6 +77,14 @@ module Account
       params.require(:desk).permit( :kind,
                                     :description,
                                     :quantity,
+                                    :capacity,
+                                    :number,
+                                    :projector,
+                                    :paperboard,
+                                    :desktop,
+                                    :tv,
+                                    :call_conference,
+                                    :calendar_id,
                                     :hour_price,
                                     :half_day_price,
                                     :daily_price,

@@ -30,6 +30,14 @@ ActiveAdmin.register Desk do
       f.input :quantity
       f.input :kind
       f.input :activated
+      f.input :capacity
+      f.input :number
+      f.input :projector
+      f.input :paperboard
+      f.input :desktop
+      f.input :tv
+      f.input :call_conference
+      f.input :calendar_id
     end
 
     f.inputs "Prices" do

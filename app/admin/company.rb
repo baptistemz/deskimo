@@ -61,6 +61,10 @@ ActiveAdmin.register Company do
       f.input :end_time_am
       f.input :start_time_pm
       f.input :end_time_pm
+      f.input :coffee
+      f.input :wifi
+      f.input :printer
+      f.input :scanner
     end
     f.actions
   end

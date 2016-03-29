@@ -50,6 +50,6 @@ ActiveAdmin.register Desk do
     f.actions
   end
 
-  permit_params :description, :company_id, :quantity, :kind, :hour_price, :daily_price, :weekly_price, :activated
+  permit_params :description, :number, :capacity, :projector, :paperboard, :desktop, :tv, :call_conference, :calendar_id, :company_id, :quantity, :kind, :hour_price, :daily_price, :weekly_price, :activated
 
 end

@@ -5,6 +5,6 @@ clean_unavailability_daily:
 
 link_with_calendar_every_10_minutes:
   # cron: "10 * * * *" # every 10 minutes
-  cron: "* * * * *" # every minute
+  cron: "10 * * * *" # every minute
   class: UpdateCalendarJob
   description: "link calendar data to unavailabilities"

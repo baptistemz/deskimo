@@ -2,6 +2,7 @@
 //= require jquery_ujs
 //= require geolocalization
 //= require bootstrap-sprockets
+//= require pagination
 //= require underscore
 //= require gmaps/google
 //= require google_analytics

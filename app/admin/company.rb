@@ -21,7 +21,7 @@ ActiveAdmin.register Company do
     column :picture_updated_at
     column :latitude
     column :longitude
-    column :user_id
+    column :user
     column :open_monday
     column :open_tuesday
     column :open_wednesday

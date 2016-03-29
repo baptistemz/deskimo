@@ -1,8 +1,8 @@
 = content_for(:meta_title){"deskimo - Bureaux disponibles chez #{@company.name}"}
 - if @meeting_room.any?
-  = content_for(:meta_description){"Des bureaux et salles de réunion sont disponibles chez #{@company.name} à #{@company.city}. Tu peux les reserver dès maintenant !"}
+  = content_for(:meta_description){"Des bureaux et salles de réunion sont disponibles chez #{@company.name} à #{@company.city}. Vous pouvez les reserver dès maintenant !"}
 - else
-  = content_for(:meta_description){"Des bureaux sont disponibles chez #{@company.name} à #{@company.city}. Tu peux les reserver dès maintenant !"}
+  = content_for(:meta_description){"Des bureaux sont disponibles chez #{@company.name} à #{@company.city}. Vous pouvez les reserver dès maintenant !"}
 .container.padded
   .row
     .col-sm-6

@@ -4,8 +4,8 @@ ActiveAdmin.register Booking do
     selectable_column
     column :start_date
     column :end_date
-    column :desk_id
-    column :user_id
+    column :desk
+    column :user
     column :time_slot_quantity
     column :time_slot_type
     column :status

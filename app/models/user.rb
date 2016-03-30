@@ -14,7 +14,6 @@ class User < ActiveRecord::Base
     # rake paperclip:refresh CLASS=User
   validates_attachment_content_type :avatar,
     content_type: /\Aimage\/.*\z/
-  validates_presence_of :first_name, :last_name, :on => :update
 
   after_create :send_welcome_email
 
@@ -63,7 +62,6 @@ class User < ActiveRecord::Base
   def send_welcome_email
     UserMailer.welcome(self).deliver_later
   end
-
 
 
   # def update_mangopay_profile

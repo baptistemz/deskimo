@@ -57,7 +57,6 @@ function loadCalendar(kind, number){
       var fDay = firstDay(currentMonth,d.getFullYear())-1 // find what day of the week the 1st lands on
     }
     $('.calendar p.monthname').text(months[currentMonth-1]); // add month name to calendar
-    console.log(fDay)
     for (var i=0;i<fDay - 1;i++) { // place the first day of the month in the correct position
       $('<li>&nbsp;</li>').appendTo('.calendar ul');
     }
@@ -75,7 +74,7 @@ function loadCalendar(kind, number){
     var availableDaysArray = new Array();
     $("."+kind + '_' + number +"_booking #booking_start_date option").each(function()
       {
-        if (parseInt($(this).val().substring(4, 6)) === themonth+2){
+        if (parseInt($(this).val().substring(3, 5)) === currentMonth){
           availableDay = parseInt($(this).val().substring(0, 2))
           availableDaysArray.push(('0'+availableDay).slice(-2))
         }

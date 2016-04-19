@@ -14,7 +14,11 @@ module Account
       @user = current_user
       if @user.update(user_params)
         if params[:booking]
-          redirect_to new_booking_payment_path(params[:booking])
+          if @user.bookings.find(params[:booking]).update(status: :identified)
+            redirect_to new_booking_payment_path(params[:booking])
+          else
+            redirect_to :back
+          end
         else
           redirect_to account_user_path
         end
@@ -22,6 +26,10 @@ module Account
         render :edit
         return
       end
+    end
+
+    def archived_bookings
+      @bookings = current_user.bookings.where(archived: true)
     end
 
     private

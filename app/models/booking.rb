@@ -11,12 +11,13 @@ class Booking < ActiveRecord::Base
   validates :time_slot_quantity, :numericality => { :greater_than => 0 }
   validate  :user_cannot_be_from_the_company
   validate  :desk_must_be_available, on: :create
+  validate  :user_must_have_names, on: :update
 
   monetize :amount_cents
 
   enumerize :time_slot_type, in: [:half_day, :'day(s)', :'week(s)'], default: :'day(s)'
   enumerize :half_day_choice, in: [:am, :pm]
-  enumerize :status, in: ["pending", "paid", "confirmed", "canceled"], default: "pending"
+  enumerize :status, in: [:pending, :identified, :paid, :confirmed, :canceled], default: :pending
 
   after_update :booking_status_management
 
@@ -42,6 +43,13 @@ class Booking < ActiveRecord::Base
       user == desk.company.user
   end
 
+  def user_must_have_names
+    errors.add(:first_name,"Vous ne pouvez pas passer de commande sans indiquer votre prénom") if
+      user.first_name.to_s == ''
+    errors.add(:last_name,"Vous ne pouvez pas passer de commande sans indiquer votre nom") if
+      user.last_name.to_s == ''
+  end
+
   def desk_must_be_available
     if start_date == end_date
       errors.add(:start_date, "Ce bureau n'est plus disponible à cette date") unless
@@ -53,21 +61,23 @@ class Booking < ActiveRecord::Base
   end
 
   def booking_status_management
-    send_booking_emails
-    if self.desk.calendar_id
+    unless self.archived
       if self.status == :paid
-        CreateGoogleCalendarEventJob.perform_later(self.id)
+        send_booking_emails
+        if self.desk.calendar_id
+          CreateGoogleCalendarEventJob.perform_later(self.id)
+        end
       elsif self.status == :canceled
-        DeleteGoogleCalendarEventJob.perform_later(self.id)
+        send_booking_emails
+        if self.desk.calendar_id
+          DeleteGoogleCalendarEventJob.perform_later(self.id)
+        end
       end
     end
-
   end
 
   def send_booking_emails
-    unless self.status == :confirmed
-      CompanyMailer.send("#{self.status}_booking", self).deliver_later
-    end
+    CompanyMailer.send("#{self.status}_booking", self).deliver_later
     UserMailer.send("#{self.status}_booking", self).deliver_later
   end
 

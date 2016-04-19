@@ -30,15 +30,15 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
               li = link_to account_user_path
                 i.fa.fa-user.icon-margin
                 = t('navbar.profil')
-              li = link_to account_company_desks_path(current_user.company)
-                i.fa.fa-dashboard.icon-margin
-                = t('navbar.company_dashboard')
               li = link_to account_bookings_path
                 i.fa.fa-list.icon-margin
                   - if new_inbound_bookings
                     .small-chip.nm-left
                       i.fa.fa-exclamation
                 = t('navbar.bookings')
+              li = link_to account_company_desks_path(current_user.company)
+                i.fa.fa-dashboard.icon-margin
+                = t('navbar.company_dashboard')
 
           li = link_to destroy_user_session_path, method: :delete
             i.fa.fa-sign-out.icon-margin
@@ -57,6 +57,9 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
               li = link_to account_bookings_path
                 i.fa.fa-list.icon-margin
                 = t('navbar.bookings')
+              li.nav-new-company = link_to new_account_company_path
+                i.fa.fa-building-o.icon-margin
+                = t('home.hp_company_registration_cta')
 
           li = link_to destroy_user_session_path, method: :delete
             i.fa.fa-sign-out.icon-margin

@@ -3,9 +3,9 @@ class CleanUnpaidBookingsJob < ActiveJob::Base
 
   def perform(booking_id)
     @booking = Booking.find(booking_id)
-    if @booking.status == 'pending'
+    if @booking.status == :pending || @booking.status == :identified
       @booking.unavailability_range.destroy
-      @booking.update_without_callbacks(status: 'canceled', archived: true)
+      @booking.destroy
     end
   end
 end

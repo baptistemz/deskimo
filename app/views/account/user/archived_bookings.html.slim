@@ -1,0 +1,34 @@
+.container
+  h2 #{t('your_many').capitalize} #{t('account.archived_bookings')}
+  br
+  table
+    tr
+      th= t('index.kind_of_desk').capitalize
+      th= t('show.length').capitalize
+      th= t('dashboard.date').capitalize
+      th= t('index.details').capitalize
+    - @bookings.each do |booking|
+      tr
+        td
+          = link_to company_desks_path(booking.desk.company, :tab_selected => "#{booking.desk.kind}")
+            '#{booking.desk.kind.text} #{t('dashboard.in_company')} #{booking.desk.company.name}
+
+        - if booking.time_slot_type == "half_day"
+          td #{booking.time_slot_type.text} - #{booking.half_day_choice.text}
+        - else
+          td #{booking.time_slot_quantity} #{booking.time_slot_type.text}
+        - if booking.start_date == booking.end_date
+          td #{l(booking.start_date)}
+        - else
+          td #{l(booking.start_date)} - #{l(booking.end_date)}
+        td
+          ul.list-unstyle.list-inline#no-margin class= "#{booking.status}_cell"
+              li #{booking.status.text}
+              li =link_to account_booking_path(booking)
+                    .booking-details
+                      i.fa.fa-info-circle
+  br
+  .center
+    =link_to account_bookings_path
+      i.fa.fa-list
+      |  #{t('dashboard.back_to_bookings')}

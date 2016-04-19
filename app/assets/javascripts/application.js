@@ -19,4 +19,6 @@
 //= require price_share
 //= require scroll_reveal
 //= require user_profile
-
+//= require react
+//= require react_ujs
+//= require components

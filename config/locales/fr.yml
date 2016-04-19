@@ -98,6 +98,7 @@ fr:
     desk_capacity       : "Capacité du bureau"
     capacity       : "Capacité"
   account:
+    archived_bookings: "réservations archivées"
     my_account    : "Mon compte"
     first_name    : "Prénom"
     last_name     : "Nom"
@@ -112,7 +113,7 @@ fr:
     sure_to_cancel_message: 'Si vous êtes vraiment sûr :'
     8_char_min: '8 caractères min'
     new_password: 'nouveau mot de passe'
-
+    no_company_message: "Vous n'êtes pas administrateur d'un compte entreprise. Si vous voulez enregistrer votre workplace sur deskimo et louer vos bureaux"
   dashboard:
     edit_company              : "Modifier les informations de l'entreprise"
     change_quantity           : "modifier la quantité de bureaux"
@@ -188,6 +189,7 @@ fr:
   wifi_password: 'mot de passe wifi'
   access_info: "informations d'accés"
   calendar_room_tuto_url: 'https://support.google.com/calendar/answer/44105?hl=fr'
+  your_many: "vos"
 
   openings:
     from_day: 'du'

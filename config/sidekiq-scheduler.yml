@@ -3,8 +3,13 @@ clean_unavailability_daily:
   class: CleanOldUnavailabilitiesJob
   description: "clean old unavailabilities"
 
+archive_bookings_daily:
+  cron: "* * * * *" # every minute
+  # cron: "20 0 * * *" # everyday at 12:20am
+  class: ArchiveOldBookingsJob
+  description: "archive old bookings"
+
 link_with_calendar_every_10_minutes:
-  # cron: "10 * * * *" # every 10 minutes
-  cron: "10 * * * *" # every minute
+  cron: "10 * * * *" # every 10 minutes
   class: UpdateCalendarJob
   description: "link calendar data to unavailabilities"

@@ -3,9 +3,18 @@
   br
   .row
     .col-sm-6
-      =link_to company_desks_path(@company, :tab_selected => "#{@desk.kind}")
+      - if @user.id
         .limited-width-centered
           = render partial: 'users/user_avatar', locals: {company: @company}
+      -elsif @user.email
+        .limited-width-centered
+          h4.blue L'utilisateur n'éxiste plus chez deskimo
+        .booking-show-couple
+          h4.blue email:
+          p = @user.email
+      -else
+        .limited-width-centered
+          h4.blue L'utilisateur n'éxiste plus chez deskimo
     .col-sm-6
       .booking-confirmation-details
         .booking-confirmation-details-content
@@ -38,7 +47,7 @@
 
   br
   .row
-    - if @booking.status == 'paid'
+    - if @booking.status == 'paid' && @user.first_name && @user.last_name
       p.center Merci de confirmer ou annuler la réservation
       .col-xs-6.col-sm-offset-2.col-sm-4
         = link_to account_booking_confirmation_path(@booking), method: :create

@@ -55,7 +55,7 @@ module Account
     end
 
     def destroy
-      @desk = Desk.find(params[:id])
+      @desk = @company.desks.find(params[:id])
       if @desk.destroy
         flash[:notice] = t('flashes.desk_deleted')
         redirect_to account_company_desks_path(@company)
@@ -63,6 +63,11 @@ module Account
         redirect_to :back
         flash[:alert] = t('flashes.desk_not_deleted')
       end
+    end
+
+    def archived_bookings
+      @desk = @company.desks.find(params[:desk_id])
+      @bookings = @desk.bookings.where(archived: true)
     end
 
     private

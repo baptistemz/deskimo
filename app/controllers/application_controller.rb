@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 
   after_filter :store_location
   before_filter :staging_authenticate
+  before_filter :configure_permitted_parameters, if: :devise_controller?
 
   # include Pundit
 
@@ -70,5 +71,11 @@ class ApplicationController < ActionController::Base
         name == ENV['MY_SITE_USERNAME'] && password == ENV['MY_SITE_SECRET']
       end
     end
+  end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:account_update) { |u|
+      u.permit(:password, :password_confirmation, :current_password)
+    }
   end
 end

@@ -95,6 +95,7 @@ en:
     desk_capacity       : "Capacity of the desk"
     capacity       : "Capacity"
   account:
+    archived_bookings: "archived bookings"
     my_account    : "My account"
     first_name    : "First name"
     last_name     : "Last name"
@@ -109,6 +110,8 @@ en:
     sure_to_cancel_message: 'And if you are really sure :'
     8_char_min: '8 characters minimum'
     new_password: 'new password'
+    no_company_message: "If you want to register your company and rent out desks on deskimo"
+
   dashboard:
     edit_company              : "Edit company details"
     change_quantity           : "Change quantity of seats"
@@ -184,6 +187,7 @@ en:
   wifi_password: 'wifi password'
   access_info: "access information"
   calendar_room_tuto_url: 'https://support.google.com/calendar/answer/44105?hl=en'
+  your_many: "your"
 
   openings:
     from_day: 'from'

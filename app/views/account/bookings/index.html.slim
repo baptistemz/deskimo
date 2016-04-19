@@ -11,6 +11,7 @@
             - if desk.bookings.where(archived: false).any?
                 = render partial: 'booking_table', locals: {desk: desk, bookings: desk.bookings.where(archived: false)}
             - if desk.bookings.where(archived: true).any?
+                br
                 .center
                     = link_to account_desk_archived_bookings_path(desk)
                         .btn.btn-primary
@@ -130,6 +131,7 @@
     p Aucune reservation enregistrée pour l'instant
 
   - if current_user.bookings.where(archived: true).any?
+    br
     .center
         = link_to archived_bookings_account_user_path
           .btn.btn-primary

@@ -35,7 +35,7 @@
     hr
     p.text-center #{@booking.amount} € #{t('ttc')}
     BR
-  - if @user.first_name && @user.last_name
+  - if @user.first_name.to_s != '' && @user.last_name.to_s != ''
     =link_to new_booking_payment_path(@booking), class: 'btn-center'
       .btn.btn-primary.login-button-width= t('activerecord.models.payment')
   -else
@@ -47,7 +47,7 @@
           = f.input :first_name
         .form-group
           = f.input :last_name
-        .form-actions.btn-center
-          = f.button :submit, t('activerecord.models.payment'), class: "btn btn-primary login-button-width center"
+        .form-action.center
+          = f.button :submit, t('activerecord.models.payment'), class: "btn btn-primary login-button-width"
 
 

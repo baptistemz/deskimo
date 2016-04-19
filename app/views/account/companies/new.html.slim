@@ -5,6 +5,8 @@
       h2 Votre entreprise
       br
       = simple_form_for [:account, @company] do |f|
+        .center.red
+          = f.error_notification
         .form-group
           h4.blue #{t('company_creation.company_details')} :
           = f.input :name, label:false, required: true, autofocus: true, placeholder:"Nom de l'entreprise", :input_html => {:maxlength => 25}
@@ -70,7 +72,7 @@
           p #{t('company_creation.to')}
           = f.input :end_time_pm,label: false, :minute_step => 15, default: Time.parse('17:00')
         br
-        .form-actions
+        .form-action.center
           = f.submit class: "btn-primary login-button-width"
   .col-sm-5.hidden-xs
     .process-step.completed

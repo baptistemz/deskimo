@@ -1,0 +1,18 @@
+.container
+  .text-center
+    h2= t('account.new_password')
+    .form-margin-top
+      = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+        .center.red
+          = f.error_notification
+        = f.input :reset_password_token, as: :hidden
+        = f.full_error :reset_password_token
+        .form-group
+          = f.input :password, label: "New password", required: true, autofocus: true, hint: "#{t('account.8_char_min')}", placeholder:"password"
+        .form-group
+          = f.input :password_confirmation, label: "Confirm your new password", required: true, placeholder:"confirmation"
+        .form-actions.center
+          = f.button :submit, "#{t('account.new_password')}", class: "btn-primary login-button-width"
+      = render "users/shared/links"
+
+

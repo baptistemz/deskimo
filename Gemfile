@@ -57,6 +57,13 @@ gem 'sidekiq-scheduler', '~> 2.0'
 
 # gem 'mangopay', '~> 3.0.0'
 
+gem 'js-routes'
+gem 'react-rails', '1.6.1'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-classnames'
+end
+
 gem 'activeadmin', github: 'activeadmin'
 
 source 'https://rails-assets.org' do

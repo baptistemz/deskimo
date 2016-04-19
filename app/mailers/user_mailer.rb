@@ -7,7 +7,7 @@ class UserMailer < ApplicationMailer
   #
   def welcome(user)
     @user= user
-    mail to: @user.email, subject: t("mailer.welcome")
+    mail to: @user.email, subject: t("welcome")
   end
 
   def paid_booking(booking)

@@ -3,12 +3,19 @@
     h2.center Réservations de bureaux dans votre entreprise
     -if @desks
       - @desks.each do |desk|
-        - if desk.bookings.where(archived: false).any?
-          - if desk.kind == "open_space"
-            h4.company-section-title #{desk.kind.text}
-          - else
-            h4.company-section-title #{desk.kind.text} n°#{desk.number}
-          = render partial: 'booking_table', locals: {desk: desk, bookings: desk.bookings.where(archived: false)}
+        - if desk.bookings
+            - if desk.kind == "open_space"
+              h4.company-section-title #{desk.kind.text}
+            - else
+              h4.company-section-title #{desk.kind.text} n°#{desk.number}
+            - if desk.bookings.where(archived: false).any?
+                = render partial: 'booking_table', locals: {desk: desk, bookings: desk.bookings.where(archived: false)}
+            - if desk.bookings.where(archived: true).any?
+                .center
+                    = link_to account_desk_archived_bookings_path(desk)
+                        .btn.btn-primary
+                            i.fa.fa-clock-o
+                            | archives
 
     / - if @open_space && @open_space_bookings.any?
     /   h4.company-section-title = t('enumerize.desk.kind.open_space')
@@ -122,5 +129,11 @@
   -else
     p Aucune reservation enregistrée pour l'instant
 
+  - if current_user.bookings.where(archived: true).any?
+    .center
+        = link_to archived_bookings_account_user_path
+          .btn.btn-primary
+              i.fa.fa-clock-o
+              | archives
 
 

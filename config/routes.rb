@@ -35,7 +35,9 @@ Rails.application.routes.draw do
         get 'redirect', 'callback'
         post 'associate'
       end
-      resource :user, only: [:show, :edit, :update], controller: 'user'
+      resource :user, only: [:show, :edit, :update], controller: 'user' do
+        get 'archived_bookings'
+      end
       resource :credit_card, only: [:new, :create, :edit, :update], controller: 'credit_card'
       resources :companies, only: [:new, :create, :edit, :update] do
         resource :welcome_message, only:[:new, :create, :edit, :update], controller: 'companies/welcome_message'
@@ -45,6 +47,9 @@ Rails.application.routes.draw do
           resource :activation, only: [:create, :destroy], controller: 'desks/activation'
           resources :unavailability_ranges, only: [:index, :create, :destroy]
         end
+      end
+      resources :desks, only: [] do
+        get 'archived_bookings'
       end
       resources :bookings, only: [:index, :show, :edit, :update] do
         # get 'confirmation'

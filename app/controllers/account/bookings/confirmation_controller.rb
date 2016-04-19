@@ -8,7 +8,7 @@ module Account
         @company = @booking.desk.company
         @desk = @booking.desk
         # @booking = @desk.bookings.find(params[:booking_id])
-        @user = @booking.user
+        @user = @booking.user || User.new(email: @booking.payment['source']['name'])
       end
 
       def create

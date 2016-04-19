@@ -41,7 +41,7 @@
 
     .col-xs-12.col-md-4
       .profile-resume
-        h2 = t('activerecord.models.company')
+        h2.center = t('activerecord.models.company')
         -if @company
           h3.blue = @company.name
           br
@@ -69,9 +69,10 @@
               |  #{t('navbar.company_dashboard')}
         -else
           br
-          p Vous n'êtes pas administrateur d'un compte entreprise. Si vous voulez enregistrer votre workplace sur deskimo et louer vos bureaux :
-          = link_to new_account_company_path
-            p enregistrez votre entreprise
+          p = t('account.no_company_message')
+          = link_to new_account_company_path, class: "btn btn-primary full-width "
+            i.fa.fa-building-o
+            |  #{t('home.hp_company_registration_cta')}
   .row
     .center.padded
       = link_to account_bookings_path

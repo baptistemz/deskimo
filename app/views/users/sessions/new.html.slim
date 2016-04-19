@@ -1,18 +1,18 @@
-.text-center.login-banner
+.login-banner
   .form-margin-top
-    h2 Log in
+    h2.center Log in
     br
     br
     = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-      .red
+      .center.red
         = f.error_notification
       .form-group
-        = f.input :email, label: false, required: true, autofocus: true, placeholder:"email"
+        = f.input :email, label: false, required: true, autofocus: true, label: "email"
       br
       .form-group
-        = f.input :password, label: false, required: true , placeholder:"password"
+        = f.input :password, label: false, required: true , label: "password"
       br
-      .form-actions
+      .form-action.center
         = f.button :submit, "Log in", class: "btn-primary login-button-width"
       br
       .form-group
@@ -20,10 +20,11 @@
       .row.form-group
         .col-xs-6.no-padding
           = link_to user_omniauth_authorize_path(:facebook, resource)
-            .btn-primary.login-button-width.facebook-btn
+            .btn-primary.login-button-width.facebook-btn.center
               i.fa.fa-facebook
         .col-xs-6.no-padding
           = link_to user_omniauth_authorize_path(:google_oauth2, resource)
-            .btn-primary.login-button-width.google-btn
+            .btn-primary.login-button-width.google-btn.center
               i.fa.fa-google
-    = render "users/shared/links"
+    .center
+      = render "users/shared/links"

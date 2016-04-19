@@ -6,46 +6,46 @@
   = content_for(:meta_description){"Louez des bureaux à la demi-journée/journée/semaine en last-minute."}
 .container
   .col-sm-7
-    .text-center
-      .form-margin-top
-        - if params[:user_type] == "company"
-          h2 = t('devise.custom.create_company_account')
-        -else
-          h2 = t('devise.custom.create_user_account')
-        br
-        br
-        = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    / .text-center
+    .form-margin-top
+      - if params[:user_type] == "company"
+        h2.center = t('devise.custom.create_company_account')
+      -else
+        h2.center = t('devise.custom.create_user_account')
+      br
+      br
+      = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        .center.red
           = f.error_notification
-          .form-group
-            = f.input :email, label: false, required: true, autofocus: true, placeholder:"email"
-          br
-          .form-group
-            = f.input :password, label: false, required: true , placeholder:"password"
-            p #{@minimum_password_length} characters minimum
-          .form-group
-            = f.input :password_confirmation, label: false, required: true, placeholder:"confirmation"
-          br
-          .form-actions
+        .form-group
+          = f.input :email, label: false, required: true, autofocus: true, label: "email"
+        br
+        .form-group
+          = f.input :password, label: false, required: true , label: "password (#{t('account.8_char_min')})", placeholder:"#{t('account.8_char_min')}"
+        .form-group
+          = f.input :password_confirmation, required: true
+        br
+        .form-action.center
           - if params[:user_type] == "company"
             = hidden_field_tag(:user_type, 'company')
             = f.button :submit, "Sign up", class: "btn-primary login-button-width"
           - else
             = hidden_field_tag(:user_type, 'user')
             = f.button :submit, "Sign up", class: "btn-primary login-button-width"
-          br
-          / - if params[:user_type] != "company"
-          br
-          .form-group
-            p.text-left = t('devise.custom.social_sign_up_solutions')
-          .row.form-group
-            .col-xs-6.no-padding
-              = link_to user_omniauth_authorize_path(:facebook, resource)
-                .btn-primary.login-button-width.facebook-btn
-                  i.fa.fa-facebook
-            .col-xs-6.no-padding
-              = link_to user_omniauth_authorize_path(:google_oauth2)
-                .btn-primary.login-button-width.google-btn
-                  i.fa.fa-google
+        br
+        br
+        .form-group
+          p.text-left = t('devise.custom.social_sign_up_solutions')
+        .row.form-group
+          .col-xs-6.no-padding.center
+            = link_to user_omniauth_authorize_path(:facebook, resource)
+              .btn-primary.login-button-width.facebook-btn
+                i.fa.fa-facebook
+          .col-xs-6.no-padding.center
+            = link_to user_omniauth_authorize_path(:google_oauth2)
+              .btn-primary.login-button-width.google-btn
+                i.fa.fa-google
+        .center
           = render "users/shared/links"
 
   - if params[:user_type] == "company"

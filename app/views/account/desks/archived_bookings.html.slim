@@ -1,0 +1,12 @@
+.container
+  - if @desk.kind == "open_space"
+    h2.center #{@desk.kind.text} - Réservations archivées
+  - else
+    h2.center #{@desk.kind.text} n°#{@desk.number} - Réservations archivées
+  BR
+  = render partial: 'account/bookings/booking_table', locals: {desk: @desk, bookings: @bookings}
+  br
+  .center
+    =link_to account_bookings_path
+      i.fa.fa-list
+      |  #{t('dashboard.back_to_bookings')}

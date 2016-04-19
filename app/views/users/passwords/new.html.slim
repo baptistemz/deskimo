@@ -1,0 +1,12 @@
+.container
+  h2.center = t('devise.custom.forgotten_password')
+  .form-margin-top
+    = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+      .center.red
+        = f.error_notification
+      .form-group
+        = f.input :email, label: "email", required: true, autofocus: true, placeholder:"email"
+      .form-actions.center
+        = f.button :submit, "Send me reset password instructions", class: "btn-primary login-button-width"
+    .center
+      = render "users/shared/links"

@@ -3,6 +3,7 @@ module Account
 
     def index
       @user_bookings = current_user.bookings.where(archived: false)
+      @archived_user_bookings = current_user.bookings.where(archived: true)
       if current_user.company
         @desks = current_user.company.desks
       end

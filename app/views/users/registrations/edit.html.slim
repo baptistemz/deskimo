@@ -14,7 +14,7 @@
             - if devise_mapping.confirmable? && resource.pending_reconfirmation?
               p Currently waiting confirmation for: #{resource.unconfirmed_email}
           .form-group
-            = f.input :password, autocomplete: "off", required: false, label: "#{t('account.new_password')} (#{t('account.8_char_min')})"
+            = f.input :password, autocomplete: "off", required: false, label: "#{t('account.new_password').capitalize} (#{t('account.8_char_min')})", placeholder:"#{t('account.8_char_min')}"
           .form-group
             = f.input :password_confirmation, required: false
           #password-change.hidden

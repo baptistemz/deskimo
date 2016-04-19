@@ -1,0 +1,90 @@
+<div class= "product-thumbnail">
+  <div class= "product-thumbnail-gradient">
+    <h4><%= t('index.details')%></h4>
+  </div>
+  <%= image_tag company.picture.url(:list), class: "img-responsive full-width")%>
+  <div class= "distance">
+    <p><%=number_with_precision(company.distance_from(@location), precision: 1)%> km</p>
+    <ul class="list-unstyle list-inline" id: "services">
+      <% if company.wifi? %>
+        <li>
+          <div class="service-badge">
+            <i class= "fa fa-wifi"></i>
+          </div>
+        </li>
+        <li>
+      <% end %>
+      <% if company.coffee? %>
+          <div class="service-badge">
+            <i class= "fa fa-coffee"></i>
+          </div>
+        </li>
+      <% end %>
+      <% if company.printer? %>
+        <li>
+          <div class="service-badge">
+            <i class= "fa fa-print"></i>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+    <div class="product-thumbnail-content">
+      <div class="product-name">
+        <p><%=company.name%></p>
+      </div>
+      <% if params[:kind] == "closed_office"%>
+        <div class="office-kind">
+          <p class="small-font"><%=t('dashboard.closed_offices')%><%=t('from_price')%></p>
+        </div>
+        <div class="product-price">
+          <p><%=humanized_money cheapest_daily_price(company.desks.where(kind: "closed_office"))%>€ / j</p>
+        </div>
+      <%end%>
+      <% elsif params[:kind] == "open_space"%>
+        <div class="office-kind">
+          <p class="small-font"><%=t('dashboard.open_space_desks')%><%=t('from_price')%></p>
+        </div>
+        <div class="product-price">
+          <p><%=humanized_money cheapest_daily_price(company.desks.where(kind: "open_space"))%>€ / j</p>
+        </div>
+      <%end%>
+      <% elsif params[:kind] == "meeting_room"%>
+        <div class="office-kind">
+          <p class="small-font"><%=t('dashboard.meeting_rooms')%><%=t('from_price')%></p>
+        </div>
+        <div class="product-price">
+          <p><%=humanized_money cheapest_daily_price(company.desks.where(kind: "meeting_room"))%>€ / j</p>
+        </div>
+      <%end%>
+      <% else%>
+        <div class="office-kind">
+          <p class="small-font"><%=t('from_price')%></p>
+        </div>
+        <div class="product-price">
+          <p><%=humanized_money company.cheapest_desk_price%>€ / j</p>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</div>
+
+    - if params[:kind] == "closed_office"
+      .office-kind
+        p.small-font #{t('dashboard.closed_offices')} #{t('from_price')} :
+      .product-price
+        p #{humanized_money cheapest_daily_price(company.desks.where(kind: "closed_office"))}€ / j
+    - elsif params[:kind] == "meeting_room"
+      .office-kind
+        p.small-font #{t('dashboard.meeting_rooms')} #{t('from_price')} :
+      .product-price
+        p #{humanized_money cheapest_daily_price(company.desks.where(kind: "meeting_room"))}€ / j
+    - elsif params[:kind] == "open_space"
+      .office-kind
+        p.small-font #{t('dashboard.open_space_desks')} #{t('from_price')} :
+      .product-price
+        p #{humanized_money cheapest_daily_price(company.desks.where(kind: "open_space"))}€ / j
+    - else
+      .office-kind
+        p.small-font #{t('from_price')} :
+      .product-price
+        p #{humanized_money company.cheapest_desk_price}€ / #{t('d_day')}

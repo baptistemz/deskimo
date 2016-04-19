@@ -100,15 +100,16 @@
         }, function(){
           markers1 = mobile_handler.addMarkers(#{raw @hash.to_json});
           markers2 = mobile_handler.addMarkers(#{raw @mypos.to_json});
-
+          allmarkers = $.merge( $.merge( [], markers1 ), markers2 )
           if(markers1.length === 0){
             mobile_handler.map.serviceObject.setZoom(14);
             mobile_handler.map.centerOn(markers2[0])
           } else {
-            mobile_handler.bounds.extendWith(markers1);
+            mobile_handler.bounds.extendWith(allmarkers);
             mobile_handler.fitMapToBounds();
           }
         });
       })
+/ = react_component "CompaniesList", render(template: 'companies/index.json.jbuilder')
+= javascript_include_tag "https://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"
 
-    = javascript_include_tag "https://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"

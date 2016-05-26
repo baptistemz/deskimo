@@ -47,7 +47,7 @@ class CompaniesController < ApplicationController
     else
       thumbnails_per_page = 6
     end
-    @companies = Company.search('*', where: search_conditions, order: sort_conditions, aggs: aggregations, page: params[:page], per_page: thumbnails_per_page)
+    @companies = Company.search('*', where: search_conditions, aggs: aggregations, page: params[:page], per_page: thumbnails_per_page, order: sort_conditions)
     if @companies.empty?
       @empty_message = 'Aucun bureau disponible ne correspond à votre recherche'
     end

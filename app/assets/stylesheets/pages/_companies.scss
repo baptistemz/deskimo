@@ -1,8 +1,15 @@
 .research-bar {
   display: block;
+  position: fixed;
+  width: 58%;
+  z-index: 1000;
   height: 60px;
   background-color: #FFFBFE;
   border-bottom: 1px solid #8F918C;
+}
+
+.inflow{
+  position: relative;
 }
 
 #desktop-map {
@@ -63,5 +70,10 @@
 @media (max-width: 480px) {
   .img-small{
     height: 120px
+  }
+}
+@media (max-width: 768px) {
+  .research-bar{
+    width: 100%
   }
 }

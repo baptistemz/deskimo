@@ -4,6 +4,9 @@
     i.fa.fa-search
   = hidden_field_tag :lat, params[:lat], id: 'lat'
   = hidden_field_tag :lng, params[:lng], id: 'lng'
+  = hidden_field_tag :window_width, 0, class: 'window-width'
+
+
   / = hidden_field_tag :street_number, id: "street_number", disabled: true
   / = hidden_field_tag :route, id: "route", disabled: true
   / = hidden_field_tag :locality, id: "locality", disabled: true

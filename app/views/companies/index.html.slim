@@ -8,54 +8,58 @@
 .container-fluid#main
   .row
     .col-xs-12.col-sm-7
-      .row.research-bar
-        .col-xs-9.col-sm-12
-          = form_tag companies_path, method: :get, class: "flexform"
-            .row
-              .col-xs-7
-                = text_field_tag :full_address, params[:full_address], placeholder: t('home.city_placeholder'), id: "js-autocomplete-city", class: "pretty-field index-search-field"
-                button.search-btn#index-search-btn type="submit"
-                  i.fa.fa-search
-                = hidden_field_tag :lat, params[:lat], id: "lat"
-                = hidden_field_tag :lng, params[:lng], id: "lng"
+      .inflow
 
-              .col-xs-5
-                #filter-select
-                  = select_tag :kind, options_for_select(Desk.kind.options(only: @kinds), params[:kind]), label: false, prompt: t('index.kind_of_desk'), include_blank: false, :onchange => "this.form.submit()"
+        .row.research-bar
+          .col-xs-9.col-sm-12
+            = form_tag companies_path, method: :get, class: "flexform"
+              .row
+                .col-xs-7
+                  = text_field_tag :full_address, params[:full_address], placeholder: t('home.city_placeholder'), id: "js-autocomplete-city", class: "pretty-field index-search-field"
+                  button.search-btn#index-search-btn type="submit"
+                    i.fa.fa-search
+                  = hidden_field_tag :lat, params[:lat], id: "lat"
+                  = hidden_field_tag :lng, params[:lng], id: "lng"
+                  = hidden_field_tag :window_width, 0, class: 'window-width'
+
+                .col-xs-5
+                  #filter-select
+                    = select_tag :kind, options_for_select(Desk.kind.options(only: @kinds), params[:kind]), label: false, prompt: t('index.kind_of_desk'), include_blank: false, :onchange => "this.form.submit()"
 
 
-        .col-xs-3.visible-xs.no-padding-left
-          .map-btn
-            = image_tag 'map-icon.png', id: 'map-icon'
-            .i.fa.fa-list#list-icon.hidden
+          .col-xs-3.visible-xs.no-padding-left
+            .map-btn
+              = image_tag 'map-icon.png', id: 'map-icon'
+              .i.fa.fa-list#list-icon.hidden
 
-      .row
-        - if @empty_message
-          p.text-center = @empty_message
-        -else
-          #companies
-            - @companies.each do |company|
-              .col-xs-12.col-md-6
-                - if params[:kind] == "closed_office"
-                  =link_to company_desks_path(company, :tab_selected => "closed_office")
-                    = render partial: 'company_thumbnail', locals: {company: company}
-                - elsif params[:kind] == "meeting_room"
-                  =link_to company_desks_path(company, :tab_selected => "meeting_room")
-                    = render partial: 'company_thumbnail', locals: {company: company}
-                -else
-                  =link_to company_desks_path(company)
-                    = render partial: 'company_thumbnail', locals: {company: company}
-      - if @companies.total_pages > 1
-        .pagination
-          .counter #{@companies.current_page}/#{@companies.total_pages}
-          = link_to params.merge({page: @companies.previous_page})
-            .paginate.left
-              i
-              i
-          = link_to params.merge({page: @companies.next_page})
-            .paginate.right
-              i
-              i
+        .row
+          - if @empty_message
+            p.text-center = @empty_message
+          -else
+            #companies
+              - @companies.each do |company|
+                .col-xs-12.col-md-6
+                  - if params[:kind] == "closed_office"
+                    =link_to company_desks_path(company, :tab_selected => "closed_office")
+                      = render partial: 'company_thumbnail', locals: {company: company}
+                  - elsif params[:kind] == "meeting_room"
+                    =link_to company_desks_path(company, :tab_selected => "meeting_room")
+                      = render partial: 'company_thumbnail', locals: {company: company}
+                  -else
+                    =link_to company_desks_path(company)
+                      = render partial: 'company_thumbnail', locals: {company: company}
+              / = react_component "CompaniesList", render(template: 'companies/index.json.jbuilder')
+        - if @companies.total_pages > 1
+          .pagination
+            .counter #{@companies.current_page}/#{@companies.total_pages}
+            = link_to params.merge({page: @companies.previous_page})
+              .paginate.left
+                i
+                i
+            = link_to params.merge({page: @companies.next_page})
+              .paginate.right
+                i
+                i
 
     .col-sm-5.hidden-xs.fixed
 
@@ -110,6 +114,6 @@
           }
         });
       })
-/ = react_component "CompaniesList", render(template: 'companies/index.json.jbuilder')
-= javascript_include_tag "https://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"
+
+= javascript_include_tag "https://cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"
 

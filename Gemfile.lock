@@ -510,7 +510,6 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   js-routes
-  kaminari
   letter_opener
   minitest-rails-capybara
   minitest-reporters

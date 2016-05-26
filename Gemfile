@@ -17,7 +17,7 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'turbolinks'
-gem 'kaminari'
+# gem 'kaminari'
 
 
 gem 'wicked_pdf'

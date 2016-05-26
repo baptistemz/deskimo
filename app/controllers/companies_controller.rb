@@ -43,9 +43,9 @@ class CompaniesController < ApplicationController
     end
 
     if params[:window_width].to_i < 992
-      thumbnails_per_page = 3
-    else
       thumbnails_per_page = 6
+    else
+      thumbnails_per_page = 12
     end
     @companies = Company.search('*', where: search_conditions, aggs: aggregations, page: params[:page], per_page: thumbnails_per_page, order: sort_conditions)
     if @companies.empty?

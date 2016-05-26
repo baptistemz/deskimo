@@ -49,7 +49,6 @@
                   -else
                     =link_to company_desks_path(company)
                       = render partial: 'company_thumbnail', locals: {company: company}
-              = @companies.per_page
               / = react_component "CompaniesList", render(template: 'companies/index.json.jbuilder')
         - if @companies.total_pages > 1
           .pagination

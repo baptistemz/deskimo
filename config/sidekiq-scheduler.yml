@@ -4,8 +4,7 @@ clean_unavailability_daily:
   description: "clean old unavailabilities"
 
 archive_bookings_daily:
-  cron: "* * * * *" # every minute
-  # cron: "20 0 * * *" # everyday at 12:20am
+  cron: "20 0 * * *" # everyday at 12:20am
   class: ArchiveOldBookingsJob
   description: "archive old bookings"
 

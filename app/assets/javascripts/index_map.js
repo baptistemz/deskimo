@@ -15,4 +15,9 @@ $(document).ready(function(){
     $('#map-icon').toggleClass('hidden');
     $('#list-icon').toggleClass('hidden');
   });
+  $('.flexform').submit(function(){
+    $('.window-height').val($(window).height());
+    $('.window-width').val($(window).width())
+  });
 });
+

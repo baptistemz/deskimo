@@ -36,6 +36,7 @@
           - if @empty_message
             p.text-center = @empty_message
           -else
+
             #companies
               - @companies.each do |company|
                 .col-xs-12.col-md-6
@@ -48,6 +49,7 @@
                   -else
                     =link_to company_desks_path(company)
                       = render partial: 'company_thumbnail', locals: {company: company}
+              = @companies.per_page
               / = react_component "CompaniesList", render(template: 'companies/index.json.jbuilder')
         - if @companies.total_pages > 1
           .pagination

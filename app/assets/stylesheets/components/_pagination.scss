@@ -112,8 +112,9 @@ $angleActive: 10deg;
 }
 
 .pagination{
-  width: 100%;
+  width: calc(100% - 30px);
   height: 70px;
+  margin-left: 15px;
   margin-bottom: 5px;
   margin-top: 0;
   postition: relative;
@@ -127,8 +128,8 @@ $angleActive: 10deg;
   text-align: center;
   // margin-top: 98%;
   // position: absolute;
-  left: 0;
-  right: 0;
+  left: 5px;
+  right: 5px;
   // top: 50%;
   // margin-bottom: -15px;
   font-size: 30px;

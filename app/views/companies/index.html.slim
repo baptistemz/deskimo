@@ -9,7 +9,6 @@
   .row
     .col-xs-12.col-sm-7
       .inflow
-
         .row.research-bar
           .col-xs-9.col-sm-12
             = form_tag companies_path, method: :get, class: "flexform"
@@ -37,30 +36,31 @@
             p.text-center = @empty_message
           -else
 
-            #companies
-              - @companies.each do |company|
-                .col-xs-12.col-md-6
-                  - if params[:kind] == "closed_office"
-                    =link_to company_desks_path(company, :tab_selected => "closed_office")
-                      = render partial: 'company_thumbnail', locals: {company: company}
-                  - elsif params[:kind] == "meeting_room"
-                    =link_to company_desks_path(company, :tab_selected => "meeting_room")
-                      = render partial: 'company_thumbnail', locals: {company: company}
-                  -else
-                    =link_to company_desks_path(company)
-                      = render partial: 'company_thumbnail', locals: {company: company}
-              / = react_component "CompaniesList", render(template: 'companies/index.json.jbuilder')
-        - if @companies.total_pages > 1
-          .pagination
-            .counter #{@companies.current_page}/#{@companies.total_pages}
-            = link_to params.merge({page: @companies.previous_page})
-              .paginate.left
-                i
-                i
-            = link_to params.merge({page: @companies.next_page})
-              .paginate.right
-                i
-                i
+            #companies-wrap
+              .companies-list
+                  - @companies.each do |company|
+                    .col-xs-12.col-md-6
+                      - if params[:kind] == "closed_office"
+                        =link_to company_desks_path(company, :tab_selected => "closed_office")
+                          = render partial: 'company_thumbnail', locals: {company: company}
+                      - elsif params[:kind] == "meeting_room"
+                        =link_to company_desks_path(company, :tab_selected => "meeting_room")
+                          = render partial: 'company_thumbnail', locals: {company: company}
+                      -else
+                        =link_to company_desks_path(company)
+                          = render partial: 'company_thumbnail', locals: {company: company}
+                  / = react_component "CompaniesList", render(template: 'companies/index.json.jbuilder')
+          - if @companies.total_pages > 1
+            .pagination
+              .counter #{@companies.current_page}/#{@companies.total_pages}
+              = link_to params.merge({page: @companies.previous_page})
+                .paginate.left
+                  i
+                  i
+              = link_to params.merge({page: @companies.next_page})
+                .paginate.right
+                  i
+                  i
 
     .col-sm-5.hidden-xs.fixed
 

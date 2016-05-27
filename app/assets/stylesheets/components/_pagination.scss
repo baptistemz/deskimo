@@ -114,16 +114,14 @@ $angleActive: 10deg;
 .pagination{
   width: calc(100% - 30px);
   height: 70px;
-  margin-left: 15px;
-  margin-bottom: 5px;
-  margin-top: 0;
+  margin: 0 0 0 15px;
   postition: relative;
   background-color: $dark-blue;
 }
 
 .counter {
   position: absolute;
-  bottom: 25px;
+  bottom: 20px;
   // background-color: $dark-blue;
   text-align: center;
   // margin-top: 98%;

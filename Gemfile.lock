@@ -237,6 +237,8 @@ GEM
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     memoist (0.14.0)
+    messenger-ruby (1.1.4)
+      rest-client (>= 1.7.0)
     method_source (0.8.2)
     mime-types (2.6.2)
     mimemagic (0.3.0)
@@ -410,7 +412,7 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    searchkick (1.1.0)
+    searchkick (1.3.0)
       activemodel
       elasticsearch (>= 1)
       hashie
@@ -511,6 +513,7 @@ DEPENDENCIES
   jquery-turbolinks
   js-routes
   letter_opener
+  messenger-ruby
   minitest-rails-capybara
   minitest-reporters
   money-rails
@@ -532,7 +535,7 @@ DEPENDENCIES
   react-rails (= 1.6.1)
   rspec-rails
   sass-rails (~> 5.0)
-  searchkick
+  searchkick (~> 1.3)
   sidekiq
   sidekiq-failures
   sidekiq-scheduler (~> 2.0)

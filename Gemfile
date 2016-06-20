@@ -46,7 +46,7 @@ gem 'google-api-client', '~> 0.9', require: 'google/apis/calendar_v3'
 gem 'underscore-rails'
 gem 'coffee-rails'
 gem "pundit"
-gem 'searchkick'
+gem 'searchkick', '~> 1.3'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 gem 'bonsai-elasticsearch-rails'
@@ -55,6 +55,7 @@ gem 'whenever', :require => false
 gem 'sinatra'  # Dependency of sidekiq
 gem 'sidekiq-failures'
 gem 'sidekiq-scheduler', '~> 2.0'
+gem 'messenger-ruby'
 
 # gem 'mangopay', '~> 3.0.0'
 

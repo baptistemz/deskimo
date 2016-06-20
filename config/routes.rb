@@ -1,5 +1,7 @@
+
 Rails.application.routes.draw do
   require "sidekiq/web"
+  mount Messenger::Engine, at: "/messenger"
 
   authenticate :admin_user do
     mount Sidekiq::Web => '/sidekiq'

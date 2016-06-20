@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160322101735) do
+ActiveRecord::Schema.define(version: 20160620153523) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -167,6 +167,19 @@ ActiveRecord::Schema.define(version: 20160322101735) do
   add_index "invoices", ["booking_id"], name: "index_invoices_on_booking_id", using: :btree
   add_index "invoices", ["user_id"], name: "index_invoices_on_user_id", using: :btree
 
+  create_table "messenger_profiles", force: :cascade do |t|
+    t.integer "user_id"
+    t.string  "messenger_id"
+    t.string  "first_name"
+    t.string  "last_name"
+    t.string  "profile_pic_url"
+    t.string  "locale"
+    t.integer "timezone"
+    t.string  "gender"
+  end
+
+  add_index "messenger_profiles", ["user_id"], name: "index_messenger_profiles_on_user_id", using: :btree
+
   create_table "payments", force: :cascade do |t|
     t.integer  "payer_id"
     t.integer  "receiver_id"
@@ -247,6 +260,7 @@ ActiveRecord::Schema.define(version: 20160322101735) do
   add_foreign_key "desks", "companies"
   add_foreign_key "invoices", "bookings"
   add_foreign_key "invoices", "users"
+  add_foreign_key "messenger_profiles", "users"
   add_foreign_key "unavailability_ranges", "bookings"
   add_foreign_key "unavailability_ranges", "desks"
   add_foreign_key "welcome_messages", "companies"

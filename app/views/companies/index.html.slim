@@ -32,10 +32,8 @@
               .i.fa.fa-list#list-icon.hidden
 
         .row
-          - if @empty_message
-            p.text-center = @empty_message
-          -else
 
+          - if @companies.any?
             #companies-wrap
               .companies-list
                   - @companies.each do |company|
@@ -49,6 +47,8 @@
                       -else
                         =link_to company_desks_path(company)
                           = render partial: 'company_thumbnail', locals: {company: company}
+          -else
+            p.text-center Not Found
                   / = react_component "CompaniesList", render(template: 'companies/index.json.jbuilder')
           - if @companies.total_pages > 1
             .pagination

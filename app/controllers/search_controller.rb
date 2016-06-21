@@ -1,16 +1,47 @@
 class CompaniesController < ApplicationController
 
   def index
+    # if params[:lat].presence && params[:lng].presence && params[:full_address].presence == false
+    #   @location = [params[:lat], params[:lng]]
+    # elsif params[:full_address].presence
+    #   @location = Geocoder.coordinates(params[:full_address])
+    # elsif cookies[:lat_lng]
+    #   params[:lat] = cookies[:lat_lng].split(',')[0]
+    #   params[:lng] = cookies[:lat_lng].split(',')[1]
+    #   @location = cookies[:lat_lng].split(',')
+    # else
+    #   @location = [Settings.locations.default.latitude, Settings.locations.default.longitude]
+    # end
     @location = location
     aggregations = { kinds: { stats: true }}
-    search_conditions = search_conditions(@location)
-    search_conditions[:kinds] = params[:kind] if params[:kind].present?
-    @companies = Company.search('*', where: search_conditions,
-                                     aggs: aggregations,
-                                     page: params[:page],
-                                     per_page: 6,
-                                     order: sort_conditions(@location))
+    # - - - Filters
+    # search_conditions = {
+    #   activated: true,
+    #   location: {
+    #     near:   @location,
+    #     within: "5km"
+    #   }
+    # }
+
+    # sort_conditions = [
+    #   {
+    #     _geo_distance: {
+    #       location: {
+    #         lat: @location[0],
+    #         lon: @location[1]
+    #         },
+    #       order: "asc",
+    #       unit: "km",
+    #       mode: "min"
+    #     }
+    #   }
+    # ]
+
+
+
+    @companies = Company.search('*', where: search_conditions(@location, params[:kind]), aggs: aggregations, page: params[:page], per_page: thumbnails_per_page, order: sort_conditions(@location))
     @kinds = @companies.aggs["kinds"]["buckets"].map { |facet| facet["key"] }
+
     build_map
     @no_footer = true
   end
@@ -31,6 +62,25 @@ class CompaniesController < ApplicationController
     end
   end
 
+  def search_conditions (location, kind)
+    search_conditions = {
+      kinds: kind,
+      activated: true,
+      location: {
+        near:   location,
+        within: "5km"
+      }
+    }
+  end
+
+  def thumbnails_per_page
+    if params[:window_width].to_i < 992
+      thumbnails_per_page = 3
+    else
+      thumbnails_per_page = 6
+    end
+  end
+
   def sort_conditions (location)
     sort_conditions = [
       {
@@ -45,16 +95,6 @@ class CompaniesController < ApplicationController
         }
       }
     ]
-  end
-
-  def search_conditions (location)
-    search_conditions = {
-      activated: true,
-      location: {
-        near:   location,
-        within: "5km"
-      }
-    }
   end
 
   def build_map
@@ -72,6 +112,7 @@ class CompaniesController < ApplicationController
         width:  30,
         height: 44
       )
+
       marker.title   "votre position"
     end
   end

@@ -9,7 +9,9 @@ class MessengerController < Messenger::MessengerController
     if params['hub.verify_token'] == ENV['FB_VERIFY_TOKEN']
       render text: params['hub.challenge'] and return
     elsif fb_params.first_entry.callback.message?
-      answerback
+      message_answer
+    elsif fb_params.first_entry.callback.postback?
+      postback_answer
     else
       render text: 'error' and return
     end
@@ -17,7 +19,7 @@ class MessengerController < Messenger::MessengerController
 
   private
 
-  def answerback
+  def message_answer
     @location = Geocoder.coordinates(fb_params.first_entry.callback.text)
     if @location
       search_conditions = {
@@ -42,27 +44,39 @@ class MessengerController < Messenger::MessengerController
         }
       ]
 
-      @companies = Company.search('*', where: search_conditions, order: sort_conditions, page: (page_number || 1), per_page: 3)
+      @companies = Company.search('*', where: search_conditions, order: sort_conditions, page: 1, per_page: 3)
 
       if @companies.any?
         bubbles = []
         @companies.each do |company|
+          buttons = []
+          buttons << Messenger::Elements::Button.new(
+            type: 'postback',
+            title: "Place en open space",
+            value: "user_books_in_company_#{company.id}_open_space"
+          )
+          buttons << Messenger::Elements::Button.new(
+            type: 'postback',
+            title: "Bureau séparé",
+            value: "user_books_in_company_#{company.id}_closed_office"
+          )
+          buttons << Messenger::Elements::Button.new(
+            type: 'postback',
+            title: "Salle de réunion",
+            value: "user_books_in_company_#{company.id}_meeting_room"
+          )
+
           bubble =Messenger::Elements::Bubble.new(
             title: "#{company.name}",
             subtitle: "#{company.city}",
             item_url: "http://localhost:3000/companies/#{company.id}",
             image_url: "#{company.picture.url}",
-            buttons: [
-              Messenger::Elements::Button.new(
-                type: 'postback',
-                title: 'Reserver',
-                value: "user_books_in_company_#{company.id}"
-              )
-            ]
+            buttons: buttons
+
           )
           bubbles << bubble
         end
-        generic =Messenger::Templates::Generic.new(elements: bubbles)
+        generic = Messenger::Templates::Generic.new(elements: bubbles)
 
         Messenger::Client.send(
           Messenger::Request.new(generic, fb_params.first_entry.sender_id)

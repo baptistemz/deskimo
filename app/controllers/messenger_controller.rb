@@ -1,16 +1,12 @@
 class MessengerController < Messenger::MessengerController
-
-  # def message(event, sender)
-  #   # profile = sender.get_profile(field) # default field [:locale, :timezone, :gender, :first_name, :last_name, :profile_pic]
-  #   sender.reply({ text: "Reply: #{event['message']['text']}" })
-  # end
+  before_action :set_first_entry
 
   def webhook
     if params['hub.verify_token'] == ENV['FB_VERIFY_TOKEN']
       render text: params['hub.challenge'] and return
-    elsif fb_params.first_entry.callback.message?
+    elsif @first_entry.callback.message?
       message_answer
-    elsif fb_params.first_entry.callback.postback?
+    elsif @first_entry.callback.postback?
       postback_answer
     else
       render text: 'error' and return
@@ -20,22 +16,47 @@ class MessengerController < Messenger::MessengerController
   private
 
   def message_answer
-    @location = Geocoder.coordinates(fb_params.first_entry.callback.text)
+    @first_entry = fb_params.first_entry
+    @location = Geocoder.coordinates(@first_entry.callback.text)
     if @location
-      search_conditions = {
-        activated: true,
-        location: {
-          near:   @location,
-          within: "5km"
-        }
-      }
+      @companies = Company.search('*', where: search_conditions(@location), order: sort_conditions(@location), page: 1, per_page: 3)
+      if @companies.any?
+        bubbles = bubble_creation(@companies)
+        generic = Messenger::Templates::Generic.new(elements: bubbles)
+        Messenger::Client.send(
+          Messenger::Request.new(generic, @first_entry.sender_id)
+        )
+        render nothing: true, status: 200
+      else
+        fail_message(@first_entry.callback.text, @first_entry.sender_id)
+      end
+    else
+      fail_message(@first_entry.callback.text, @first_entry.sender_id)
+    end
+  end
 
+  private
+
+  def set_first_entry
+    @first_entry = fb_params.first_entry
+  end
+
+  def search_conditions(location)
+    search_conditions = {
+      activated: true,
+      location: {
+        near:   location,
+        within: "5km"
+      }
+    }
+  end
+  def sort_conditions(location)
       sort_conditions = [
         {
           _geo_distance: {
             location: {
-              lat: @location[0],
-              lon: @location[1]
+              lat: location[0],
+              lon: location[1]
               },
             order: "asc",
             unit: "km",
@@ -43,74 +64,50 @@ class MessengerController < Messenger::MessengerController
           }
         }
       ]
+    end
 
-      @companies = Company.search('*', where: search_conditions, order: sort_conditions, page: 1, per_page: 3)
+    def bubble_creation(companies)
+      bubbles = []
+      @companies.each do |company|
+        buttons = buttons_creation(company)
+        bubble =Messenger::Elements::Bubble.new(
+          title: "#{company.name}",
+          subtitle: "#{company.city}",
+          item_url: "http://localhost:3000/companies/#{company.id}",
+          image_url: "#{company.picture.url}",
+          buttons: buttons
 
-      if @companies.any?
-        bubbles = []
-        @companies.each do |company|
-          buttons = []
-          buttons << Messenger::Elements::Button.new(
-            type: 'postback',
-            title: "Place en open space",
-            value: "user_books_in_company_#{company.id}_open_space"
-          )
-          buttons << Messenger::Elements::Button.new(
-            type: 'postback',
-            title: "Bureau séparé",
-            value: "user_books_in_company_#{company.id}_closed_office"
-          )
-          buttons << Messenger::Elements::Button.new(
-            type: 'postback',
-            title: "Salle de réunion",
-            value: "user_books_in_company_#{company.id}_meeting_room"
-          )
-
-          bubble =Messenger::Elements::Bubble.new(
-            title: "#{company.name}",
-            subtitle: "#{company.city}",
-            item_url: "http://localhost:3000/companies/#{company.id}",
-            image_url: "#{company.picture.url}",
-            buttons: buttons
-
-          )
-          bubbles << bubble
-        end
-        generic = Messenger::Templates::Generic.new(elements: bubbles)
-
-        Messenger::Client.send(
-          Messenger::Request.new(generic, fb_params.first_entry.sender_id)
         )
-        render nothing: true, status: 200
-      else
-        Messenger::Client.send(
-          Messenger::Request.new(
-            Messenger::Elements::Text.new(text: "Nous n'avons rien trouvé à '#{fb_params.first_entry.callback.text}'" ),
-            fb_params.first_entry.sender_id
-          )
-        )
-        render nothing: true, status: 200
+        bubbles << bubble
       end
-    else
+      return bubbles
+    end
+
+    def buttons_creation(company)
+      buttons = []
+      buttons << Messenger::Elements::Button.new(
+        type: 'postback',
+        title: "Place en open space",
+        value: "user_books_in_company_#{company.id}_open_space"
+      )
+      buttons << Messenger::Elements::Button.new(
+        type: 'postback',
+        title: "Bureau séparé",
+        value: "user_books_in_company_#{company.id}_closed_office"
+      )
+      buttons << Messenger::Elements::Button.new(
+        type: 'postback',
+        title: "Salle de réunion",
+        value: "user_books_in_company_#{company.id}_meeting_room"
+      )
+    end
+    def fail_message(text, sender_id)
       Messenger::Client.send(
         Messenger::Request.new(
-          Messenger::Elements::Text.new(text: "dans l'eau"),
-          fb_params.first_entry.sender_id
+          Messenger::Elements::Text.new(text: "Nous n'avons rien trouvé pour l'endroit : '#{text}'" ),
+          sender_id
         )
       )
       render nothing: true, status: 200
     end
-  end
-
-  # def delivery(event, sender)
-  #   render nothing: true, status: 200
-  # end
-
-  # def postback(event, sender)
-  #   payload = event["postback"]["payload"]
-  #   case payload
-  #   when :something
-  #     #ex) process sender.reply({text: "button click event!"})
-  #   end
-  # end
 end

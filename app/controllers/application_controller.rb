@@ -6,14 +6,6 @@ class ApplicationController < ActionController::Base
   before_filter :staging_authenticate
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
-  # include Pundit
-
-  # after_action :verify_authorized, except: :index, unless: :authorized_controller?
-  # after_action :verify_policy_scoped, only: :index, unless: :authorized_controller?
-
-  # rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
-
-
   def after_sign_in_path_for(resource)
     session[:previous_url] || root_path
   end
@@ -29,17 +21,6 @@ class ApplicationController < ActionController::Base
 
   private
 
-  # def user_not_authorized
-  #   flash[:alert] = "You are not authorized to perform this action."
-  #   redirect_to(root_path)
-  # end
-
-  # def authorized_controller?
-  #   devise_controller? ||
-  #   params[:controller] = "high_voltage/pages" ||
-  #   companies_controller? ||
-  #   desks_controller?
-  # end
 
   def store_location
     # store last url - this is needed for post-login redirect to whatever the user last visited.
